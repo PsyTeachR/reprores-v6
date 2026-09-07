@@ -67,11 +67,11 @@ Did you use AI for:
 
 * The html theme used by the demo report is flatly
 * The ggplot theme is `theme_bw()`
-* You will not be asked to do anything 'tricky' in this assessment, so if you find yourself needing 20 lines of code just to customise the labels in a plot, try looking for more efficient alternatives.
+* The countries in the two data sets aren't always written exactly the same. This is a very common problem with many solutions. You will need to fix it and not just omit data when the same country name is written in two different ways.
+* You will also need to combine yarn shops for the UK, Scotland, England, Wales and Northern Ireland, and include them all as "United Kingdom".
 * You will definitely need to join data, and convert between wide and long. Make sure you do this efficiently, creating the minimum number of extra data tables needed, and not re-creating the same table for different tasks.
 * If you find yourself doing the same thing to many columns, you could probably do it more efficiently by reshaping the data longer first
 * Use pipes to avoid creating many single-use tables.
-* The figure width and height of Figure 1 are 10 and 5 (it is fine to change this if your fonts are a slightly different size)
 
 ## Submission
 

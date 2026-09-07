@@ -48,7 +48,7 @@ book:
   margin-header: "<a href='https://doi.org/10.5281/zenodo.6527194'><img src='https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg' alt='DOI'></a>"
   page-footer:
     left: "CC-BY 2026, psyTeachR"
-    # right:
+    right:
     - icon: github
       href: https://github.com/psyteachr/reprores-v6
     - icon: https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg
