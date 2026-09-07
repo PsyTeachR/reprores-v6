@@ -696,7 +696,7 @@ Let's try some exercises using a dataset you already encountered in @sec-viz so 
 ```{r webex.hide = TRUE}
 # from https://www.kaggle.com/kyanyoga/sample-sales-data
 library(tidyverse)
-survey_data <- read_csv("https://psyteachr.github.io/reprores-v5/data/survey_data.csv")
+survey_data <- read_csv("https://psyteachr.github.io/reprores-v6/data/survey_data.csv")
 
 ```
 

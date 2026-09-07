@@ -30,7 +30,7 @@ Now I can make:
 * headers
 * paragraphs
 * lists
-* [links](https://psyteachr.github.io/reprores-v5/)
+* [links](https://psyteachr.github.io/reprores-v6/)
 
 1. **bold**
 2. *italic*

@@ -249,7 +249,7 @@ Load the data by copying the following into a code block in your script, and run
 
 ```{r}
 #| eval: false
-pip <- read_csv("https://psyteachr.github.io/reprores-v5/data/pip_gini_welfare_2010.csv")
+pip <- read_csv("https://psyteachr.github.io/reprores-v6/data/pip_gini_welfare_2010.csv")
 ```
 :::
 

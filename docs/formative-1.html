@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="description" content="This book provides an overview of skills needed for reproducible and open research using the statistical programming language R and tidyverse packages. It covers reproducible workflows, data visualisation, data tidying and wrangling, archiving, iteration and functions, probability and data simulations.">
-<title>14&nbsp; Assessment 4 – Data Skills for Reproducible Research</title>
+
+<title>11&nbsp; Formative 1 – Data Skills for Reproducible Research</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -58,6 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -65,8 +69,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./12-license.html" rel="next">
-<link href="./assessment-3.html" rel="prev">
+<link href="./assessment-1.html" rel="next">
+<link href="./10-next.html" rel="prev">
 <link href="./images/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -81,7 +85,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-bbcee6fbcf8bde314366f5cbde244fc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-dfa2a00916de9ee8c66f066e5900e70b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-bbcee6fbcf8bde314366f5cbde244fc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-bbcee6fbcf8bde314366f5cbde244fc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -107,16 +112,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script type="text/javascript">
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script>
+
+<script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
-</script><link rel="stylesheet" href="include/psyteachr.css">
+</script>
+
+
+<link rel="stylesheet" href="include/psyteachr.css">
 <link rel="stylesheet" href="include/webex.css">
 <link rel="stylesheet" href="include/style.css">
 </head>
+
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -282,24 +294,30 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./assessment-1.html">Assessments</a></li><li class="breadcrumb-item"><a href="./assessment-4.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 4</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./formative-1.html">Assessments</a></li><li class="breadcrumb-item"><a href="./formative-1.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Formative 1</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Data Skills for Reproducible Research</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/psyteachr/reprores-v5/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/psyteachr/reprores-v6/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -311,7 +329,7 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -385,33 +403,27 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./formative-1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Formative 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assessment-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assessment-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./assessment-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 3</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./assessment-4.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 4</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12-license.html" class="sidebar-item-text sidebar-link">
@@ -426,8 +438,8 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./app-installing-r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing &amp; Updating R</span></span></a>
@@ -512,38 +524,32 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p><a href="https://doi.org/10.5281/zenodo.6365077"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6365077.svg" alt="DOI"></a></p>
+<p><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI"></a></p>
 </div></div>
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#general-instructions" id="toc-general-instructions" class="nav-link active" data-scroll-target="#general-instructions"><span class="header-section-number">14.1</span> General Instructions</a></li>
-  <li>
-<a href="#specific-instructions" id="toc-specific-instructions" class="nav-link" data-scroll-target="#specific-instructions"><span class="header-section-number">14.2</span> Specific Instructions</a>
-  <ul class="collapse">
-<li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis"><span class="header-section-number">14.2.1</span> Analysis</a></li>
-  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">14.2.2</span> Simulation</a></li>
-  <li><a href="#iteration-and-power" id="toc-iteration-and-power" class="nav-link" data-scroll-target="#iteration-and-power"><span class="header-section-number">14.2.3</span> Iteration and Power</a></li>
-  <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection"><span class="header-section-number">14.2.4</span> Reflection</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions"><span class="header-section-number">11.1</span> Instructions</a></li>
+  <li><a href="#ai-declaration" id="toc-ai-declaration" class="nav-link" data-scroll-target="#ai-declaration"><span class="header-section-number">11.2</span> AI Declaration</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission"><span class="header-section-number">11.3</span> Submission</a></li>
   </ul>
-</li>
-  <li><a href="#ai-declaration" id="toc-ai-declaration" class="nav-link" data-scroll-target="#ai-declaration"><span class="header-section-number">14.3</span> AI Declaration</a></li>
-  <li><a href="#hints-and-tips" id="toc-hints-and-tips" class="nav-link" data-scroll-target="#hints-and-tips"><span class="header-section-number">14.4</span> Hints and Tips</a></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission"><span class="header-section-number">14.5</span> Submission</a></li>
-  <li><a href="#marking-rubric" id="toc-marking-rubric" class="nav-link" data-scroll-target="#marking-rubric"><span class="header-section-number">14.6</span> Marking Rubric</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/psyteachr/reprores-v5/edit/master/assessment-4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v5/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v5/blob/master/assessment-4.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/formative-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/formative-1.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./assessment-1.html">Assessments</a></li><li class="breadcrumb-item"><a href="./assessment-4.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 4</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title">
-<span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 4</span>
-</h1>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./formative-1.html">Assessments</a></li><li class="breadcrumb-item"><a href="./formative-1.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Formative 1</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Formative 1</span></h1>
 </div>
 
 
@@ -557,55 +563,35 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
   
 
 
-</header><p>A project showing power simulation</p>
-<section id="general-instructions" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="general-instructions">
-<span class="header-section-number">14.1</span> General Instructions</h2>
-<p>Your task is to replicate <a href="demos/report4_demo.html">this html report</a> using <a href="demos/report3_data.zip">the same datasets from report 3</a> and code. The start of the assessment is identical to report 3, with additional custom function creation, iteration, analysis, and power simulation.</p>
-<p>As for assessments 2 and 3, the submission must contain the following:</p>
+</header>
+
+
+<p>A project with a qmd file showing basic reproducible report skills</p>
+<section id="instructions" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="instructions"><span class="header-section-number">11.1</span> Instructions</h2>
+<p>Your task is to write the outline structure of your planned thesis or your undergraduate thesis using a reproducible quarto script. The paper should contain at least one image and one table (ideally small). The report must contain the following:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">A reproducible <em>project structure</em> with all needed files</label></li>
-<li><label><input type="checkbox">Document structure and text that replicate the report</label></li>
-<li><label><input type="checkbox">Import the data with correct data types</label></li>
-<li><label><input type="checkbox">Plots</label></li>
-<li><label><input type="checkbox">Tables<br></label></li>
-<li><label><input type="checkbox">Consistent plot themes, colours and labels</label></li>
-<li><label><input type="checkbox">Cross-references in the text to the figures and tables</label></li>
-<li><label><input type="checkbox">References created using bibtex</label></li>
+<li><label><input type="checkbox">A <em>project structure</em> with all needed files</label></li>
+<li><label><input type="checkbox">A <em>setup code chunk</em> that loads the tidyverse</label></li>
+<li><label><input type="checkbox">Before the abstract, use <em>inline R</em> to include the version of R you are using, as well as a <em>bibliographic reference</em> to R</label></li>
+<li><label><input type="checkbox">All <em>section headers and subheaders</em> that should be present in the thesis (i.e., Abstract, Introduction, Methods, Results, Discussion, Author Notes, References)</label></li>
+<li><label><input type="checkbox">Creat an abstract as a <em>paragraph</em>, using markdown syntax for any text formatting</label></li>
+<li><label><input type="checkbox">Include one relevant <em>image</em> with the figure caption in the appropriate section</label></li>
+<li><label><input type="checkbox"><em>Cross reference</em> the image in the text with automatic figure numbering.</label></li>
+<li><label><input type="checkbox">Include at least two relevant <em>bibliographic citations</em>, creating the citations via reproducible techniques</label></li>
+<li><label><input type="checkbox">Automatically display these citations in the <em>reference section</em> using reproducible techniques</label></li>
+<li><label><input type="checkbox">Customise the <em>YAML header</em> to:</label>
+<ul class="task-list">
+<li><label><input type="checkbox">a table of contents</label></li>
+<li><label><input type="checkbox">use a non-default theme of your choosing</label></li>
+<li><label><input type="checkbox">hide all code chunks</label></li>
+</ul></li>
+<li><label><input type="checkbox">The quarto file should be renderable by a colleage</label></li>
 </ul>
-<p>As for assessment 3, your code should demonstrate the following skills:</p>
-<ul class="task-list">
-<li><label><input type="checkbox">Be able to match related data across multiple tables</label></li>
-<li><label><input type="checkbox">Be able to combine data from multiple files</label></li>
-<li><label><input type="checkbox">Be able to reshape data between long and wide formats</label></li>
-<li><label><input type="checkbox">Separate, change, reorder, and rename columns</label></li>
-<li><label><input type="checkbox">Use pipes to chain together functions</label></li>
-<li><label><input type="checkbox">Be able to select and filter data for relevance</label></li>
-<li><label><input type="checkbox">Be able to create new columns and edit existing ones</label></li>
-</ul>
-<p>Specific to assessment 4, you must demonstrate the following skills:</p>
-<ul class="task-list">
-<li><label><input type="checkbox">Create custom functions</label></li>
-<li><label><input type="checkbox">Demonstrate the ability to implement iteration where the same function is being applied to multiple items in a data structure</label></li>
-<li><label><input type="checkbox">Simulate a new dataset based on the descriptive statistics from another dataset</label></li>
-<li><label><input type="checkbox">Implement and report the results of a t-test in a reproducible manner</label></li>
-<li><label><input type="checkbox">Reflect on areas where you used techniques that increase reproducibility</label></li>
-</ul></section><section id="specific-instructions" class="level2" data-number="14.2"><h2 data-number="14.2" class="anchored" data-anchor-id="specific-instructions">
-<span class="header-section-number">14.2</span> Specific Instructions</h2>
-<section id="analysis" class="level3" data-number="14.2.1"><h3 data-number="14.2.1" class="anchored" data-anchor-id="analysis">
-<span class="header-section-number">14.2.1</span> Analysis</h3>
-<p>Run a t-test on the UK data to see if there is a gender difference in the characteristic. Use a two-tailed test with an alpha value of 0.05. Report the outcome of the test using inline code.</p>
-</section><section id="simulation" class="level3" data-number="14.2.2"><h3 data-number="14.2.2" class="anchored" data-anchor-id="simulation">
-<span class="header-section-number">14.2.2</span> Simulation</h3>
-<p>Create a custom function that takes the means and standard deviations for male and female faces for a specified region and creates a new dataset of 30 male and 30 female faces with simulated average ratings with those distributions.</p>
-</section><section id="iteration-and-power" class="level3" data-number="14.2.3"><h3 data-number="14.2.3" class="anchored" data-anchor-id="iteration-and-power">
-<span class="header-section-number">14.2.3</span> Iteration and Power</h3>
-<p>Create a new custom function that simulates the new dataset using your previous function. Add the t-test to this new custom function and return only the p-value.</p>
-<p>Run this custom function 100 times for each face number and report what percent of the runs give a significant p-value with a critical alpha of 0.05. Plot the resulting power versus face sample size.</p>
-</section><section id="reflection" class="level3" data-number="14.2.4"><h3 data-number="14.2.4" class="anchored" data-anchor-id="reflection">
-<span class="header-section-number">14.2.4</span> Reflection</h3>
-<p>Reflect on the areas of this report where you used techniques that improve reproducibility and reusability. Include a list of <strong>3</strong> things you did to ensure reproducibility and explain what aspect of reproducibility the feature improves. Do not simply list good coding practices such as consistent indentation. Each explanation should be about 100-200 words.</p>
-</section></section><section id="ai-declaration" class="level2" data-number="14.3"><h2 data-number="14.3" class="anchored" data-anchor-id="ai-declaration">
-<span class="header-section-number">14.3</span> AI Declaration</h2>
+<p>See <a href="demos/report1_demo.html">this report</a> for an example.</p>
+</section>
+<section id="ai-declaration" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="ai-declaration"><span class="header-section-number">11.2</span> AI Declaration</h2>
 <p>It is School policy to include this specific AI declaration in any work that allows the use of generative AI. You can copy the code below and include it at the end of your assessment.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">### Generative AI Declaration</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
@@ -627,587 +613,31 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <span id="cb1-18"><a href="#cb1-18"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Analysis support, for example statistical or qualitative analysis advice or interpreting output</span>
 <span id="cb1-19"><a href="#cb1-19"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Coding assistance, for example writing or debugging code</span>
 <span id="cb1-20"><a href="#cb1-20"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Visuals or media support, for example figures, diagrams, slide layout or transcription of my own * recordings</span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Something else (explain under **Sources of Learning**)</span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Something else (explain below)</span>
 <span id="cb1-22"><a href="#cb1-22"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Avoided use of AI tools in any way to assist with this assignment or my learning of the topic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section><section id="hints-and-tips" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="hints-and-tips">
-<span class="header-section-number">14.4</span> Hints and Tips</h2>
+</section>
+<section id="submission" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="submission"><span class="header-section-number">11.3</span> Submission</h2>
 <ul>
-<li>The html theme used by the demo report is flatly</li>
-<li>The ggplot theme is <code>theme_bw()</code>
-</li>
-<li>You will not be asked to do anything ‘tricky’ in this assessment, so if you find yourself needing 20 lines of code just to customise the labels in a plot, try looking for more efficient alternatives.</li>
-<li>You will definitely need to join data, and convert between wide and long. Make sure you do this efficiently, creating the minimum number of extra data tables needed, and not re-creating the same table for different tasks.</li>
-<li>If you find yourself doing the same thing to many columns, you could probably do it more efficiently by reshaping the data longer first</li>
-<li>Use pipes to avoid creating many single-use tables.</li>
-<li>It is fine if your plot fonts are a slightly different size or there are small differences in visual presentation</li>
-<li>Set argument defaults in custom functions if there is a sensible default value, and leave them without defaults if a user will always have to set that value to use to function.</li>
-</ul></section><section id="submission" class="level2" data-number="14.5"><h2 data-number="14.5" class="anchored" data-anchor-id="submission">
-<span class="header-section-number">14.5</span> Submission</h2>
-<ul>
-<li>Covers: chapters 1-10, emphasising 8-9</li>
-<li>Worth: 40%</li>
+<li>Covers: chapters 1 and 2</li>
+<li>Worth: 0% (this is formative practice)</li>
 <li>Do not put your name in your report; use your student ID as the author.</li>
 <li>Please submit a <strong>zip file</strong> containing:
 <ol type="1">
 <li>the .rproj file</li>
-<li>your reproducible script, named <code>report4_studentID.qmd</code>
-</li>
-<li>any additional files necessary to reproduce your report(e.g., images or bibliography files),</li>
-<li>the rendered html report, named <code>report4_studentID.html</code>.</li>
-</ol>
-</li>
-</ul></section><section id="marking-rubric" class="level2" data-number="14.6"><h2 data-number="14.6" class="anchored" data-anchor-id="marking-rubric">
-<span class="header-section-number">14.6</span> Marking Rubric</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div id="rzeawwuoqg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rzeawwuoqg table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#rzeawwuoqg thead, #rzeawwuoqg tbody, #rzeawwuoqg tfoot, #rzeawwuoqg tr, #rzeawwuoqg td, #rzeawwuoqg th {
-  border-style: none;
-}
-
-#rzeawwuoqg p {
-  margin: 0;
-  padding: 0;
-}
-
-#rzeawwuoqg .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #5F5F5F;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #5F5F5F;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#rzeawwuoqg .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#rzeawwuoqg .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#rzeawwuoqg .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#rzeawwuoqg .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#rzeawwuoqg .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #5F5F5F;
-}
-
-#rzeawwuoqg .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #5F5F5F;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #5F5F5F;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#rzeawwuoqg .gt_col_heading {
-  color: #FFFFFF;
-  background-color: #0076BA;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#rzeawwuoqg .gt_column_spanner_outer {
-  color: #FFFFFF;
-  background-color: #0076BA;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#rzeawwuoqg .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#rzeawwuoqg .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#rzeawwuoqg .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #5F5F5F;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#rzeawwuoqg .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#rzeawwuoqg .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #5F5F5F;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #5F5F5F;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#rzeawwuoqg .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #5F5F5F;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #5F5F5F;
-  vertical-align: middle;
-}
-
-#rzeawwuoqg .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#rzeawwuoqg .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#rzeawwuoqg .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: none;
-  border-top-width: 1px;
-  border-top-color: #D5D5D5;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D5D5D5;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D5D5D5;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#rzeawwuoqg .gt_stub {
-  color: #333333;
-  background-color: #89D3FE;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D5D5D5;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rzeawwuoqg .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#rzeawwuoqg .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#rzeawwuoqg .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#rzeawwuoqg .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rzeawwuoqg .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #5F5F5F;
-}
-
-#rzeawwuoqg .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#rzeawwuoqg .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #5F5F5F;
-}
-
-#rzeawwuoqg .gt_grand_summary_row {
-  color: #333333;
-  background-color: #D5D5D5;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rzeawwuoqg .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #5F5F5F;
-}
-
-#rzeawwuoqg .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #5F5F5F;
-}
-
-#rzeawwuoqg .gt_striped {
-  background-color: #EDF7FC;
-}
-
-#rzeawwuoqg .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #5F5F5F;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #5F5F5F;
-}
-
-#rzeawwuoqg .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#rzeawwuoqg .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rzeawwuoqg .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#rzeawwuoqg .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#rzeawwuoqg .gt_left {
-  text-align: left;
-}
-
-#rzeawwuoqg .gt_center {
-  text-align: center;
-}
-
-#rzeawwuoqg .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#rzeawwuoqg .gt_font_normal {
-  font-weight: normal;
-}
-
-#rzeawwuoqg .gt_font_bold {
-  font-weight: bold;
-}
-
-#rzeawwuoqg .gt_font_italic {
-  font-style: italic;
-}
-
-#rzeawwuoqg .gt_super {
-  font-size: 65%;
-}
-
-#rzeawwuoqg .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#rzeawwuoqg .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#rzeawwuoqg .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#rzeawwuoqg .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#rzeawwuoqg .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#rzeawwuoqg .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#rzeawwuoqg .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#rzeawwuoqg .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#rzeawwuoqg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead><tr class="gt_col_headings">
-<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="ILO">ILO</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="A:-Excellent">A: Excellent</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="B:-Very-Good">B: Very Good</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="C:-Good">C: Good</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="D:-Satisfactory">D: Satisfactory</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="E:-Poor">E: Poor</th>
-    </tr></thead>
-<tbody class="gt_table_body">
-<tr class="gt_group_heading_row">
-<th colspan="6" class="gt_group_heading" style="background-color: rgba(77,159,207,0.4);" scope="colgroup" id="Research &amp;amp; Knowledge">Research &amp; Knowledge</th>
-    </tr>
-<tr class="gt_row_group_first">
-<td headers="Research &amp; Knowledge  ILO" class="gt_row gt_left" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"><span data-qmd-base64="KipTa2lsbHMgZnJvbSBDaGFwdGVycyAxLTMqKjogWW91IGRlbW9uc3RyYXRlIHNraWxscyB0byBjcmVhdGUgcmVwcm9kdWNpYmxlIHJlcG9ydHMgYW5kIHZpc3VhbGlzZSBkYXRh"><span class="gt_from_md"><strong>Skills from Chapters 1-3</strong>: You demonstrate skills to create reproducible reports and visualise data</span></span></td>
-<td headers="Research &amp; Knowledge  A: Excellent" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  B: Very Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  C: Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  D: Satisfactory" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  E: Poor" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-</tr>
-<tr>
-<td headers="Research &amp; Knowledge  ILO" class="gt_row gt_left" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"><span data-qmd-base64="KipTa2lsbHMgZnJvbSBDaGFwdGVycyA0LTcqKjogWW91IGRlbW9uc3RyYXRlIHNraWxscyB0byB3cmFuZ2xlIGRhdGE="><span class="gt_from_md"><strong>Skills from Chapters 4-7</strong>: You demonstrate skills to wrangle data</span></span></td>
-<td headers="Research &amp; Knowledge  A: Excellent" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  B: Very Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  C: Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  D: Satisfactory" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  E: Poor" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-</tr>
-<tr>
-<td headers="Research &amp; Knowledge  ILO" class="gt_row gt_left" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"><span data-qmd-base64="KipDdXN0b20gRnVuY3Rpb25zKio6IFlvdSBjcmVhdGUgY3VzdG9tIGZ1bmN0aW9ucyB0aGF0IGNvcnJlY3RseSBpbXBsZW1lbnQgc2ltaWxhciBjb2RlIHdpdGggc21hbGwgZGlmZmVyZW5jZXMu"><span class="gt_from_md"><strong>Custom Functions</strong>: You create custom functions that correctly implement similar code with small differences.</span></span></td>
-<td headers="Research &amp; Knowledge  A: Excellent" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  B: Very Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  C: Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  D: Satisfactory" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  E: Poor" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-</tr>
-<tr>
-<td headers="Research &amp; Knowledge  ILO" class="gt_row gt_left" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"><span data-qmd-base64="KipJdGVyYXRpb24qKjogWW91IGNhbiByZXBlYXQgdGhlIHNhbWUgY29kZSBlZmZpY2llbnRseSBvdmVyIGEgZGF0YSBzdHJ1Y3R1cmU="><span class="gt_from_md"><strong>Iteration</strong>: You can repeat the same code efficiently over a data structure</span></span></td>
-<td headers="Research &amp; Knowledge  A: Excellent" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  B: Very Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  C: Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  D: Satisfactory" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  E: Poor" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-</tr>
-<tr>
-<td headers="Research &amp; Knowledge  ILO" class="gt_row gt_left" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"><span data-qmd-base64="KipEYXRhIFNpbXVsYXRpb24qKjogWW91IGNhbiBzaW11bGF0ZSBhIHNpbXBsZSBkYXRhc2V0IGZyb20gZGVzY3JpcHRpdmUgc3RhdGlzdGljcw=="><span class="gt_from_md"><strong>Data Simulation</strong>: You can simulate a simple dataset from descriptive statistics</span></span></td>
-<td headers="Research &amp; Knowledge  A: Excellent" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  B: Very Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  C: Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  D: Satisfactory" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Research &amp; Knowledge  E: Poor" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-</tr>
-<tr class="gt_group_heading_row">
-<th colspan="6" class="gt_group_heading" style="background-color: rgba(77,159,207,0.4);" scope="colgroup" id="Evaluation">Evaluation</th>
-    </tr>
-<tr class="gt_row_group_first">
-<td headers="Evaluation  ILO" class="gt_row gt_left" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"><span data-qmd-base64="KipPcmlnaW5hbCBQbG90Kio6IFRoZSBvcmlnaW5hbCBwbG90IGlzIGFwcHJvcHJpYXRlIHRvIHRoZSBxdWVzdGlvbiBhc2tlZA=="><span class="gt_from_md"><strong>Original Plot</strong>: The original plot is appropriate to the question asked</span></span></td>
-<td headers="Evaluation  A: Excellent" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Evaluation  B: Very Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Evaluation  C: Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Evaluation  D: Satisfactory" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Evaluation  E: Poor" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-</tr>
-<tr>
-<td headers="Evaluation  ILO" class="gt_row gt_left" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"><span data-qmd-base64="KipSZWZsZWN0aW9uKio6IFlvdXIgcmVmbGVjdGlvbnMgbm90ZSB2YWxpZCBhcmVhcyB3aGVyZSByZXByb2R1Y2liaWxpdHkgaXMgaW1wb3J0YW50LCBhbmQgY29ycmVjdGx5IGlkZW50aWZ5IGFuZCBleHBsYWluIHRlY2huaXF1ZXMgeW91IHVzZWQgdG8gZW5zdXJlIHJlcHJvZHVjaWJsaXR5"><span class="gt_from_md"><strong>Reflection</strong>: Your reflections note valid areas where reproducibility is important, and correctly identify and explain techniques you used to ensure reproduciblity</span></span></td>
-<td headers="Evaluation  A: Excellent" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Evaluation  B: Very Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Evaluation  C: Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Evaluation  D: Satisfactory" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Evaluation  E: Poor" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-</tr>
-<tr class="gt_group_heading_row">
-<th colspan="6" class="gt_group_heading" style="background-color: rgba(77,159,207,0.4);" scope="colgroup" id="Communication">Communication</th>
-    </tr>
-<tr class="gt_row_group_first">
-<td headers="Communication  ILO" class="gt_row gt_left" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"><span data-qmd-base64="KipDb2RlIENsYXJpdHkqKjogWW91ciBjb2RlIGlzIG9yZ2FuaXNlZCBpbiB0aGUgcXVhcnRvIHNjcmlwdCBjbGVhbmx5IGFuZCBjbGVhcmx5LCB1c2luZyBzZXBhcmF0ZSBjb2RlIGNodW5rcyB0byBpbnRlcnNwZXJzZSB0ZXh0IGFuZCByZWxldmFudCBjb2RlLiBZb3VyIGNvZGUgY2h1bmtzIGNvbnRhaW4gY29tbWVudHMgdGhhdCBjbGFyaWZ5IHRoZSBwdXJwb3NlIG9mIHRoZSBjb2RlLCBidXQgbm90IG92ZXJseS1leHBsYWluaW5nIGVhY2ggc3RlcC4gVGhlIG5hbWVzIHlvdSB1c2UgZm9yIG9iamVjdHMgYXJlIGNsZWFyLCBjb25zaXN0ZW50LCBhbmQgY29uY2lzZS4="><span class="gt_from_md"><strong>Code Clarity</strong>: Your code is organised in the quarto script cleanly and clearly, using separate code chunks to intersperse text and relevant code. Your code chunks contain comments that clarify the purpose of the code, but not overly-explaining each step. The names you use for objects are clear, consistent, and concise.</span></span></td>
-<td headers="Communication  A: Excellent" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Communication  B: Very Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Communication  C: Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Communication  D: Satisfactory" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Communication  E: Poor" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-</tr>
-<tr>
-<td headers="Communication  ILO" class="gt_row gt_left" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"><span data-qmd-base64="KipDb2RlIEVmZmljaWVuY3kqKjogV2hpbGUgdGhlcmUgYXJlIG1hbnkgd2F5cyB0byBkbyB0aGUgc2FtZSB0aGluZ3MgaW4gUiwgc29tZSB3YXlzIGFyZSBtb3JlIGVmZmljaWVudCB0aGFuIG90aGVycy4gVGhlc2UgYXZvaWQgdW5uZWNlc3NhcnkgY29kZSAoZS5nLiwgZG8gbm90IGxvYWQgcGFja2FnZXMgeW91IGRvIG5vdCB1c2UpIGFuZCByZWR1bmRhbmN5IChlLmcuLCBkbyBub3QgbG9hZCBvciBwcm9jZXNzIHRoZSBkYXRhIHRoZSBzYW1lIHdheSBpbiBzZXZlcmFsIHBsYWNlcyku"><span class="gt_from_md"><strong>Code Efficiency</strong>: While there are many ways to do the same things in R, some ways are more efficient than others. These avoid unnecessary code (e.g., do not load packages you do not use) and redundancy (e.g., do not load or process the data the same way in several places).</span></span></td>
-<td headers="Communication  A: Excellent" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Communication  B: Very Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Communication  C: Good" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Communication  D: Satisfactory" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-<td headers="Communication  E: Poor" class="gt_row gt_center" style="text-align: left; vertical-align: top; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: grey;"></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+<li>your reproducible script, named <code>report1_studentID.qmd</code></li>
+<li>any additional files necessary to reproduce your report (e.g., images or bibliography files),</li>
+<li>the rendered html report, named <code>report1_studentID.html</code>.</li>
+</ol></li>
+</ul>
 
 
-</section></main><!-- /main --><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script><script>
+</section>
+
+</main> <!-- /main -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<script>
 
 /* update total correct if #webex-total_correct exists */
 update_total_correct = function() {
@@ -1380,7 +810,8 @@ window.onload = function() {
   update_total_correct();
 }
 
-</script><script>
+</script>
+<script>
 $( document ).ready(function() {
   function move_sidebar() {
     var w = window.innerWidth;
@@ -1393,7 +824,8 @@ $( document ).ready(function() {
   move_sidebar();
   window.onresize = move_sidebar;
 });
-</script><script id="quarto-html-after-body" type="application/javascript">
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1479,7 +911,7 @@ $( document ).ready(function() {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("^(?:http:|https:)\/\/psyteachr\.github\.io\/reprores-v5");
+        var filterRegex = new RegExp("^(?:http:|https:)\/\/psyteachr\.github\.io\/reprores-v6");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1735,29 +1167,32 @@ $( document ).ready(function() {
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./assessment-3.html" class="pagination-link" aria-label="Assessment 3">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 3</span></span>
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./10-next.html" class="pagination-link" aria-label="Next Steps">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Next Steps</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./12-license.html" class="pagination-link" aria-label="Licence/Citation">
-        <span class="nav-page-text">Licence/Citation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./assessment-1.html" class="pagination-link" aria-label="Assessment 1">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
-<p>CC-BY 2025, psyTeachR</p>
+<p>CC-BY 2026, psyTeachR</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/psyteachr/reprores-v5/edit/master/assessment-4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v5/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v5/blob/master/assessment-4.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/formative-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/formative-1.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-<li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/psyteachr/reprores-v5">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/psyteachr/reprores-v6">
       <i class="bi bi-github" role="img">
 </i> 
     </a>
@@ -1769,9 +1204,11 @@ $( document ).ready(function() {
     </a>
   </li>  
 </ul>
-</div>
+    </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

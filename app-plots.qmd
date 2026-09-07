@@ -357,6 +357,12 @@ survey_data |>
 
 #### Bump Plots
 
+```{r}
+#| eval: false
+devtools::install_github("davidsjoberg/ggbump")
+```
+
+
 Bump plots are very useful for visualising how rankings change over time. So first, we need to get some ranking data. Let's start with a more typical raw data table, containing an identifying column of `person` and three columns for their scores each week
 
 ```{r}
@@ -432,7 +438,7 @@ ggplot(data = rank_data,
 
 #### Word Clouds
 
-Word clouds are a common way to summarise text data. First, download <a href="https://psyteachr.github.io/reprores-v5/data/amazon_alexa.csv" download>amazon_alexa.csv</a> into your data folder and then load it into an object. This dataset contains  text reviews as well as the 1-5 rating from customers who bought an Alexa device on Amazon.
+Word clouds are a common way to summarise text data. First, download <a href="https://psyteachr.github.io/reprores-v6/data/amazon_alexa.csv" download>amazon_alexa.csv</a> into your data folder and then load it into an object. This dataset contains  text reviews as well as the 1-5 rating from customers who bought an Alexa device on Amazon.
 
 ```{r}
 # https://www.kaggle.com/sid321axn/amazon-alexa-reviews
@@ -566,7 +572,7 @@ ggplot() +
 ```
 
 
-You can join <a href="https://psyteachr.github.io/reprores-v5/data/scottish_population.csv" download>Scottish population data</a> to the map table to visualise data on the map using colours or labels.
+You can join <a href="https://psyteachr.github.io/reprores-v6/data/scottish_population.csv" download>Scottish population data</a> to the map table to visualise data on the map using colours or labels.
 
 ```{r}
 # load map data

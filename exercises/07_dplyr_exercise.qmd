@@ -16,7 +16,7 @@ library(ukbabynames)
 library(reprores)
 
 # install the class package reprores to access built-in data
-# devtools::install_github("psyteachr/reprores-v5")
+# devtools::install_github("psyteachr/reprores-v6")
 # or download data from the website
 # https://psyteachr.github.io/reprores/data/data.zip
 ```

@@ -1,27 +1,38 @@
 # Assessment 1
 
-A project with a qmd file showing basic reproducible report skills
+```{r, include=FALSE}
+library(tidyverse)
+library(gt)
+```
+
+A project demonstrating data visualisation, summary, and wrangling skills
 
 ## Instructions
 
-Your task is to write the outline structure of a published paper in your field in a reproducible quarto script. The paper should contain at least one image and one table (ideally small). The report must contain the following:
+Your task is to replicate [this html report](demos/report1_demo.html) using [these datasets](demos/report1_data.zip) and code, and to generate an appropriate visualisation for the final plot. 
 
-* [ ] A *project structure* with all needed files 
-* [ ] A *setup code chunk* that loads the tidyverse 
-* [ ] Before the abstract, use *inline R* to include the version of R you are using, as well as a *bibliographic reference* to the original paper 
-* [ ] All *section headers and subheaders* that are present in the paper (i.e., Abstract, Introduction, Methods, Results, Discussion, Author Notes, References) 
-* [ ] Copy the abstract as a *paragraph*, using markdown syntax for any text formatting 
-* [ ] Include one relevant *image* from the paper (you can screenshot it from the PDF) with the figure caption  in the appropriate section
-* [ ] *Cross reference* the image in the text with automatic figure numbering . You can copy a sentence from the original text that references the figure, or make up a sentence of your own to reference them.
-* [ ] Copy sentences with least two *bibliographic citations* from the paper, including the citations via reproducible techniques 
-* [ ] Automatically display these citations in the *reference section* using reproducible techniques 
-* [ ] Customise the *YAML header*  to: 
-    - [ ] a table of contents 
-    - [ ] use a non-default theme of your choosing 
-    - [ ] hide all code chunks
-* [ ] The quarto file should be renderable by the marker 
+The submission must contain the following:
 
-See [this report](demos/report1_demo.html) for an example.
+* [ ] A reproducible *project structure* with all needed files 
+* [ ] Document structure and text that replicate the report 
+* [ ] Import the data with correct data types 
+* [ ] Plots that replicate Figure 1 
+* [ ] A table that replicates Table 1 
+* [ ] A plot that is appropriate to the description of Figure 2 
+* [ ] Consistent plot themes, colours and labels 
+* [ ] Cross-references in the text to the figures and table 
+* [ ] References created using bibtex 
+
+Your code should demonstrate the following skills:
+
+* [ ] Be able to match related data across multiple tables 
+* [ ] Be able to reshape data between long and wide formats 
+* [ ] Separate, change, reorder, and rename columns 
+* [ ] Use pipes to chain together functions 
+* [ ] Be able to select and filter data for relevance 
+* [ ] Be able to create new columns and edit existing ones 
+
+You should include two short reflections on two things you did to improve your code clarity and efficiency and why they are important.
 
 ## AI Declaration
 
@@ -48,74 +59,129 @@ Did you use AI for:
 * [YES/NO] Analysis support, for example statistical or qualitative analysis advice or interpreting output
 * [YES/NO] Coding assistance, for example writing or debugging code
 * [YES/NO] Visuals or media support, for example figures, diagrams, slide layout or transcription of my own * recordings
-* [YES/NO] Something else (explain below)
+* [YES/NO] Something else (explain under **Sources of Learning**)
 * [YES/NO] Avoided use of AI tools in any way to assist with this assignment or my learning of the topic
 ```
 
+## Hints and Tips
+
+* The html theme used by the demo report is flatly
+* The ggplot theme is `theme_bw()`
+* You will not be asked to do anything 'tricky' in this assessment, so if you find yourself needing 20 lines of code just to customise the labels in a plot, try looking for more efficient alternatives.
+* You will definitely need to join data, and convert between wide and long. Make sure you do this efficiently, creating the minimum number of extra data tables needed, and not re-creating the same table for different tasks.
+* If you find yourself doing the same thing to many columns, you could probably do it more efficiently by reshaping the data longer first
+* Use pipes to avoid creating many single-use tables.
+* The figure width and height of Figure 1 are 10 and 5 (it is fine to change this if your fonts are a slightly different size)
+
 ## Submission
 
-* Covers: chapters 1 and 2
-* Worth: 10%
+* Covers: chapters 1-7
+* Worth: 50%
 * Do not put your name in your report; use your student ID as the author.
 * Please submit a **zip file** containing: 
   1. the .rproj file
   2. your reproducible script, named `report1_studentID.qmd`
-  3. any additional files necessary to reproduce your report (e.g., images or bibliography files),
+  3. any additional files necessary to reproduce your report(e.g., images or bibliography files),
   4. the rendered html report, named `report1_studentID.html`.
 
 ## Marking Rubric
 
-You will receive green/amber/red lights for each of 11 elements, and a generic feedback document explaining common issues. Each rubric element is weighted equally. 
-
-* Green: Perfect or nearly perfect
-* Amber: Needs some improvement
-* Red: Incorrect or absent
 
 ```{r}
 #| echo: false
-
-el <- c("project structure", "setup code chunk", "section headers", 
-        "paragraph", "image", "cross reference", "inline R", 
-        "citations", "references", "YAML header", "renderable")
-n <- length(el)
-
-
-data.frame(
-  Elements = el,
-  Green = paste0("<input type='radio' value='2' name='b", 1:n, "' />"),
-  Amber = paste0("<input type='radio' value='1' name='b", 1:n, "' />"),
-  Red = paste0("<input type='radio' value='0' name='b", 1:n, "' />")
-) |>
-  knitr::kable(escape=FALSE)
+rubric <- list(
+  "Research & Knowledge" = list(
+    "**Reproducible reports**: You demonstrate skills to create reproducible reports" = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    ),
+    "**Data summaries**: You demonstrate skills to create data summaries" = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    ),
+    "**Data visualisation**: You demonstrate skills to create data visualisation" = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    ),
+    "**Data Wrangling**: You import and join together data clearly and correctly, you can reshape data between long and wide formats where approriate" = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+  ),
+  "Evaluation" = list(
+    "**Original Plot**: The original plot is appropriate to the question asked" = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    ),
+    "**Reflection**: Your reflections note valid areas where code clarity and efficiency are important, and correctly identify and explain techniques you used to ensure them" = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    )
+  ),
+  "Communication" = list(
+    "**Code Clarity**: Your code is organised in the quarto script cleanly and clearly, using separate code chunks to intersperse text and relevant code. Your code chunks contain comments that clarify the purpose of the code, but not overly-explaining each step. The names you use for objects are clear, consistent, and concise." = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    ),
+    "**Code Efficiency**: While there are many ways to do the same things in R, some ways are more efficient than others. These avoid unnecessary code (e.g., do not load packages you do not use) and redundancy (e.g., do not load or process the data the same way in several places)." = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    )
+  )
+)
 ```
 
-Total: <span id="sum">0</span>/22
+```{r}
+#| echo: false
+colnames <- c("ILO", 
+              "A: Excellent", 
+              "B: Very Good", 
+              "C: Good", 
+              "D: Satisfactory", 
+              "E: Poor")
+cats <- rep(names(rubric), sapply(rubric, length))
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+reduce(rubric, c) |>
+  as_tibble() |>
+  t() |>
+  as_tibble(rownames = "ILO", .name_repair = "minimal") |>
+  `names<-`(colnames) |>
+  mutate(Category = cats) |>
+  select(Category, everything()) |>
+  group_by(Category) |>
+  gt::gt() |>
+  gt::fmt_markdown(columns = "ILO") |>
+  gt::tab_style(style = list(gt::cell_text(align = "left", v_align= "top")),
+                locations = cells_body()) |>
+  gt::tab_style(style = list(gt::cell_fill("#4D9FCF66")),
+                locations = cells_row_groups()) |>
+  gt::tab_style(style = list(gt::cell_borders("bottom", "grey")),
+                locations = cells_body()) |>
+  gt::opt_stylize(style = 6, add_row_striping = FALSE)
 
-<script>
-$(document).ready(function(){
-  // Function to calculate the sum
-  function calculateSum() {
-    let totalSum = 0;
+```
 
-    // Loop through b1 to b11 to get the value of the selected radio button
-    for (let i = 1; i <= 11; i++) {
-      
-      let selectedValue = $(`input[name='b${i}']:checked`).val();
-      
-      // If a button is selected, add its value to the sum
-      if (selectedValue) {
-        totalSum += parseInt(selectedValue, 10);
-      }
-    }
 
-    // Update the total sum in the HTML
-    $('#sum').text(totalSum);
-  }
-  
-  $('input[type=radio]').on('change', function(){
-    calculateSum();
-  });
-});
-</script>

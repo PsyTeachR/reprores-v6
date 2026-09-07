@@ -1,0 +1,65 @@
+# Formative 1
+
+A project with a qmd file showing basic reproducible report skills
+
+## Instructions
+
+Your task is to write the outline structure of your planned thesis or your undergraduate thesis using a reproducible quarto script. The paper should contain at least one image and one table (ideally small). The report must contain the following:
+
+* [ ] A *project structure* with all needed files 
+* [ ] A *setup code chunk* that loads the tidyverse 
+* [ ] Before the abstract, use *inline R* to include the version of R you are using, as well as a *bibliographic reference* to R 
+* [ ] All *section headers and subheaders* that should be present in the thesis (i.e., Abstract, Introduction, Methods, Results, Discussion, Author Notes, References) 
+* [ ] Creat an abstract as a *paragraph*, using markdown syntax for any text formatting 
+* [ ] Include one relevant *image* with the figure caption  in the appropriate section
+* [ ] *Cross reference* the image in the text with automatic figure numbering.
+* [ ] Include at least two relevant *bibliographic citations*, creating the citations via reproducible techniques 
+* [ ] Automatically display these citations in the *reference section* using reproducible techniques 
+* [ ] Customise the *YAML header*  to: 
+    - [ ] a table of contents 
+    - [ ] use a non-default theme of your choosing 
+    - [ ] hide all code chunks
+* [ ] The quarto file should be renderable by a colleage 
+
+See [this report](demos/report1_demo.html) for an example.
+
+## AI Declaration
+
+It is School policy to include this specific AI declaration in any work that allows the use of generative AI. You can copy the code below and include it at the end of your assessment.
+
+``` markdown
+### Generative AI Declaration
+
+Indicate [YES] or [NO] to all statements below to show how you have used generative AI tools in this assignment. You MUST declare all use of AI and take responsibility for the content of the assignment. We consider it a misuse of generative AI if you do not declare all uses, including initial exploration of the subject, literature searching, writing and editing, corrections for grammar and spelling, as well as any other tasks from the course.
+
+* [YES/NO] Do you take full responsibility for the content of this submission, ensuring its adherence to academic integrity standards and compliance with University and subject-specific regulations regarding generative AI use as detailed in the assessment information sheet?
+
+Did you use AI for:
+
+* [YES/NO] General learning about a topic 
+* [YES/NO] Idea generation or scoping of topic or research question
+* [YES/NO] Searching and consulting the scientific literature
+* [YES/NO] Summarising or explaining primary sources like journal articles
+* [YES/NO] Planning the overall structure of a piece of work?
+* [YES/NO] Translation of your own text from another language into English
+* [YES/NO] Rephrasing your own text at sentence level
+* [YES/NO] Language editing for spelling, grammar, clarity or tone
+* [YES/NO] Referencing support, for example checking or producing citations, DOIs or formatting
+* [YES/NO] Analysis support, for example statistical or qualitative analysis advice or interpreting output
+* [YES/NO] Coding assistance, for example writing or debugging code
+* [YES/NO] Visuals or media support, for example figures, diagrams, slide layout or transcription of my own * recordings
+* [YES/NO] Something else (explain below)
+* [YES/NO] Avoided use of AI tools in any way to assist with this assignment or my learning of the topic
+```
+
+## Submission
+
+* Covers: chapters 1 and 2
+* Worth: 0% (this is formative practice)
+* Do not put your name in your report; use your student ID as the author.
+* Please submit a **zip file** containing: 
+  1. the .rproj file
+  2. your reproducible script, named `report1_studentID.qmd`
+  3. any additional files necessary to reproduce your report (e.g., images or bibliography files),
+  4. the rendered html report, named `report1_studentID.html`.
+

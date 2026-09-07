@@ -2,25 +2,66 @@
 
 ```{r, include=FALSE}
 library(tidyverse)
+library(faux)
+library(gt)
 ```
 
-A project demonstrating data visualisation and summary skills
+A project showing all ILOs, with an emphasis on power simulation
 
-## Instructions
+## General Instructions
 
-Your task is to replicate [this html report](demos/report2_demo.html) using [this dataset](demos/report2_data.zip) and code, and to generate an appropriate visualisation for the final plot. The submission must contain the following:
+Your task is to generate a short report demonstrating all ILOs from the course, with a focus on custom function creation, iteration, analysis, and power simulation. 
+
+The submission must contain the following:
 
 * [ ] A reproducible *project structure* with all needed files 
-* [ ] Document structure and text that replicate the report 
+* [ ] Clear document structure and text
 * [ ] Import the data with correct data types 
-* [ ] Tables that replicate Tables 1-4 
-* [ ] Plots that replicate Figures 1-3 
-* [ ] A plot that is appropriate to the description of Figure 4 
+* [ ] Plots 
+* [ ] Tables  
 * [ ] Consistent plot themes, colours and labels 
 * [ ] Cross-references in the text to the figures and tables 
-* [ ] Appropriate alt-text for the figures for accessibility
 * [ ] References created using bibtex 
-* [ ] A reflection on independent learning you did for this assessment
+
+Your code should demonstrate the following skills:
+
+* [ ] Be able to match related data across multiple tables 
+* [ ] Be able to combine data from multiple files 
+* [ ] Be able to reshape data between long and wide formats 
+* [ ] Separate, change, reorder, and rename columns 
+* [ ] Use pipes to chain together functions 
+* [ ] Be able to select and filter data for relevance 
+* [ ] Be able to create new columns and edit existing ones 
+
+You must demonstrate the following skills:
+
+* [ ] Create custom functions 
+* [ ] Demonstrate the ability to implement iteration where the same function is being applied to multiple items in a data structure 
+* [ ] Simulate a new dataset based on the descriptive statistics from another dataset 
+* [ ] Implement and report the results of a simple statistical test (e.g., t-test, correlation) in a reproducible manner 
+* [ ] Reflect on areas where you used techniques that increase reproducibility 
+
+## Specific Instructions
+
+### Data and Topic
+
+Choose a topic that interests you and find a dataset. You can use shared research data in your field, or from data sources such as the [Sustainable Development Goals Data Portal](https://unstats.un.org/sdgs/dataportal). You must document the source of your data in the report. Choose a simple question that you can answer from this dataset, but remember that you must demonstrate joining two or more files. 
+
+### Analysis
+
+Answer your question with a simple frequentist analysis, such as a t-test to compare two groups, a correlation to explore the relationship between two variables, or a regression to explore a trend over time. You will not be judged on statistical sophistication, so do not use complex stats or include lots of covariates or controls. Report the outcome of the test using inline code.
+
+### Simulation
+
+Create a custom function that simulates the data used in your test. It should have arguments that let you change essential parameters, such as N., mean, SD, or correlation. What constitutes essential parameters will depend on your data and test. 
+
+### Iteration and Power
+
+Use custom functions and iteration to explore power and sensitivity. For example, you can use the observed effect size and calculate power for a range of sample sizes, or use a fixed sample size to calculate power for a range of effect sizes. Use a plot to communicate this.
+
+### Reflection 
+
+Reflect on the areas of this report where you used techniques that improve reproducibility and reusability. Include a list of **3** things you did to ensure reproducibility and explain what aspect of reproducibility the feature improves. Do not simply list good coding practices such as consistent indentation. Each explanation should be about 100-200 words. 
 
 ## AI Declaration
 
@@ -54,151 +95,130 @@ Did you use AI for:
 ## Hints and Tips
 
 * The html theme used by the demo report is flatly
-* The ggplot theme is `theme_bw()`
-* Make Tables 1-2 using markdown
-* You will need to use `filter()` to create the data for Tables 3-4; do not just type the numbers from the demo table
-* Display Tables 3-4 using `flextable()`
-* You shouldn't need any packages apart from tidyverse and flextable
-* The colours are "dodgerblue3", "darkgreen", "goldenrod", "darkorange2", and "firebrick"
-* The bibtex for the WHO reference is:
+* Use a ggplot theme for consistency.
+* You will definitely need to join data, and convert between wide and long. Make sure you do this efficiently, creating the minimum number of extra data tables needed, and not re-creating the same table for different tasks.
+* If you find yourself doing the same thing to many columns, you could probably do it more efficiently by reshaping the data longer first
+* Use pipes to avoid creating many single-use tables.
+* Set argument defaults in custom functions if there is a sensible default value, and leave them without defaults if a user will always have to set that value to use to function.
 
-
-```
-@techreport{who_unicef_2024,
-  author      = {{WHO/UNICEF Joint Monitoring Programme for Water Supply,
-                  Sanitation and Hygiene}},
-  title       = {Progress on Drinking Water, 
-                 Sanitation and Hygiene in Schools 2015--2023},
-  institution = {UNICEF and World Health Organization},
-  address     = {New York},
-  year        = {2024}
-}
-```
 
 ## Submission
 
-* Covers: chapters 1-4, emphasising 3 and 4
-* Worth: 20%
+* Covers: chapters 1-10, emphasising 8-9
+* Worth: 50%
 * Do not put your name in your report; use your student ID as the author.
 * Please submit a **zip file** containing: 
   1. the .rproj file
   2. your reproducible script, named `report2_studentID.qmd`
-  3. any additional files necessary to reproduce your report (e.g., images or bibliography files),
+  3. any additional files necessary to reproduce your report(e.g., images or bibliography files),
   4. the rendered html report, named `report2_studentID.html`.
 
 ## Marking Rubric
 
-You will receive green/amber/red lights for each of the elements below, and a generic feedback document explaining common issues. Each rubric element is weighted equally. 
-
-* Green: Perfect or nearly perfect
-* Amber: Needs some improvement
-* Red: Incorrect or absent
 
 ```{r}
 #| echo: false
-
-el <- c("Reproducible project", 
-        "Document replicated",
-        "Captions/references",
-        "Data import",
-        "Figures replicated",
-        "Tables replicated",
-        "Figure 4 appropriate",
-        "Consistent visualisations",
-        "Clear code",
-        "Efficient code",
-        "Reflection"
-        )
-n <- length(el)
-
-
-data.frame(
-  Elements = el,
-  Green = paste0("<input type='radio' value='2' name='b", 1:n, "' />"),
-  Amber = paste0("<input type='radio' value='1' name='b", 1:n, "' />"),
-  Red = paste0("<input type='radio' value='0' name='b", 1:n, "' />")
-) |>
-  knitr::kable(escape=FALSE)
+rubric <- list(
+  "Research & Knowledge" = list(
+    "**Skills from Chapters 1-3**: You demonstrate skills to create reproducible reports and visualise data" = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    ),
+    "**Skills from Chapters 4-7**: You demonstrate skills to wrangle data" = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    ),
+    "**Custom Functions**: You create custom functions that correctly implement similar code with small differences." = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    ),
+    "**Iteration**: You can repeat the same code efficiently over a data structure" = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    ),
+    "**Data Simulation**: You can simulate a simple dataset from descriptive statistics" = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    )
+  ),
+  "Evaluation" = list(
+    "**Original Plot**: The original plot is appropriate to the question asked" = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    ),
+    "**Reflection**: Your reflections note valid areas where reproducibility is important, and correctly identify and explain techniques you used to ensure reproduciblity" = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    )
+  ),
+  "Communication" = list(
+    "**Code Clarity**: Your code is organised in the quarto script cleanly and clearly, using separate code chunks to intersperse text and relevant code. Your code chunks contain comments that clarify the purpose of the code, but not overly-explaining each step. The names you use for objects are clear, consistent, and concise." = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    ),
+    "**Code Efficiency**: While there are many ways to do the same things in R, some ways are more efficient than others. These avoid unnecessary code (e.g., do not load packages you do not use) and redundancy (e.g., do not load or process the data the same way in several places)." = list(
+      "A-Excellent" = "",
+      "B-Very Good" = "",
+      "C-Good" = "",
+      "D-Satisfactory" = "",
+      "E-Poor" = ""
+    )
+  )
+)
 ```
 
-Total: <span id="sum">0</span>/22
+```{r}
+#| echo: false
+colnames <- c("ILO", 
+              "A: Excellent", 
+              "B: Very Good", 
+              "C: Good", 
+              "D: Satisfactory", 
+              "E: Poor")
+cats <- rep(names(rubric), sapply(rubric, length))
 
-### Reproducible project
+reduce(rubric, c) |>
+  as_tibble() |>
+  t() |>
+  as_tibble(rownames = "ILO", .name_repair = "minimal") |>
+  `names<-`(colnames) |>
+  mutate(Category = cats) |>
+  select(Category, everything()) |>
+  group_by(Category) |>
+  gt::gt() |>
+  gt::fmt_markdown(columns = "ILO") |>
+  gt::tab_style(style = list(gt::cell_text(align = "left", v_align= "top")),
+                locations = cells_body()) |>
+  gt::tab_style(style = list(gt::cell_fill("#4D9FCF66")),
+                locations = cells_row_groups()) |>
+  gt::tab_style(style = list(gt::cell_borders("bottom", "grey")),
+                locations = cells_body()) |>
+  gt::opt_stylize(style = 6, add_row_striping = FALSE)
 
-The project contains all of the necessary files and can be rendered by the marker.
-
-### Document replicated
-
-The non-code elements of the document are replicated, such as table of contents, text paragraphs, and Tables 1-2.
-
-### Captions/references
-
-The figure and table captions are created correctly and quarto cross referencing (not manual linking) is used for figures, tables, and bibliographic references. The figures have descriptive alt-text for accessibility.
-
-### Data import
-
-You imported the data with correct data types, including putting factors in sensible order for later plots or tables. 
-
-### Tables replicated
-
-Tables 3-4 are created by filtering the data using code, and have all of the features of the example table, such as the same rounding and coloured labels.
-
-### Figures replicated
-
-Figures 1-3 are created using code, and have all of the features of the example plots, such as label, axis or colour customisation.
-
-### Figure 4 appropriate
-
-You chose an appropriate geom (or set of geoms) for the relationship being demonstrated.
-
-### Consistent visualisations
-
-Figure 4 has consistent features with Figures 1-3, such as the same labels or same colours for the same levels (or different colours if you use colour to highlight different levels).
-
-### Clear code
-
-Your code is organised in the quarto script cleanly and clearly, using separate code chunks to intersperse text and relevant code. Your code chunks contain comments that clarify the purpose of the code, but not overly-explaining each step. The names you use for objects are clear, consistent, and concise. 
-
-For example, if the marker wants to assess the code that creates a specific table, they should be easily able to identify that object in the environment from the name, and easily able to find the code that creates it.
-
-### Efficient code
-
-While there are many ways to do the same things in R, some ways are more efficient than others. These avoid unnecessary code (e.g., do not load packages you do not use) and redundancy (e.g., do not load or process the data the same way in several places).
-
-If you find yourself re-typing something repeatedly, see if you can define an object early in the script and use that instead.
-
-You will not be asked to do anything "tricky" in this assessment, so if you find yourself needing 20 lines of code just to customise the labels in a plot, try looking for more efficient alternatives. 
-
-### Reflection
-
-You summarise what you learned in the course of doing this assessment. 
+```
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-$(document).ready(function(){
-  // Function to calculate the sum
-  function calculateSum() {
-    let totalSum = 0;
-
-    // Loop through b1 to b11 to get the value of the selected radio button
-    for (let i = 1; i <= 11; i++) {
-      
-      let selectedValue = $(`input[name='b${i}']:checked`).val();
-      
-      // If a button is selected, add its value to the sum
-      if (selectedValue) {
-        totalSum += parseInt(selectedValue, 10);
-      }
-    }
-
-    // Update the total sum in the HTML
-    $('#sum').text(totalSum);
-  }
-  
-  $('input[type=radio]').on('change', function(){
-    calculateSum();
-  });
-});
-</script>

@@ -6,10 +6,10 @@ This R package contains the datasets needed for the University of Glasgow School
 
 ## Installation
 
-You can install the newest version of reprores from [GitHub](https://github.com/psyteachr/reprores-v5) with:
+You can install the newest version of reprores from [GitHub](https://github.com/psyteachr/reprores-v6) with:
 
 ``` r
-devtools::install_github("psyteachr/reprores-v5")
+devtools::install_github("psyteachr/reprores-v6")
 ```
 
 You can access the book online at <https://psyteachr.github.io/reprores/>, but you can access a local version with the function `reprores::book()`.

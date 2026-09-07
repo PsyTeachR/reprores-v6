@@ -38,19 +38,19 @@ book:
   #   hypothesis:
   #     theme: clean
   #     openSidebar: false
-  repo-url: https://github.com/psyteachr/reprores-v5/
+  repo-url: https://github.com/psyteachr/reprores-v6/
   repo-branch: master
   repo-actions: [edit, issue, source]
   # downloads: [pdf, epub]
   # sidebar:
   #   style: docked
   #   background: light
-  margin-header: "<a href='https://doi.org/10.5281/zenodo.6365077'><img src='https://zenodo.org/badge/DOI/10.5281/zenodo.6365077.svg' alt='DOI'></a>"
+  margin-header: "<a href='https://doi.org/10.5281/zenodo.6527194'><img src='https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg' alt='DOI'></a>"
   page-footer:
-    left: "CC-BY 2025, psyTeachR"
+    left: "CC-BY 2026, psyTeachR"
     right:
     - icon: github
-      href: https://github.com/psyteachr/reprores-v5
+      href: https://github.com/psyteachr/reprores-v6
     - icon: https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg
       href: https://doi.org/10.5281/zenodo.6527194
   chapters:
@@ -67,10 +67,9 @@ book:
   - 10-next.qmd
   - part: "Assessments"
     chapters:
+    - formative-1.qmd
     - assessment-1.qmd
     - assessment-2.qmd
-    - assessment-3.qmd
-    - assessment-4.qmd
   - 12-license.qmd
   appendices:
   - app-installing-r.qmd
@@ -111,7 +110,7 @@ format:
     html-table-processing: none
     link-external-icon: true
     link-external-newwindow: true
-    link-external-filter: ^(?:http:|https:)\/\/psyteachr\.github\.io\/reprores-v5
+    link-external-filter: ^(?:http:|https:)\/\/psyteachr\.github\.io\/reprores-v6
     toc-depth: 3
     toc-expand: 2
     code-annotations: select

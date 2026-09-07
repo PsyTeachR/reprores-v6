@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book provides an overview of skills needed for reproducible and open research using the statistical programming language R and tidyverse packages. It covers reproducible workflows, data visualisation, data tidying and wrangling, archiving, iteration and functions, probability and data simulations.">
-<title>11&nbsp; Assessment 1 – Data Skills for Reproducible Research</title>
+<title>12&nbsp; Assessment 1 – Data Skills for Reproducible Research</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./assessment-2.html" rel="next">
-<link href="./10-next.html" rel="prev">
+<link href="./formative-1.html" rel="prev">
 <link href="./images/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -286,7 +286,7 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./assessment-1.html">Assessments</a></li><li class="breadcrumb-item"><a href="./assessment-1.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Assessment 1</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./formative-1.html">Assessments</a></li><li class="breadcrumb-item"><a href="./assessment-1.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 1</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -299,7 +299,7 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Data Skills for Reproducible Research</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/psyteachr/reprores-v5/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/psyteachr/reprores-v6/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -388,26 +388,20 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./formative-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Formative 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./assessment-1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assessment-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./assessment-3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 3</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./assessment-4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 4</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
   </div>
 </li>
       </ul>
@@ -518,21 +512,22 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p><a href="https://doi.org/10.5281/zenodo.6365077"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6365077.svg" alt="DOI"></a></p>
+<p><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI"></a></p>
 </div></div>
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions"><span class="header-section-number">11.1</span> Instructions</a></li>
-  <li><a href="#ai-declaration" id="toc-ai-declaration" class="nav-link" data-scroll-target="#ai-declaration"><span class="header-section-number">11.2</span> AI Declaration</a></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission"><span class="header-section-number">11.3</span> Submission</a></li>
-  <li><a href="#marking-rubric" id="toc-marking-rubric" class="nav-link" data-scroll-target="#marking-rubric"><span class="header-section-number">11.4</span> Marking Rubric</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/psyteachr/reprores-v5/edit/master/assessment-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v5/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v5/blob/master/assessment-1.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions"><span class="header-section-number">12.1</span> Instructions</a></li>
+  <li><a href="#ai-declaration" id="toc-ai-declaration" class="nav-link" data-scroll-target="#ai-declaration"><span class="header-section-number">12.2</span> AI Declaration</a></li>
+  <li><a href="#hints-and-tips" id="toc-hints-and-tips" class="nav-link" data-scroll-target="#hints-and-tips"><span class="header-section-number">12.3</span> Hints and Tips</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission"><span class="header-section-number">12.4</span> Submission</a></li>
+  <li><a href="#marking-rubric" id="toc-marking-rubric" class="nav-link" data-scroll-target="#marking-rubric"><span class="header-section-number">12.5</span> Marking Rubric</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/assessment-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/assessment-1.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./assessment-1.html">Assessments</a></li><li class="breadcrumb-item"><a href="./assessment-1.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Assessment 1</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./formative-1.html">Assessments</a></li><li class="breadcrumb-item"><a href="./assessment-1.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 1</span></a></li></ol></nav><div class="quarto-title">
 <h1 class="title">
-<span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Assessment 1</span>
+<span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 1</span>
 </h1>
 </div>
 
@@ -547,33 +542,34 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
   
 
 
-</header><p>A project with a qmd file showing basic reproducible report skills</p>
-<section id="instructions" class="level2" data-number="11.1"><h2 data-number="11.1" class="anchored" data-anchor-id="instructions">
-<span class="header-section-number">11.1</span> Instructions</h2>
-<p>Your task is to write the outline structure of a published paper in your field in a reproducible quarto script. The paper should contain at least one image and one table (ideally small). The report must contain the following:</p>
+</header><p>A project demonstrating data visualisation, summary, and wrangling skills</p>
+<section id="instructions" class="level2" data-number="12.1"><h2 data-number="12.1" class="anchored" data-anchor-id="instructions">
+<span class="header-section-number">12.1</span> Instructions</h2>
+<p>Your task is to replicate <a href="demos/report1_demo.html">this html report</a> using <a href="demos/report1_data.zip">these datasets</a> and code, and to generate an appropriate visualisation for the final plot.</p>
+<p>The submission must contain the following:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">A <em>project structure</em> with all needed files</label></li>
-<li><label><input type="checkbox">A <em>setup code chunk</em> that loads the tidyverse</label></li>
-<li><label><input type="checkbox">Before the abstract, use <em>inline R</em> to include the version of R you are using, as well as a <em>bibliographic reference</em> to the original paper</label></li>
-<li><label><input type="checkbox">All <em>section headers and subheaders</em> that are present in the paper (i.e., Abstract, Introduction, Methods, Results, Discussion, Author Notes, References)</label></li>
-<li><label><input type="checkbox">Copy the abstract as a <em>paragraph</em>, using markdown syntax for any text formatting</label></li>
-<li><label><input type="checkbox">Include one relevant <em>image</em> from the paper (you can screenshot it from the PDF) with the figure caption in the appropriate section</label></li>
-<li><label><input type="checkbox"><em>Cross reference</em> the image in the text with automatic figure numbering . You can copy a sentence from the original text that references the figure, or make up a sentence of your own to reference them.</label></li>
-<li><label><input type="checkbox">Copy sentences with least two <em>bibliographic citations</em> from the paper, including the citations via reproducible techniques</label></li>
-<li><label><input type="checkbox">Automatically display these citations in the <em>reference section</em> using reproducible techniques</label></li>
-<li>
-<label><input type="checkbox">Customise the <em>YAML header</em> to:</label>
+<li><label><input type="checkbox">A reproducible <em>project structure</em> with all needed files</label></li>
+<li><label><input type="checkbox">Document structure and text that replicate the report</label></li>
+<li><label><input type="checkbox">Import the data with correct data types</label></li>
+<li><label><input type="checkbox">Plots that replicate Figure 1</label></li>
+<li><label><input type="checkbox">A table that replicates Table 1</label></li>
+<li><label><input type="checkbox">A plot that is appropriate to the description of Figure 2</label></li>
+<li><label><input type="checkbox">Consistent plot themes, colours and labels</label></li>
+<li><label><input type="checkbox">Cross-references in the text to the figures and table</label></li>
+<li><label><input type="checkbox">References created using bibtex</label></li>
+</ul>
+<p>Your code should demonstrate the following skills:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">a table of contents</label></li>
-<li><label><input type="checkbox">use a non-default theme of your choosing</label></li>
-<li><label><input type="checkbox">hide all code chunks</label></li>
+<li><label><input type="checkbox">Be able to match related data across multiple tables</label></li>
+<li><label><input type="checkbox">Be able to reshape data between long and wide formats</label></li>
+<li><label><input type="checkbox">Separate, change, reorder, and rename columns</label></li>
+<li><label><input type="checkbox">Use pipes to chain together functions</label></li>
+<li><label><input type="checkbox">Be able to select and filter data for relevance</label></li>
+<li><label><input type="checkbox">Be able to create new columns and edit existing ones</label></li>
 </ul>
-</li>
-<li><label><input type="checkbox">The quarto file should be renderable by the marker</label></li>
-</ul>
-<p>See <a href="demos/report1_demo.html">this report</a> for an example.</p>
-</section><section id="ai-declaration" class="level2" data-number="11.2"><h2 data-number="11.2" class="anchored" data-anchor-id="ai-declaration">
-<span class="header-section-number">11.2</span> AI Declaration</h2>
+<p>You should include two short reflections on two things you did to improve your code clarity and efficiency and why they are important.</p>
+</section><section id="ai-declaration" class="level2" data-number="12.2"><h2 data-number="12.2" class="anchored" data-anchor-id="ai-declaration">
+<span class="header-section-number">12.2</span> AI Declaration</h2>
 <p>It is School policy to include this specific AI declaration in any work that allows the use of generative AI. You can copy the code below and include it at the end of your assessment.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">### Generative AI Declaration</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
@@ -595,144 +591,55 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <span id="cb1-18"><a href="#cb1-18"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Analysis support, for example statistical or qualitative analysis advice or interpreting output</span>
 <span id="cb1-19"><a href="#cb1-19"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Coding assistance, for example writing or debugging code</span>
 <span id="cb1-20"><a href="#cb1-20"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Visuals or media support, for example figures, diagrams, slide layout or transcription of my own * recordings</span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Something else (explain below)</span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Something else (explain under **Sources of Learning**)</span>
 <span id="cb1-22"><a href="#cb1-22"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Avoided use of AI tools in any way to assist with this assignment or my learning of the topic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section><section id="submission" class="level2" data-number="11.3"><h2 data-number="11.3" class="anchored" data-anchor-id="submission">
-<span class="header-section-number">11.3</span> Submission</h2>
+</section><section id="hints-and-tips" class="level2" data-number="12.3"><h2 data-number="12.3" class="anchored" data-anchor-id="hints-and-tips">
+<span class="header-section-number">12.3</span> Hints and Tips</h2>
 <ul>
-<li>Covers: chapters 1 and 2</li>
-<li>Worth: 10%</li>
+<li>The html theme used by the demo report is flatly</li>
+<li>The ggplot theme is <code>theme_bw()</code>
+</li>
+<li>You will not be asked to do anything ‘tricky’ in this assessment, so if you find yourself needing 20 lines of code just to customise the labels in a plot, try looking for more efficient alternatives.</li>
+<li>You will definitely need to join data, and convert between wide and long. Make sure you do this efficiently, creating the minimum number of extra data tables needed, and not re-creating the same table for different tasks.</li>
+<li>If you find yourself doing the same thing to many columns, you could probably do it more efficiently by reshaping the data longer first</li>
+<li>Use pipes to avoid creating many single-use tables.</li>
+<li>The figure width and height of Figure 1 are 10 and 5 (it is fine to change this if your fonts are a slightly different size)</li>
+</ul></section><section id="submission" class="level2" data-number="12.4"><h2 data-number="12.4" class="anchored" data-anchor-id="submission">
+<span class="header-section-number">12.4</span> Submission</h2>
+<ul>
+<li>Covers: chapters 1-7</li>
+<li>Worth: 50%</li>
 <li>Do not put your name in your report; use your student ID as the author.</li>
 <li>Please submit a <strong>zip file</strong> containing:
 <ol type="1">
 <li>the .rproj file</li>
 <li>your reproducible script, named <code>report1_studentID.qmd</code>
 </li>
-<li>any additional files necessary to reproduce your report (e.g., images or bibliography files),</li>
+<li>any additional files necessary to reproduce your report(e.g., images or bibliography files),</li>
 <li>the rendered html report, named <code>report1_studentID.html</code>.</li>
 </ol>
 </li>
-</ul></section><section id="marking-rubric" class="level2" data-number="11.4"><h2 data-number="11.4" class="anchored" data-anchor-id="marking-rubric">
-<span class="header-section-number">11.4</span> Marking Rubric</h2>
-<p>You will receive green/amber/red lights for each of 11 elements, and a generic feedback document explaining common issues. Each rubric element is weighted equally.</p>
-<ul>
-<li>Green: Perfect or nearly perfect</li>
-<li>Amber: Needs some improvement</li>
-<li>Red: Incorrect or absent</li>
-</ul>
+</ul></section><section id="marking-rubric" class="level2" data-number="12.5"><h2 data-number="12.5" class="anchored" data-anchor-id="marking-rubric">
+<span class="header-section-number">12.5</span> Marking Rubric</h2>
 <div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 29%">
-<col style="width: 29%">
-<col style="width: 29%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">Elements</th>
-<th style="text-align: left;">Green</th>
-<th style="text-align: left;">Amber</th>
-<th style="text-align: left;">Red</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">project structure</td>
-<td style="text-align: left;"><input type="radio" value="2" name="b1"></td>
-<td style="text-align: left;"><input type="radio" value="1" name="b1"></td>
-<td style="text-align: left;"><input type="radio" value="0" name="b1"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">setup code chunk</td>
-<td style="text-align: left;"><input type="radio" value="2" name="b2"></td>
-<td style="text-align: left;"><input type="radio" value="1" name="b2"></td>
-<td style="text-align: left;"><input type="radio" value="0" name="b2"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">section headers</td>
-<td style="text-align: left;"><input type="radio" value="2" name="b3"></td>
-<td style="text-align: left;"><input type="radio" value="1" name="b3"></td>
-<td style="text-align: left;"><input type="radio" value="0" name="b3"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">paragraph</td>
-<td style="text-align: left;"><input type="radio" value="2" name="b4"></td>
-<td style="text-align: left;"><input type="radio" value="1" name="b4"></td>
-<td style="text-align: left;"><input type="radio" value="0" name="b4"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">image</td>
-<td style="text-align: left;"><input type="radio" value="2" name="b5"></td>
-<td style="text-align: left;"><input type="radio" value="1" name="b5"></td>
-<td style="text-align: left;"><input type="radio" value="0" name="b5"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">cross reference</td>
-<td style="text-align: left;"><input type="radio" value="2" name="b6"></td>
-<td style="text-align: left;"><input type="radio" value="1" name="b6"></td>
-<td style="text-align: left;"><input type="radio" value="0" name="b6"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">inline R</td>
-<td style="text-align: left;"><input type="radio" value="2" name="b7"></td>
-<td style="text-align: left;"><input type="radio" value="1" name="b7"></td>
-<td style="text-align: left;"><input type="radio" value="0" name="b7"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">citations</td>
-<td style="text-align: left;"><input type="radio" value="2" name="b8"></td>
-<td style="text-align: left;"><input type="radio" value="1" name="b8"></td>
-<td style="text-align: left;"><input type="radio" value="0" name="b8"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">references</td>
-<td style="text-align: left;"><input type="radio" value="2" name="b9"></td>
-<td style="text-align: left;"><input type="radio" value="1" name="b9"></td>
-<td style="text-align: left;"><input type="radio" value="0" name="b9"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">YAML header</td>
-<td style="text-align: left;"><input type="radio" value="2" name="b10"></td>
-<td style="text-align: left;"><input type="radio" value="1" name="b10"></td>
-<td style="text-align: left;"><input type="radio" value="0" name="b10"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">renderable</td>
-<td style="text-align: left;"><input type="radio" value="2" name="b11"></td>
-<td style="text-align: left;"><input type="radio" value="1" name="b11"></td>
-<td style="text-align: left;"><input type="radio" value="0" name="b11"></td>
-</tr>
-</tbody>
-</table>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:64:0: unexpected end of input
+62:   )
+63: )
+   ^</code></pre>
 </div>
 </div>
-<p>Total: <span id="sum">0</span>/22</p>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><script>
-$(document).ready(function(){
-  // Function to calculate the sum
-  function calculateSum() {
-    let totalSum = 0;
+<div class="cell">
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'rubric' not found</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'rubric' not found</code></pre>
+</div>
+</div>
 
-    // Loop through b1 to b11 to get the value of the selected radio button
-    for (let i = 1; i <= 11; i++) {
-      
-      let selectedValue = $(`input[name='b${i}']:checked`).val();
-      
-      // If a button is selected, add its value to the sum
-      if (selectedValue) {
-        totalSum += parseInt(selectedValue, 10);
-      }
-    }
-
-    // Update the total sum in the HTML
-    $('#sum').text(totalSum);
-  }
-  
-  $('input[type=radio]').on('change', function(){
-    calculateSum();
-  });
-});
-</script>
 
 </section></main><!-- /main --><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script><script>
 
@@ -1006,7 +913,7 @@ $( document ).ready(function() {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("^(?:http:|https:)\/\/psyteachr\.github\.io\/reprores-v5");
+        var filterRegex = new RegExp("^(?:http:|https:)\/\/psyteachr\.github\.io\/reprores-v6");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1263,28 +1170,28 @@ $( document ).ready(function() {
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./10-next.html" class="pagination-link" aria-label="Next Steps">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Next Steps</span></span>
+      <a href="./formative-1.html" class="pagination-link" aria-label="Formative 1">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Formative 1</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./assessment-2.html" class="pagination-link" aria-label="Assessment 2">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 2</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 2</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
-<p>CC-BY 2025, psyTeachR</p>
+<p>CC-BY 2026, psyTeachR</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/psyteachr/reprores-v5/edit/master/assessment-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v5/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v5/blob/master/assessment-1.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/assessment-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/assessment-1.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
 <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/psyteachr/reprores-v5">
+    <a class="nav-link" href="https://github.com/psyteachr/reprores-v6">
       <i class="bi bi-github" role="img">
 </i> 
     </a>
