@@ -112,7 +112,7 @@ You can leave out the `by` argument if you're matching on all of the columns wit
 
 ### left_join() {#sec-left_join}
 
-::: join
+::: {.join}
 <img src="images/joins/left_join.png" alt="title: left_join(x, y), image: two circles in a venn diagram, with the left circle labelled x and the right circle labelled y; the entire left circle is shaded pink." />
 :::
 
@@ -127,7 +127,7 @@ left_data
 ```
 :::
 
-::: join
+::: {.join}
 <img src="images/joins/left_join_rev.png" alt="title: left_join(y, x), image: two circles in a venn diagram, with the left circle labelled x and the right circle labelled y; the entire right circle is shaded pink." />
 :::
 
@@ -140,7 +140,7 @@ left2_data
 
 ### right_join() {#sec-right_join}
 
-::: join
+::: {.join}
 <img src="images/joins/right_join.png" alt="title: right_join(x, y), image: two circles in a venn diagram, with the left circle labelled x and the right circle labelled y; the entire right circle is shaded orange" />
 :::
 
@@ -161,7 +161,7 @@ This table has the same information as `left_join(orders, customers, by = "id")`
 
 ### inner_join() {#sec-inner_join}
 
-::: join
+::: {.join}
 <img src="images/joins/inner_join.png" alt="title: inner_join(x, y), image: two circles in a venn diagram, with the left circle labelled x and the right circle labelled y; only the overlapping part is shaded yellow"/>
 :::
 
@@ -178,7 +178,7 @@ inner_data
 
 ### full_join() {#sec-full_join}
 
-::: join
+::: {.join}
 <img src="images/joins/full_join.png" alt="title: full_join(x, y), image: two circles in a venn diagram, with the left circle labelled x and the right circle labelled y; both circles are shaded green." />
 :::
 
@@ -199,8 +199,8 @@ full_data
 
 ### semi_join() {#sec-semi_join}
 
-::: join
-<img src="images/joins/semi_join.png" alt="title: semi_join(x, y), image: two circles in a venn diagram, with the left circle labelled x and the right circle labelled y; only the overlapping part is shaded blue and the label for y is greyed out. A caption below reads '* only columns from x, no duplicate rows, even if >1 match in y'"/>
+::: {.join}
+<img src="images/joins/semi_join.png" alt="title: semi_join(x, y), image: two circles in a venn diagram, with the left circle labelled x and the right circle labelled y; only the overlapping part is shaded blue and the label for y is greyed out. A caption below reads 'only columns from x, no duplicate rows, even if >1 match in y'"/>
 :::
 
 A `semi_join` returns all rows from the left table where there are matching values in the right table, keeping just columns from the left table.
@@ -218,8 +218,8 @@ semi_data
 Unlike an inner join, a semi join will never duplicate the rows in the left table if there is more than one matching row in the right table.
 :::
 
-::: join
-<img src="images/joins/semi_join_rev.png"  alt="title: semi_join(y, x), image: two circles in a venn diagram, with the left circle labelled x and the right circle labelled y; only the overlapping part is shaded blue and the label for x is greyed out. A caption below reads '* only columns from y, no duplicate rows, even if >1 match in x'"/>
+::: {.join}
+<img src="images/joins/semi_join_rev.png"  alt="title: semi_join(y, x), image: two circles in a venn diagram, with the left circle labelled x and the right circle labelled y; only the overlapping part is shaded blue and the label for x is greyed out. A caption below reads 'only columns from y, no duplicate rows, even if >1 match in x'"/>
 :::
 
 Order matters in a semi join.
@@ -231,7 +231,7 @@ semi2_data
 
 ### anti_join() {#sec-anti_join}
 
-::: join
+::: {.join}
 <img src="images/joins/anti_join.png" alt="title: anti_join(x, y), image: two circles in a venn diagram, with the left circle labelled x and the right circle labelled y; only the non-overlapping part of x is shaded purple"/>
 :::
 
@@ -246,7 +246,7 @@ anti_data
 ```
 :::
 
-::: join
+::: {.join}
 <img src="images/joins/anti_join_rev.png"   alt="title: anti_join(y, x), image: two circles in a venn diagram, with the left circle labelled x and the right circle labelled y; only the non-overlapping part of y is shaded purple"/>
 :::
 

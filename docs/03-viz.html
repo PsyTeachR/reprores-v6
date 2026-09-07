@@ -2,11 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book provides an overview of skills needed for reproducible and open research using the statistical programming language R and tidyverse packages. It covers reproducible workflows, data visualisation, data tidying and wrangling, archiving, iteration and functions, probability and data simulations.">
 <title>3&nbsp; Data Visualisation – Data Skills for Reproducible Research</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -91,14 +94,14 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6e6edf6cb1293d7f667c2f39c143ab5.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6e6edf6cb1293d7f667c2f39c143ab5.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5a2acb6f4ed5aeb23a104ba421924b87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b56890a068b942f55e2563621ee82f98.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-904ee2616c496a5b8f2248b0b558f1e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-b56890a068b942f55e2563621ee82f98.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-bbcee6fbcf8bde314366f5cbde244fc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-dfa2a00916de9ee8c66f066e5900e70b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-bbcee6fbcf8bde314366f5cbde244fc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -635,9 +638,9 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 </li>
 <li>other (you need to load each package to use these)
 <ul>
-<li>ggthemes:: <code><a href="http://jrnold.github.io/ggthemes/reference/theme_gdocs.html">ggthemes::theme_gdocs()</a></code>
+<li>ggthemes:: <code>ggthemes::theme_gdocs()</code>
 </li>
-<li>patchwork:: <code><a href="https://patchwork.data-imaginist.com/reference/plot_layout.html">patchwork::plot_layout()</a></code>
+<li>patchwork:: <code>patchwork::plot_layout()</code>
 </li>
 </ul>
 </li>
@@ -649,14 +652,14 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <li>Update the YAML header</li>
 <li>Replace the setup chunk with the one below:</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="in">```{r}</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">#| label: setup</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co">#| include: false</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a></span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(tidyverse) <span class="co"># includes readr, ggplot2, dplyr, and lubridate</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(patchwork) <span class="co"># for multi-part plots</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(ggthemes)  <span class="co"># for plot themes</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you get the message <code>Error in library(x) : there is no package called ‘x’</code>, please refer to <a href="01-intro.html#sec-install-package" class="quarto-xref"><span>Section 1.2.1</span></a>.</p>
 <p>We’d recommend making a new code chunk for each different activity, and using the white space to make notes on any errors you make, things you find interesting, or questions you’d like to ask the course team.</p>
 <p>Download the <a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html">ggplot2 cheat sheet</a>.</p>
@@ -738,21 +741,21 @@ Figure&nbsp;3.1: Data types are like the categories when you format cells in Exc
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Do not factor numbers
+<span class="screen-reader-only">Caution</span>Do not factor numbers
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>If you factor numeric data, it gets converted to the integers 1 to the number of unique values, no matter what the values are. Additionally, you can no longer use the values as numbers, such as calculating the mean.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">0</span>, .<span class="dv">5</span>)  <span class="co"># numeric vector</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">0</span>, .<span class="dv">5</span>)  <span class="co"># numeric vector</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>f <span class="ot">&lt;-</span> <span class="fu">factor</span>(x)     <span class="co"># convert to factor</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>x <span class="sc">==</span> <span class="fu">as.numeric</span>(f) <span class="co"># does not convert back to numeric </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3"></a>x <span class="sc">==</span> <span class="fu">as.numeric</span>(f) <span class="co"># does not convert back to numeric </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE FALSE FALSE</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(f)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in mean.default(f): argument is not numeric or logical: returning NA</code></pre>
 </div>
@@ -764,15 +767,15 @@ Do not factor numbers
 <span class="header-section-number">3.1.3</span> Dates and times</h3>
 <p>Dates and times are a special case of variable. They can act like categorical or continuous variables, and there are special ways to plot them. Dates and times can be hard to work with, but the <a href="https://lubridate.tidyverse.org/"><pkg>lubridate</pkg></a> package provides functions to help you with this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># the current date</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>lubridate<span class="sc">::</span><span class="fu">today</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># the current date</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>lubridate<span class="sc">::</span><span class="fu">today</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2025-10-03"</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># the current date and time in the GMT timezone</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>lubridate<span class="sc">::</span><span class="fu">now</span>(<span class="at">tzone =</span> <span class="st">"GMT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># the current date and time in the GMT timezone</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>lubridate<span class="sc">::</span><span class="fu">now</span>(<span class="at">tzone =</span> <span class="st">"GMT"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2025-10-03 09:11:13 GMT"</code></pre>
 </div>
@@ -780,7 +783,7 @@ Do not factor numbers
 <div class="try">
 <p>Coming back to the pets dataset, what type of variable is in each column? You can use the function <code>glimpse()</code> to show a list of the column names, their data types, and the first few values in each column - here is the output of running <code>glimpse()</code> on the pets dataset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">glimpse</span>(pets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">glimpse</span>(pets)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 4
 Columns: 6
@@ -920,7 +923,7 @@ Figure&nbsp;3.3: Final plot with scatterplot layer removed.
 <div class="try">
 <p>Load the data by copying the following into a code block in your script, and running the code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>pip <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://psyteachr.github.io/reprores-v5/data/pip_gini_welfare_2010.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>pip <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://psyteachr.github.io/reprores-v5/data/pip_gini_welfare_2010.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p>When you load the data, <code>read_csv()</code> will produce a message that gives you information about the data it has imported and what assumptions it has made. The “column specification” tells you what each column is named and what type of data R has categorised each variable as. The abbreviation “chr” is for <a href="https://psyteachr.github.io/glossary/c#character" target="_blank" class="glossary" title="A data type representing strings of text.">character</a> columns, “dbl” is for <a href="https://psyteachr.github.io/glossary/d#double" target="_blank" class="glossary" title="A data type representing a real decimal number">double</a> columns, and “dttm” is a date/time column.</p>
@@ -950,7 +953,7 @@ Figure&nbsp;3.3: Final plot with scatterplot layer removed.
 <div class="try">
 <p>Use the function <code>spec()</code> to find out all of the column types and edit them if needed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">spec</span>(pip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">spec</span>(pip)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>cols(
   region_name = col_character(),
@@ -968,7 +971,7 @@ Figure&nbsp;3.3: Final plot with scatterplot layer removed.
 </div>
 <p>Let’s set <code>region_name</code> and <code>region_code</code> as factors and set the order of the levels. By default, R will order the levels of a factor alphanumerically, however in many cases you will want or need to set your own order. For example, in this data, it might make sense to order the regions from least to most countries. You can do this with the <code>count()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">count</span>(pip, region_name, region_code, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">count</span>(pip, region_name, region_code, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1020,13 +1023,13 @@ Figure&nbsp;3.3: Final plot with scatterplot layer removed.
 </div>
 <p>Assign this table to an object called <code>regions</code>, then make two new objects for the levels, which are the relevant column from this table, but in reverse order using <code><a href="https://rdrr.io/r/base/rev.html">rev()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>regions <span class="ot">&lt;-</span> <span class="fu">count</span>(pip, region_name, region_code, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>regions <span class="ot">&lt;-</span> <span class="fu">count</span>(pip, region_name, region_code, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb16-2"><a href="#cb16-2"></a>region_name_levels <span class="ot">&lt;-</span> regions<span class="sc">$</span>region_name <span class="sc">|&gt;</span> <span class="fu">rev</span>()</span>
-<span id="cb16-3"><a href="#cb16-3"></a>region_code_levels <span class="ot">&lt;-</span> regions<span class="sc">$</span>region_code <span class="sc">|&gt;</span> <span class="fu">rev</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-3"><a href="#cb16-3"></a>region_code_levels <span class="ot">&lt;-</span> regions<span class="sc">$</span>region_code <span class="sc">|&gt;</span> <span class="fu">rev</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Get the code to create the vectors for <code>region_name_levels</code> and <code>region_code_levels</code> with the <code><a href="https://rdrr.io/r/base/dput.html">dput()</a></code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">dput</span>(region_name_levels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">dput</span>(region_name_levels)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>c("South Asia", "Middle East &amp; North Africa", "East Asia &amp; Pacific", 
 "Sub-Saharan Africa", "Latin America &amp; Caribbean", "Europe &amp; Central Asia", 
@@ -1034,7 +1037,7 @@ Figure&nbsp;3.3: Final plot with scatterplot layer removed.
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">dput</span>(region_code_levels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">dput</span>(region_code_levels)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>c("SAS", "MNA", "EAP", "SSA", "LAC", "ECA", "OHI")</code></pre>
 </div>
@@ -1042,7 +1045,7 @@ Figure&nbsp;3.3: Final plot with scatterplot layer removed.
 <div class="try">
 <p>Update your data import code block to look like the one below. Since the reporting_level is “national” for all data in this set, and we’re not going to use that column, we can skip it with <code>col_skip()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># updated column types</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># updated column types</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a>region_name_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"South Asia"</span>, </span>
 <span id="cb21-3"><a href="#cb21-3"></a>                        <span class="st">"Middle East &amp; North Africa"</span>, </span>
 <span id="cb21-4"><a href="#cb21-4"></a>                        <span class="st">"East Asia &amp; Pacific"</span>, </span>
@@ -1066,7 +1069,7 @@ Figure&nbsp;3.3: Final plot with scatterplot layer removed.
 <span id="cb21-22"><a href="#cb21-22"></a></span>
 <span id="cb21-23"><a href="#cb21-23"></a><span class="co"># re-import data with correct column  types</span></span>
 <span id="cb21-24"><a href="#cb21-24"></a>pip <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/pip_gini_welfare_2010.csv"</span>,</span>
-<span id="cb21-25"><a href="#cb21-25"></a>                <span class="at">col_types =</span> pip_col_types)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-25"><a href="#cb21-25"></a>                <span class="at">col_types =</span> pip_col_types)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
@@ -1075,7 +1078,7 @@ Figure&nbsp;3.3: Final plot with scatterplot layer removed.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Define objects before you use them
+<span class="screen-reader-only">Caution</span>Define objects before you use them
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1090,7 +1093,7 @@ Define objects before you use them
 <div class="try">
 <p>Add this code to your setup chunk. It needs to run before you make the first plot in this script.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>()) <span class="co"># set the default theme</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>()) <span class="co"># set the default theme</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section><section id="sec-plot-setup-data" class="level4" data-number="3.2.2.2"><h4 data-number="3.2.2.2" class="anchored" data-anchor-id="sec-plot-setup-data">
@@ -1099,7 +1102,7 @@ Define objects before you use them
 <div class="try">
 <p>Create a blank plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> pip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> pip)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="images/figures/img-build-plot-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A blank plot"></p>
@@ -1114,11 +1117,11 @@ Define objects before you use them
 <div class="try">
 <p>Set the arguments <code>x</code> and <code>y</code> to the names of the columns you want to be plotted on those axes. Here, we want to plot the wait time on the x-axis and the call time on the y-axis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># set up the plot with mapping</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># set up the plot with mapping</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="fu">ggplot</span>(</span>
 <span id="cb24-3"><a href="#cb24-3"></a>  <span class="at">data =</span> pip, </span>
 <span id="cb24-4"><a href="#cb24-4"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)</span>
-<span id="cb24-5"><a href="#cb24-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-5"><a href="#cb24-5"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="images/figures/img-build-plot-mapping-1.png" class="img-fluid figure-img" style="width:100.0%" alt="An empty plot with `gini` on the x-axis and `welfare_mean` on the y-axis"></p>
@@ -1129,21 +1132,21 @@ Define objects before you use them
 </div>
 <p>In the example above, we wrote out the names of the <a href="https://psyteachr.github.io/glossary/a#argument" target="_blank" class="glossary" title="A variable that provides input to a function.">arguments</a> <code>data</code> and <code>mapping</code>, but in practice, almost everyone omits them. Just make sure you put the data and mapping in the right order.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="sec-ggplot-labels" class="level4" data-number="3.2.2.4"><h4 data-number="3.2.2.4" class="anchored" data-anchor-id="sec-ggplot-labels">
 <span class="header-section-number">3.2.2.4</span> Label Attributes</h4>
 <p>You probably don’t want the axis labels to read “gini” and “welfare_mean”. These are great column labels that fit our rules for naming objects in R (<a href="02-reports.html#sec-naming" class="quarto-xref"><span>Section 2.2.4</span></a>), but are not plot-friendly.</p>
 <p>Before ggplot2 version 4.0.0, you had to always manually change the aesthetic labels with <code>labs()</code> or a scale_* function. But now you can add plot-friendly labels directly to the data table so they are always used.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># set label attributes</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># set label attributes</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="fu">attr</span>(pip<span class="sc">$</span>region_name, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"Region"</span></span>
 <span id="cb26-3"><a href="#cb26-3"></a><span class="fu">attr</span>(pip<span class="sc">$</span>region_code, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"Region"</span></span>
 <span id="cb26-4"><a href="#cb26-4"></a><span class="fu">attr</span>(pip<span class="sc">$</span>country_name, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"Country"</span></span>
 <span id="cb26-5"><a href="#cb26-5"></a><span class="fu">attr</span>(pip<span class="sc">$</span>country_code, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"Country"</span></span>
 <span id="cb26-6"><a href="#cb26-6"></a><span class="fu">attr</span>(pip<span class="sc">$</span>reporting_year, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"Year"</span></span>
 <span id="cb26-7"><a href="#cb26-7"></a><span class="fu">attr</span>(pip<span class="sc">$</span>gini, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"Gini Index"</span></span>
-<span id="cb26-8"><a href="#cb26-8"></a><span class="fu">attr</span>(pip<span class="sc">$</span>welfare_mean, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"Mean Welfare per Capita"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="fu">attr</span>(pip<span class="sc">$</span>welfare_mean, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"Mean Welfare per Capita"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1164,8 +1167,8 @@ Caution
 <div class="try">
 <p>Add a scatterplot to your plot using <code>geom_point()</code>. Notice how the axis labels have updated themselves from the label attributes we set above!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">geom_point</span>() <span class="co"># scatterplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">geom_point</span>() <span class="co"># scatterplot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="images/figures/img-build-plot-labels-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A plot with axis labels and points"></p>
@@ -1180,20 +1183,20 @@ Caution
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Location of the +
+<span class="screen-reader-only">Caution</span>Location of the +
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Somewhat annoyingly, the plus has to be on the end of the previous line, not at the start of the next line. If you do make this mistake, it will run the first line of code to produce the base layer but then you will get the following error message rather than adding on <code>geom_point()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="images/figures/unnamed-chunk-17-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A plot with axis labels, but no scatterplot"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="sc">+</span> <span class="fu">geom_point</span>() <span class="co"># scatterplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="sc">+</span> <span class="fu">geom_point</span>() <span class="co"># scatterplot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error:
 ! Cannot use `+` with a single argument.
@@ -1206,7 +1209,7 @@ Location of the +
 <span class="header-section-number">3.2.2.6</span> Multiple geoms</h4>
 <p>Part of the power of <pkg>ggplot2</pkg> is that you can add more than one geom to a plot by adding on extra layers and so it quickly becomes possible to make complex and informative visualisations. Importantly, the layers display in the order you set them up. The code below uses the same geoms to produce a scatterplot with a line of best fit, but orders them differently.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Points first</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Points first</span></span>
 <span id="cb31-2"><a href="#cb31-2"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># scatterplot</span></span>
 <span id="cb31-4"><a href="#cb31-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="co"># line of best fit</span></span>
@@ -1214,7 +1217,7 @@ Location of the +
 <span id="cb31-6"><a href="#cb31-6"></a><span class="co"># Line first</span></span>
 <span id="cb31-7"><a href="#cb31-7"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb31-8"><a href="#cb31-8"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="sc">+</span> <span class="co"># line of best fit</span></span>
-<span id="cb31-9"><a href="#cb31-9"></a>  <span class="fu">geom_point</span>() <span class="co"># scatterplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-9"><a href="#cb31-9"></a>  <span class="fu">geom_point</span>() <span class="co"># scatterplot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1235,7 +1238,7 @@ Figure&nbsp;3.4: Points first versus line first.
 <span class="header-section-number">3.2.2.7</span> Plot objects</h4>
 <p>Just like you can save numbers and data tables to objects, you can also save the output of <code>ggplot()</code>. The code below produces the same plots we created above but saves them to objects named <code>point_first</code> and <code>line_first</code>. If you run just this code, the plots won’t display like they have done before. Instead, you’ll see the object names appear in the environment pane.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>point_first <span class="ot">&lt;-</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>point_first <span class="ot">&lt;-</span> </span>
 <span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># scatterplot</span></span>
 <span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="co"># line of best fit</span></span>
@@ -1243,12 +1246,12 @@ Figure&nbsp;3.4: Points first versus line first.
 <span id="cb32-6"><a href="#cb32-6"></a>line_first <span class="ot">&lt;-</span></span>
 <span id="cb32-7"><a href="#cb32-7"></a>  <span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb32-8"><a href="#cb32-8"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="sc">+</span> <span class="co"># line of best fit</span></span>
-<span id="cb32-9"><a href="#cb32-9"></a>  <span class="fu">geom_point</span>() <span class="co"># scatterplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-9"><a href="#cb32-9"></a>  <span class="fu">geom_point</span>() <span class="co"># scatterplot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To view the plots, call the objects by name. This will output each plot separately.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>point_first <span class="co"># view first plot</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a>line_first <span class="co"># view second plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>point_first <span class="co"># view first plot</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>line_first <span class="co"># view second plot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="try">
 <p>Save your two plots to objects with appropriate names.</p>
@@ -1257,8 +1260,8 @@ Figure&nbsp;3.4: Points first versus line first.
 <span class="header-section-number">3.2.2.8</span> Combining plots</h4>
 <p>One of the reasons to save your plots to objects is so that you can combine multiple plots using functions from the <code>patchwork</code> package. The code below produces the plot above by combining the two plots with <code>+</code> and then specifying that we want the plots produced on a single row with the <code>nrow</code> argument in <code>plot_layout()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># add plots together in 1 row</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a>point_first <span class="sc">+</span> line_first <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># add plots together in 1 row</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>point_first <span class="sc">+</span> line_first <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-build-plot-geom2b" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The poit0-first and line-first plots displayed in one image side-by-side.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-build-plot-geom2b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1280,7 +1283,7 @@ Figure&nbsp;3.5: Combining plots with patchwork.
 <span class="header-section-number">3.2.3.1</span> Styling geoms</h4>
 <p>We should definitely put the line in front of the points, but the points are still a bit dark. If you want to change the overall style of a geom, you can set the arguments <code>colour</code>, <code>alpha</code>, <code>shape</code>, <code>size</code> and <code>linetype</code> inside the geom function. There are many different values that you can set these to; <a href="app-styling.html" class="quarto-xref"><span>Appendix L</span></a> gives details of these.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"dodgerblue"</span>, </span>
 <span id="cb35-3"><a href="#cb35-3"></a>             <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="co"># 20% transparency</span></span>
 <span id="cb35-4"><a href="#cb35-4"></a>             <span class="at">shape =</span> <span class="dv">18</span>,  <span class="co"># solid diamond</span></span>
@@ -1289,7 +1292,7 @@ Figure&nbsp;3.5: Combining plots with patchwork.
 <span id="cb35-7"><a href="#cb35-7"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm,   <span class="co"># method of linear model (lm)</span></span>
 <span id="cb35-8"><a href="#cb35-8"></a>              <span class="at">formula =</span> y<span class="sc">~</span>x, <span class="co"># formula used to draw line</span></span>
 <span id="cb35-9"><a href="#cb35-9"></a>              <span class="at">colour =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, .<span class="dv">5</span>, .<span class="dv">8</span>),</span>
-<span id="cb35-10"><a href="#cb35-10"></a>              <span class="at">linetype =</span> <span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-10"><a href="#cb35-10"></a>              <span class="at">linetype =</span> <span class="dv">3</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-build-plot-style" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The same scatter-line plot as above, but the points are transparent blue diamonds instead of solid black circles, and the regression line is dotted and blue instead of solid and blue.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-build-plot-style-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1310,7 +1313,7 @@ Figure&nbsp;3.6: Changing geom styles.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Setting aesthetics overall versus by category
+<span class="screen-reader-only">Warning</span>Setting aesthetics overall versus by category
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1321,14 +1324,14 @@ Setting aesthetics overall versus by category
 <span class="header-section-number">3.2.3.2</span> Format axes</h4>
 <p>Now we need to make the axes look neater. There are several functions you can use to change the axis labels, but the most powerful ones are the <code>scale_</code> functions. You need to use a scale function that matches the data you’re plotting on that axis and this is where it becomes particularly important to know what type of data you’re working with. Both of the axes here are <a href="https://psyteachr.github.io/glossary/c#continuous" target="_blank" class="glossary" title="Data that can take on any values between other existing values.">continuous</a>, so we’ll use <code>scale_x_continuous()</code> and <code>scale_y_continuous()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb36-2"><a href="#cb36-2"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"dodgerblue"</span>, </span>
 <span id="cb36-3"><a href="#cb36-3"></a>             <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
 <span id="cb36-4"><a href="#cb36-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, </span>
 <span id="cb36-5"><a href="#cb36-5"></a>              <span class="at">formula =</span> y<span class="sc">~</span>x, </span>
 <span id="cb36-6"><a href="#cb36-6"></a>              <span class="at">colour =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, .<span class="dv">5</span>, .<span class="dv">8</span>)) <span class="sc">+</span></span>
 <span id="cb36-7"><a href="#cb36-7"></a>  <span class="co"># customise axis labels and breaks</span></span>
-<span id="cb36-8"><a href="#cb36-8"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-8"><a href="#cb36-8"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-build-plot-axes" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The same scatter-line plot as above, but the points are transparent blue circles, and the regression line is a solid blue.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-build-plot-axes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1342,7 +1345,7 @@ Figure&nbsp;3.7: Formatting plot axes with scale_ functions.
 </div>
 <p>The <code>name</code> argument changes the axis label. The <code>breaks</code> argument sets the major units and needs a <a href="https://psyteachr.github.io/glossary/v#vector" target="_blank" class="glossary" title="A type of data structure that collects values with the same data type, like T/F values, numbers, or strings.">vector</a> of possible values, which can extend beyond the range of the data (e.g., <code>gini</code> values in this set are only between 0.2 and 0.7, but we can specify breaks 0-1 to make the maths easier or anticipate updates to the data). The <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> function creates a sequence of numbers <code>from</code> one <code>to</code> another <code>by</code> specified steps.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
 </div>
@@ -1354,7 +1357,7 @@ Figure&nbsp;3.7: Formatting plot axes with scale_ functions.
 <button>
 Solution
 </button>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"dodgerblue"</span>, </span>
 <span id="cb39-3"><a href="#cb39-3"></a>             <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
 <span id="cb39-4"><a href="#cb39-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, </span>
@@ -1363,7 +1366,7 @@ Solution
 <span id="cb39-7"><a href="#cb39-7"></a>  <span class="co"># customise axis labels and breaks</span></span>
 <span id="cb39-8"><a href="#cb39-8"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">1</span>, <span class="at">by =</span> .<span class="dv">1</span>)) <span class="sc">+</span></span>
 <span id="cb39-9"><a href="#cb39-9"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">20</span>),    </span>
-<span id="cb39-10"><a href="#cb39-10"></a>                     <span class="at">minor_breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-10"><a href="#cb39-10"></a>                     <span class="at">minor_breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="images/figures/img-scale-y-continuous-1.png" class="img-fluid figure-img" style="width:100.0%" alt="The plot above with the x-axis labelled 'Gini Index' and breaks at 0.3, 0.4, 0.5, and 0.6, and the y-axis labelled 'Mean Welfare per Capita' and breaks at 0, 20, 40, 60, and 80."></p>
@@ -1377,7 +1380,7 @@ Solution
 <span class="header-section-number">3.2.3.3</span> Axis limits</h4>
 <p>If you want to change the minimum and maximum values on an axis, use the <code>coord_cartesian()</code> function. Many plots make more sense if the minimum and maximum values represent the range of possible values, even if those values aren’t present in the data. Here, the mean_welfare ranges between 0 and 100.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb40-2"><a href="#cb40-2"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"dodgerblue"</span>, </span>
 <span id="cb40-3"><a href="#cb40-3"></a>             <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
 <span id="cb40-4"><a href="#cb40-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, </span>
@@ -1387,7 +1390,7 @@ Solution
 <span id="cb40-8"><a href="#cb40-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">20</span>),    </span>
 <span id="cb40-9"><a href="#cb40-9"></a>                     <span class="at">minor_breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>)) <span class="sc">+</span></span>
 <span id="cb40-10"><a href="#cb40-10"></a>  <span class="co"># set axis limits</span></span>
-<span id="cb40-11"><a href="#cb40-11"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-11"><a href="#cb40-11"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-build-plot-limits" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The plot above with the x-axis from 0 to 100.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-build-plot-limits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1405,7 +1408,7 @@ Figure&nbsp;3.8: Changing the axis limits.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Setting limits with the scale_ function
+<span class="screen-reader-only">Important</span>Setting limits with the scale_ function
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1416,7 +1419,7 @@ Setting limits with the scale_ function
 <span class="header-section-number">3.2.3.4</span> Axis transforming</h4>
 <p>The y-axis values are concentrated at the lower range. This plot might be easier to read if we transform the y-axis to a log10 version. Change <code>scale_y_continuous()</code> to scale_y_log10()` to see if this works. We also need to change the name for the y-axis to “Mean Welfare (log10)” and set the breaks a little differently.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>y_breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>y_breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>)</span>
 <span id="cb41-2"><a href="#cb41-2"></a>y_breaks_minor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">10</span>), <span class="dv">50</span>, <span class="dv">100</span>)</span>
 <span id="cb41-3"><a href="#cb41-3"></a></span>
 <span id="cb41-4"><a href="#cb41-4"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
@@ -1430,7 +1433,7 @@ Setting limits with the scale_ function
 <span id="cb41-12"><a href="#cb41-12"></a>                <span class="at">breaks =</span> y_breaks,</span>
 <span id="cb41-13"><a href="#cb41-13"></a>                <span class="at">minor_breaks =</span> y_breaks_minor) <span class="sc">+</span></span>
 <span id="cb41-14"><a href="#cb41-14"></a>  <span class="co"># set axis limits</span></span>
-<span id="cb41-15"><a href="#cb41-15"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-15"><a href="#cb41-15"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">100</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-build-plot-log10" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The plot above with the y-axis set as a log10 scale, with breaks at 1, 2, 5, 10, 20, 50 and 100. The x-axis label is 'Mean Welfare (log10)'.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-build-plot-log10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1447,7 +1450,7 @@ Figure&nbsp;3.9: Transforming the y-axis to log10
 <p><pkg>ggplot2</pkg> comes with several built-in themes, such as <code>theme_minimal()</code> and <code>theme_bw()</code>, but the <a href="https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/"><pkg>ggthemes</pkg></a> package provides even more themes to match different software, such as GoogleDocs or Stata, or publications, such as the Economist or the Wall Street Journal. Let’s add the light theme, but change the font size to 11 with the <code>base_size</code> argument.</p>
 <p>It’s also worth highlighting that this code is starting to look quite complicated because of the number of layers, but because we’ve built it up slowly it should (hopefully!) make sense. If you see examples of <pkg>ggplot2</pkg> code online that you’d like to adapt, build the plot up layer by layer and it will make it easier to understand what each layer adds.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"dodgerblue"</span>, </span>
 <span id="cb42-3"><a href="#cb42-3"></a>             <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
 <span id="cb42-4"><a href="#cb42-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, </span>
@@ -1459,7 +1462,7 @@ Figure&nbsp;3.9: Transforming the y-axis to log10
 <span id="cb42-10"><a href="#cb42-10"></a>                <span class="at">minor_breaks =</span> y_breaks_minor) <span class="sc">+</span></span>
 <span id="cb42-11"><a href="#cb42-11"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">100</span>)) <span class="sc">+</span></span>
 <span id="cb42-12"><a href="#cb42-12"></a>  <span class="co"># change the theme</span></span>
-<span id="cb42-13"><a href="#cb42-13"></a>  <span class="fu">theme_light</span>(<span class="at">base_size =</span> <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-13"><a href="#cb42-13"></a>  <span class="fu">theme_light</span>(<span class="at">base_size =</span> <span class="dv">11</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-build-plot-theme" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The plot above with a style that makes the border around the plot lighter">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-build-plot-theme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1475,7 +1478,7 @@ Figure&nbsp;3.10: Changing the theme to another style.
 <span class="header-section-number">3.2.3.6</span> Theme tweaks</h4>
 <p>If you’re still not quite happy with a theme, you can customise it even further with the <code>themes()</code> function. Check the help for this function to see all of the possible options. The most common thing you’ll want to do is to remove an element entirely. You do this by setting the relevant argument to <code>element_blank()</code>. Below, we’re getting rid of the plot background, which removes the line around the plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb43-2"><a href="#cb43-2"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"dodgerblue"</span>, </span>
 <span id="cb43-3"><a href="#cb43-3"></a>             <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
 <span id="cb43-4"><a href="#cb43-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, </span>
@@ -1488,7 +1491,7 @@ Figure&nbsp;3.10: Changing the theme to another style.
 <span id="cb43-11"><a href="#cb43-11"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">100</span>)) <span class="sc">+</span></span>
 <span id="cb43-12"><a href="#cb43-12"></a>  <span class="fu">theme_light</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
 <span id="cb43-13"><a href="#cb43-13"></a>  <span class="co"># customise theme elements</span></span>
-<span id="cb43-14"><a href="#cb43-14"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-14"><a href="#cb43-14"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-build-plot-custom-theme" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The plot above with no plot border">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-build-plot-custom-theme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1504,7 +1507,7 @@ Figure&nbsp;3.11: Customising the theme to remove the x-axis line and background
 <span class="header-section-number">3.2.4</span> Figure captions</h3>
 <p>You can add a caption directly to the image using the <code>labs()</code> function, which also allows you to add or edit the title, subtitle, and axis labels.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb44-2"><a href="#cb44-2"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"dodgerblue"</span>, </span>
 <span id="cb44-3"><a href="#cb44-3"></a>             <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
 <span id="cb44-4"><a href="#cb44-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, </span>
@@ -1520,7 +1523,7 @@ Figure&nbsp;3.11: Customising the theme to remove the x-axis line and background
 <span id="cb44-14"><a href="#cb44-14"></a>  <span class="co"># add labels</span></span>
 <span id="cb44-15"><a href="#cb44-15"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"The relationship between Gini index and mean welfare per captita"</span>,</span>
 <span id="cb44-16"><a href="#cb44-16"></a>       <span class="at">subtitle =</span> <span class="st">"Data from 2010"</span>,</span>
-<span id="cb44-17"><a href="#cb44-17"></a>       <span class="at">caption =</span> <span class="st">"Figure 1. Inequality and welfare have a negative relationship."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-17"><a href="#cb44-17"></a>       <span class="at">caption =</span> <span class="st">"Figure 1. Inequality and welfare have a negative relationship."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-caption" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The plot above with the title and subtitle written above the plot: 'The relationship between Gini index and mean welfare per captita' and 'Data from 2010', and the caption written below: 'Figure 1. Inequality and welfare have a negative relationship.'">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-caption-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1534,20 +1537,20 @@ Figure&nbsp;3.12: Adding a title, subtitle, and caption.
 </div>
 <p>However, it is more accessible to include this sort of information in plain text for screen readers. You can add a text caption in the chunk header. You should also add alt-text descriptions for screen readers that describe the image.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1"></a><span class="in">```{r}</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1"></a><span class="in">```{r}</span></span>
 <span id="cb45-2"><a href="#cb45-2"></a><span class="co">#| label: fig-gini-welfare</span></span>
 <span id="cb45-3"><a href="#cb45-3"></a><span class="co">#| fig-cap: "Inequality and welfare have a negative relationship."</span></span>
 <span id="cb45-4"><a href="#cb45-4"></a><span class="co">#| fig-alt: "A scatterplot showing Gini index on the x-axis (range ~0.2 to 0.65) and mean welfare per capita on the y-axis (range 0 to 100) with a trend line showing that as gini increases from about 0.2 to 0.65, welfare decreases from about 30 to 5."</span></span>
 <span id="cb45-5"><a href="#cb45-5"></a></span>
 <span id="cb45-6"><a href="#cb45-6"></a><span class="co"># figure code here</span></span>
-<span id="cb45-7"><a href="#cb45-7"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-7"><a href="#cb45-7"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="sec-ggsave" class="level3" data-number="3.2.5"><h3 data-number="3.2.5" class="anchored" data-anchor-id="sec-ggsave">
 <span class="header-section-number">3.2.5</span> Saving Plots</h3>
 <p>You can save a ggplot using <code>ggsave()</code>. It saves the last ggplot you made, by default, but you can specify which plot you want to save if you assigned that plot to a variable.</p>
 <p>You can set the <code>width</code> and <code>height</code> of your plot. The default units are inches, but you can change the <code>units</code> argument to “in”, “cm”, or “mm”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> gini)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> gini)) <span class="sc">+</span></span>
 <span id="cb46-2"><a href="#cb46-2"></a>  <span class="fu">geom_boxplot</span>()</span>
 <span id="cb46-3"><a href="#cb46-3"></a></span>
 <span id="cb46-4"><a href="#cb46-4"></a>violin <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> gini)) <span class="sc">+</span></span>
@@ -1555,7 +1558,7 @@ Figure&nbsp;3.12: Adding a title, subtitle, and caption.
 <span id="cb46-6"><a href="#cb46-6"></a></span>
 <span id="cb46-7"><a href="#cb46-7"></a><span class="fu">ggsave</span>(<span class="st">"violin_plot.png"</span>, <span class="at">width =</span> <span class="dv">5</span>, <span class="at">height =</span> <span class="dv">7</span>)</span>
 <span id="cb46-8"><a href="#cb46-8"></a></span>
-<span id="cb46-9"><a href="#cb46-9"></a><span class="fu">ggsave</span>(<span class="st">"box_plot.jpg"</span>, <span class="at">plot =</span> box, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-9"><a href="#cb46-9"></a><span class="fu">ggsave</span>(<span class="st">"box_plot.jpg"</span>, <span class="at">plot =</span> box, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1581,8 +1584,8 @@ Note
 <span class="header-section-number">3.3.1.1</span> Bar plot</h4>
 <p>If you want to count the number of things per category, you can use <code>geom_bar()</code>. You only need to provide a <code>x</code> mapping to <code>geom_bar()</code> because by default <code>geom_bar()</code> uses the number of observations in each group of <code>x</code> as the value for <code>y</code>, so you don’t need to tell it what to put on the y-axis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> region_code)) <span class="sc">+</span></span>
-<span id="cb47-2"><a href="#cb47-2"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> region_code)) <span class="sc">+</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-bar" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A bar plot with region_code on the x-axis with 7 categories and count on the y-axis, ranging from 0 to 30. The x-axis labels are: SAS, MNA, EAP, SSA, LAC, ECA, OHI. Bars increase from about 3 to 27.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1601,7 +1604,7 @@ Figure&nbsp;3.13: A basic bar plot.
 <button>
 Code
 </button>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> region_code, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> region_code, </span>
 <span id="cb48-2"><a href="#cb48-2"></a>                <span class="at">fill =</span> region_code)) <span class="sc">+</span></span>
 <span id="cb48-3"><a href="#cb48-3"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
 <span id="cb48-4"><a href="#cb48-4"></a>  <span class="fu">scale_x_discrete</span>(</span>
@@ -1635,7 +1638,7 @@ Code
 <span id="cb48-32"><a href="#cb48-32"></a>  ) <span class="sc">+</span></span>
 <span id="cb48-33"><a href="#cb48-33"></a>  <span class="co"># minimum = 0, maximum = 30</span></span>
 <span id="cb48-34"><a href="#cb48-34"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">30</span>)) <span class="sc">+</span> </span>
-<span id="cb48-35"><a href="#cb48-35"></a>  <span class="fu">ggtitle</span>(<span class="st">"Number of countries per region"</span>) <span class="co"># add a title</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-35"><a href="#cb48-35"></a>  <span class="fu">ggtitle</span>(<span class="st">"Number of countries per region"</span>) <span class="co"># add a title</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="images/figures/custom-bar-1.png" class="img-fluid figure-img" style="width:100.0%" alt="The same plot above, but with the x-axis categoriesin a different order with longer labels, and the bars each a different rainbow colour. The x-axis labels are: Europe &amp; C. Asia, S. Asia, E.Asia &amp; Pacific, M.East &amp; N.Africa, Subsaharan Africa, L.America &amp; Carribean, and Other H.I."></p>
@@ -1649,7 +1652,7 @@ Code
 <span class="header-section-number">3.3.1.2</span> Column plot</h4>
 <p>If your data already have a column with the number you want to plot, you can use <code>geom_col()</code> to plot it. We can use the <code>count()</code> function to make a table with a row for each <code>region_code</code> and a column called <code>n</code> with the number of observations in that category.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>count_data <span class="ot">&lt;-</span> <span class="fu">count</span>(pip, region_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>count_data <span class="ot">&lt;-</span> <span class="fu">count</span>(pip, region_code)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="kable-table">
 <table class="caption-top table">
@@ -1691,8 +1694,8 @@ Code
 </div>
 <p>The mapping for <code>geom_col()</code> requires you to set both the <code>x</code> and <code>y</code> aesthetics. Set <code>y = n</code> because we want to plot the number of countries in each category, and that information is in the column called <code>n</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">ggplot</span>(count_data, <span class="fu">aes</span>(<span class="at">x =</span> region_code, <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">ggplot</span>(count_data, <span class="fu">aes</span>(<span class="at">x =</span> region_code, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">geom_col</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-col" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A column plot identical to the bar plot above, except the y-axis label is n and not count. It has Region on the x-axis with 7 categories and n on the y-axis, ranging from 0 to 30. The x-axis labels are: SAS, MNA, EAP, SSA, LAC, ECA, OHI. Bars increase from about 3 to 27.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-col-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1769,8 +1772,8 @@ Figure&nbsp;3.14: A basic column plot.
 <p>If you have a continuous variable, like <code>welfare_mean</code>, you can use <code>geom_histogram()</code> to show the distribution. Just like <code>geom_bar()</code> you are only required to specify the <code>x</code> variable.</p>
 <p>A histogram splits the data into “bins” along the x-axis and shows the count of how many observations are in each bin along the y-axis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean)) <span class="sc">+</span></span>
-<span id="cb51-2"><a href="#cb51-2"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean)) <span class="sc">+</span></span>
+<span id="cb51-2"><a href="#cb51-2"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-histogram" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A plot with Mean Welfare per Capita on the x-axis, ranging from 0 to 90, and count on the y-axis, ranging from 0 to 11. The histogram shows most values between 0 and 25, with fewer spread out between 30 and 90.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-histogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1784,18 +1787,18 @@ Figure&nbsp;3.15: Histogram of mean welfare per capita.
 </div>
 <p>You should always set the <code>binwidth</code> or number of <code>bins</code> to something meaningful for your data (otherwise you get the annoying message above). You might need to try a few options before you find something that looks good and conveys the meaning of your plot – try changing the values of <code>binwidth</code> and <code>bins</code> in the code below to see what works best.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># adjust width of each bar</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># adjust width of each bar</span></span>
 <span id="cb52-2"><a href="#cb52-2"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb52-3"><a href="#cb52-3"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span>
 <span id="cb52-4"><a href="#cb52-4"></a></span>
 <span id="cb52-5"><a href="#cb52-5"></a><span class="co"># adjust number of bars</span></span>
 <span id="cb52-6"><a href="#cb52-6"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean)) <span class="sc">+</span></span>
-<span id="cb52-7"><a href="#cb52-7"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb52-7"><a href="#cb52-7"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>By default, the bars start <em>centered</em> on 0, so if <code>binwidth</code> is set to 5, the first bar would include -2.5 to +2.5, which doesn’t make much sense. We can set <code>boundary = 0</code> so that each bar represents increments of 5 <em>starting</em> from 0.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean)) <span class="sc">+</span></span>
-<span id="cb53-2"><a href="#cb53-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">boundary =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean)) <span class="sc">+</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">boundary =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-histogram-boundary0" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The same plot as above, but the first bar spans 0-5 instead of 2.5 to 7.5.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-histogram-boundary0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1809,13 +1812,13 @@ Figure&nbsp;3.16: A histogram with the boundary set to 0.
 </div>
 <p>Finally, the default style of grey bars is ugly, so you can change that by setting the <code>fill</code> and <code>colour</code>, as well as using <code>scale_x_continuous()</code> to update the axis labels.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb54-2"><a href="#cb54-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, </span>
 <span id="cb54-3"><a href="#cb54-3"></a>                 <span class="at">boundary =</span> <span class="dv">0</span>, </span>
 <span id="cb54-4"><a href="#cb54-4"></a>                 <span class="at">fill =</span> <span class="st">"white"</span>, </span>
 <span id="cb54-5"><a href="#cb54-5"></a>                 <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb54-6"><a href="#cb54-6"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">"Mean Welfare per Capita"</span>,</span>
-<span id="cb54-7"><a href="#cb54-7"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb54-7"><a href="#cb54-7"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-histogram-custom" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The same plot as above, but the bars are white with black borders, instead of grey with grey borders.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-histogram-custom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1853,12 +1856,12 @@ Figure&nbsp;3.17: Histogram with custom styles.
 </ul>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Axis label customisation
+<span class="screen-reader-only">Tip</span>Axis label customisation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1866,8 +1869,8 @@ Axis label customisation
 <div class="callout-body-container callout-body">
 <p>If you’re curious how we got the x-axis labels to read “100K” instead of “100000”, you just need to add a vector of <code>labels</code> the same length as <code>breaks</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">1e6</span>, <span class="fl">1e5</span>),</span>
-<span id="cb55-2"><a href="#cb55-2"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="fu">paste0</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">9</span><span class="sc">*</span><span class="dv">100</span>, <span class="st">"K"</span>), <span class="st">"1M"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">1e6</span>, <span class="fl">1e5</span>),</span>
+<span id="cb55-2"><a href="#cb55-2"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="fu">paste0</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">9</span><span class="sc">*</span><span class="dv">100</span>, <span class="st">"K"</span>), <span class="st">"1M"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1880,10 +1883,10 @@ Axis label customisation
 <p>In previous plots, we have used <code>fill</code> purely for visual reasons, e.g., we changed the colour of the histogram bars to make them look nicer. However, you can also use <code>fill</code> to represent another variable so that the colours become meaningful.</p>
 <p>Setting the <code>fill</code> aesthetic <strong>in the mapping</strong> will produce different coloured bars for each category of the <code>fill</code> variable, in this case <code>region_code</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean, <span class="at">fill =</span> region_code)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean, <span class="at">fill =</span> region_code)) <span class="sc">+</span></span>
 <span id="cb56-2"><a href="#cb56-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">boundary =</span> <span class="dv">0</span>, </span>
 <span id="cb56-3"><a href="#cb56-3"></a>                 <span class="at">binwidth =</span> <span class="dv">5</span>,</span>
-<span id="cb56-4"><a href="#cb56-4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb56-4"><a href="#cb56-4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-hist-fill" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A stacked histogram with welfare_mean on the x-axis ranging from 0-90 and count on the y-axis ranging from 0-15. Each region_code is represented by a different colour. OHI is pink and has most of the welfare scores above 30, while the other countries are rainbow coloours red to purple and mostly have welfare scores 0-30.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-hist-fill-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1901,17 +1904,17 @@ Figure&nbsp;3.18: Histogram with categories represented by fill.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Arguments inside aes()
+<span class="screen-reader-only">Warning</span>Arguments inside aes()
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>When you set an aspect to represent the data, you do this inside the <code>aes()</code> function for the mapping, not as an argument to the geom. If you try to set this in a geom, you’ll get the following error (unless you coincidentally have an object named <code>region_code</code> that is a colour word).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb57-2"><a href="#cb57-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">boundary =</span> <span class="dv">0</span>, </span>
 <span id="cb57-3"><a href="#cb57-3"></a>                 <span class="at">binwidth =</span> <span class="dv">5</span>, </span>
 <span id="cb57-4"><a href="#cb57-4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>,</span>
-<span id="cb57-5"><a href="#cb57-5"></a>                 <span class="at">fill =</span> region_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-5"><a href="#cb57-5"></a>                 <span class="at">fill =</span> region_code)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: object 'region_code' not found</code></pre>
 </div>
@@ -1919,12 +1922,12 @@ Arguments inside aes()
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Area plot alternative
+<span class="screen-reader-only">Tip</span>Area plot alternative
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1932,12 +1935,12 @@ Area plot alternative
 <div class="callout-body-container callout-body">
 <p>The function <code>geom_area()</code> gives a similar effect when <code>stat = "bin"</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># area plot</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># area plot</span></span>
 <span id="cb59-2"><a href="#cb59-2"></a><span class="fu">ggplot</span>(pip, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean, <span class="at">fill =</span> region_code)) <span class="sc">+</span></span>
 <span id="cb59-3"><a href="#cb59-3"></a>  <span class="fu">geom_area</span>(<span class="at">stat =</span> <span class="st">"bin"</span>, </span>
 <span id="cb59-4"><a href="#cb59-4"></a>            <span class="at">boundary =</span> <span class="dv">0</span>, </span>
 <span id="cb59-5"><a href="#cb59-5"></a>            <span class="at">binwidth =</span> <span class="dv">5</span>, </span>
-<span id="cb59-6"><a href="#cb59-6"></a>            <span class="at">color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb59-6"><a href="#cb59-6"></a>            <span class="at">color =</span> <span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-stacked-area" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A stacked area plot like the previous stacked histogram, but the value for each bin is connected by lines and the area underneath coloured in.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-stacked-area-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1956,7 +1959,7 @@ Figure&nbsp;3.19: Stacked area plot.
 <span class="header-section-number">3.3.3.2</span> Dodged histogram</h4>
 <p>By default, the categories are positioned stacked on top of each other. If you want to compare more than one distribution, you can set the <code>position</code> argument of <code>geom_histogram()</code> to “dodge” to put the bars for each group next to each other instead of stacking them. However, this can look confusing with several categories.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># dodged histogram</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># dodged histogram</span></span>
 <span id="cb60-2"><a href="#cb60-2"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean, </span>
 <span id="cb60-3"><a href="#cb60-3"></a>               <span class="at">fill =</span> region_code,</span>
 <span id="cb60-4"><a href="#cb60-4"></a>               <span class="at">colour =</span> region_code))<span class="sc">+</span></span>
@@ -1964,7 +1967,7 @@ Figure&nbsp;3.19: Stacked area plot.
 <span id="cb60-6"><a href="#cb60-6"></a>                 <span class="at">binwidth =</span> <span class="dv">5</span>, </span>
 <span id="cb60-7"><a href="#cb60-7"></a>                 <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
 <span id="cb60-8"><a href="#cb60-8"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">"Mean Welfare per Capita"</span>,</span>
-<span id="cb60-9"><a href="#cb60-9"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb60-9"><a href="#cb60-9"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-histogram-dodge" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A histogram with welfare_mean on the x-axis ranging from 0-90 and count on the y-axis ranging from 0-7. Instead of stacking bars, each bar is very thin and placed next to the others (it is hard to read). Each region_code is represented by a different colour. OHI is pink and has most of the welfare scores above 30, while the other countries are rainbow coloours red to purple and mostly have welfare scores 0-30.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-histogram-dodge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1977,12 +1980,12 @@ Figure&nbsp;3.20: A histogram with multiple groups.
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Frequency plot alternative
+<span class="screen-reader-only">Tip</span>Frequency plot alternative
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1990,14 +1993,14 @@ Frequency plot alternative
 <div class="callout-body-container callout-body">
 <p>Alternatively, you can use <code>geom_freqpoly()</code> to plot a line connecting the top of each bin.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="co"># frequency plot</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="co"># frequency plot</span></span>
 <span id="cb61-2"><a href="#cb61-2"></a><span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> welfare_mean,</span>
 <span id="cb61-3"><a href="#cb61-3"></a>                <span class="at">colour =</span> region_code)) <span class="sc">+</span></span>
 <span id="cb61-4"><a href="#cb61-4"></a>  <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, </span>
 <span id="cb61-5"><a href="#cb61-5"></a>                <span class="at">boundary =</span> <span class="dv">0</span>,</span>
 <span id="cb61-6"><a href="#cb61-6"></a>                <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb61-7"><a href="#cb61-7"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">"Mean Welfare per Capita"</span>,</span>
-<span id="cb61-8"><a href="#cb61-8"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb61-8"><a href="#cb61-8"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-groups-freqpoly" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A plot like above, but showing lines connecting the levels instead of bars.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-groups-freqpoly-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2016,7 +2019,7 @@ Figure&nbsp;3.21: A frequency plot with multiple groups.
 <span class="header-section-number">3.3.3.3</span> Violin plot</h4>
 <p>Another way to compare groups of continuous variables is the violin plot. This is like a density plot, but rotated 90 degrees and mirrored - the fatter the violin, the larger proportion of data points there are at that value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>violin_area <span class="ot">&lt;-</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>violin_area <span class="ot">&lt;-</span> </span>
 <span id="cb62-2"><a href="#cb62-2"></a>  <span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> region_code, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb62-3"><a href="#cb62-3"></a>  <span class="fu">geom_violin</span>(<span class="at">scale =</span> <span class="st">"area"</span>) <span class="sc">+</span></span>
 <span id="cb62-4"><a href="#cb62-4"></a>  <span class="fu">ggtitle</span>(<span class="st">'scale = "area" (default)'</span>)</span>
@@ -2031,7 +2034,7 @@ Figure&nbsp;3.21: A frequency plot with multiple groups.
 <span id="cb62-13"><a href="#cb62-13"></a>  <span class="fu">geom_violin</span>(<span class="at">scale =</span> <span class="st">"width"</span>) <span class="sc">+</span></span>
 <span id="cb62-14"><a href="#cb62-14"></a>  <span class="fu">ggtitle</span>(<span class="st">'scale = "width"'</span>)</span>
 <span id="cb62-15"><a href="#cb62-15"></a></span>
-<span id="cb62-16"><a href="#cb62-16"></a>violin_area <span class="sc">/</span> violin_count <span class="sc">/</span> violin_width</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb62-16"><a href="#cb62-16"></a>violin_area <span class="sc">/</span> violin_count <span class="sc">/</span> violin_width</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-violin-plot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three versions of violin plots. The top panel shows scale = 'area' (default). The middle panel shows scale = 'count'. The bottom panel shows scale = 'width'.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-violin-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2048,7 +2051,7 @@ Figure&nbsp;3.22: The default violin plot gives each shape the same area. Set sc
 <p>Boxplots serve a similar purpose to violin plots (without the giggles from the back row). They don’t show you the shape of the distribution, but rather some statistics about it. The middle line represents the <a href="https://psyteachr.github.io/glossary/m#median" target="_blank" class="glossary" title="The middle number in a distribution where half of the values are larger and half are smaller.">median</a>; half the data are above this line and half below it. The box encloses the 25th to 75th percentiles of the data, so 50% of the data falls inside the box. The “whiskers” extending above and below the box extend 1.5 times the height of the box, although you can change this with the <code>coef</code> argument. The points show <a href="https://psyteachr.github.io/glossary/o#outlier" target="_blank" class="glossary" title="A data point that is extremely distant from most of the other data points">outliers</a> – individual data points that fall outside of this range.</p>
 <p>Boxplots can be horizontal if you swap to x and y columns, and there are many other customisations you can apply.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> region_code, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pip, <span class="fu">aes</span>(<span class="at">x =</span> region_code, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb63-2"><a href="#cb63-2"></a> <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb63-3"><a href="#cb63-3"></a>  <span class="fu">ggtitle</span>(<span class="st">"Default vertical boxplot"</span>)</span>
 <span id="cb63-4"><a href="#cb63-4"></a></span>
@@ -2061,7 +2064,7 @@ Figure&nbsp;3.22: The default violin plot gives each shape the same area. Set sc
 <span id="cb63-11"><a href="#cb63-11"></a>              <span class="at">staplewidth =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
 <span id="cb63-12"><a href="#cb63-12"></a>  <span class="fu">ggtitle</span>(<span class="st">"Customised horizontal boxplot"</span>)</span>
 <span id="cb63-13"><a href="#cb63-13"></a></span>
-<span id="cb63-14"><a href="#cb63-14"></a>boxplot <span class="sc">+</span> custom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb63-14"><a href="#cb63-14"></a>boxplot <span class="sc">+</span> custom</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-box-plot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two boxplots. The left plot is labelled 'Default vertical boxpplot' and shows the 7 region_codes along the x-axis and melfare_mean (0-90) on the y-axis. Boxplots are white with black outlines and show the median, whiskers, and outlier points. The right plot is labelled `Customised horizontal boxplot and has grey fill in the boxes, capped whiskers, and red asterisks for outliers.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-box-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2077,7 +2080,7 @@ Figure&nbsp;3.23: Boxplots.
 <span class="header-section-number">3.3.3.5</span> Combo plots</h4>
 <p>Violin plots are frequently layered with other geoms that represent the mean or median values in the data. This is a lot of code; to help your understanding, run it layer by layer to see how it builds up and change the values throughout the code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># add fill and colour to the mapping</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># add fill and colour to the mapping</span></span>
 <span id="cb64-2"><a href="#cb64-2"></a></span>
 <span id="cb64-3"><a href="#cb64-3"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> region_code, </span>
 <span id="cb64-4"><a href="#cb64-4"></a>                 <span class="at">y =</span> welfare_mean,</span>
@@ -2102,7 +2105,7 @@ Figure&nbsp;3.23: Boxplots.
 <span id="cb64-23"><a href="#cb64-23"></a>               <span class="at">geom =</span> <span class="st">"point"</span>, </span>
 <span id="cb64-24"><a href="#cb64-24"></a>               <span class="at">size =</span> <span class="dv">2</span>,</span>
 <span id="cb64-25"><a href="#cb64-25"></a>               <span class="at">shape =</span> <span class="dv">18</span>) <span class="sc">+</span> </span>
-<span id="cb64-26"><a href="#cb64-26"></a>  <span class="fu">ggtitle</span>(<span class="st">"ViolinBox"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb64-26"><a href="#cb64-26"></a>  <span class="fu">ggtitle</span>(<span class="st">"ViolinBox"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-violin-combos" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A plot labelled 'ViolinBox' with 'Mean welfare per Capita' on the y-axis (0-90) and 'Region' (7 categories) on the x-axis. Each region is represented by a rainbow coloured violin with a boxplot inside it.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-violin-combos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2115,12 +2118,12 @@ Figure&nbsp;3.24: Violin plots combined with different methods to represent mean
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Misleading Bar Charts
+<span class="screen-reader-only">Caution</span>Misleading Bar Charts
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2189,8 +2192,8 @@ Figure&nbsp;3.25: Don’t plot continuous data with column plots. They are only 
 <span class="header-section-number">3.3.4.1</span> Scatterplot</h4>
 <p>The function to create a scatterplot is called <code>geom_point()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
-<span id="cb65-2"><a href="#cb65-2"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
+<span id="cb65-2"><a href="#cb65-2"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-demo-point" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A scatterplot with gini (0.2-0.7) on the x-axis and welfare_mean (0-90) on the y-axis. The dots are solid black.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-demo-point-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2207,7 +2210,7 @@ Figure&nbsp;3.26: Scatterplot with geom_point().”
 <p>In <a href="#fig-layers" class="quarto-xref">Figure&nbsp;<span>3.2</span></a>, we emphasised the relationship between Gini index and welfare with a trendline created by <code>geom_smooth()</code> using the argument <code>method = lm</code> (“lm” stands for “linear model” or a straight line relationship). You can also set <code>method = loess</code> to visualise a non-linear relationship.</p>
 <p>The <code>formula</code> will default to <code>y~x</code> (y predicted by x), but if you suspect a different relationship, you can change this, such as to the equation for a quadratic relationship (<code>y~x + I(x^2)</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>loess_plot <span class="ot">&lt;-</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>loess_plot <span class="ot">&lt;-</span> </span>
 <span id="cb66-2"><a href="#cb66-2"></a>  <span class="fu">ggplot</span>(pip,  <span class="fu">aes</span>(<span class="at">x =</span> gini, <span class="at">y =</span> welfare_mean)) <span class="sc">+</span></span>
 <span id="cb66-3"><a href="#cb66-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
 <span id="cb66-4"><a href="#cb66-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> loess, <span class="at">formula =</span> y<span class="sc">~</span>x) <span class="sc">+</span></span>
@@ -2225,7 +2228,7 @@ Figure&nbsp;3.26: Scatterplot with geom_point().”
 <span id="cb66-16"><a href="#cb66-16"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y<span class="sc">~</span>x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">+</span></span>
 <span id="cb66-17"><a href="#cb66-17"></a>  <span class="fu">ggtitle</span>(<span class="st">"Quadratic: method = lm, formula = y~x + I(x^2)"</span>)</span>
 <span id="cb66-18"><a href="#cb66-18"></a></span>
-<span id="cb66-19"><a href="#cb66-19"></a>loess_plot <span class="sc">/</span> lm_plot <span class="sc">/</span> lm2_plot </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb66-19"><a href="#cb66-19"></a>loess_plot <span class="sc">/</span> lm_plot <span class="sc">/</span> lm2_plot </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-2-continuous" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Thre versions of a trend line trhough the scatterplot above with gini (0.2-0.7) on the x-axis and welfare_mean (0-90) on the y-axis. The dots are transparent black. The top plot 'Default: method = loess, formula = y~x' shows a wavy line through the points. The middle plot 'Linear: method = lm, formula = y~x' shows a straight line. The bottom plot 'Quadratic: method = lm, formula = y~x + I(x^2)' shows a smoothly curved line.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-2-continuous-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2243,7 +2246,7 @@ Figure&nbsp;3.27: Different ways to show the relationship between two continuous
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Error shading
+<span class="screen-reader-only">Warning</span>Error shading
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2254,7 +2257,7 @@ Error shading
 <span class="header-section-number">3.3.4.3</span> Dates</h4>
 <p>We’ll need some different data for the next few plots. Run the following code to simulate some data with random dates in the year 2025, random rating on an ordinal scale from 1 to 5, and random scores on a continuous scale from 0-100 that increase over the year and have an inverted-U shaped relationship to rating We’ll use simulation a lot in this class to make data so we can change it and see how that affects our code output.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="fu">set.seed</span>(<span class="dv">8675309</span>) <span class="co"># makes the simulation reproducible</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="fu">set.seed</span>(<span class="dv">8675309</span>) <span class="co"># makes the simulation reproducible</span></span>
 <span id="cb67-2"><a href="#cb67-2"></a></span>
 <span id="cb67-3"><a href="#cb67-3"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># number of data points to simulate</span></span>
 <span id="cb67-4"><a href="#cb67-4"></a></span>
@@ -2269,13 +2272,13 @@ Error shading
 <span id="cb67-13"><a href="#cb67-13"></a>  <span class="at">rating =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb67-14"><a href="#cb67-14"></a>  <span class="at">mean =</span> <span class="dv">50</span> <span class="sc">+</span> <span class="fu">month</span>(datetime) <span class="sc">-</span> <span class="dv">6</span> <span class="sc">+</span> <span class="fu">abs</span>(rating <span class="sc">-</span> <span class="dv">3</span>)<span class="sc">*</span><span class="dv">5</span> <span class="sc">-</span> <span class="dv">5</span>,</span>
 <span id="cb67-15"><a href="#cb67-15"></a>  <span class="at">score =</span> <span class="fu">rnorm</span>(n, mean, <span class="at">sd =</span> <span class="dv">12</span>)</span>
-<span id="cb67-16"><a href="#cb67-16"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb67-16"><a href="#cb67-16"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>datetime</code> column contains both a date and a time, so use the <code><a href="https://rdrr.io/r/base/date.html">date()</a></code> function from <pkg>lubridate</pkg> to convert it to just a date. We’ll need it in this format to be able to transform the x-axis below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">ggplot</span>(simdat, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">date</span>(datetime), </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">ggplot</span>(simdat, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">date</span>(datetime), </span>
 <span id="cb68-2"><a href="#cb68-2"></a>                   <span class="at">y =</span> score)) <span class="sc">+</span> </span>
-<span id="cb68-3"><a href="#cb68-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y<span class="sc">~</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb68-3"><a href="#cb68-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y<span class="sc">~</span>x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-date-x" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A line plot with `date(datetime) on the x-axis and tickes reading Jan 2025 to Jan 2026 in 3-month increments, and score on the y-axis with ticks ranging from 45.0 to 57.5. A blue linear trend line goes from the bottom left corner to the toop right.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-date-x-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2289,13 +2292,13 @@ Figure&nbsp;3.28: Plotting dates.
 </div>
 <p>We can use <code>scale_x_date()</code> to set the <code>date_breaks</code> to be “1 month” apart. The <code>date_labels</code> argument uses a code for different date formats; you can see the full list of possibilities in the help for <code><a href="https://rdrr.io/r/base/strptime.html">?strptime</a></code>. For example, <code>%b</code> means “Abbreviated month name”, whilst if you wanted to use a format like “2020/01/31” you could try <code>"%Y/%m/%d"</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">ggplot</span>(simdat, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">date</span>(datetime), </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">ggplot</span>(simdat, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">date</span>(datetime), </span>
 <span id="cb69-2"><a href="#cb69-2"></a>                   <span class="at">y =</span> score)) <span class="sc">+</span></span>
 <span id="cb69-3"><a href="#cb69-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y<span class="sc">~</span>x) <span class="sc">+</span></span>
 <span id="cb69-4"><a href="#cb69-4"></a>  <span class="fu">scale_x_date</span>(<span class="at">name =</span> <span class="st">""</span>,</span>
 <span id="cb69-5"><a href="#cb69-5"></a>               <span class="at">date_breaks =</span> <span class="st">"1 month"</span>, </span>
 <span id="cb69-6"><a href="#cb69-6"></a>               <span class="at">date_labels =</span> <span class="st">"%b"</span>) <span class="sc">+</span></span>
-<span id="cb69-7"><a href="#cb69-7"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb69-7"><a href="#cb69-7"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Score"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-date-month" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The same plot as above, with each month labelled on the x-axis.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-date-month-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2314,7 +2317,7 @@ Figure&nbsp;3.29: Plotting dates with breaks one month apart.
 <button>
 Solution
 </button>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">ggplot</span>(simdat, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">date</span>(datetime), </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">ggplot</span>(simdat, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">date</span>(datetime), </span>
 <span id="cb70-2"><a href="#cb70-2"></a>                   <span class="at">y =</span> score)) <span class="sc">+</span></span>
 <span id="cb70-3"><a href="#cb70-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
 <span id="cb70-4"><a href="#cb70-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm,  <span class="at">formula =</span> y<span class="sc">~</span>x) <span class="sc">+</span></span>
@@ -2323,7 +2326,7 @@ Solution
 <span id="cb70-7"><a href="#cb70-7"></a>               <span class="at">date_labels =</span> <span class="st">"%b"</span>) <span class="sc">+</span></span>
 <span id="cb70-8"><a href="#cb70-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"Score"</span>,</span>
 <span id="cb70-9"><a href="#cb70-9"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb70-10"><a href="#cb70-10"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)) <span class="co"># changes limits</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb70-10"><a href="#cb70-10"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)) <span class="co"># changes limits</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="images/figures/unnamed-chunk-29-1.png" class="img-fluid figure-img" style="width:100.0%" alt="The same plot as above, with Score ranging from 0 to 100 and transparent black points showing the raw data. There is a lot of overplotting, but the data gets less dense as you move away from the line."></p>
@@ -2338,8 +2341,8 @@ Solution
 <p>When you have a limited range of numeric values, such as an ordinal rating scale, sometimes overlapping data makes it difficult to see what is going on in a point plot. For example, the plot below shows score by rating, but because there are only 5 levels and a lot of data, it makes it hard to see exactly how many data points there are at each rating level.</p>
 <p>In this section, we’ll explore a few options for dealing with this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">ggplot</span>(simdat, <span class="fu">aes</span>(<span class="at">x =</span> score, <span class="at">y =</span> rating)) <span class="sc">+</span> </span>
-<span id="cb71-2"><a href="#cb71-2"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">ggplot</span>(simdat, <span class="fu">aes</span>(<span class="at">x =</span> score, <span class="at">y =</span> rating)) <span class="sc">+</span> </span>
+<span id="cb71-2"><a href="#cb71-2"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-over-plot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A point plot with score (0-100) on the xi-axis and rating (1-5) on the y-axis. Since there are only 5 scores, all of the points are bunched up on the same 5 lines and span nearly the whole x-axis range. This is difficult to read.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-over-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2358,8 +2361,8 @@ Figure&nbsp;3.30: Overlapping data makes plots hard to understand.
 <p>Change these values to understand what jitter is doing</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="fu">ggplot</span>(simdat, <span class="fu">aes</span>(<span class="at">x =</span> score, <span class="at">y =</span> rating)) <span class="sc">+</span> </span>
-<span id="cb72-2"><a href="#cb72-2"></a>  <span class="fu">geom_jitter</span>(<span class="at">height =</span> <span class="fl">0.2</span>, <span class="at">width =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="fu">ggplot</span>(simdat, <span class="fu">aes</span>(<span class="at">x =</span> score, <span class="at">y =</span> rating)) <span class="sc">+</span> </span>
+<span id="cb72-2"><a href="#cb72-2"></a>  <span class="fu">geom_jitter</span>(<span class="at">height =</span> <span class="fl">0.2</span>, <span class="at">width =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-jitter-plot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The same plot as above, but with the 5 horizontal lines of points spread out from +/- 0.25 around the integer y axis.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-jitter-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2375,7 +2378,7 @@ Figure&nbsp;3.31: Jitter plot.
 <span class="header-section-number">3.3.5.2</span> Facets</h4>
 <p>Alternatively, you can use <code>facet_wrap()</code> to create a separate plot for each rating. <code>facet_wrap()</code> uses the tilde (~) symbol, which you can roughly translate as “by”, e.g., facet the plot <em>by</em> rating. The <code>labeller</code> function controls the labels above each plot. <code>label_both</code> specifies that we want both the variable name (rating) and the value (e.g., 1) printed on the plot to make it easier to read.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="fu">ggplot</span>(simdat, <span class="fu">aes</span>(<span class="at">x =</span> score)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="fu">ggplot</span>(simdat, <span class="fu">aes</span>(<span class="at">x =</span> score)) <span class="sc">+</span></span>
 <span id="cb73-2"><a href="#cb73-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, </span>
 <span id="cb73-3"><a href="#cb73-3"></a>                 <span class="at">boundary =</span> <span class="dv">0</span>, </span>
 <span id="cb73-4"><a href="#cb73-4"></a>                 <span class="at">fill =</span> <span class="st">"dodgerblue"</span>, </span>
@@ -2384,7 +2387,7 @@ Figure&nbsp;3.31: Jitter plot.
 <span id="cb73-7"><a href="#cb73-7"></a>             <span class="at">ncol =</span> <span class="dv">1</span>, <span class="co"># try changing this to 2 </span></span>
 <span id="cb73-8"><a href="#cb73-8"></a>             <span class="at">labeller =</span> label_both) <span class="sc">+</span></span>
 <span id="cb73-9"><a href="#cb73-9"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">"Score"</span>,</span>
-<span id="cb73-10"><a href="#cb73-10"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb73-10"><a href="#cb73-10"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-facet-plot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Five plots, one for each rating level, showing a histogram of the score distribution. The x-axis shows score ranging from 0 to 100 and the y-axis shows count ranging from 0 to 300. All plots show a normal distribution centered around 55, 50, 45, 50, and 55 for the ratings 1-5.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-facet-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2402,7 +2405,7 @@ Figure&nbsp;3.32: A histogram with facets.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-More plots styles
+<span class="screen-reader-only">Note</span>More plots styles
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2421,7 +2424,7 @@ More plots styles
 <li>Remove the default template text</li>
 <li>Add the code below in the set-up code chunk:</li>
 </ul>
-<div class="sourceCode" id="cb74"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb74-1"><a href="#cb74-1"></a><span class="in">```{r}</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb74"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb74-1"><a href="#cb74-1"></a><span class="in">```{r}</span></span>
 <span id="cb74-2"><a href="#cb74-2"></a><span class="co">#| label: setup</span></span>
 <span id="cb74-3"><a href="#cb74-3"></a><span class="co">#| include: false</span></span>
 <span id="cb74-4"><a href="#cb74-4"></a></span>
@@ -2430,7 +2433,7 @@ More plots styles
 <span id="cb74-7"><a href="#cb74-7"></a><span class="fu">library</span>(ggthemes)  </span>
 <span id="cb74-8"><a href="#cb74-8"></a></span>
 <span id="cb74-9"><a href="#cb74-9"></a>personality <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://psyteachr.github.io/reprores/data/personality_scores.csv"</span>)</span>
-<span id="cb74-10"><a href="#cb74-10"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb74-10"><a href="#cb74-10"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section><section id="data-import" class="level3" data-number="3.4.2"><h3 data-number="3.4.2" class="anchored" data-anchor-id="data-import">
 <span class="header-section-number">3.4.2</span> Data import</h3>
 <p>Give human-readable labels to the columns you’ll be plotting:</p>
@@ -2876,13 +2879,14 @@ $( document ).ready(function() {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

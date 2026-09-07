@@ -2,11 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book provides an overview of skills needed for reproducible and open research using the statistical programming language R and tidyverse packages. It covers reproducible workflows, data visualisation, data tidying and wrangling, archiving, iteration and functions, probability and data simulations.">
 <title>Appendix F — Debugging – Data Skills for Reproducible Research</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,14 +74,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6e6edf6cb1293d7f667c2f39c143ab5.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6e6edf6cb1293d7f667c2f39c143ab5.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5a2acb6f4ed5aeb23a104ba421924b87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b56890a068b942f55e2563621ee82f98.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-904ee2616c496a5b8f2248b0b558f1e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-b56890a068b942f55e2563621ee82f98.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-bbcee6fbcf8bde314366f5cbde244fc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-dfa2a00916de9ee8c66f066e5900e70b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-bbcee6fbcf8bde314366f5cbde244fc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -570,7 +573,7 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <section id="report-setup" class="level2" data-number="F.1"><h2 data-number="F.1" class="anchored" data-anchor-id="report-setup">
 <span class="header-section-number">F.1</span> Report Setup</h2>
 <p>Create a new quarto file and delete everything below the setup chunk. Edit the YAML header to use a floating table of contents and add the outline of your report.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "Report"</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="an">date:</span><span class="co"> "2025-09-16"</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="an">output:</span><span class="co"> </span></span>
@@ -595,7 +598,7 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <span id="cb1-23"><a href="#cb1-23"></a></span>
 <span id="cb1-24"><a href="#cb1-24"></a><span class="fu">## Analysis</span></span>
 <span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="fu">## References</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="fu">## References</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Save this file and knit it. Ideally, this will generate some output in a new tab in the console pane called “Render” that starts with <code>processing file: report-demo.Rmd</code> and ends with <code>Output created: report-demo.html</code>. There will be a lot of output in between, but you don’t need to worry about it until something goes wrong.</p>
 </section><section id="yaml-errors" class="level2" data-number="F.2"><h2 data-number="F.2" class="anchored" data-anchor-id="yaml-errors">
 <span class="header-section-number">F.2</span> YAML Errors</h2>
@@ -660,19 +663,19 @@ output:
 <div class="code-with-filename-file">
 <pre><strong>Run in the console</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p>Now, make a code chunk somewhere in your report like this and run it interactively (not by knitting). It should create a new table called <code>droids</code> with 6 rows.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="in">```{r}</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="in">```{r}</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>droids <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Droid"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now try to knit the report. Because you didn’t load the tidyverse package bundle in the script, you’ll get an error about not being able to find the function <code>%&gt;%</code> (you’ll learn about the pipe in <a href="04-summary.html#sec-pipes-first" class="quarto-xref"><span>Section 4.2</span></a>). When you knit, any objects in your <a href="https://psyteachr.github.io/glossary/g#global-environment" target="_blank" class="glossary" title="The interactive workspace where your script runs">global environment</a> or packages that you’ve loaded are unavailable and the script only has access to objects it creates and packages it loads.</p>
 <p>Add <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> to the setup chunk and knit to confirm this works.</p>
 <section id="could-not-find-function" class="level3" data-number="F.3.1"><h3 data-number="F.3.1" class="anchored" data-anchor-id="could-not-find-function">
 <span class="header-section-number">F.3.1</span> Could not find function</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>title <span class="ot">&lt;-</span> <span class="fu">pasteO</span>(<span class="st">"Lavendar"</span>, <span class="st">"Haze"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>title <span class="ot">&lt;-</span> <span class="fu">pasteO</span>(<span class="st">"Lavendar"</span>, <span class="st">"Haze"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in pasteO("Lavendar", "Haze"): could not find function "pasteO"</code></pre>
 </div>
@@ -681,7 +684,7 @@ output:
 </section><section id="unused-argument" class="level3" data-number="F.3.2"><h3 data-number="F.3.2" class="anchored" data-anchor-id="unused-argument">
 <span class="header-section-number">F.3.2</span> Unused argument</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">rnorm</span>(<span class="at">N =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">rnorm</span>(<span class="at">N =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in rnorm(N = 10): unused argument (N = 10)</code></pre>
 </div>
@@ -690,7 +693,7 @@ output:
 </section><section id="non-numeric-argument-to-binary-operator" class="level3" data-number="F.3.3"><h3 data-number="F.3.3" class="anchored" data-anchor-id="non-numeric-argument-to-binary-operator">
 <span class="header-section-number">F.3.3</span> Non-numeric argument to binary operator</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="st">"A"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="st">"A"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in 1 + "A": non-numeric argument to binary operator</code></pre>
 </div>
@@ -699,10 +702,10 @@ output:
 </section><section id="tibble-columns-must-have-compatible-sizes" class="level3" data-number="F.3.4"><h3 data-number="F.3.4" class="anchored" data-anchor-id="tibble-columns-must-have-compatible-sizes">
 <span class="header-section-number">F.3.4</span> Tibble columns must have compatible sizes</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
 <span id="cb16-2"><a href="#cb16-2"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
 <span id="cb16-3"><a href="#cb16-3"></a>  <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a href="#cb16-4"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `tibble::tibble()`:
 ! Tibble columns must have compatible sizes.
@@ -714,7 +717,7 @@ output:
 <p>This error occurs when you’re creating a table using <code>tibble()</code> and the columns have different lengths. You can set a column to a single value (i.e., a vector with length 1) and it will be “recycled” for every row, but you can’t give two columns values with different lengths if their lengths are greater than 1.</p>
 <p>The same problem occurs if the function you’re using adds columns to a tibble. The tidyverse error messages are generall very useful in this case.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>mtcars3 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(mtcars, <span class="at">newcol =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>mtcars3 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(mtcars, <span class="at">newcol =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `mutate()`:
 ℹ In argument: `newcol = 1:3`.
@@ -725,17 +728,17 @@ Caused by error:
 </section><section id="arguments-imply-differing-number-of-rows" class="level3" data-number="F.3.5"><h3 data-number="F.3.5" class="anchored" data-anchor-id="arguments-imply-differing-number-of-rows">
 <span class="header-section-number">F.3.5</span> Arguments imply differing number of rows</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">data.frame</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">data.frame</span>(</span>
 <span id="cb20-2"><a href="#cb20-2"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
 <span id="cb20-3"><a href="#cb20-3"></a>  <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-4"><a href="#cb20-4"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in data.frame(x = 1:2, y = 1:3): arguments imply differing number of rows: 2, 3</code></pre>
 </div>
 </div>
 <p>A similar problem occurs if you’re using the <a href="https://psyteachr.github.io/glossary/b#base-r" target="_blank" class="glossary" title="The set of R functions that come with a basic installation of R, before you add external packages.">base R</a> function <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> (or the function you’re using does). The error message is different, but it’s the same problem. You will also see a related error message if you use base R techniques to add a column with a different length to the data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>mtcars<span class="sc">$</span>newcol <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>mtcars<span class="sc">$</span>newcol <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `$&lt;-.data.frame`(`*tmp*`, newcol, value = 1:3): replacement has 3 rows, data has 32</code></pre>
 </div>
@@ -750,11 +753,11 @@ Caused by error:
 <span class="header-section-number">F.4.2</span> Comment out</h3>
 <p>A useful method of debugging a tricky error is commenting out parts of your code and re-running the code to figure out exactly which code is causing the problem. Try</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>dat <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>dat <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">select</span>(name, height, mass, species) <span class="sc">%&gt;%</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">filter</span>(Species <span class="sc">==</span> <span class="st">"Droid"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">select</span>(<span class="sc">-</span>species) <span class="sc">%&gt;%</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">filter</span>(mass <span class="sc">&lt;</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">filter</span>(mass <span class="sc">&lt;</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `filter()`:
 ℹ In argument: `Species == "Droid"`.
@@ -764,11 +767,11 @@ Caused by error:
 </div>
 <p>Imagine the error message was a bit less helpful. You can try running the code line by line. Either select just the code you want to run, or comment out the code you don’t want to run. Remember to also comment out linking functions at the end of lines, like the pipe (<code>%&gt;%</code>) or the ggplot plus (<code>+</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>dat <span class="ot">&lt;-</span> starwars <span class="co">#%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>dat <span class="ot">&lt;-</span> starwars <span class="co">#%&gt;%</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a>  <span class="co"># select(name, height, mass, species) %&gt;%</span></span>
 <span id="cb26-3"><a href="#cb26-3"></a>  <span class="co"># filter(Species == "Droid") %&gt;%</span></span>
 <span id="cb26-4"><a href="#cb26-4"></a>  <span class="co"># select(-species) %&gt;%</span></span>
-<span id="cb26-5"><a href="#cb26-5"></a>  <span class="co"># filter(mass &lt; 100)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-5"><a href="#cb26-5"></a>  <span class="co"># filter(mass &lt; 100)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -785,23 +788,23 @@ Tip
 </div>
 <p>Select more code or delete the comments until you locate the error.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>dat <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>dat <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">select</span>(name, height, mass, species) <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">filter</span>(Species <span class="sc">==</span> <span class="st">"Droid"</span>) <span class="co">#%&gt;%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">filter</span>(Species <span class="sc">==</span> <span class="st">"Droid"</span>) <span class="co">#%&gt;%</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `filter()`:
 ℹ In argument: `Species == "Droid"`.
 Caused by error:
 ! object 'Species' not found</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>  <span class="co"># select(-species) %&gt;%</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>  <span class="co"># filter(mass &lt; 100)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>  <span class="co"># select(-species) %&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="co"># filter(mass &lt; 100)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="google-the-error" class="level3" data-number="F.4.3"><h3 data-number="F.4.3" class="anchored" data-anchor-id="google-the-error">
 <span class="header-section-number">F.4.3</span> Google the error</h3>
 <p>Many error messages seem incomprehensible. Googling this message can often lead you to solutions. Take the famous example of “object of type ‘closure’ is not subsettable”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>data<span class="sc">$</span>x <span class="ot">&lt;-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>data<span class="sc">$</span>x <span class="ot">&lt;-</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in data$x &lt;- 1: object of type 'closure' is not subsettable</code></pre>
 </div>
@@ -827,13 +830,13 @@ Note
 <p>You can include a very small table with just the basics or a smaller version of your problem. Make comments at each step about what you expect and what you actually got.</p>
 <p>Which version is easier for you to figure out the solution?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># this doesn't work</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># this doesn't work</span></span>
 <span id="cb32-2"><a href="#cb32-2"></a>no_test_data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(type, <span class="st">"test"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(type, <span class="st">"test"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>… OR …</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb33-2"><a href="#cb33-2"></a></span>
 <span id="cb33-3"><a href="#cb33-3"></a><span class="co"># with a minimal example table</span></span>
 <span id="cb33-4"><a href="#cb33-4"></a>data <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
@@ -848,7 +851,7 @@ Note
 <span id="cb33-13"><a href="#cb33-13"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(type, <span class="st">"test"</span>))</span>
 <span id="cb33-14"><a href="#cb33-14"></a></span>
 <span id="cb33-15"><a href="#cb33-15"></a><span class="co"># expected to be true</span></span>
-<span id="cb33-16"><a href="#cb33-16"></a><span class="fu">all</span>(no_test_data<span class="sc">$</span>type <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"testosterone"</span>, <span class="st">"estrogen"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-16"><a href="#cb33-16"></a><span class="fu">all</span>(no_test_data<span class="sc">$</span>type <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"testosterone"</span>, <span class="st">"estrogen"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>One of the big benefits to creating a reprex is that you often solve your own problem while you’re trying to break it down to explain to someone else.</p>
 <p>If you really want to go down the rabbit hole, you can create a reproducible example using the <a href="https://www.tidyverse.org/help/#reprex">reprex</a> package from tidyverse.</p>
@@ -1104,13 +1107,14 @@ $( document ).ready(function() {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

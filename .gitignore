@@ -11,3 +11,5 @@ msc-data-skills.Rproj
 .httr-oauth
 .DS_Store
 .quarto
+
+**/*.quarto_ipynb

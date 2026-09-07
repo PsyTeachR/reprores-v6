@@ -2,11 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book provides an overview of skills needed for reproducible and open research using the statistical programming language R and tidyverse packages. It covers reproducible workflows, data visualisation, data tidying and wrangling, archiving, iteration and functions, probability and data simulations.">
 <title>6&nbsp; Data Tidying – Data Skills for Reproducible Research</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,14 +74,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6e6edf6cb1293d7f667c2f39c143ab5.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6e6edf6cb1293d7f667c2f39c143ab5.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5a2acb6f4ed5aeb23a104ba421924b87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b56890a068b942f55e2563621ee82f98.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-904ee2616c496a5b8f2248b0b558f1e7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-b56890a068b942f55e2563621ee82f98.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-bbcee6fbcf8bde314366f5cbde244fc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-dfa2a00916de9ee8c66f066e5900e70b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-bbcee6fbcf8bde314366f5cbde244fc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -616,12 +619,12 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <li>Update the YAML header</li>
 <li>Replace the setup chunk with the one below:</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="in">```{r}</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">#| label: setup</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co">#| include: false</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a></span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(tidyverse) <span class="co"># for data wrangling</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You’ll also need to make a folder called “data” and download two data files into it: <a href="https://psyteachr.github.io/ads-v2/data/tidy_data.csv" download="">tidy_data.csv</a> and <a href="https://psyteachr.github.io/ads-v2/data/untidy_data.csv" download="">untidy_data.csv</a>.</p>
 <p>Download the <a href="https://rstudio.github.io/cheatsheets/html/tidyr.html">Data tidying cheat sheet</a>.</p>
 </section><section id="data-structures" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="data-structures">
@@ -710,7 +713,7 @@ Explain these answers
 <span class="header-section-number">6.2.1</span> Untidy data</h3>
 <p>First, let’s have a look at an example of a messy, or untidy, dataset. Each row has all of the data relating to one customer.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>untidy_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/untidy_data.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>untidy_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/untidy_data.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div id="tbl-untidy-data" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -719,7 +722,7 @@ Table&nbsp;6.1: Untidy table
 </figcaption><div aria-describedby="tbl-untidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 11%">
 <col style="width: 14%">
@@ -819,7 +822,7 @@ Table&nbsp;6.1: Untidy table
 </ul>
 <p>This is the tidy version:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>tidy_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/tidy_data.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>tidy_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/tidy_data.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div id="tbl-tidy-data" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -828,7 +831,7 @@ Table&nbsp;6.2: Tidy table
 </figcaption><div aria-describedby="tbl-tidy-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: right;">customer_id</th>
 <th style="text-align: right;">year</th>
@@ -962,12 +965,12 @@ Table&nbsp;6.2: Tidy table
 <li>sum the <code>totalprice</code> column to get the total price per customer</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>tidy_data <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>tidy_data <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">group_by</span>(customer_id) <span class="sc">|&gt;</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">summarise</span>(</span>
 <span id="cb4-4"><a href="#cb4-4"></a>    <span class="at">total_items =</span> <span class="fu">sum</span>(items),</span>
 <span id="cb4-5"><a href="#cb4-5"></a>    <span class="at">total_price =</span> <span class="fu">sum</span>(totalprice)</span>
-<span id="cb4-6"><a href="#cb4-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1055,14 +1058,14 @@ Warning
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># select just the customer ID and 3 total price columns</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># select just the customer ID and 3 total price columns</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>wide_totalprice <span class="ot">&lt;-</span> <span class="fu">select</span>(</span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">.data =</span> untidy_data,</span>
 <span id="cb6-4"><a href="#cb6-4"></a>  customer_id, </span>
 <span id="cb6-5"><a href="#cb6-5"></a>  <span class="st">`</span><span class="at">2018</span><span class="st">`</span> <span class="ot">=</span> totalprice_2018,</span>
 <span id="cb6-6"><a href="#cb6-6"></a>  <span class="st">`</span><span class="at">2019</span><span class="st">`</span> <span class="ot">=</span> totalprice_2019,</span>
 <span id="cb6-7"><a href="#cb6-7"></a>  <span class="st">`</span><span class="at">2020</span><span class="st">`</span> <span class="ot">=</span> totalprice_2020</span>
-<span id="cb6-8"><a href="#cb6-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-8"><a href="#cb6-8"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div id="tbl-wide-data" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1071,7 +1074,7 @@ Table&nbsp;6.3: Wide table
 </figcaption><div aria-describedby="tbl-wide-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: right;">customer_id</th>
 <th style="text-align: right;">2018</th>
@@ -1120,11 +1123,11 @@ Table&nbsp;6.3: Wide table
 <p>This is in wide format, where each row is a customer, and represents the data from several years. This is a really intuitive way for humans to read a table, but it’s not as easy to process with code.</p>
 <p>The same data can be represented in a long format by creating a new column that specifies what <code>year</code> the observation is from and a new column that specifies the <code>totalprice</code> of that observation. This is easier to use to make summaries and plots.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>long_totalprice <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>long_totalprice <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(</span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="at">data =</span> wide_totalprice,</span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="at">cols =</span> <span class="st">`</span><span class="at">2018</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2020</span><span class="st">`</span>,</span>
 <span id="cb7-4"><a href="#cb7-4"></a>  <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5"></a>  <span class="at">values_to =</span> <span class="st">"totalprice"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="at">values_to =</span> <span class="st">"totalprice"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div id="tbl-long-data" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1133,7 +1136,7 @@ Table&nbsp;6.4: Long table
 </figcaption><div aria-describedby="tbl-long-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: right;">customer_id</th>
 <th style="text-align: left;">year</th>
@@ -1225,8 +1228,8 @@ Table&nbsp;6.4: Long table
 </div>
 <p>It also makes it very easy to use with <code>ggplot()</code>. Run the following plot, and consider how you’d make it with the wide version (it is likely impossible).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">ggplot</span>(long_totalprice, <span class="fu">aes</span>(<span class="at">x =</span> totalprice, <span class="at">fill =</span> year)) <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">border =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">ggplot</span>(long_totalprice, <span class="fu">aes</span>(<span class="at">x =</span> totalprice, <span class="at">fill =</span> year)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">border =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in geom_histogram(binwidth = 10, color = "black", border = 0): Ignoring
 unknown parameters: `border`</code></pre>
@@ -1344,12 +1347,12 @@ Note
 </ul>
 <p>With the pivot functions, it can be easier to show than tell - run the below code and then compare <code>wide_totalprice</code> with <code>long_totalprice</code> and the pivot code and try to map each argument to what has changed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>long_totalprice <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>long_totalprice <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(</span>
 <span id="cb10-2"><a href="#cb10-2"></a>  <span class="at">data =</span> wide_totalprice, </span>
 <span id="cb10-3"><a href="#cb10-3"></a>  <span class="at">cols =</span> <span class="st">`</span><span class="at">2018</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2020</span><span class="st">`</span>, <span class="co"># columns to make long </span></span>
 <span id="cb10-4"><a href="#cb10-4"></a>  <span class="at">names_to =</span> <span class="st">"year"</span>, <span class="co"># new column name for headers</span></span>
 <span id="cb10-5"><a href="#cb10-5"></a>  <span class="at">values_to =</span> <span class="st">"totalprice"</span> <span class="co"># new column name for values</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-6"><a href="#cb10-6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="long-to-wide" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="long-to-wide">
 <span class="header-section-number">6.3.2</span> Long to wide</h3>
@@ -1365,13 +1368,13 @@ Note
 <code>values_from</code>: the column that contains the values for the new columns</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>wide_by_customer <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>wide_by_customer <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(</span>
 <span id="cb11-2"><a href="#cb11-2"></a>  <span class="at">data =</span> long_totalprice,</span>
 <span id="cb11-3"><a href="#cb11-3"></a>  <span class="at">id_cols =</span> year, <span class="co"># identifying column(s)</span></span>
 <span id="cb11-4"><a href="#cb11-4"></a>  <span class="at">names_from =</span> customer_id, <span class="co"># the new column names</span></span>
 <span id="cb11-5"><a href="#cb11-5"></a>  <span class="at">names_prefix =</span> <span class="st">"C_"</span>, <span class="co"># prefix for new column names</span></span>
 <span id="cb11-6"><a href="#cb11-6"></a>  <span class="at">values_from =</span> totalprice <span class="co"># the new column values</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-7"><a href="#cb11-7"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div id="tbl-wide-pivot" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1380,7 +1383,7 @@ Table&nbsp;6.5: Data made wider with pivot_wider()
 </figcaption><div aria-describedby="tbl-wide-pivot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: left;">year</th>
 <th style="text-align: right;">C_1</th>
@@ -1628,7 +1631,7 @@ Table&nbsp;6.5: Data made wider with pivot_wider()
 <p>Because we’ll be combining columns with numeric (<code>totalprice</code>) and character (<code>itemsprice</code>) data, we need to make the new <code>value</code> column a character data type using <code>values_transform</code>, since numbers can be represented as characters (like <code>"3.5"</code>), but character strings can’t be represented as numbers.</p>
 <p>The argument <code>names_sep</code> is set to the character string used to join names if <code>names_from</code> is more than one column. Alternatively, you can use the argument <code>names_pattern</code>, which can be more powerful but also a little harder to understand how to set up.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>longer_data <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>longer_data <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(</span>
 <span id="cb12-2"><a href="#cb12-2"></a>  <span class="at">data =</span> untidy_data, </span>
 <span id="cb12-3"><a href="#cb12-3"></a>  <span class="at">cols =</span> itemsprice_2018<span class="sc">:</span>totalprice_2020, <span class="co"># columns to make long </span></span>
 <span id="cb12-4"><a href="#cb12-4"></a>  <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"category"</span>, <span class="st">"year"</span>), <span class="co"># new column names for cols</span></span>
@@ -1639,7 +1642,7 @@ Table&nbsp;6.5: Data made wider with pivot_wider()
 <span id="cb12-9"><a href="#cb12-9"></a>  <span class="co"># make sure new columns are the right data type</span></span>
 <span id="cb12-10"><a href="#cb12-10"></a>  <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">year =</span> as.integer),</span>
 <span id="cb12-11"><a href="#cb12-11"></a>  <span class="at">values_transform =</span> <span class="fu">list</span>(<span class="at">value =</span> as.character) </span>
-<span id="cb12-12"><a href="#cb12-12"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-12"><a href="#cb12-12"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div id="tbl-wide-to-long" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1648,7 +1651,7 @@ Table&nbsp;6.6: Untidy data converted from wide to long.
 </figcaption><div aria-describedby="tbl-wide-to-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: right;">customer_id</th>
 <th style="text-align: left;">category</th>
@@ -1848,12 +1851,12 @@ Table&nbsp;6.6: Untidy data converted from wide to long.
 <span class="header-section-number">6.4.2</span> One variable per column</h3>
 <p>Now this table is long, but not tidy. The <code>value</code> column contains data from two different variables. We need to make the table wider, but not as wide as before. We want to keep the <code>year</code> column and make new columns called <code>itemsprice</code> and <code>totalprice</code> with the relevant customer’s <code>value</code> for that variable and year.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>wider_data <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>wider_data <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(</span>
 <span id="cb13-2"><a href="#cb13-2"></a>  <span class="at">data =</span> longer_data,</span>
 <span id="cb13-3"><a href="#cb13-3"></a>  <span class="at">id_cols =</span> <span class="fu">c</span>(customer_id, year),</span>
 <span id="cb13-4"><a href="#cb13-4"></a>  <span class="at">names_from =</span> category,</span>
 <span id="cb13-5"><a href="#cb13-5"></a>  <span class="at">values_from =</span> value</span>
-<span id="cb13-6"><a href="#cb13-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-6"><a href="#cb13-6"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div id="tbl-intermediate" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1862,7 +1865,7 @@ Table&nbsp;6.7: Data converted from long to an intermediate shape.
 </figcaption><div aria-describedby="tbl-intermediate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: right;">customer_id</th>
 <th style="text-align: right;">year</th>
@@ -1985,14 +1988,14 @@ Note
 <span class="header-section-number">6.4.3</span> One value per cell</h3>
 <p>The cells in the <code>itemsprice</code> column actually contain two different values. We need to split it into two columns for the variables <code>items</code>, and <code>price_per_item</code>. You can split a column into parts with the function <code><a href="https://tidyr.tidyverse.org/reference/separate.html">tidyr::separate()</a></code>. There is a space between the number of items and the brackets, so we can split it along this space – if you are in charge of how data is stored, ensuring data is entered consistently makes this much easier.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>split_data <span class="ot">&lt;-</span> <span class="fu">separate</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>split_data <span class="ot">&lt;-</span> <span class="fu">separate</span>(</span>
 <span id="cb14-2"><a href="#cb14-2"></a>  <span class="at">data =</span> wider_data, </span>
 <span id="cb14-3"><a href="#cb14-3"></a>  <span class="at">col =</span> itemsprice, <span class="co"># the column to split</span></span>
 <span id="cb14-4"><a href="#cb14-4"></a>  <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"items"</span>, <span class="st">"price_per_item"</span>), <span class="co"># the new columns to create</span></span>
 <span id="cb14-5"><a href="#cb14-5"></a>  <span class="at">sep =</span> <span class="st">" "</span>, <span class="co"># split col by space</span></span>
 <span id="cb14-6"><a href="#cb14-6"></a>  <span class="at">remove =</span> <span class="cn">TRUE</span>, <span class="co"># whether to remove to old col</span></span>
 <span id="cb14-7"><a href="#cb14-7"></a>  <span class="at">convert =</span> <span class="cn">TRUE</span> <span class="co"># whether to fix the data type of the new columns</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-8"><a href="#cb14-8"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div id="tbl-split" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -2001,7 +2004,7 @@ Table&nbsp;6.8: The itemsprice column split into items and price_per_item using 
 </figcaption><div aria-describedby="tbl-split-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: right;">customer_id</th>
 <th style="text-align: right;">year</th>
@@ -2141,14 +2144,14 @@ Warning
 <p>The column <code>price_per_item</code> is still a character column because it has parentheses. There are a few ways to fix this. You can use the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> function to change a column or add a new one.</p>
 <p>Here, we’ll use <code><a href="https://stringr.tidyverse.org/reference/str_replace.html">stringr::str_replace_all()</a></code> to replace all of the “(” and “)” with ““.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>mutated_data <span class="ot">&lt;-</span> <span class="fu">mutate</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>mutated_data <span class="ot">&lt;-</span> <span class="fu">mutate</span>(</span>
 <span id="cb15-2"><a href="#cb15-2"></a>  <span class="at">.data =</span> split_data,</span>
 <span id="cb15-3"><a href="#cb15-3"></a>  <span class="at">price_per_item =</span> stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(</span>
 <span id="cb15-4"><a href="#cb15-4"></a>    <span class="at">string =</span> price_per_item, </span>
 <span id="cb15-5"><a href="#cb15-5"></a>    <span class="at">pattern =</span> <span class="st">"[()]"</span>, </span>
 <span id="cb15-6"><a href="#cb15-6"></a>    <span class="at">replacement =</span> <span class="st">""</span></span>
 <span id="cb15-7"><a href="#cb15-7"></a>  )</span>
-<span id="cb15-8"><a href="#cb15-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-8"><a href="#cb15-8"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div id="tbl-mutate" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -2157,7 +2160,7 @@ Table&nbsp;6.9: Mutating data to remove the parentheses from price_per_item.
 </figcaption><div aria-describedby="tbl-mutate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div class="kable-table">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: right;">customer_id</th>
 <th style="text-align: right;">year</th>
@@ -2283,8 +2286,8 @@ Table&nbsp;6.9: Mutating data to remove the parentheses from price_per_item.
 <span class="header-section-number">6.4.5</span> Fixing data types</h3>
 <p>The <code>price_per_item</code> and <code>totalprice</code> columns are still characters, so you can’t do things like calculate the sum of <code>totalprice</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># check the data types</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">glimpse</span>(mutated_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># check the data types</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">glimpse</span>(mutated_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 15
 Columns: 5
@@ -2297,13 +2300,13 @@ $ totalprice     &lt;chr&gt; "7.82", "37.76", "55.9", "3.91", "28.32", "5.59", "
 </div>
 <p>Once the data are clean and tidy, you can fix all of your column data types in one step using <code><a href="https://readr.tidyverse.org/reference/type_convert.html">readr::type_convert()</a></code>. This is good practice when you’ve finished cleaning a data set. If the automatic type detection doesn’t work as expected, this usually means that you still have non-numeric characters in a column where there were only supposed to be numbers. You can also manually set the column types in the same way as for <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code> (see <a href="app-import.html" class="quarto-xref"><span>Appendix H</span></a>)).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>tidy_data <span class="ot">&lt;-</span> <span class="fu">type_convert</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>tidy_data <span class="ot">&lt;-</span> <span class="fu">type_convert</span>(</span>
 <span id="cb18-2"><a href="#cb18-2"></a>  <span class="at">df =</span> mutated_data,</span>
 <span id="cb18-3"><a href="#cb18-3"></a>  <span class="at">trim_ws =</span> <span class="cn">TRUE</span> <span class="co"># removes spaces before and after values</span></span>
 <span id="cb18-4"><a href="#cb18-4"></a>)</span>
 <span id="cb18-5"><a href="#cb18-5"></a></span>
 <span id="cb18-6"><a href="#cb18-6"></a><span class="co"># check the data types</span></span>
-<span id="cb18-7"><a href="#cb18-7"></a><span class="fu">glimpse</span>(tidy_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="fu">glimpse</span>(tidy_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 15
 Columns: 5
@@ -2319,7 +2322,7 @@ $ totalprice     &lt;dbl&gt; 7.82, 37.76, 55.90, 3.91, 28.32, 5.59, 15.64, 23.60
 <p>We’ve already introduced pipes in <a href="04-summary.html#sec-pipes-first" class="quarto-xref"><span>Section 4.2</span></a> but this type of data processing is where they really start to shine, as they can significantly reduce the amount of code you write.</p>
 <p>As a recap, a pipe takes the result of the previous function and sends it to the next function as its first argument, which means that you do not need to create intermediate objects. Below is all the code we’ve used in this chapter, and in the process we created five objects. This can get very confusing in longer scripts.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>untidy_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/untidy_data.csv"</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>untidy_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/untidy_data.csv"</span>, </span>
 <span id="cb20-2"><a href="#cb20-2"></a>                        <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb20-3"><a href="#cb20-3"></a></span>
 <span id="cb20-4"><a href="#cb20-4"></a>longer_data <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(</span>
@@ -2360,7 +2363,7 @@ $ totalprice     &lt;dbl&gt; 7.82, 37.76, 55.90, 3.91, 28.32, 5.59, 15.64, 23.60
 <span id="cb20-39"><a href="#cb20-39"></a>tidy_data <span class="ot">&lt;-</span> <span class="fu">type_convert</span>(</span>
 <span id="cb20-40"><a href="#cb20-40"></a>  <span class="at">df =</span> mutated_data,</span>
 <span id="cb20-41"><a href="#cb20-41"></a>  <span class="at">trim_ws =</span> <span class="cn">TRUE</span></span>
-<span id="cb20-42"><a href="#cb20-42"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-42"><a href="#cb20-42"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2377,7 +2380,7 @@ Warning
 </div>
 <p>For longer series of steps like the one above, using pipes can eliminate many intermediate objects. This also makes it easier to add an intermediate step to your process without having to think of a new table name and edit the table input to the next step (which is really easy to accidentally miss).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>tidy_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"data/untidy_data.csv"</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>tidy_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"data/untidy_data.csv"</span>,</span>
 <span id="cb21-2"><a href="#cb21-2"></a>                      <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
 <span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb21-4"><a href="#cb21-4"></a>    <span class="at">cols =</span> itemsprice_2018<span class="sc">:</span>totalprice_2020,</span>
@@ -2408,7 +2411,7 @@ Warning
 <span id="cb21-29"><a href="#cb21-29"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb21-30"><a href="#cb21-30"></a>  <span class="fu">type_convert</span>(</span>
 <span id="cb21-31"><a href="#cb21-31"></a>    <span class="at">trim_ws =</span> <span class="cn">TRUE</span></span>
-<span id="cb21-32"><a href="#cb21-32"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-32"><a href="#cb21-32"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You can read the code above like this:</p>
 <ol type="1">
@@ -2520,9 +2523,9 @@ Note
 <button>
 Solution
 </button>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb22-2"><a href="#cb22-2"></a>wide1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/wide_exercise-1.csv"</span>)</span>
-<span id="cb22-3"><a href="#cb22-3"></a>wide2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/wide_exercise-2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-3"><a href="#cb22-3"></a>wide2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/wide_exercise-2.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p>The two datasets represent simulated data from a patient satisfaction survey. We’ll do them one at a time, as they differ in complexity.</p>
@@ -2556,10 +2559,10 @@ Explain these answers
 <button>
 Solution
 </button>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>tidy1 <span class="ot">&lt;-</span> wide1 <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>tidy1 <span class="ot">&lt;-</span> wide1 <span class="sc">|&gt;</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> q1<span class="sc">:</span>q5,</span>
 <span id="cb23-3"><a href="#cb23-3"></a>               <span class="at">names_to =</span> <span class="st">"question"</span>, </span>
-<span id="cb23-4"><a href="#cb23-4"></a>               <span class="at">values_to =</span> <span class="st">"response"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-4"><a href="#cb23-4"></a>               <span class="at">values_to =</span> <span class="st">"response"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section><section id="survey-2" class="level3" data-number="6.6.3"><h3 data-number="6.6.3" class="anchored" data-anchor-id="survey-2">
@@ -2601,11 +2604,11 @@ Hint 2
 <button>
 Solution
 </button>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>tidy2a <span class="ot">&lt;-</span> wide2 <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>tidy2a <span class="ot">&lt;-</span> wide2 <span class="sc">|&gt;</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> q1_sat<span class="sc">:</span>q5_rec,</span>
 <span id="cb24-3"><a href="#cb24-3"></a>               <span class="at">names_to =</span> <span class="st">"question"</span>, </span>
 <span id="cb24-4"><a href="#cb24-4"></a>               <span class="at">values_to =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">"question"</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"question"</span>, <span class="st">"category"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">"question"</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"question"</span>, <span class="st">"category"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="cell" data-webex.hide="Alternative solution">
@@ -2613,13 +2616,13 @@ Solution
 <button>
 Alternative solution
 </button>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># combine pivot_longer and separate by setting two values for names_to</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># combine pivot_longer and separate by setting two values for names_to</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a><span class="co"># must include names_sep to determine how to separate the column names</span></span>
 <span id="cb25-3"><a href="#cb25-3"></a>tidy2a <span class="ot">&lt;-</span> wide2 <span class="sc">|&gt;</span></span>
 <span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> q1_sat<span class="sc">:</span>q5_rec,</span>
 <span id="cb25-5"><a href="#cb25-5"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"question"</span>, <span class="st">"category"</span>), </span>
 <span id="cb25-6"><a href="#cb25-6"></a>               <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
-<span id="cb25-7"><a href="#cb25-7"></a>               <span class="at">values_to =</span> <span class="st">"response"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-7"><a href="#cb25-7"></a>               <span class="at">values_to =</span> <span class="st">"response"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section><section id="tidy-2b" class="level4" data-number="6.6.3.2"><h4 data-number="6.6.3.2" class="anchored" data-anchor-id="tidy-2b">
@@ -2654,12 +2657,12 @@ Hint 2
 <button>
 Solution
 </button>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>tidy2b <span class="ot">&lt;-</span> wide2 <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>tidy2b <span class="ot">&lt;-</span> wide2 <span class="sc">|&gt;</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> q1_sat<span class="sc">:</span>q5_rec,</span>
 <span id="cb26-3"><a href="#cb26-3"></a>               <span class="at">names_to =</span> <span class="st">"question"</span>, </span>
 <span id="cb26-4"><a href="#cb26-4"></a>               <span class="at">values_to =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">separate</span>(<span class="at">col =</span> <span class="st">"question"</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"question"</span>, <span class="st">"category"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"category"</span>, <span class="at">values_from =</span> <span class="st">"response"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"category"</span>, <span class="at">values_from =</span> <span class="st">"response"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section></section><section id="analysis-and-visualisation" class="level3" data-number="6.6.4"><h3 data-number="6.6.4" class="anchored" data-anchor-id="analysis-and-visualisation">
@@ -2670,7 +2673,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>tidy2a <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>tidy2a <span class="sc">|&gt;</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">group_by</span>(id, category) <span class="sc">|&gt;</span></span>
 <span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(response),</span>
 <span id="cb27-4"><a href="#cb27-4"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
@@ -2678,7 +2681,7 @@ Solution
 <span id="cb27-6"><a href="#cb27-6"></a>tidy2b <span class="sc">|&gt;</span></span>
 <span id="cb27-7"><a href="#cb27-7"></a>  <span class="fu">group_by</span>(id) <span class="sc">|&gt;</span></span>
 <span id="cb27-8"><a href="#cb27-8"></a>  <span class="fu">summarise</span>(<span class="at">mean_satisfaction =</span> <span class="fu">mean</span>(sat),</span>
-<span id="cb27-9"><a href="#cb27-9"></a>            <span class="at">mean_rec =</span> <span class="fu">mean</span>(rec))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-9"><a href="#cb27-9"></a>            <span class="at">mean_rec =</span> <span class="fu">mean</span>(rec))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p>Replicate the following:</p>
@@ -2704,11 +2707,11 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">ggplot</span>(tidy2b, <span class="fu">aes</span>(<span class="at">x =</span> sat, <span class="at">y =</span> rec, <span class="at">colour =</span> repeat_patient)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">ggplot</span>(tidy2b, <span class="fu">aes</span>(<span class="at">x =</span> sat, <span class="at">y =</span> rec, <span class="at">colour =</span> repeat_patient)) <span class="sc">+</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
 <span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y<span class="sc">~</span>x) <span class="sc">+</span></span>
 <span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Satisfaction score"</span>, <span class="at">y =</span> <span class="st">"Recommendation score"</span>, <span class="at">title =</span> <span class="st">"Satisfaction and recommendation scores"</span>) <span class="sc">+</span></span>
-<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section><section id="plot-2" class="level4" data-number="6.6.4.2"><h4 data-number="6.6.4.2" class="anchored" data-anchor-id="plot-2">
@@ -2727,11 +2730,11 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">ggplot</span>(tidy2a, <span class="fu">aes</span>(<span class="at">x =</span> repeat_patient, <span class="at">y =</span> response, <span class="at">fill =</span> repeat_patient)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">ggplot</span>(tidy2a, <span class="fu">aes</span>(<span class="at">x =</span> repeat_patient, <span class="at">y =</span> response, <span class="at">fill =</span> repeat_patient)) <span class="sc">+</span></span>
 <span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>category)<span class="sc">+</span></span>
 <span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb29-5"><a href="#cb29-5"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-5"><a href="#cb29-5"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Dark2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section><section id="plot-3" class="level4" data-number="6.6.4.3"><h4 data-number="6.6.4.3" class="anchored" data-anchor-id="plot-3">
@@ -2750,10 +2753,10 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">ggplot</span>(tidy2a, <span class="fu">aes</span>(<span class="at">x =</span> response)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">ggplot</span>(tidy2a, <span class="fu">aes</span>(<span class="at">x =</span> response)) <span class="sc">+</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"Grey"</span>) <span class="sc">+</span></span>
 <span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Responses across all questions and categories"</span>) <span class="sc">+</span></span>
-<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p>If your head hurts a bit at this point, rest assured it’s absolutely normal. As we said at the start, reshaping and tidying data is a conceptual leap and there’s no shortcut to the fact it just takes a bit of time and practice with different datasets - you will get there eventually!</p>
@@ -3065,13 +3068,14 @@ $( document ).ready(function() {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

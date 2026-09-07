@@ -11,15 +11,19 @@ img:not([alt]), img[alt=''] {
 }
 
 .join {
+  /*
   height: 150px;
   width: 200px;
   float: right;
   clear: right;
+  */
+  text-align: center;
 }
-
 .join img {
   width: 100%;
+  max-width: 30em;
 }
+
 
 .incomplete-chapter {
   padding: 1em;
