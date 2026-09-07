@@ -1,7 +1,7 @@
-Package: reprores
+Package: reprores-v6
 Title: Data Skills for Reproducible Research
-Version: 5.1
-Date: 2025-10-03
+Version: 6.0
+Date: 2026-09-07
 Authors@R: 
   c(
     person(
