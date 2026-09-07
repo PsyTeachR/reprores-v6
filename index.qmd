@@ -30,8 +30,9 @@ rstudioapi::versionInfo()$release_name
 
 This book was created using `r R.version.string` (`r R.version$nickname`) and RStudio version 2025.5.1.513 (Mariposa Orchid). It was rendered with quarto version `r quarto::quarto_version()`.  Most of the content of this book will work fine in versions of R above 4.0 and earlier versions of RStudio, although there may be some small differences in the interface. 
 
-This is the 5th version of the book and is currently under revision. You can access previous versions at: [v1](https://psyteachr.github.io/msc-data-skills), [v2](https://psyteachr.github.io/reprores-v2), [v3](https://psyteachr.github.io/reprores-v3), and 
-[v4](https://psyteachr.github.io/reprores-v4).
+This is the 6th version of the book and is currently under revision. You can access previous versions at: [v1](https://psyteachr.github.io/msc-data-skills), [v2](https://psyteachr.github.io/reprores-v2), [v3](https://psyteachr.github.io/reprores-v3), 
+[v4](https://psyteachr.github.io/reprores-v4), and 
+[v5](https://psyteachr.github.io/reprores-v5).
 :::
 
 <!-- TODO: render the book in earlier versions to find out the limits here -->
