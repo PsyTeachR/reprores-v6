@@ -118,6 +118,7 @@ rubric <- list(
       "C-Good" = "",
       "D-Satisfactory" = "",
       "E-Poor" = ""
+    )
   ),
   "Evaluation" = list(
     "**Original Plot**: The original plot is appropriate to the question asked" = list(
@@ -134,7 +135,7 @@ rubric <- list(
       "D-Satisfactory" = "",
       "E-Poor" = ""
     )
-  ),
+  ), 
   "Communication" = list(
     "**Code Clarity**: Your code is organised in the quarto script cleanly and clearly, using separate code chunks to intersperse text and relevant code. Your code chunks contain comments that clarify the purpose of the code, but not overly-explaining each step. The names you use for objects are clear, consistent, and concise." = list(
       "A-Excellent" = "",
