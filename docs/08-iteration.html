@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book provides an overview of skills needed for reproducible and open research using the statistical programming language R and tidyverse packages. It covers reproducible workflows, data visualisation, data tidying and wrangling, archiving, iteration and functions, probability and data simulations.">
-<title>8&nbsp; Iteration &amp; Functions – Data Skills for Reproducible Research</title>
+<title>8&nbsp; Iteration – Data Skills for Reproducible Research</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./09-sim.html" rel="next">
+<link href="./09-func.html" rel="next">
 <link href="./07-wrangle.html" rel="prev">
 <link href="./images/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -286,7 +286,7 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-func.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration &amp; Functions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-iteration.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -361,20 +361,26 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-func.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration &amp; Functions</span></span></a>
+  <a href="./08-iteration.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-sim.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span></a>
+  <a href="./09-func.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-next.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Next Steps</span></span></a>
+  <a href="./10-sim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-next.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Next Steps</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -389,19 +395,19 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./formative-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Formative 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Formative 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assessment-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assessment-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
   </div>
 </li>
       </ul>
@@ -517,43 +523,25 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#sec-ilo-func" id="toc-sec-ilo-func" class="nav-link active" data-scroll-target="#sec-ilo-func">Intended Learning Outcomes</a></li>
+<li><a href="#sec-ilo-iteration" id="toc-sec-ilo-iteration" class="nav-link active" data-scroll-target="#sec-ilo-iteration">Intended Learning Outcomes</a></li>
   <li><a href="#sec-setup-func" id="toc-sec-setup-func" class="nav-link" data-scroll-target="#sec-setup-func">Setup</a></li>
   <li>
-<a href="#sec-iteration-functions" id="toc-sec-iteration-functions" class="nav-link" data-scroll-target="#sec-iteration-functions"><span class="header-section-number">8.1</span> Iteration functions</a>
+<a href="#sec-iteration-functions" id="toc-sec-iteration-functions" class="nav-link" data-scroll-target="#sec-iteration-functions"><span class="header-section-number">8.1</span> Simple iteration functions</a>
   <ul class="collapse">
 <li><a href="#rep" id="toc-rep" class="nav-link" data-scroll-target="#rep"><span class="header-section-number">8.1.1</span> rep()</a></li>
   <li><a href="#seq" id="toc-seq" class="nav-link" data-scroll-target="#seq"><span class="header-section-number">8.1.2</span> seq()</a></li>
   <li><a href="#replicate" id="toc-replicate" class="nav-link" data-scroll-target="#replicate"><span class="header-section-number">8.1.3</span> replicate()</a></li>
-  <li><a href="#map-apply" id="toc-map-apply" class="nav-link" data-scroll-target="#map-apply"><span class="header-section-number">8.1.4</span> map() and apply() functions</a></li>
   </ul>
 </li>
-  <li>
-<a href="#sec-custom-functions" id="toc-sec-custom-functions" class="nav-link" data-scroll-target="#sec-custom-functions"><span class="header-section-number">8.2</span> Custom functions</a>
-  <ul class="collapse">
-<li><a href="#structure-function" id="toc-structure-function" class="nav-link" data-scroll-target="#structure-function"><span class="header-section-number">8.2.1</span> Structuring a function</a></li>
-  <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments"><span class="header-section-number">8.2.2</span> Arguments</a></li>
-  <li><a href="#defaults" id="toc-defaults" class="nav-link" data-scroll-target="#defaults"><span class="header-section-number">8.2.3</span> Argument defaults</a></li>
-  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope"><span class="header-section-number">8.2.4</span> Scope</a></li>
-  <li><a href="#warnings-errors" id="toc-warnings-errors" class="nav-link" data-scroll-target="#warnings-errors"><span class="header-section-number">8.2.5</span> Warnings and errors</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#iterating-your-own-functions" id="toc-iterating-your-own-functions" class="nav-link" data-scroll-target="#iterating-your-own-functions"><span class="header-section-number">8.3</span> Iterating your own functions</a>
-  <ul class="collapse">
-<li><a href="#build-code" id="toc-build-code" class="nav-link" data-scroll-target="#build-code"><span class="header-section-number">8.3.1</span> Build code</a></li>
-  <li><a href="#custom-function" id="toc-custom-function" class="nav-link" data-scroll-target="#custom-function"><span class="header-section-number">8.3.2</span> Custom function</a></li>
-  <li><a href="#test-your-function" id="toc-test-your-function" class="nav-link" data-scroll-target="#test-your-function"><span class="header-section-number">8.3.3</span> Test your function</a></li>
-  </ul>
-</li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.4</span> Exercises</a></li>
-  <li><a href="#sec-glossary-func" id="toc-sec-glossary-func" class="nav-link" data-scroll-target="#sec-glossary-func">Glossary</a></li>
+  <li><a href="#map-apply" id="toc-map-apply" class="nav-link" data-scroll-target="#map-apply"><span class="header-section-number">8.2</span> Complex iteration functions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.3</span> Exercises</a></li>
+  <li><a href="#sec-glossary-iteration" id="toc-sec-glossary-iteration" class="nav-link" data-scroll-target="#sec-glossary-iteration">Glossary</a></li>
   <li><a href="#sec-resources-func" id="toc-sec-resources-func" class="nav-link" data-scroll-target="#sec-resources-func">Further Resources</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/08-func.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/08-func.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/08-iteration.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/08-iteration.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-func" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration &amp; Functions</span></span></h1>
+<h1 class="title"><span id="sec-iteration" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration</span></span></h1>
 </div>
 
 
@@ -568,17 +556,16 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 
 
 </header><!-- checked for alt-text --><div class="right meme">
-<img src="images/memes/functions.jpg" alt="History channel aliens conspiracy guy. Top text: I've got functions inside functions...; Bottom text: ... inside functions.">
+<img src="images/memes/loops-alignment.png" alt="D&amp;D alignment chart showing different ways to iterate in R">
 </div>
-<section id="sec-ilo-func" class="level2 unnumbered ilo"><h2 class="unnumbered ilo anchored" data-anchor-id="sec-ilo-func">Intended Learning Outcomes</h2>
+<section id="sec-ilo-iteration" class="level2 unnumbered ilo"><h2 class="unnumbered ilo anchored" data-anchor-id="sec-ilo-iteration">Intended Learning Outcomes</h2>
 <ul class="task-list">
 <li><label><input type="checkbox">Work with basic iteration functions: <code>rep</code>, <code>seq</code>, <code>replicate</code></label></li>
 <li><label><input type="checkbox">Use <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> and <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> functions</label></li>
-<li><label><input type="checkbox">Write your own custom functions with <code>function()</code></label></li>
 </ul></section><section id="sec-setup-func" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="sec-setup-func">Setup</h2>
 <ol type="1">
 <li>Open your <code>reprores</code> project</li>
-<li>Create a new quarto file called <code>03-dataviz.qmd</code>
+<li>Create a new quarto file called <code>08-iteration.qmd</code>
 </li>
 <li>Update the YAML header</li>
 <li>Replace the setup chunk with the one below:</li>
@@ -593,7 +580,7 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <span id="cb1-8"><a href="#cb1-8"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Download the <a href="https://rstudio.github.io/cheatsheets/html/purrr.html">Apply functions with purrr cheat sheet</a>.</p>
 </section><section id="sec-iteration-functions" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="sec-iteration-functions">
-<span class="header-section-number">8.1</span> Iteration functions</h2>
+<span class="header-section-number">8.1</span> Simple iteration functions</h2>
 <p>In the next two lectures, we are going to learn more about <a href="https://psyteachr.github.io/glossary/i#iteration" target="_blank" class="glossary" title="Repeating a process or function">iteration</a> (doing the same commands over and over) and custom <a href="https://psyteachr.github.io/glossary/f#function" target="_blank" class="glossary" title="A named section of code that can be reused.">functions</a> through a data simulation exercise, which will also prepare us more traditional statistical topics. We first learned about the two basic iteration functions, <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> and <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> in the <a href="#rep_seq">Working with Data</a> chapter.</p>
 <section id="rep" class="level3" data-number="8.1.1"><h3 data-number="8.1.1" class="anchored" data-anchor-id="rep">
 <span class="header-section-number">8.1.1</span> rep()</h3>
@@ -691,8 +678,8 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 [1] -0.1497308  1.0791335 -1.1998364 -0.9865283 -0.9067866</code></pre>
 </div>
 </div>
-</section><section id="map-apply" class="level3" data-number="8.1.4"><h3 data-number="8.1.4" class="anchored" data-anchor-id="map-apply">
-<span class="header-section-number">8.1.4</span> map() and apply() functions</h3>
+</section></section><section id="map-apply" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="map-apply">
+<span class="header-section-number">8.2</span> Complex iteration functions</h2>
 <p><code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::map()</a></code> and <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> return a list of the same length as a vector or list, each element of which is the result of applying a function to the corresponding element. They function much the same, but purrr functions have some optimisations for working with the tidyverse. We’ll be working mostly with purrr functions in this course, but apply functions are very common in code that you might see in examples on the web.</p>
 <p>Imagine you want to calculate the power for a two-sample t-test with a mean difference of 0.2 and SD of 1, for all the sample sizes 100 to 1000 (by 100s). You could run the <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code> function 20 times and extract the values for “power” from the resulting list and put it in a table.</p>
 <div class="cell">
@@ -811,414 +798,80 @@ Figure&nbsp;8.1: Power for a two-sample t-test with d = 0.2
 </div>
 </div>
 </div>
-</section></section><section id="sec-custom-functions" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="sec-custom-functions">
-<span class="header-section-number">8.2</span> Custom functions</h2>
-<p>In addition to the built-in functions and functions you can access from packages, you can also write your own functions (and eventually even packages!).</p>
-<section id="structure-function" class="level3" data-number="8.2.1"><h3 data-number="8.2.1" class="anchored" data-anchor-id="structure-function">
-<span class="header-section-number">8.2.1</span> Structuring a function</h3>
-<p>The general structure of a function is as follows:</p>
+</section><section id="exercises" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="exercises">
+<span class="header-section-number">8.3</span> Exercises</h2>
+<ol type="1">
+<li>Create the following sequences using <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code>, <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> and <code>LETTERS</code>.</li>
+</ol>
+<ul>
+<li>“A” “B” “C” “D” “A” “B” “C” “D”</li>
+<li>“A” “A” “B” “B” “C” “C” “D” “D”</li>
+<li>“A” “A” “B” “B” “C” “C” “A” “A” “B” “B” “C” “C”</li>
+<li>4 9 14 19 24 29 34 39 44 49 54 59</li>
+<li>0.00000 33.33333 66.66667 100.00000</li>
+<li>0 20 40 60 80 100 0 20 40 60 80 100</li>
+</ul>
+<ol start="2" type="1">
+<li>How many different ways can you think of to create the following table?</li>
+</ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(my_args) {</span>
-<span id="cb33-2"><a href="#cb33-2"></a>  <span class="co"># process the arguments</span></span>
-<span id="cb33-3"><a href="#cb33-3"></a>  <span class="co"># return some value</span></span>
-<span id="cb33-4"><a href="#cb33-4"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Here is a very simple function. Can you guess what it does?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>add1 <span class="ot">&lt;-</span> <span class="cf">function</span>(my_number) {</span>
-<span id="cb34-2"><a href="#cb34-2"></a>  my_number <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb34-3"><a href="#cb34-3"></a>}</span>
-<span id="cb34-4"><a href="#cb34-4"></a></span>
-<span id="cb34-5"><a href="#cb34-5"></a><span class="fu">add1</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 11</code></pre>
-</div>
-</div>
-<p>Let’s make a function that reports p-values in APA format (with “p = [rounded value]” when p &gt;= .001 and “p &lt; .001” when p &lt; .001).</p>
-<p>First, we have to name the function. You can name it anything, but try not to duplicate existing functions or you will overwrite them. For example, if you call your function <code>rep</code>, then you will need to use <code><a href="https://rdrr.io/r/base/rep.html">base::rep()</a></code> to access the normal <code>rep</code> function. Let’s call our p-value function <code>report_p</code> and set up the framework of the function.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb36-2"><a href="#cb36-2"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section><section id="arguments" class="level3" data-number="8.2.2"><h3 data-number="8.2.2" class="anchored" data-anchor-id="arguments">
-<span class="header-section-number">8.2.2</span> Arguments</h3>
-<p>We need to add one <a href="https://psyteachr.github.io/glossary/a#argument" target="_blank" class="glossary" title="A variable that provides input to a function.">argument</a>, the p-value you want to report. The names you choose for the arguments are private to that argument, so it is not a problem if they conflict with other variables in your script. You put the arguments in the parentheses of <code>function()</code> in the order you want them to default (just like the built-in functions you’ve used before).</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
-<span id="cb37-2"><a href="#cb37-2"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section><section id="defaults" class="level3" data-number="8.2.3"><h3 data-number="8.2.3" class="anchored" data-anchor-id="defaults">
-<span class="header-section-number">8.2.3</span> Argument defaults</h3>
-<p>You can add a default value to any argument. If that argument is skipped, then the function uses the default argument. It probably doesn’t make sense to run this function without specifying the p-value, but we can add a second argument called <code>digits</code> that defaults to 3, so we can round p-values to any number of digits.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>(p, <span class="at">digits =</span> <span class="dv">3</span>) {</span>
-<span id="cb38-2"><a href="#cb38-2"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Now we need to write some code inside the function to process the input arguments and turn them into a <strong>return</strong>ed output. Put the output as the last item in function.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>(p, <span class="at">digits =</span> <span class="dv">3</span>) {</span>
-<span id="cb39-2"><a href="#cb39-2"></a>  <span class="cf">if</span> (p <span class="sc">&lt;</span> .<span class="dv">001</span>) {</span>
-<span id="cb39-3"><a href="#cb39-3"></a>    reported <span class="ot">=</span> <span class="st">"p &lt; .001"</span></span>
-<span id="cb39-4"><a href="#cb39-4"></a>  } <span class="cf">else</span> {</span>
-<span id="cb39-5"><a href="#cb39-5"></a>    roundp <span class="ot">&lt;-</span> <span class="fu">round</span>(p, digits)</span>
-<span id="cb39-6"><a href="#cb39-6"></a>    reported <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"p ="</span>, roundp)</span>
-<span id="cb39-7"><a href="#cb39-7"></a>  }</span>
-<span id="cb39-8"><a href="#cb39-8"></a>  </span>
-<span id="cb39-9"><a href="#cb39-9"></a>  reported</span>
-<span id="cb39-10"><a href="#cb39-10"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>You might also see the returned output inside of the <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> function. This does the same thing.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>(p, <span class="at">digits =</span> <span class="dv">3</span>) {</span>
-<span id="cb40-2"><a href="#cb40-2"></a>  <span class="cf">if</span> (p <span class="sc">&lt;</span> .<span class="dv">001</span>) {</span>
-<span id="cb40-3"><a href="#cb40-3"></a>    reported <span class="ot">=</span> <span class="st">"p &lt; .001"</span></span>
-<span id="cb40-4"><a href="#cb40-4"></a>  } <span class="cf">else</span> {</span>
-<span id="cb40-5"><a href="#cb40-5"></a>    roundp <span class="ot">&lt;-</span> <span class="fu">round</span>(p, digits)</span>
-<span id="cb40-6"><a href="#cb40-6"></a>    reported <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"p ="</span>, roundp)</span>
-<span id="cb40-7"><a href="#cb40-7"></a>  }</span>
-<span id="cb40-8"><a href="#cb40-8"></a>  </span>
-<span id="cb40-9"><a href="#cb40-9"></a>  <span class="fu">return</span>(reported)</span>
-<span id="cb40-10"><a href="#cb40-10"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>When you run the code defining your function, it doesn’t output anything, but makes a new object in the Environment tab under <strong><code>Functions</code></strong>. Now you can run the function.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">report_p</span>(<span class="fl">0.04869</span>)</span>
-<span id="cb41-2"><a href="#cb41-2"></a><span class="fu">report_p</span>(<span class="fl">0.0000023</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "p = 0.049"
-[1] "p &lt; .001"</code></pre>
-</div>
-</div>
-</section><section id="scope" class="level3" data-number="8.2.4"><h3 data-number="8.2.4" class="anchored" data-anchor-id="scope">
-<span class="header-section-number">8.2.4</span> Scope</h3>
-<p>What happens in a function stays in a function. You can change the value of a variable passed to a function, but that won’t change the value of the variable outside of the function, even if that variable has the same name as the one in the function.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>reported <span class="ot">&lt;-</span> <span class="st">"not changed"</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a></span>
-<span id="cb43-3"><a href="#cb43-3"></a><span class="co"># inside this function, reported == "p = 0.002"</span></span>
-<span id="cb43-4"><a href="#cb43-4"></a><span class="fu">report_p</span>(<span class="fl">0.0023</span>) </span>
-<span id="cb43-5"><a href="#cb43-5"></a></span>
-<span id="cb43-6"><a href="#cb43-6"></a>reported <span class="co"># still "not changed"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "p = 0.002"
-[1] "not changed"</code></pre>
-</div>
-</div>
-</section><section id="warnings-errors" class="level3" data-number="8.2.5"><h3 data-number="8.2.5" class="anchored" data-anchor-id="warnings-errors">
-<span class="header-section-number">8.2.5</span> Warnings and errors</h3>
-<div class="try">
-What happens when you omit the argument for <code>p</code>? Or if you set <code>p</code> to 1.5 or “a”?
-
-</div>
-<p>You might want to add a more specific warning and stop running the function code if someone enters a value that isn’t a number. You can do this with the <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code> function.</p>
-<p>If someone enters a number that isn’t possible for a p-value (0-1), you might want to warn them that this is probably not what they intended, but still continue with the function. You can do this with <code><a href="https://rdrr.io/r/base/warning.html">warning()</a></code>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>(p, <span class="at">digits =</span> <span class="dv">3</span>) {</span>
-<span id="cb45-2"><a href="#cb45-2"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(p)) <span class="fu">stop</span>(<span class="st">"p must be a number"</span>)</span>
-<span id="cb45-3"><a href="#cb45-3"></a>  <span class="cf">if</span> (p <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="fu">warning</span>(<span class="st">"p-values are normally greater than 0"</span>)</span>
-<span id="cb45-4"><a href="#cb45-4"></a>  <span class="cf">if</span> (p <span class="sc">&gt;=</span> <span class="dv">1</span>) <span class="fu">warning</span>(<span class="st">"p-values are normally less than 1"</span>)</span>
-<span id="cb45-5"><a href="#cb45-5"></a>  </span>
-<span id="cb45-6"><a href="#cb45-6"></a>  <span class="cf">if</span> (p <span class="sc">&lt;</span> .<span class="dv">001</span>) {</span>
-<span id="cb45-7"><a href="#cb45-7"></a>    reported <span class="ot">=</span> <span class="st">"p &lt; .001"</span></span>
-<span id="cb45-8"><a href="#cb45-8"></a>  } <span class="cf">else</span> {</span>
-<span id="cb45-9"><a href="#cb45-9"></a>    roundp <span class="ot">&lt;-</span> <span class="fu">round</span>(p, digits)</span>
-<span id="cb45-10"><a href="#cb45-10"></a>    reported <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"p ="</span>, roundp)</span>
-<span id="cb45-11"><a href="#cb45-11"></a>  }</span>
-<span id="cb45-12"><a href="#cb45-12"></a>  </span>
-<span id="cb45-13"><a href="#cb45-13"></a>  reported</span>
-<span id="cb45-14"><a href="#cb45-14"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">report_p</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in report_p(): argument "p" is missing, with no default</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">report_p</span>(<span class="st">"a"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in report_p("a"): p must be a number</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">report_p</span>(<span class="sc">-</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in report_p(-2): p-values are normally greater than 0</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">report_p</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in report_p(2): p-values are normally less than 1</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "p &lt; .001"
-[1] "p = 2"</code></pre>
-</div>
-</div>
-</section></section><section id="iterating-your-own-functions" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="iterating-your-own-functions">
-<span class="header-section-number">8.3</span> Iterating your own functions</h2>
-<section id="build-code" class="level3" data-number="8.3.1"><h3 data-number="8.3.1" class="anchored" data-anchor-id="build-code">
-<span class="header-section-number">8.3.1</span> Build code</h3>
-<p>First, let’s build up the code that we want to iterate.</p>
-<section id="simulate-and-structure-data" class="level4" data-number="8.3.1.1"><h4 data-number="8.3.1.1" class="anchored" data-anchor-id="simulate-and-structure-data">
-<span class="header-section-number">8.3.1.1</span> Simulate and structure data</h4>
-<p>Create a vector of 20 random numbers drawn from a normal distribution with a mean of 5 and standard deviation of 1 using the <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function and store them in the variable <code>A</code>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>A <code>tibble</code> is a type of table or <code>data.frame</code>. The function <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code> creates a tibble with a column for each argument. Each argument takes the form <code>column_name = data_vector</code>.</p>
-<p>Create a table called <code>dat</code> including two vectors: <code>A</code> that is a vector of 20 random normally distributed numbers with a mean of 5 and SD of 1, and <code>B</code> that is a vector of 20 random normally distributed numbers with a mean of 5.5 and SD of 1.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb56-2"><a href="#cb56-2"></a>  <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
-<span id="cb56-3"><a href="#cb56-3"></a>  <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
-<span id="cb56-4"><a href="#cb56-4"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section><section id="statistical-test" class="level4" data-number="8.3.1.2"><h4 data-number="8.3.1.2" class="anchored" data-anchor-id="statistical-test">
-<span class="header-section-number">8.3.1.2</span> Statistical test</h4>
-<p>You can run a Welch two-sample t-test by including the two samples you made as the first two arguments to the function <code>t.test</code>. You can reference one column of a table by its names using the format <code>table_name$column_name</code></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">t.test</span>(dat<span class="sc">$</span>A, dat<span class="sc">$</span>B)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  dat$A and dat$B
-t = 0.6844, df = 34.978, p-value = 0.4982
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -0.3888602  0.7843838
-sample estimates:
-mean of x mean of y 
- 5.408082  5.210320 </code></pre>
-</div>
-</div>
-<p>You can also convert the table to long format using the <code>gather</code> function and specify the t-test using the format <code>dv_column~grouping_column</code>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>longdat <span class="ot">&lt;-</span> <span class="fu">gather</span>(dat, group, score, A<span class="sc">:</span>B)</span>
-<span id="cb59-2"><a href="#cb59-2"></a></span>
-<span id="cb59-3"><a href="#cb59-3"></a><span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> longdat) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  score by group
-t = 0.6844, df = 34.978, p-value = 0.4982
-alternative hypothesis: true difference in means between group A and group B is not equal to 0
-95 percent confidence interval:
- -0.3888602  0.7843838
-sample estimates:
-mean in group A mean in group B 
-       5.408082        5.210320 </code></pre>
-</div>
-</div>
-</section><section id="tidy-output" class="level4" data-number="8.3.1.3"><h4 data-number="8.3.1.3" class="anchored" data-anchor-id="tidy-output">
-<span class="header-section-number">8.3.1.3</span> Tidy output</h4>
-<p>You can use the function <code><a href="https://generics.r-lib.org/reference/tidy.html">broom::tidy()</a></code> to extract the data from a statistical test in a table format. The example below pipes everything together.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb61-2"><a href="#cb61-2"></a>  <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
-<span id="cb61-3"><a href="#cb61-3"></a>  <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
-<span id="cb61-4"><a href="#cb61-4"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb61-5"><a href="#cb61-5"></a>  <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
-<span id="cb61-6"><a href="#cb61-6"></a>  <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
-<span id="cb61-7"><a href="#cb61-7"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 9%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 20%">
-<col style="width: 10%">
-</colgroup>
 <thead><tr class="header">
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">estimate1</th>
-<th style="text-align: right;">estimate2</th>
-<th style="text-align: right;">statistic</th>
-<th style="text-align: right;">p.value</th>
-<th style="text-align: right;">parameter</th>
-<th style="text-align: right;">conf.low</th>
-<th style="text-align: right;">conf.high</th>
-<th style="text-align: left;">method</th>
-<th style="text-align: left;">alternative</th>
+<th style="text-align: right;">id</th>
+<th style="text-align: left;">condition</th>
+<th style="text-align: left;">manipulation</th>
 </tr></thead>
-<tbody><tr class="odd">
-<td style="text-align: right;">-0.4807365</td>
-<td style="text-align: right;">5.097443</td>
-<td style="text-align: right;">5.57818</td>
-<td style="text-align: right;">-1.455418</td>
-<td style="text-align: right;">0.1537959</td>
-<td style="text-align: right;">37.86072</td>
-<td style="text-align: right;">-1.149491</td>
-<td style="text-align: right;">0.1880185</td>
-<td style="text-align: left;">Welch Two Sample t-test</td>
-<td style="text-align: left;">two.sided</td>
-</tr></tbody>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">101</td>
+<td style="text-align: left;">ctl</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">201</td>
+<td style="text-align: left;">ctl</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">301</td>
+<td style="text-align: left;">ctl</td>
+<td style="text-align: left;">C</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">401</td>
+<td style="text-align: left;">ctl</td>
+<td style="text-align: left;">D</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">501</td>
+<td style="text-align: left;">exp</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">601</td>
+<td style="text-align: left;">exp</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">701</td>
+<td style="text-align: left;">exp</td>
+<td style="text-align: left;">C</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">801</td>
+<td style="text-align: left;">exp</td>
+<td style="text-align: left;">D</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In the pipeline above, <code>t.test(score~group, data = _)</code> uses the <code>_</code> notation to change the location of the piped-in data table from it’s default position as the first argument to a different position.</p>
-</div>
-</div>
-</section><section id="extract-important-values" class="level4" data-number="8.3.1.4"><h4 data-number="8.3.1.4" class="anchored" data-anchor-id="extract-important-values">
-<span class="header-section-number">8.3.1.4</span> Extract important values</h4>
-<p>Finally, we can extract a single value from this results table using <code>pull()</code>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb62-2"><a href="#cb62-2"></a>  <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
-<span id="cb62-3"><a href="#cb62-3"></a>  <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
-<span id="cb62-4"><a href="#cb62-4"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb62-5"><a href="#cb62-5"></a>  <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
-<span id="cb62-6"><a href="#cb62-6"></a>  <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
-<span id="cb62-7"><a href="#cb62-7"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb62-8"><a href="#cb62-8"></a>  <span class="fu">pull</span>(p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.849082</code></pre>
-</div>
-</div>
-</section></section><section id="custom-function" class="level3" data-number="8.3.2"><h3 data-number="8.3.2" class="anchored" data-anchor-id="custom-function">
-<span class="header-section-number">8.3.2</span> Custom function</h3>
-<p>Next, we can group the code above inside a function.</p>
-<p>First, name your function <code>t_sim</code> and wrap the code above in a function with no arguments.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>t_sim <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb64-2"><a href="#cb64-2"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb64-3"><a href="#cb64-3"></a>    <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
-<span id="cb64-4"><a href="#cb64-4"></a>    <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
-<span id="cb64-5"><a href="#cb64-5"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb64-6"><a href="#cb64-6"></a>    <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
-<span id="cb64-7"><a href="#cb64-7"></a>    <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
-<span id="cb64-8"><a href="#cb64-8"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb64-9"><a href="#cb64-9"></a>    <span class="fu">pull</span>(p.value) </span>
-<span id="cb64-10"><a href="#cb64-10"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Run it a few times to see what happens.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="fu">t_sim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2142142</code></pre>
-</div>
-</div>
-<section id="iterate" class="level4" data-number="8.3.2.1"><h4 data-number="8.3.2.1" class="anchored" data-anchor-id="iterate">
-<span class="header-section-number">8.3.2.1</span> Iterate</h4>
-<p>Let’s run the <code>t_sim</code> function 1000 times, assign the resulting p-values to a vector called <code>reps</code>, and check what proportion of p-values are lower than alpha (e.g., .05). This number is the power for this analysis.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">t_sim</span>())</span>
-<span id="cb67-2"><a href="#cb67-2"></a>alpha <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
-<span id="cb67-3"><a href="#cb67-3"></a>power <span class="ot">&lt;-</span> <span class="fu">mean</span>(reps <span class="sc">&lt;</span> alpha)</span>
-<span id="cb67-4"><a href="#cb67-4"></a>power</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.329</code></pre>
-</div>
-</div>
-</section><section id="seed" class="level4" data-number="8.3.2.2"><h4 data-number="8.3.2.2" class="anchored" data-anchor-id="seed">
-<span class="header-section-number">8.3.2.2</span> Set seed</h4>
-<p>You can use the <code>set.seed</code> function before you run a function that uses random numbers to make sure that you get the same random data back each time. You can use any integer you like as the seed.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">set.seed</span>(<span class="dv">90201</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Make sure you don’t ever use <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> <strong>inside</strong> of a simulation function, or you will just simulate the exact same data over and over again.</p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-seed-alignment" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An alignment chart meme: Lawful Good = set.seed(1234), Neutral Good = *picks random number, sets it as seed*, Chaotic Good = *pop culture reference*, Lawful Neutral = set.seed(420), True Neutral = set.seed(1), Chaotic Neutral = str <-'I am awesome.'; set.seed(str_length(str)), Lawful Evil =set.seed(666), Neutral Evil: *does not set a seed*, Chaotic Evil = set.seed(.Random.seed[1])">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-seed-alignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/memes/seed_alignment.png" class="img-fluid figure-img" style="width:100.0%" alt="An alignment chart meme: Lawful Good = set.seed(1234), Neutral Good = *picks random number, sets it as seed*, Chaotic Good = *pop culture reference*, Lawful Neutral = set.seed(420), True Neutral = set.seed(1), Chaotic Neutral = str <-'I am awesome.'; set.seed(str_length(str)), Lawful Evil =set.seed(666), Neutral Evil: *does not set a seed*, Chaotic Evil = set.seed(.Random.seed[1])">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-seed-alignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.2: Meme from @KellyBodwin: if you can explain why this is funny, you understand seeds
-</figcaption></figure>
-</div>
-</div>
-</div>
-</section><section id="add-arguments" class="level4" data-number="8.3.2.3"><h4 data-number="8.3.2.3" class="anchored" data-anchor-id="add-arguments">
-<span class="header-section-number">8.3.2.3</span> Add arguments</h4>
-<p>You can just edit your function each time you want to calculate power for a different sample n, but it is more efficient to build this into your function as an arguments. Redefine <code>t_sim</code>, setting arguments for the mean and SD of group A, the mean and SD of group B, and the number of subjects per group. Give them all default values.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>t_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">m1=</span><span class="dv">0</span>, <span class="at">sd1=</span><span class="dv">1</span>, <span class="at">m2=</span><span class="dv">0</span>, <span class="at">sd2=</span><span class="dv">1</span>) {</span>
-<span id="cb70-2"><a href="#cb70-2"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb70-3"><a href="#cb70-3"></a>    <span class="at">A =</span> <span class="fu">rnorm</span>(n, m1, sd1),</span>
-<span id="cb70-4"><a href="#cb70-4"></a>    <span class="at">B =</span> <span class="fu">rnorm</span>(n, m2, sd2)</span>
-<span id="cb70-5"><a href="#cb70-5"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb70-6"><a href="#cb70-6"></a>    <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
-<span id="cb70-7"><a href="#cb70-7"></a>    <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
-<span id="cb70-8"><a href="#cb70-8"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb70-9"><a href="#cb70-9"></a>    <span class="fu">pull</span>(p.value) </span>
-<span id="cb70-10"><a href="#cb70-10"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section></section><section id="test-your-function" class="level3" data-number="8.3.3"><h3 data-number="8.3.3" class="anchored" data-anchor-id="test-your-function">
-<span class="header-section-number">8.3.3</span> Test your function</h3>
-<p>Test your function with some different values to see if the results make sense.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">t_sim</span>(<span class="dv">100</span>)</span>
-<span id="cb71-2"><a href="#cb71-2"></a><span class="fu">t_sim</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.5</span>, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8460064
-[1] 0.0002446404</code></pre>
-</div>
-</div>
-<p>Use <code>replicate</code> to calculate power for 100 subjects/group with an effect size of 0.2 (e.g., A: m = 0, SD = 1; B: m = 0.2, SD = 1). Use 1000 replications.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">t_sim</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.2</span>, <span class="dv">1</span>))</span>
-<span id="cb73-2"><a href="#cb73-2"></a>power <span class="ot">&lt;-</span> <span class="fu">mean</span>(reps <span class="sc">&lt;</span> .<span class="dv">05</span>)</span>
-<span id="cb73-3"><a href="#cb73-3"></a>power</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.284</code></pre>
-</div>
-</div>
-<p>Compare this to power calculated from the <code>power.t.test</code> function.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="fu">power.t.test</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">delta =</span> <span class="fl">0.2</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="st">"two.sample"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-     Two-sample t test power calculation 
-
-              n = 100
-          delta = 0.2
-             sd = 1
-      sig.level = 0.05
-          power = 0.2902664
-    alternative = two.sided
-
-NOTE: n is number in *each* group</code></pre>
-</div>
-</div>
-<div class="try">
-<p>Calculate power via simulation and <code>power.t.test</code> for the following tests:</p>
-<ul>
-<li>20 subjects/group, A: m = 0, SD = 1; B: m = 0.2, SD = 1</li>
-<li>40 subjects/group, A: m = 0, SD = 1; B: m = 0.2, SD = 1</li>
-<li>20 subjects/group, A: m = 10, SD = 1; B: m = 12, SD = 1.5</li>
-</ul>
-</div>
-</section></section><section id="exercises" class="level2" data-number="8.4"><h2 data-number="8.4" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">8.4</span> Exercises</h2>
-<p>Explain why <a href="https://www.reddit.com/r/rstatsmemes/comments/wjt9l2/i_made_an_alignment_system_of_loops_in_r_subject/">this meme</a> is funny.</p>
+<ol start="3" type="1">
+<li>Explain why <a href="https://www.reddit.com/r/rstatsmemes/comments/wjt9l2/i_made_an_alignment_system_of_loops_in_r_subject/">this meme</a> is funny.</li>
+</ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="images/memes/loops-alignment.png" class="img-fluid figure-img" alt="See the text below for an accessible version"></p>
 <figcaption>By arthurwelle on r/rstatsmemes</figcaption></figure>
@@ -1242,7 +895,7 @@ NOTE: n is number in *each* group</code></pre>
 </li>
 <li>Chaotic evil <code>r   apply(data.frame(rep("R!", 5)),     1,     \(x){cat(x);       cat("\n")}) |&gt;   invisible()</code>
 </li>
-</ul></section><section id="sec-glossary-func" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="sec-glossary-func">Glossary</h2>
+</ul></section><section id="sec-glossary-iteration" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="sec-glossary-iteration">Glossary</h2>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1252,26 +905,22 @@ NOTE: n is number in *each* group</code></pre>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><a href="https://psyteachr.github.io/glossary/a#argument" class="glossary" target="_blank">argument</a></td>
-<td style="text-align: left;">A variable that provides input to a function.</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;"><a href="https://psyteachr.github.io/glossary/d#data-type" class="glossary" target="_blank">data-type</a></td>
 <td style="text-align: left;">The kind of data represented by an object.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><a href="https://psyteachr.github.io/glossary/d#double" class="glossary" target="_blank">double</a></td>
 <td style="text-align: left;">A data type representing a real decimal number</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><a href="https://psyteachr.github.io/glossary/f#function" class="glossary" target="_blank">function</a></td>
 <td style="text-align: left;">A named section of code that can be reused.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><a href="https://psyteachr.github.io/glossary/i#iteration" class="glossary" target="_blank">iteration</a></td>
 <td style="text-align: left;">Repeating a process or function</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><a href="https://psyteachr.github.io/glossary/m#matrix" class="glossary" target="_blank">matrix</a></td>
 <td style="text-align: left;">A container data type consisting of numbers arranged into a fixed number of rows and columns</td>
 </tr>
@@ -1281,7 +930,7 @@ NOTE: n is number in *each* group</code></pre>
 </div>
 </section><section id="sec-resources-func" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="sec-resources-func">Further Resources</h2>
 <ul>
-<li>Chapters 19 and 21 of <a href="http://r4ds.had.co.nz">R for Data Science</a>
+<li>Chapters 21 of <a href="https://r4ds.had.co.nz/iteration.html">R for Data Science</a>
 </li>
 <li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf">Apply functions with purrr cheat sheet</a></li>
 </ul>
@@ -1821,8 +1470,8 @@ $( document ).ready(function() {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./09-sim.html" class="pagination-link" aria-label="Probability &amp; Simulation">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./09-func.html" class="pagination-link" aria-label="Functions">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Functions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1833,7 +1482,7 @@ $( document ).ready(function() {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/08-func.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/08-func.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/08-iteration.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/08-iteration.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
 <li class="nav-item compact">

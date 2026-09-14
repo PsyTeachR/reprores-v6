@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="description" content="This book provides an overview of skills needed for reproducible and open research using the statistical programming language R and tidyverse packages. It covers reproducible workflows, data visualisation, data tidying and wrangling, archiving, iteration and functions, probability and data simulations.">
+<title>9&nbsp; Functions – Data Skills for Reproducible Research</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./10-sim.html" rel="next">
+<link href="./08-iteration.html" rel="prev">
+<link href="./images/logos/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5a2acb6f4ed5aeb23a104ba421924b87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-bbcee6fbcf8bde314366f5cbde244fc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-dfa2a00916de9ee8c66f066e5900e70b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-bbcee6fbcf8bde314366f5cbde244fc3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
+</script><link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-func.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Functions</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data Skills for Reproducible Research</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/psyteachr/reprores-v6/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-reports.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reports</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-viz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Visualisation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Summaries</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-join.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Relations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-tidy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Tidying</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-wrangle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Data Wrangling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-iteration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-func.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-sim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-next.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Next Steps</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Assessments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./formative-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Formative 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assessment-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assessment-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-license.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Licence/Citation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-installing-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Installing &amp; Updating R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-symbols.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Symbols</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Conventions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-teams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Using Teams</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Datasets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Debugging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-accessibility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Accessibility</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Data Import</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-datatypes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Data Types</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-dates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Dates and Times</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Table Formatting</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-styling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Styling Plots</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-plots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">More Plots</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app-webpage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Webpages</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<p><a href="https://doi.org/10.5281/zenodo.6527194"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" alt="DOI"></a></p>
+</div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#sec-ilo-func" id="toc-sec-ilo-func" class="nav-link active" data-scroll-target="#sec-ilo-func">Intended Learning Outcomes</a></li>
+  <li><a href="#sec-setup-func" id="toc-sec-setup-func" class="nav-link" data-scroll-target="#sec-setup-func">Setup</a></li>
+  <li>
+<a href="#sec-custom-functions" id="toc-sec-custom-functions" class="nav-link" data-scroll-target="#sec-custom-functions"><span class="header-section-number">9.1</span> Custom functions</a>
+  <ul class="collapse">
+<li><a href="#structure-function" id="toc-structure-function" class="nav-link" data-scroll-target="#structure-function"><span class="header-section-number">9.1.1</span> Structuring a function</a></li>
+  <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments"><span class="header-section-number">9.1.2</span> Arguments</a></li>
+  <li><a href="#defaults" id="toc-defaults" class="nav-link" data-scroll-target="#defaults"><span class="header-section-number">9.1.3</span> Argument defaults</a></li>
+  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope"><span class="header-section-number">9.1.4</span> Scope</a></li>
+  <li><a href="#warnings-errors" id="toc-warnings-errors" class="nav-link" data-scroll-target="#warnings-errors"><span class="header-section-number">9.1.5</span> Warnings and errors</a></li>
+  </ul>
+</li>
+  <li><a href="#sec-unit-tests" id="toc-sec-unit-tests" class="nav-link" data-scroll-target="#sec-unit-tests"><span class="header-section-number">9.2</span> Unit Tests</a></li>
+  <li>
+<a href="#iterating-your-own-functions" id="toc-iterating-your-own-functions" class="nav-link" data-scroll-target="#iterating-your-own-functions"><span class="header-section-number">9.3</span> Iterating your own functions</a>
+  <ul class="collapse">
+<li><a href="#build-code" id="toc-build-code" class="nav-link" data-scroll-target="#build-code"><span class="header-section-number">9.3.1</span> Build code</a></li>
+  <li><a href="#custom-function" id="toc-custom-function" class="nav-link" data-scroll-target="#custom-function"><span class="header-section-number">9.3.2</span> Custom function</a></li>
+  <li><a href="#test-your-function" id="toc-test-your-function" class="nav-link" data-scroll-target="#test-your-function"><span class="header-section-number">9.3.3</span> Test your function</a></li>
+  </ul>
+</li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.4</span> Exercises</a></li>
+  <li><a href="#sec-glossary-func" id="toc-sec-glossary-func" class="nav-link" data-scroll-target="#sec-glossary-func">Glossary</a></li>
+  <li><a href="#sec-resources-func" id="toc-sec-resources-func" class="nav-link" data-scroll-target="#sec-resources-func">Further Resources</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/09-func.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/09-func.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-func" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Functions</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><!-- checked for alt-text --><div class="right meme">
+<img src="images/memes/functions.jpg" alt="History channel aliens conspiracy guy. Top text: I've got functions inside functions...; Bottom text: ... inside functions.">
+</div>
+<section id="sec-ilo-func" class="level2 unnumbered ilo"><h2 class="unnumbered ilo anchored" data-anchor-id="sec-ilo-func">Intended Learning Outcomes</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Write your own custom functions with <code>function()</code> - [ ] Be able to test your custom functions</label></li>
+</ul></section><section id="sec-setup-func" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="sec-setup-func">Setup</h2>
+<ol type="1">
+<li>Open your <code>reprores</code> project</li>
+<li>Create a new quarto file called <code>09-func.qmd</code>
+</li>
+<li>Update the YAML header</li>
+<li>Replace the setup chunk with the one below:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#| label: setup</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#| include: false</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(tidyverse)  <span class="co"># loads purrr for iteration</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(broom)      <span class="co"># converts test output to tidy tables</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">set.seed</span>(<span class="dv">8675309</span>) <span class="co"># makes sure random numbers are reproducible</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section><section id="sec-custom-functions" class="level2" data-number="9.1"><h2 data-number="9.1" class="anchored" data-anchor-id="sec-custom-functions">
+<span class="header-section-number">9.1</span> Custom functions</h2>
+<p>In addition to the built-in functions and functions you can access from packages, you can also write your own functions (and eventually even packages!).</p>
+<section id="structure-function" class="level3" data-number="9.1.1"><h3 data-number="9.1.1" class="anchored" data-anchor-id="structure-function">
+<span class="header-section-number">9.1.1</span> Structuring a function</h3>
+<p>The general structure of a function is as follows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(my_args) {</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="co"># process the arguments</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="co"># return some value</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Here is a very simple function. Can you guess what it does?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>add1 <span class="ot">&lt;-</span> <span class="cf">function</span>(my_number) {</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  my_number <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>}</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">add1</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11</code></pre>
+</div>
+</div>
+<p>Let’s make a function that reports p-values in APA format (with “p = [rounded value]” when p &gt;= .001 and “p &lt; .001” when p &lt; .001).</p>
+<p>First, we have to name the function. You can name it anything, but try not to duplicate existing functions or you will overwrite them. For example, if you call your function <code>rep</code>, then you will need to use <code><a href="https://rdrr.io/r/base/rep.html">base::rep()</a></code> to access the normal <code>rep</code> function. Let’s call our p-value function <code>report_p</code> and set up the framework of the function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb5-2"><a href="#cb5-2"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="arguments" class="level3" data-number="9.1.2"><h3 data-number="9.1.2" class="anchored" data-anchor-id="arguments">
+<span class="header-section-number">9.1.2</span> Arguments</h3>
+<p>We need to add one <a href="https://psyteachr.github.io/glossary/a#argument" target="_blank" class="glossary" title="A variable that provides input to a function.">argument</a>, the p-value you want to report. The names you choose for the arguments are private to that argument, so it is not a problem if they conflict with other variables in your script. You put the arguments in the parentheses of <code>function()</code> in the order you want them to default (just like the built-in functions you’ve used before).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
+<span id="cb6-2"><a href="#cb6-2"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="defaults" class="level3" data-number="9.1.3"><h3 data-number="9.1.3" class="anchored" data-anchor-id="defaults">
+<span class="header-section-number">9.1.3</span> Argument defaults</h3>
+<p>You can add a default value to any argument. If that argument is skipped, then the function uses the default argument. It probably doesn’t make sense to run this function without specifying the p-value, but we can add a second argument called <code>digits</code> that defaults to 3, so we can round p-values to any number of digits.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>(p, <span class="at">digits =</span> <span class="dv">3</span>) {</span>
+<span id="cb7-2"><a href="#cb7-2"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Now we need to write some code inside the function to process the input arguments and turn them into a <strong>return</strong>ed output. Put the output as the last item in function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>(p, <span class="at">digits =</span> <span class="dv">3</span>) {</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="cf">if</span> (p <span class="sc">&lt;</span> .<span class="dv">001</span>) {</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    reported <span class="ot">=</span> <span class="st">"p &lt; .001"</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>  } <span class="cf">else</span> {</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    roundp <span class="ot">&lt;-</span> <span class="fu">round</span>(p, digits)</span>
+<span id="cb8-6"><a href="#cb8-6"></a>    reported <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"p ="</span>, roundp)</span>
+<span id="cb8-7"><a href="#cb8-7"></a>  }</span>
+<span id="cb8-8"><a href="#cb8-8"></a>  </span>
+<span id="cb8-9"><a href="#cb8-9"></a>  reported</span>
+<span id="cb8-10"><a href="#cb8-10"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>You might also see the returned output inside of the <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> function. This does the same thing.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>(p, <span class="at">digits =</span> <span class="dv">3</span>) {</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="cf">if</span> (p <span class="sc">&lt;</span> .<span class="dv">001</span>) {</span>
+<span id="cb9-3"><a href="#cb9-3"></a>    reported <span class="ot">=</span> <span class="st">"p &lt; .001"</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>  } <span class="cf">else</span> {</span>
+<span id="cb9-5"><a href="#cb9-5"></a>    roundp <span class="ot">&lt;-</span> <span class="fu">round</span>(p, digits)</span>
+<span id="cb9-6"><a href="#cb9-6"></a>    reported <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"p ="</span>, roundp)</span>
+<span id="cb9-7"><a href="#cb9-7"></a>  }</span>
+<span id="cb9-8"><a href="#cb9-8"></a>  </span>
+<span id="cb9-9"><a href="#cb9-9"></a>  <span class="fu">return</span>(reported)</span>
+<span id="cb9-10"><a href="#cb9-10"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>When you run the code defining your function, it doesn’t output anything, but makes a new object in the Environment tab under <strong><code>Functions</code></strong>. Now you can run the function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">report_p</span>(<span class="fl">0.04869</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">report_p</span>(<span class="fl">0.0000023</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "p = 0.049"
+[1] "p &lt; .001"</code></pre>
+</div>
+</div>
+</section><section id="scope" class="level3" data-number="9.1.4"><h3 data-number="9.1.4" class="anchored" data-anchor-id="scope">
+<span class="header-section-number">9.1.4</span> Scope</h3>
+<p>What happens in a function stays in a function. You can change the value of a variable passed to a function, but that won’t change the value of the variable outside of the function, even if that variable has the same name as the one in the function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>reported <span class="ot">&lt;-</span> <span class="st">"not changed"</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="co"># inside this function, reported == "p = 0.002"</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">report_p</span>(<span class="fl">0.0023</span>) </span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a>reported <span class="co"># still "not changed"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "p = 0.002"
+[1] "not changed"</code></pre>
+</div>
+</div>
+</section><section id="warnings-errors" class="level3" data-number="9.1.5"><h3 data-number="9.1.5" class="anchored" data-anchor-id="warnings-errors">
+<span class="header-section-number">9.1.5</span> Warnings and errors</h3>
+<div class="try">
+What happens when you omit the argument for <code>p</code>? Or if you set <code>p</code> to 1.5 or “a”?
+
+</div>
+<p>You might want to add a more specific warning and stop running the function code if someone enters a value that isn’t a number. You can do this with the <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code> function.</p>
+<p>If someone enters a number that isn’t possible for a p-value (0-1), you might want to warn them that this is probably not what they intended, but still continue with the function. You can do this with <code><a href="https://rdrr.io/r/base/warning.html">warning()</a></code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>(p, <span class="at">digits =</span> <span class="dv">3</span>) {</span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(p)) <span class="fu">stop</span>(<span class="st">"p must be a number"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="cf">if</span> (p <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="fu">warning</span>(<span class="st">"p-values are normally greater than 0"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="cf">if</span> (p <span class="sc">&gt;=</span> <span class="dv">1</span>) <span class="fu">warning</span>(<span class="st">"p-values are normally less than 1"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5"></a>  </span>
+<span id="cb14-6"><a href="#cb14-6"></a>  <span class="cf">if</span> (p <span class="sc">&lt;</span> .<span class="dv">001</span>) {</span>
+<span id="cb14-7"><a href="#cb14-7"></a>    reported <span class="ot">=</span> <span class="st">"p &lt; .001"</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>  } <span class="cf">else</span> {</span>
+<span id="cb14-9"><a href="#cb14-9"></a>    roundp <span class="ot">&lt;-</span> <span class="fu">round</span>(p, digits)</span>
+<span id="cb14-10"><a href="#cb14-10"></a>    reported <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"p ="</span>, roundp)</span>
+<span id="cb14-11"><a href="#cb14-11"></a>  }</span>
+<span id="cb14-12"><a href="#cb14-12"></a>  </span>
+<span id="cb14-13"><a href="#cb14-13"></a>  reported</span>
+<span id="cb14-14"><a href="#cb14-14"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">report_p</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `report_p()`:
+! argument "p" is missing, with no default</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">report_p</span>(<span class="st">"a"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `report_p()`:
+! p must be a number</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">report_p</span>(<span class="sc">-</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in report_p(-2): p-values are normally greater than 0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">report_p</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in report_p(2): p-values are normally less than 1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "p &lt; .001"
+[1] "p = 2"</code></pre>
+</div>
+</div>
+</section></section><section id="sec-unit-tests" class="level2" data-number="9.2"><h2 data-number="9.2" class="anchored" data-anchor-id="sec-unit-tests">
+<span class="header-section-number">9.2</span> Unit Tests</h2>
+<p>** Content to be added soon **</p>
+<p>See <a href="https://psyteachr.github.io/intro-r-pkgs/05-unit-tests.html">this chapter</a> in Intro to R Packages.</p>
+</section><section id="iterating-your-own-functions" class="level2" data-number="9.3"><h2 data-number="9.3" class="anchored" data-anchor-id="iterating-your-own-functions">
+<span class="header-section-number">9.3</span> Iterating your own functions</h2>
+<section id="build-code" class="level3" data-number="9.3.1"><h3 data-number="9.3.1" class="anchored" data-anchor-id="build-code">
+<span class="header-section-number">9.3.1</span> Build code</h3>
+<p>First, let’s build up the code that we want to iterate.</p>
+<section id="simulate-and-structure-data" class="level4" data-number="9.3.1.1"><h4 data-number="9.3.1.1" class="anchored" data-anchor-id="simulate-and-structure-data">
+<span class="header-section-number">9.3.1.1</span> Simulate and structure data</h4>
+<p>Create a vector of 20 random numbers drawn from a normal distribution with a mean of 5 and standard deviation of 1 using the <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function and store them in the variable <code>A</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>A <code>tibble</code> is a type of table or <code>data.frame</code>. The function <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code> creates a tibble with a column for each argument. Each argument takes the form <code>column_name = data_vector</code>.</p>
+<p>Create a table called <code>dat</code> including two vectors: <code>A</code> that is a vector of 20 random normally distributed numbers with a mean of 5 and SD of 1, and <code>B</code> that is a vector of 20 random normally distributed numbers with a mean of 5.5 and SD of 1.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
+<span id="cb25-4"><a href="#cb25-4"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="statistical-test" class="level4" data-number="9.3.1.2"><h4 data-number="9.3.1.2" class="anchored" data-anchor-id="statistical-test">
+<span class="header-section-number">9.3.1.2</span> Statistical test</h4>
+<p>You can run a Welch two-sample t-test by including the two samples you made as the first two arguments to the function <code>t.test</code>. You can reference one column of a table by its names using the format <code>table_name$column_name</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">t.test</span>(dat<span class="sc">$</span>A, dat<span class="sc">$</span>B)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  dat$A and dat$B
+t = -1.4715, df = 37.977, p-value = 0.1494
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.1408729  0.1804332
+sample estimates:
+mean of x mean of y 
+ 4.829928  5.310148 </code></pre>
+</div>
+</div>
+<p>You can also convert the table to long format using the <code>gather</code> function and specify the t-test using the format <code>dv_column~grouping_column</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>longdat <span class="ot">&lt;-</span> <span class="fu">gather</span>(dat, group, score, A<span class="sc">:</span>B)</span>
+<span id="cb28-2"><a href="#cb28-2"></a></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> longdat) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  score by group
+t = -1.4715, df = 37.977, p-value = 0.1494
+alternative hypothesis: true difference in means between group A and group B is not equal to 0
+95 percent confidence interval:
+ -1.1408729  0.1804332
+sample estimates:
+mean in group A mean in group B 
+       4.829928        5.310148 </code></pre>
+</div>
+</div>
+</section><section id="tidy-output" class="level4" data-number="9.3.1.3"><h4 data-number="9.3.1.3" class="anchored" data-anchor-id="tidy-output">
+<span class="header-section-number">9.3.1.3</span> Tidy output</h4>
+<p>You can use the function <code><a href="https://generics.r-lib.org/reference/tidy.html">broom::tidy()</a></code> to extract the data from a statistical test in a table format. The example below pipes everything together.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
+<span id="cb30-4"><a href="#cb30-4"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a>  <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>  <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
+<span id="cb30-7"><a href="#cb30-7"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 20%">
+<col style="width: 10%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">estimate1</th>
+<th style="text-align: right;">estimate2</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">parameter</th>
+<th style="text-align: right;">conf.low</th>
+<th style="text-align: right;">conf.high</th>
+<th style="text-align: left;">method</th>
+<th style="text-align: left;">alternative</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td style="text-align: right;">-0.7629601</td>
+<td style="text-align: right;">4.725315</td>
+<td style="text-align: right;">5.488276</td>
+<td style="text-align: right;">-2.625878</td>
+<td style="text-align: right;">0.0130202</td>
+<td style="text-align: right;">32.86047</td>
+<td style="text-align: right;">-1.354193</td>
+<td style="text-align: right;">-0.1717276</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the pipeline above, <code>t.test(score~group, data = _)</code> uses the <code>_</code> notation to change the location of the piped-in data table from it’s default position as the first argument to a different position.</p>
+</div>
+</div>
+</section><section id="extract-important-values" class="level4" data-number="9.3.1.4"><h4 data-number="9.3.1.4" class="anchored" data-anchor-id="extract-important-values">
+<span class="header-section-number">9.3.1.4</span> Extract important values</h4>
+<p>Finally, we can extract a single value from this results table using <code>pull()</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb31-2"><a href="#cb31-2"></a>  <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb31-3"><a href="#cb31-3"></a>  <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
+<span id="cb31-4"><a href="#cb31-4"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a>  <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a>  <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
+<span id="cb31-7"><a href="#cb31-7"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a>  <span class="fu">pull</span>(p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.07260504</code></pre>
+</div>
+</div>
+</section></section><section id="custom-function" class="level3" data-number="9.3.2"><h3 data-number="9.3.2" class="anchored" data-anchor-id="custom-function">
+<span class="header-section-number">9.3.2</span> Custom function</h3>
+<p>Next, we can group the code above inside a function.</p>
+<p>First, name your function <code>t_sim</code> and wrap the code above in a function with no arguments.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>t_sim <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb33-2"><a href="#cb33-2"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb33-3"><a href="#cb33-3"></a>    <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb33-4"><a href="#cb33-4"></a>    <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
+<span id="cb33-5"><a href="#cb33-5"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a>    <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
+<span id="cb33-7"><a href="#cb33-7"></a>    <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a>    <span class="fu">pull</span>(p.value) </span>
+<span id="cb33-10"><a href="#cb33-10"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Run it a few times to see what happens.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">t_sim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.004556227</code></pre>
+</div>
+</div>
+<section id="iterate" class="level4" data-number="9.3.2.1"><h4 data-number="9.3.2.1" class="anchored" data-anchor-id="iterate">
+<span class="header-section-number">9.3.2.1</span> Iterate</h4>
+<p>Let’s run the <code>t_sim</code> function 1000 times, assign the resulting p-values to a vector called <code>reps</code>, and check what proportion of p-values are lower than alpha (e.g., .05). This number is the power for this analysis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">t_sim</span>())</span>
+<span id="cb36-2"><a href="#cb36-2"></a>alpha <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
+<span id="cb36-3"><a href="#cb36-3"></a>power <span class="ot">&lt;-</span> <span class="fu">mean</span>(reps <span class="sc">&lt;</span> alpha)</span>
+<span id="cb36-4"><a href="#cb36-4"></a>power</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.346</code></pre>
+</div>
+</div>
+</section><section id="seed" class="level4" data-number="9.3.2.2"><h4 data-number="9.3.2.2" class="anchored" data-anchor-id="seed">
+<span class="header-section-number">9.3.2.2</span> Set seed</h4>
+<p>You can use the <code>set.seed</code> function before you run a function that uses random numbers to make sure that you get the same random data back each time. You can use any integer you like as the seed.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">set.seed</span>(<span class="dv">90201</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Make sure you don’t ever use <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> <strong>inside</strong> of a simulation function, or you will just simulate the exact same data over and over again.</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-seed-alignment" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An alignment chart meme: Lawful Good = set.seed(1234), Neutral Good = *picks random number, sets it as seed*, Chaotic Good = *pop culture reference*, Lawful Neutral = set.seed(420), True Neutral = set.seed(1), Chaotic Neutral = str <-'I am awesome.'; set.seed(str_length(str)), Lawful Evil =set.seed(666), Neutral Evil: *does not set a seed*, Chaotic Evil = set.seed(.Random.seed[1])">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-seed-alignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/memes/seed_alignment.png" class="img-fluid figure-img" style="width:100.0%" alt="An alignment chart meme: Lawful Good = set.seed(1234), Neutral Good = *picks random number, sets it as seed*, Chaotic Good = *pop culture reference*, Lawful Neutral = set.seed(420), True Neutral = set.seed(1), Chaotic Neutral = str <-'I am awesome.'; set.seed(str_length(str)), Lawful Evil =set.seed(666), Neutral Evil: *does not set a seed*, Chaotic Evil = set.seed(.Random.seed[1])">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-seed-alignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.1: Meme from @KellyBodwin: if you can explain why this is funny, you understand seeds
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="add-arguments" class="level4" data-number="9.3.2.3"><h4 data-number="9.3.2.3" class="anchored" data-anchor-id="add-arguments">
+<span class="header-section-number">9.3.2.3</span> Add arguments</h4>
+<p>You can just edit your function each time you want to calculate power for a different sample n, but it is more efficient to build this into your function as an arguments. Redefine <code>t_sim</code>, setting arguments for the mean and SD of group A, the mean and SD of group B, and the number of subjects per group. Give them all default values.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>t_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">m1=</span><span class="dv">0</span>, <span class="at">sd1=</span><span class="dv">1</span>, <span class="at">m2=</span><span class="dv">0</span>, <span class="at">sd2=</span><span class="dv">1</span>) {</span>
+<span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb39-3"><a href="#cb39-3"></a>    <span class="at">A =</span> <span class="fu">rnorm</span>(n, m1, sd1),</span>
+<span id="cb39-4"><a href="#cb39-4"></a>    <span class="at">B =</span> <span class="fu">rnorm</span>(n, m2, sd2)</span>
+<span id="cb39-5"><a href="#cb39-5"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb39-6"><a href="#cb39-6"></a>    <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
+<span id="cb39-7"><a href="#cb39-7"></a>    <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
+<span id="cb39-8"><a href="#cb39-8"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb39-9"><a href="#cb39-9"></a>    <span class="fu">pull</span>(p.value) </span>
+<span id="cb39-10"><a href="#cb39-10"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section></section><section id="test-your-function" class="level3" data-number="9.3.3"><h3 data-number="9.3.3" class="anchored" data-anchor-id="test-your-function">
+<span class="header-section-number">9.3.3</span> Test your function</h3>
+<p>Test your function with some different values to see if the results make sense.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">t_sim</span>(<span class="dv">100</span>)</span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">t_sim</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.5</span>, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8460064
+[1] 0.0002446404</code></pre>
+</div>
+</div>
+<p>Use <code>replicate</code> to calculate power for 100 subjects/group with an effect size of 0.2 (e.g., A: m = 0, SD = 1; B: m = 0.2, SD = 1). Use 1000 replications.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">t_sim</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.2</span>, <span class="dv">1</span>))</span>
+<span id="cb42-2"><a href="#cb42-2"></a>power <span class="ot">&lt;-</span> <span class="fu">mean</span>(reps <span class="sc">&lt;</span> .<span class="dv">05</span>)</span>
+<span id="cb42-3"><a href="#cb42-3"></a>power</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.284</code></pre>
+</div>
+</div>
+<p>Compare this to power calculated from the <code>power.t.test</code> function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">power.t.test</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">delta =</span> <span class="fl">0.2</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="st">"two.sample"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 100
+          delta = 0.2
+             sd = 1
+      sig.level = 0.05
+          power = 0.2902664
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
+</div>
+<div class="try">
+<p>Calculate power via simulation and <code>power.t.test</code> for the following tests:</p>
+<ul>
+<li>20 subjects/group, A: m = 0, SD = 1; B: m = 0.2, SD = 1</li>
+<li>40 subjects/group, A: m = 0, SD = 1; B: m = 0.2, SD = 1</li>
+<li>20 subjects/group, A: m = 10, SD = 1; B: m = 12, SD = 1.5</li>
+</ul>
+</div>
+</section></section><section id="exercises" class="level2" data-number="9.4"><h2 data-number="9.4" class="anchored" data-anchor-id="exercises">
+<span class="header-section-number">9.4</span> Exercises</h2>
+<ol type="1">
+<li><p>Create a custom function that takes a string of text as input and returns that text in title case (with the first letter of each word uppercase)</p></li>
+<li><p>Does this function work if you give it a vector or 3 strings? How about if you give it a list of 3 strings? What happens if you give it a non-character data type, like numbers?</p></li>
+<li><p>Add error checking and appropriate messages for when the user gives this function inappropriate input.</p></li>
+<li><p>Create some tests for this function to make sure the output is as expected. What kinds of difficult edge cases can you think of?</p></li>
+</ol></section><section id="sec-glossary-func" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="sec-glossary-func">Glossary</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: left;">definition</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td style="text-align: left;"><a href="https://psyteachr.github.io/glossary/a#argument" class="glossary" target="_blank">argument</a></td>
+<td style="text-align: left;">A variable that provides input to a function.</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</section><section id="sec-resources-func" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="sec-resources-func">Further Resources</h2>
+<ul>
+<li>Chapters 19 of <a href="https://r4ds.had.co.nz/functions.html">R for Data Science</a>
+</li>
+</ul>
+
+
+</section></main><!-- /main --><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script><script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    $(solveme[i]).after(" <span class='webex-icon'></span>");
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    $(selects[i]).after(" <span class='webex-icon'></span>");
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+$( document ).ready(function() {
+  function move_sidebar() {
+    var w = window.innerWidth;
+    if (w < 768) {
+      $("#TOC").appendTo($("#quarto-sidebar .sidebar-menu-container"));
+    } else {
+      $("#TOC").appendTo($("#quarto-margin-sidebar"));
+    }
+  }
+  move_sidebar();
+  window.onresize = move_sidebar;
+});
+</script><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("^(?:http:|https:)\/\/psyteachr\.github\.io\/reprores-v6");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
+            }
+          }
+          const config = {
+            allowHTML: true,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
+            trigger: 'click',
+            appendTo: function(el) {
+              return el.parentElement.parentElement.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'quarto',
+            placement: 'right',
+            positionFixed: true,
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
+          };
+          window.tippy(annoteTarget, config); 
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./08-iteration.html" class="pagination-link" aria-label="Iteration">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./10-sim.html" class="pagination-link" aria-label="Probability &amp; Simulation">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>CC-BY 2026, psyTeachR</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/09-func.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/09-func.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/psyteachr/reprores-v6">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://doi.org/10.5281/zenodo.6527194">
+      <i class="bi bi-https://zenodo.org/badge/DOI/10.5281/zenodo.6527194.svg" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

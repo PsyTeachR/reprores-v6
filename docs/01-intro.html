@@ -361,20 +361,26 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-func.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration &amp; Functions</span></span></a>
+  <a href="./08-iteration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-sim.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span></a>
+  <a href="./09-func.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-next.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Next Steps</span></span></a>
+  <a href="./10-sim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-next.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Next Steps</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -389,19 +395,19 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./formative-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Formative 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Formative 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assessment-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assessment-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
   </div>
 </li>
       </ul>
@@ -779,7 +785,7 @@ Note
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">beep</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>A <a href="https://psyteachr.github.io/glossary/f#function" target="_blank" class="glossary" title="A named section of code that can be reused.">function</a> is a name that refers to some code you can reuse. We’ll start by using functions that are provided for you in packages, but you can also write your own functions (<a href="08-func.html#sec-custom-functions" class="quarto-xref"><span>Section 8.2</span></a>). After the function name, there is a pair of parentheses, which contain zero or more <a href="https://psyteachr.github.io/glossary/a#argument" target="_blank" class="glossary" title="A variable that provides input to a function.">arguments</a>. These are options that you can set. In the example above, the <code>sound</code> argument has a <a href="https://psyteachr.github.io/glossary/d#default-value" target="_blank" class="glossary" title="A value that a function uses for an argument if it is skipped.">default value</a> of <code>1</code>, which makes a “ping” sound.</p>
+<p>A <a href="https://psyteachr.github.io/glossary/f#function" target="_blank" class="glossary" title="A named section of code that can be reused.">function</a> is a name that refers to some code you can reuse. We’ll start by using functions that are provided for you in packages, but you can also write your own functions (<a href="09-func.html#sec-custom-functions" class="quarto-xref"><span>Section 9.1</span></a>). After the function name, there is a pair of parentheses, which contain zero or more <a href="https://psyteachr.github.io/glossary/a#argument" target="_blank" class="glossary" title="A variable that provides input to a function.">arguments</a>. These are options that you can set. In the example above, the <code>sound</code> argument has a <a href="https://psyteachr.github.io/glossary/d#default-value" target="_blank" class="glossary" title="A value that a function uses for an argument if it is skipped.">default value</a> of <code>1</code>, which makes a “ping” sound.</p>
 <div class="try">
 <p>Try changing the argument to an integer between 1 and 11.</p>
 <div class="cell">
@@ -808,7 +814,7 @@ Note
 <li>
 <pkg>lubridate</pkg>, for working with dates (<a href="app-dates.html" class="quarto-xref"><span>Appendix J</span></a>)</li>
 <li>
-<pkg>purrr</pkg>, for repeating things (<a href="08-func.html#sec-iteration-functions" class="quarto-xref"><span>Section 8.1</span></a>)</li>
+<pkg>purrr</pkg>, for repeating things (<a href="08-iteration.html#sec-iteration-functions" class="quarto-xref"><span>Section 8.1</span></a>)</li>
 </ul>
 <p>When you install <pkg>tidyverse</pkg>, it also installs some other useful packages that you can load individually. You can get the full list using <code>tidyverse_packages()</code>, but the packages we’ll be using in this book are:</p>
 <ul>

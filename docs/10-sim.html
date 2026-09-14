@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book provides an overview of skills needed for reproducible and open research using the statistical programming language R and tidyverse packages. It covers reproducible workflows, data visualisation, data tidying and wrangling, archiving, iteration and functions, probability and data simulations.">
-<title>9&nbsp; Probability &amp; Simulation – Data Skills for Reproducible Research</title>
+<title>10&nbsp; Probability &amp; Simulation – Data Skills for Reproducible Research</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -85,8 +85,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./10-next.html" rel="next">
-<link href="./08-func.html" rel="prev">
+<link href="./11-next.html" rel="next">
+<link href="./09-func.html" rel="prev">
 <link href="./images/logos/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -133,10 +133,10 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
-</script><link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="site_libs/plotly-binding-4.11.0/plotly.js"></script><script src="site_libs/typedarray-0.1/typedarray.min.js"></script><script src="site_libs/jquery-3.5.1/jquery.min.js"></script><link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
-<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script><link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link rel="stylesheet" href="include/psyteachr.css">
+</script><link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="site_libs/plotly-binding-4.12.0/plotly.js"></script><script src="site_libs/typedarray-0.1/typedarray.min.js"></script><script src="site_libs/jquery-3.5.1/jquery.min.js"></script><link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script><link href="site_libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script><link rel="stylesheet" href="include/psyteachr.css">
 <link rel="stylesheet" href="include/webex.css">
 <link rel="stylesheet" href="include/style.css">
 </head>
@@ -309,7 +309,7 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-sim.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-sim.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -384,20 +384,26 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-func.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration &amp; Functions</span></span></a>
+  <a href="./08-iteration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-sim.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span></a>
+  <a href="./09-func.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-next.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Next Steps</span></span></a>
+  <a href="./10-sim.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-next.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Next Steps</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -412,19 +418,19 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./formative-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Formative 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Formative 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assessment-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assessment-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
   </div>
 </li>
       </ul>
@@ -543,60 +549,60 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <li><a href="#sec-ilo-sim" id="toc-sec-ilo-sim" class="nav-link active" data-scroll-target="#sec-ilo-sim">Intended Learning Outcomes</a></li>
   <li><a href="#sec-setup-sim" id="toc-sec-setup-sim" class="nav-link" data-scroll-target="#sec-setup-sim">Setup</a></li>
   <li>
-<a href="#univariate-distributions" id="toc-univariate-distributions" class="nav-link" data-scroll-target="#univariate-distributions"><span class="header-section-number">9.1</span> Univariate Distributions</a>
+<a href="#univariate-distributions" id="toc-univariate-distributions" class="nav-link" data-scroll-target="#univariate-distributions"><span class="header-section-number">10.1</span> Univariate Distributions</a>
   <ul class="collapse">
-<li><a href="#uniform" id="toc-uniform" class="nav-link" data-scroll-target="#uniform"><span class="header-section-number">9.1.1</span> Uniform Distribution</a></li>
-  <li><a href="#binomial" id="toc-binomial" class="nav-link" data-scroll-target="#binomial"><span class="header-section-number">9.1.2</span> Binomial Distribution</a></li>
-  <li><a href="#normal" id="toc-normal" class="nav-link" data-scroll-target="#normal"><span class="header-section-number">9.1.3</span> Normal Distribution</a></li>
-  <li><a href="#poisson" id="toc-poisson" class="nav-link" data-scroll-target="#poisson"><span class="header-section-number">9.1.4</span> Poisson Distribution</a></li>
+<li><a href="#uniform" id="toc-uniform" class="nav-link" data-scroll-target="#uniform"><span class="header-section-number">10.1.1</span> Uniform Distribution</a></li>
+  <li><a href="#binomial" id="toc-binomial" class="nav-link" data-scroll-target="#binomial"><span class="header-section-number">10.1.2</span> Binomial Distribution</a></li>
+  <li><a href="#normal" id="toc-normal" class="nav-link" data-scroll-target="#normal"><span class="header-section-number">10.1.3</span> Normal Distribution</a></li>
+  <li><a href="#poisson" id="toc-poisson" class="nav-link" data-scroll-target="#poisson"><span class="header-section-number">10.1.4</span> Poisson Distribution</a></li>
   </ul>
 </li>
   <li>
-<a href="#mvdist" id="toc-mvdist" class="nav-link" data-scroll-target="#mvdist"><span class="header-section-number">9.2</span> Multivariate Distributions</a>
+<a href="#mvdist" id="toc-mvdist" class="nav-link" data-scroll-target="#mvdist"><span class="header-section-number">10.2</span> Multivariate Distributions</a>
   <ul class="collapse">
-<li><a href="#bvn" id="toc-bvn" class="nav-link" data-scroll-target="#bvn"><span class="header-section-number">9.2.1</span> Bivariate Normal</a></li>
-  <li><a href="#mvnorm" id="toc-mvnorm" class="nav-link" data-scroll-target="#mvnorm"><span class="header-section-number">9.2.2</span> Multivariate Normal</a></li>
-  <li><a href="#sec-faux" id="toc-sec-faux" class="nav-link" data-scroll-target="#sec-faux"><span class="header-section-number">9.2.3</span> Faux</a></li>
+<li><a href="#bvn" id="toc-bvn" class="nav-link" data-scroll-target="#bvn"><span class="header-section-number">10.2.1</span> Bivariate Normal</a></li>
+  <li><a href="#mvnorm" id="toc-mvnorm" class="nav-link" data-scroll-target="#mvnorm"><span class="header-section-number">10.2.2</span> Multivariate Normal</a></li>
+  <li><a href="#sec-faux" id="toc-sec-faux" class="nav-link" data-scroll-target="#sec-faux"><span class="header-section-number">10.2.3</span> Faux</a></li>
   </ul>
 </li>
   <li>
-<a href="#stat-terms" id="toc-stat-terms" class="nav-link" data-scroll-target="#stat-terms"><span class="header-section-number">9.3</span> Statistical terms</a>
+<a href="#stat-terms" id="toc-stat-terms" class="nav-link" data-scroll-target="#stat-terms"><span class="header-section-number">10.3</span> Statistical terms</a>
   <ul class="collapse">
-<li><a href="#effect" id="toc-effect" class="nav-link" data-scroll-target="#effect"><span class="header-section-number">9.3.1</span> Effect</a></li>
-  <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value"><span class="header-section-number">9.3.2</span> P-value</a></li>
-  <li><a href="#alpha" id="toc-alpha" class="nav-link" data-scroll-target="#alpha"><span class="header-section-number">9.3.3</span> Alpha</a></li>
-  <li><a href="#false-pos" id="toc-false-pos" class="nav-link" data-scroll-target="#false-pos"><span class="header-section-number">9.3.4</span> False Positive/Negative</a></li>
-  <li><a href="#power" id="toc-power" class="nav-link" data-scroll-target="#power"><span class="header-section-number">9.3.5</span> Power and SESOI</a></li>
-  <li><a href="#conf-int" id="toc-conf-int" class="nav-link" data-scroll-target="#conf-int"><span class="header-section-number">9.3.6</span> Confidence Intervals</a></li>
+<li><a href="#effect" id="toc-effect" class="nav-link" data-scroll-target="#effect"><span class="header-section-number">10.3.1</span> Effect</a></li>
+  <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value"><span class="header-section-number">10.3.2</span> P-value</a></li>
+  <li><a href="#alpha" id="toc-alpha" class="nav-link" data-scroll-target="#alpha"><span class="header-section-number">10.3.3</span> Alpha</a></li>
+  <li><a href="#false-pos" id="toc-false-pos" class="nav-link" data-scroll-target="#false-pos"><span class="header-section-number">10.3.4</span> False Positive/Negative</a></li>
+  <li><a href="#power" id="toc-power" class="nav-link" data-scroll-target="#power"><span class="header-section-number">10.3.5</span> Power and SESOI</a></li>
+  <li><a href="#conf-int" id="toc-conf-int" class="nav-link" data-scroll-target="#conf-int"><span class="header-section-number">10.3.6</span> Confidence Intervals</a></li>
   </ul>
 </li>
   <li>
-<a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests"><span class="header-section-number">9.4</span> Tests</a>
+<a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests"><span class="header-section-number">10.4</span> Tests</a>
   <ul class="collapse">
-<li><a href="#exact-binom" id="toc-exact-binom" class="nav-link" data-scroll-target="#exact-binom"><span class="header-section-number">9.4.1</span> Exact binomial test</a></li>
-  <li><a href="#sec-t-test" id="toc-sec-t-test" class="nav-link" data-scroll-target="#sec-t-test"><span class="header-section-number">9.4.2</span> T-test</a></li>
-  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation"><span class="header-section-number">9.4.3</span> Correlation</a></li>
+<li><a href="#exact-binom" id="toc-exact-binom" class="nav-link" data-scroll-target="#exact-binom"><span class="header-section-number">10.4.1</span> Exact binomial test</a></li>
+  <li><a href="#sec-t-test" id="toc-sec-t-test" class="nav-link" data-scroll-target="#sec-t-test"><span class="header-section-number">10.4.2</span> T-test</a></li>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation"><span class="header-section-number">10.4.3</span> Correlation</a></li>
   </ul>
 </li>
   <li>
-<a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">9.5</span> Example</a>
+<a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">10.5</span> Example</a>
   <ul class="collapse">
-<li><a href="#load-wrangle" id="toc-load-wrangle" class="nav-link" data-scroll-target="#load-wrangle"><span class="header-section-number">9.5.1</span> Load &amp; wrangle</a></li>
-  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot"><span class="header-section-number">9.5.2</span> Plot</a></li>
-  <li><a href="#simulate-a-population" id="toc-simulate-a-population" class="nav-link" data-scroll-target="#simulate-a-population"><span class="header-section-number">9.5.3</span> Simulate a population</a></li>
-  <li><a href="#analyse-simulated-data" id="toc-analyse-simulated-data" class="nav-link" data-scroll-target="#analyse-simulated-data"><span class="header-section-number">9.5.4</span> Analyse simulated data</a></li>
-  <li><a href="#replicate-simulation" id="toc-replicate-simulation" class="nav-link" data-scroll-target="#replicate-simulation"><span class="header-section-number">9.5.5</span> Replicate simulation</a></li>
-  <li><a href="#one-tailed-prediction" id="toc-one-tailed-prediction" class="nav-link" data-scroll-target="#one-tailed-prediction"><span class="header-section-number">9.5.6</span> One-tailed prediction</a></li>
-  <li><a href="#range-of-sample-sizes" id="toc-range-of-sample-sizes" class="nav-link" data-scroll-target="#range-of-sample-sizes"><span class="header-section-number">9.5.7</span> Range of sample sizes</a></li>
+<li><a href="#load-wrangle" id="toc-load-wrangle" class="nav-link" data-scroll-target="#load-wrangle"><span class="header-section-number">10.5.1</span> Load &amp; wrangle</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot"><span class="header-section-number">10.5.2</span> Plot</a></li>
+  <li><a href="#simulate-a-population" id="toc-simulate-a-population" class="nav-link" data-scroll-target="#simulate-a-population"><span class="header-section-number">10.5.3</span> Simulate a population</a></li>
+  <li><a href="#analyse-simulated-data" id="toc-analyse-simulated-data" class="nav-link" data-scroll-target="#analyse-simulated-data"><span class="header-section-number">10.5.4</span> Analyse simulated data</a></li>
+  <li><a href="#replicate-simulation" id="toc-replicate-simulation" class="nav-link" data-scroll-target="#replicate-simulation"><span class="header-section-number">10.5.5</span> Replicate simulation</a></li>
+  <li><a href="#one-tailed-prediction" id="toc-one-tailed-prediction" class="nav-link" data-scroll-target="#one-tailed-prediction"><span class="header-section-number">10.5.6</span> One-tailed prediction</a></li>
+  <li><a href="#range-of-sample-sizes" id="toc-range-of-sample-sizes" class="nav-link" data-scroll-target="#range-of-sample-sizes"><span class="header-section-number">10.5.7</span> Range of sample sizes</a></li>
   </ul>
 </li>
   <li><a href="#sec-glossary-sim" id="toc-sec-glossary-sim" class="nav-link" data-scroll-target="#sec-glossary-sim">Glossary</a></li>
   <li><a href="#sec-resources-sim" id="toc-sec-resources-sim" class="nav-link" data-scroll-target="#sec-resources-sim">Further Resources</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/09-sim.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/09-sim.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/10-sim.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/10-sim.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sim" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span></h1>
+<h1 class="title"><span id="sim" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span></h1>
 </div>
 
 
@@ -640,17 +646,17 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <span id="cb1-10"><a href="#cb1-10"></a><span class="fu">set.seed</span>(<span class="dv">8675309</span>) <span class="co"># makes sure random numbers are reproducible</span></span>
 <span id="cb1-11"><a href="#cb1-11"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Simulating data is a very powerful way to test your understanding of statistical concepts. We are going to use <a href="https://psyteachr.github.io/glossary/s#simulation" target="_blank" class="glossary" title="Generating data from summary parameters">simulations</a> to learn the basics of <a href="https://psyteachr.github.io/glossary/p#probability" target="_blank" class="glossary" title="A number between 0 and 1 where 0 indicates impossibility of the event and 1 indicates certainty">probability</a>.</p>
-</section><section id="univariate-distributions" class="level2" data-number="9.1"><h2 data-number="9.1" class="anchored" data-anchor-id="univariate-distributions">
-<span class="header-section-number">9.1</span> Univariate Distributions</h2>
+</section><section id="univariate-distributions" class="level2" data-number="10.1"><h2 data-number="10.1" class="anchored" data-anchor-id="univariate-distributions">
+<span class="header-section-number">10.1</span> Univariate Distributions</h2>
 <p>First, we need to understand some different ways data might be distributed and how to simulate data from these distributions. A <a href="https://psyteachr.github.io/glossary/u#univariate" target="_blank" class="glossary" title="Relating to a single variable.">univariate</a> distribution is the distribution of a single variable.</p>
-<section id="uniform" class="level3" data-number="9.1.1"><h3 data-number="9.1.1" class="anchored" data-anchor-id="uniform">
-<span class="header-section-number">9.1.1</span> Uniform Distribution</h3>
+<section id="uniform" class="level3" data-number="10.1.1"><h3 data-number="10.1.1" class="anchored" data-anchor-id="uniform">
+<span class="header-section-number">10.1.1</span> Uniform Distribution</h3>
 <p>The <a href="https://psyteachr.github.io/glossary/u#uniform-distribution" target="_blank" class="glossary" title="A distribution where all numbers in the range have an equal probability of being sampled">uniform distribution</a> is the simplest distribution. All numbers in the range have an equal probability of being sampled.</p>
 <div class="try">
 <p>Take a minute to think of things in your own research that are uniformly distributed.</p>
 </div>
-<section id="continuous-distribution" class="level4" data-number="9.1.1.1"><h4 data-number="9.1.1.1" class="anchored" data-anchor-id="continuous-distribution">
-<span class="header-section-number">9.1.1.1</span> Continuous distribution</h4>
+<section id="continuous-distribution" class="level4" data-number="10.1.1.1"><h4 data-number="10.1.1.1" class="anchored" data-anchor-id="continuous-distribution">
+<span class="header-section-number">10.1.1.1</span> Continuous distribution</h4>
 <p><code>runif(n, min=0, max=1)</code></p>
 <p>Use <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code> to sample from a continuous uniform distribution.</p>
 <div class="cell">
@@ -666,13 +672,13 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <img src="images/figures/fig-runif-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A histogram with 'u' on the x-axis form 0 to 1, and 'count' on the y-axis from 0 to 5000. The bars have width of 0.05 and all are nearly the same height, very close to 5000.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-runif-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.1: A continuous uniform distribution.
+Figure&nbsp;10.1: A continuous uniform distribution.
 </figcaption></figure>
 </div>
 </div>
 </div>
-</section><section id="discrete" class="level4" data-number="9.1.1.2"><h4 data-number="9.1.1.2" class="anchored" data-anchor-id="discrete">
-<span class="header-section-number">9.1.1.2</span> Discrete</h4>
+</section><section id="discrete" class="level4" data-number="10.1.1.2"><h4 data-number="10.1.1.2" class="anchored" data-anchor-id="discrete">
+<span class="header-section-number">10.1.1.2</span> Discrete</h4>
 <p><code>sample(x, size, replace = FALSE, prob = NULL)</code></p>
 <p>Use <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> to sample from a <a href="https://psyteachr.github.io/glossary/d#discrete" target="_blank" class="glossary" title="Data that can only take certain values, such as integers.">discrete</a> distribution.</p>
 <p>You can use <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> to simulate events like rolling dice or choosing from a deck of cards. The code below simulates rolling a 6-sided die 10000 times. We set <code>replace</code> to <code>TRUE</code> so that each event is independent. See what happens if you set <code>replace</code> to <code>FALSE</code>.</p>
@@ -689,7 +695,7 @@ Figure&nbsp;9.1: A continuous uniform distribution.
 <img src="images/figures/fig-sample-replace-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A histogram with 'rolls' on the x-axis form 1-6, and 'count' on the y-axis from 0 to 1500. The bars have width of 1 and all are nearly the same height, very close to 1667">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sample-replace-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.2: Distribution of dice rolls.
+Figure&nbsp;10.2: Distribution of dice rolls.
 </figcaption></figure>
 </div>
 </div>
@@ -713,8 +719,8 @@ Figure&nbsp;9.2: Distribution of dice rolls.
  [9] "cat"    "dog"   </code></pre>
 </div>
 </div>
-</section></section><section id="binomial" class="level3" data-number="9.1.2"><h3 data-number="9.1.2" class="anchored" data-anchor-id="binomial">
-<span class="header-section-number">9.1.2</span> Binomial Distribution</h3>
+</section></section><section id="binomial" class="level3" data-number="10.1.2"><h3 data-number="10.1.2" class="anchored" data-anchor-id="binomial">
+<span class="header-section-number">10.1.2</span> Binomial Distribution</h3>
 <p>The <a href="https://psyteachr.github.io/glossary/b#binomial-distribution" target="_blank" class="glossary" title="The distribution of data where each observation can have one of two outcomes, like success/failure, yes/no or head/tails.">binomial distribution</a> is useful for modelling binary data, where each observation can have one of two outcomes, like success/failure, yes/no or head/tails.</p>
 <p><code>rbinom(n, size, prob)</code></p>
 <p>The <code>rbinom</code> function will generate a random binomial distribution.</p>
@@ -772,7 +778,7 @@ Figure&nbsp;9.2: Distribution of dice rolls.
 <img src="images/figures/fig-sim-flips-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A histogram with 'flips' on the x-axis (0-20) and 'count' on the y-axis (0-175). The bars have a width of 1 and show a normal distribution centered on 10.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sim-flips-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.3: A histogram of binomial data
+Figure&nbsp;10.3: A histogram of binomial data
 </figcaption></figure>
 </div>
 </div>
@@ -780,8 +786,8 @@ Figure&nbsp;9.3: A histogram of binomial data
 <div class="try">
 <p>Run the simulation above several times, noting how the histogram changes. Try changing the values of <code>n</code>, <code>size</code>, and <code>prob</code>.</p>
 </div>
-</section><section id="normal" class="level3" data-number="9.1.3"><h3 data-number="9.1.3" class="anchored" data-anchor-id="normal">
-<span class="header-section-number">9.1.3</span> Normal Distribution</h3>
+</section><section id="normal" class="level3" data-number="10.1.3"><h3 data-number="10.1.3" class="anchored" data-anchor-id="normal">
+<span class="header-section-number">10.1.3</span> Normal Distribution</h3>
 <p><code>rnorm(n, mean, sd)</code></p>
 <p>We can simulate a <a href="https://psyteachr.github.io/glossary/n#normal-distribution" target="_blank" class="glossary" title="A symmetric distribution of data where values near the centre are most probable.">normal distribution</a> of size <code>n</code> if we know the <code>mean</code> and standard deviation (<code>sd</code>). A density plot is usually the best way to visualise this type of data if your <code>n</code> is large.</p>
 <div class="cell">
@@ -812,7 +818,7 @@ Figure&nbsp;9.3: A histogram of binomial data
 <img src="images/figures/fig-rnorm-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A density plot with 'dv' (0-20) on the x-axis and 'density' (0-0.2) on the y-axis. It shows a normal distribution with a mean of 10 and standard deviation of 2.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rnorm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.4: A normal distribution with the mean marked in red and standard deviations marked in green (1 SD), blue (2 SD) and purple (3 SD)
+Figure&nbsp;10.4: A normal distribution with the mean marked in red and standard deviations marked in green (1 SD), blue (2 SD) and purple (3 SD)
 </figcaption></figure>
 </div>
 </div>
@@ -830,8 +836,8 @@ Note
 <p>Run the simulation above several times, noting how the density plot changes. What do the vertical lines represent? Try changing the values of <code>n</code>, <code>mean</code>, and <code>sd</code>.</p>
 </div>
 </div>
-</section><section id="poisson" class="level3" data-number="9.1.4"><h3 data-number="9.1.4" class="anchored" data-anchor-id="poisson">
-<span class="header-section-number">9.1.4</span> Poisson Distribution</h3>
+</section><section id="poisson" class="level3" data-number="10.1.4"><h3 data-number="10.1.4" class="anchored" data-anchor-id="poisson">
+<span class="header-section-number">10.1.4</span> Poisson Distribution</h3>
 <p>The <a href="https://psyteachr.github.io/glossary/p#poisson-distribution" target="_blank" class="glossary" title="A distribution that models independent events happening over a unit of time">Poisson distribution</a> is useful for modelling events, like how many times something happens over a unit of time, as long as the events are independent (e.g., an event having happened in one time period doesn’t make it more or less likely to happen in the next).</p>
 <p><code>rpois(n, lambda)</code></p>
 <p>The <code>rpois</code> function will generate a random Poisson distribution.</p>
@@ -858,16 +864,16 @@ Note
 <img src="images/figures/fig-rpois-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A histigram with 'texts' (15-37) on the x-axis and 'count' (0-40) on the y-axis. The bars have a width of 1 and look about normally distributed with a mean of 20.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rpois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.5: A poisson distribution
+Figure&nbsp;10.5: A poisson distribution
 </figcaption></figure>
 </div>
 </div>
 </div>
 <p>So we can see that over a year, you’re unlikely to get fewer than 5 texts in a day, or more than 35 (although it’s not impossible).</p>
-</section></section><section id="mvdist" class="level2" data-number="9.2"><h2 data-number="9.2" class="anchored" data-anchor-id="mvdist">
-<span class="header-section-number">9.2</span> Multivariate Distributions</h2>
-<section id="bvn" class="level3" data-number="9.2.1"><h3 data-number="9.2.1" class="anchored" data-anchor-id="bvn">
-<span class="header-section-number">9.2.1</span> Bivariate Normal</h3>
+</section></section><section id="mvdist" class="level2" data-number="10.2"><h2 data-number="10.2" class="anchored" data-anchor-id="mvdist">
+<span class="header-section-number">10.2</span> Multivariate Distributions</h2>
+<section id="bvn" class="level3" data-number="10.2.1"><h3 data-number="10.2.1" class="anchored" data-anchor-id="bvn">
+<span class="header-section-number">10.2.1</span> Bivariate Normal</h3>
 <p>A <a href="https://psyteachr.github.io/glossary/b#bivariate-normal" target="_blank" class="glossary" title="Two normally distributed vectors that have a specified correlation with each other.">bivariate normal</a> distribution is two normally distributed vectors that have a specified relationship, or <a href="https://psyteachr.github.io/glossary/c#correlation" target="_blank" class="glossary" title="The relationship two vectors have to each other.">correlation</a> to each other.</p>
 <p>What if we want to sample from a population with specific relationships between variables? We can sample from a bivariate normal distribution using <code>mvrnorm()</code> from the <code>MASS</code> package.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -916,13 +922,13 @@ Warning
 <img src="images/figures/fig-graph-bvn-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A scatterplot with a regression line and a 2D density map superimposed. The x-axis is labelled x (-10 to 30) and the y-axis is labelled y (0-40). The regression line has a positive slope, from (-10, 10) to (30, 30) and teh density map is centered at (10, 20).">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-graph-bvn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.6: Plotting a bivariate normal distribution.
+Figure&nbsp;10.6: Plotting a bivariate normal distribution.
 </figcaption></figure>
 </div>
 </div>
 </div>
-</section><section id="mvnorm" class="level3" data-number="9.2.2"><h3 data-number="9.2.2" class="anchored" data-anchor-id="mvnorm">
-<span class="header-section-number">9.2.2</span> Multivariate Normal</h3>
+</section><section id="mvnorm" class="level3" data-number="10.2.2"><h3 data-number="10.2.2" class="anchored" data-anchor-id="mvnorm">
+<span class="header-section-number">10.2.2</span> Multivariate Normal</h3>
 <p>You can generate more than 2 correlated variables, but it gets a little trickier to create the correlation matrix.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>n      <span class="ot">&lt;-</span> <span class="dv">200</span> <span class="co"># number of random samples</span></span>
@@ -970,15 +976,15 @@ z 0.1108543 0.7234038 1.0000000</code></pre>
 <div id="fig-3d-graph-mvn" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-3d-graph-mvn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="plotly html-widget html-fill-item" id="htmlwidget-e5aefcf8e5f49d2f388a" style="width:100%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-e5aefcf8e5f49d2f388a">{"x":{"visdat":{"70127709aff3":["function () ","plotlyVisDat"]},"cur_data":"70127709aff3","attrs":{"70127709aff3":{"x":{},"y":{},"z":{},"marker":{"color":"#ff0000","line":{"color":"#444","width":1},"opacity":0.5,"size":5},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"x"},"yaxis":{"title":"y"},"zaxis":{"title":"z"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[27.007198580839024,-0.96888046101337189,12.357113212895992,26.550958431146974,-1.4343125406943731,-0.65952030560525721,3.2662252883726151,-2.8686443554794447,5.5272345181854527,-1.5455191012861249,17.536980867952643,2.0287404052298541,12.179315632306,19.470028195872576,0.45903350496001494,11.075390658413143,13.241720464887813,2.7303580386555595,11.349762578032806,11.97529317733551,7.0738390666248154,21.462590818073849,12.202661074626324,6.8181686520481861,-4.6269405542728776,-11.380686633026027,18.195619814301011,14.62074930536491,12.294017215446232,15.542116033909474,-0.67277452610878008,1.8697261932249258,2.7222917571334611,-2.0069114602670339,4.9519178350053936,18.499784178115945,12.545415811155429,-1.8404297726578029,12.190213455120507,-2.2995061799580245,19.673384310891961,19.216875362566356,7.5540687889267684,10.877362286371692,10.897027461134041,8.0372981370176664,15.841662580424266,-2.2590587715673145,13.606935487579324,15.982469976704536,12.310607803544215,8.8320886040444027,-2.9758552380829482,15.292850163915357,6.1195342354478406,9.0261166073608337,8.0985627432282001,10.667674773789269,3.9811630792349124,18.398439440567927,1.3749706192547837,16.927021088906393,13.336021838756155,21.567295063226709,19.918741763468795,16.386813634846082,11.202218546538182,4.885730507636576,26.668197730761143,6.7991589297359347,4.5052118455404582,17.365916451083091,15.773034133589707,5.9952626475079542,11.081789748797316,13.194418410000109,6.3706901341583464,-2.297530383925686,21.286588170846297,8.374647228021006,6.0309191612468833,9.4287152042626108,23.069974968579718,17.241355013361602,16.07161911920479,16.205919982779932,12.711243879281014,11.451142501222277,-3.1441391408238761,0.36854884538758093,11.16206408186842,5.4160871813746727,24.671441819041966,6.2183728151130033,-4.7988648923277708,8.6347040388807024,19.560744637623387,-2.7065253054261174,12.315530952420502,17.256743849089769,21.316771454880147,8.4699968853825087,12.963254446378732,11.460209309675502,13.675343592708014,21.980904350872116,12.255378855773722,27.863301820969554,8.7708407089500806,22.1274407589319,3.5904845898889031,10.734066132487191,8.1455140887418462,5.1468778640079496,14.857205112184001,15.664783391482866,12.368826716218056,21.121518414348913,1.8626278421105589,4.8104043889031818,0.023176320419461049,2.6295950489983895,24.317062481959155,9.5338256839101572,-5.0727843109246056,13.41961990940124,5.7047926966676821,11.616530321187815,7.3364018091865315,8.6737993657095505,4.5752656596664707,1.7853566884049439,-2.7366122205822343,14.814421042250785,1.2655301012984879,14.02681181396953,23.058203188562896,6.8110053606729011,10.506156129309741,16.897792843247927,12.741639417527525,8.2203110657910248,21.413279874346742,11.772712821735846,-3.0506165858283882,4.6852235119848853,8.7529497507778675,0.65513922107529154,7.1210421773322672,19.342585887333687,8.7821751191681763,8.2824587622702008,16.995579386072105,8.3563210954630875,16.587740888032997,10.059662299792556,10.317429376629399,18.244192288436317,5.0891342493148475,16.258344286195992,11.264940844701405,1.464060870031842,5.7554977750153054,6.0206833011577725,-6.956252584321021,0.86530767436978273,27.065737543706263,6.3846186917521903,13.539175693327813,20.201575605072399,8.7417017146225007,19.123285118861066,1.3342033184737492,9.0918903855154554,3.287832795023804,17.168183268856197,-0.27901853142519784,-0.35968200599604216,11.482466831447226,17.098533192179353,-3.0659266295845722,15.333722302344697,13.446132000269476,5.3197770762323424,10.298498470961192,19.611078280744699,13.951568677886064,11.378339811207569,17.605884682193572,6.9956175745927256,6.6813925429241472,11.10764474082788,8.1550319055656946,-1.4011365279974974,13.181204336915982,27.086453128896398,17.283450387918279,17.569984752504197,17.942719711456409,16.268741086727644],"y":[24.071246673760143,16.002915583674632,11.753244235580407,25.545117699046699,12.87218600767515,3.2513846339382653,5.8562881620196929,4.8737740781679584,18.060156576659928,13.285341950861341,17.948128035295394,16.891477437753974,28.890660711867078,33.342617907331565,14.874884133525592,20.156585790266764,14.127585273994008,6.2697989870816855,24.402974317688013,14.065050461579141,15.25529997072023,28.024291872597132,20.552448428773822,17.629248131741804,13.158110442176927,-9.6889932668615018,39.787052775635374,16.388248591343618,12.812864751533471,17.725961605623276,8.6726322454278701,14.49735507143075,2.9645879774205994,12.64635876581335,16.695563899435481,28.11501817285621,39.156835933332438,27.167981839956489,23.452031147225792,21.905235784941073,27.666992191936053,19.496851500701997,22.359076552224039,21.840614259198944,30.538706998223098,27.612732277404255,25.704614267125216,11.485638530879839,21.087575187858633,23.316531202534236,15.461082239693159,21.083325865690586,23.555951369608909,27.916318267811764,7.4037776687554082,13.645051390344875,19.236860420892004,25.925380857144923,12.864062961516602,39.745140258685666,5.1715295980791502,29.110111657827989,23.526605497377538,24.056527314545541,25.057908157575255,25.036615914290895,27.358709646980792,22.482647163929695,23.972398678471379,10.293004135183574,10.682449184492931,35.132070533589555,7.9395618703359894,18.769668733515466,12.914624100307606,20.580945016006751,10.31714859622106,9.0748001441284014,25.483917968913264,26.327277530212541,11.599359503269012,18.115597234860612,24.823037012413145,22.891641401959546,40.203985819602295,23.277358575682058,14.901476997192074,31.291919943188461,15.326943070758526,31.97235977015983,20.361699142627977,15.587338945479585,27.500964690029594,28.309406549579563,3.8912971774668179,23.20446828371216,43.49592797461527,11.033696579660463,14.032250600949691,14.19396758721207,31.467222921386604,28.890873240764734,32.318490072845385,9.3956550822787293,26.411524691689614,23.759541797125241,25.844995479111354,36.140682048932788,23.895765826672108,20.108118182294515,10.648692159668933,27.328360667025386,20.370415738800247,29.620811169490715,16.390785260341815,24.164360433949291,15.888397339979901,9.1211799610222393,21.09350256531285,17.526844577309092,22.709558929019636,17.122485705240315,39.38750411706846,26.157973101736381,9.0467418991238358,21.911624068136447,19.48595889292806,37.907140119901214,24.032857241199153,20.395918891287533,15.969929091136567,-3.4609359836979117,11.466963687068649,21.053742977925559,10.546524467257273,29.031969899305359,30.015371050056178,8.007974098025489,23.60894628487382,27.528204498938319,20.348801220995526,13.446453330512838,24.051392467590812,21.86549591957418,6.9070086452561483,21.222184715422838,19.398382122013242,18.767494602064705,23.750004601660002,36.398978378870652,8.219537666175853,17.015475804176887,18.926574604890448,18.496128753264006,16.319054154914511,17.564021540312527,21.50668744148885,26.086805374637024,8.9175631532694251,28.887038806265465,12.665301789076889,10.992820040719256,25.398351416899466,22.231499599644387,18.629714303614477,16.11475454758223,29.265477161844501,20.446747132831895,13.064985568173542,25.271889937364627,12.203983478912393,26.234676011674271,8.6136884682263197,5.7562258283050305,9.5742466567722921,25.589284930648581,14.823942152421505,15.652009399908627,18.3007632610964,30.688664675322304,14.929506954548261,16.831605598479328,19.376287910624274,14.456323279351992,22.552525536919699,26.781030443985482,28.384845138158774,31.620416987310605,14.168512200819723,17.739089440028565,22.456209979847728,26.642462388800521,16.448957228396971,6.1900632362831249,24.69897996090668,27.308984880764797,25.531211884486183,33.069596986761759,10.609199770667136,25.326569928923092],"z":[35.065983935187532,39.365483217988427,25.51860478316188,29.869296237866774,19.441666170433326,15.563482574436479,23.782938544551598,22.660292201257629,38.536427099432949,40.485296509921234,20.864407893198624,29.027537810526212,43.611251153692528,53.950559615570441,31.311840394016105,29.845341081328026,27.279356307714654,28.689943113728685,38.251221352398801,18.559396189984859,28.898344276693759,37.79191846212187,23.475718055254298,32.723113700730288,39.840955144913998,4.6114406542545296,45.493567512927171,27.210912417346581,21.919765012950791,24.962506118250605,35.03712022631327,25.965959134281498,11.836364814731844,24.401574266132855,40.082619325999048,35.164960718541195,40.749107146274802,47.609618548303914,28.788311481114008,45.536664410206342,28.49151280123743,17.588793322266312,37.110547271328002,31.648528966447817,38.114904684981809,34.283040413936028,41.577503135988557,20.76600607232772,27.110427356751799,27.73429424502941,24.544255312802324,37.971568092147855,35.636453940785685,35.721542750204613,17.959344393415527,20.412347791035728,24.314948324536999,39.883203322021146,18.246056143426152,44.870940137683725,24.880393586457298,28.752312862651277,39.358848918381867,27.06181584710135,29.027820622874341,31.373819789744296,36.89005974210589,39.921267600959439,23.427133530329748,19.673450107398079,21.238807782754499,43.281206385901726,21.190011698276727,19.799992761611755,19.362204917697152,18.281390439658857,20.729985590921338,31.619565718390721,40.404993573059059,29.0908942831343,25.592682153746438,35.181987723892846,27.2714394775107,25.684337604191619,53.760077932665837,28.356495820949789,27.460571192290587,48.338099570824141,31.369296106587218,41.37210811165609,25.975102485737075,23.61105920394003,32.513363933414233,48.297621153780625,25.144334954973623,38.935328077025282,53.802919052299742,18.400300932310628,17.597457327582259,20.851871646152006,35.163018565628413,41.119464594863871,39.927181512426017,21.095908613384175,44.876727553653105,22.77970388139687,41.33166990240305,36.777414628789387,27.332702068133404,21.864299896001022,19.93648764327785,45.270422419573961,36.732681851917356,49.014067841022893,24.23001781413204,30.513716976308363,15.537631126858518,13.248829940418677,42.939703924946642,30.06409450020772,38.362614144050596,42.244639281055875,45.648763693818758,32.294372315142617,24.222644148818581,31.198007266599983,39.085300735022287,48.34206811983853,36.693037913074235,30.886500293096482,23.521972249358221,7.9382704844995615,23.690701948352086,27.311756733496654,21.91067529810627,33.89714525220225,23.731482320773786,26.889581622999543,27.225029760914197,36.233439450327538,31.625709222252027,17.76436190278093,26.167319800471166,23.817747021847971,21.379822876799317,36.144357974750747,37.01187492866628,34.564404852542118,32.469792971495274,34.640347033224657,30.799400812864913,26.603149590722001,21.577226507606952,32.836004538647359,21.425307618074754,24.66390430591111,26.09426327781263,42.650310158361194,30.557829150284139,36.775799852535975,19.197672177579722,29.38721488165244,34.145298914918541,42.557923671657704,41.909393361989878,33.787072556766368,31.079230964674537,36.857454831322727,22.368185656370358,26.401401171655142,26.992720050430837,34.513606785687337,15.184822575285056,12.37575965422721,18.095838647839209,31.545747295406965,17.076881256922931,34.801258754812515,32.139318016511581,39.924187708386405,39.487346003468389,19.923444849751569,35.314456158828506,25.08173058277983,35.195015241317222,28.733730600561067,36.349748457973007,44.913392598445249,18.288044144494606,28.649239346991401,40.29733097887754,31.030313955697949,24.775140987867111,12.399025353859709,38.147799235297811,31.713165972947294,33.125401286613723,35.262110657169927,15.477354299254461,27.177673437114905],"marker":{"color":"#ff0000","line":{"color":"#444","width":1},"opacity":0.5,"size":5},"type":"scatter3d","mode":"markers","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-e5aefcf8e5f49d2f388a">{"x":{"visdat":{"164b271f22ae3":["function () ","plotlyVisDat"]},"cur_data":"164b271f22ae3","attrs":{"164b271f22ae3":{"x":{},"y":{},"z":{},"marker":{"color":"#ff0000","line":{"color":"#444","width":1},"opacity":0.5,"size":5},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"x"},"yaxis":{"title":"y"},"zaxis":{"title":"z"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[27.007198580839024,-0.96888046101337189,12.357113212895992,26.550958431146974,-1.4343125406943731,-0.65952030560525721,3.2662252883726151,-2.8686443554794447,5.5272345181854527,-1.5455191012861249,17.536980867952643,2.0287404052298541,12.179315632306,19.470028195872576,0.45903350496001494,11.075390658413143,13.241720464887813,2.7303580386555595,11.349762578032806,11.97529317733551,7.0738390666248154,21.462590818073849,12.202661074626324,6.8181686520481861,-4.6269405542728776,-11.380686633026027,18.195619814301011,14.62074930536491,12.294017215446232,15.542116033909474,-0.67277452610878008,1.8697261932249258,2.7222917571334611,-2.0069114602670339,4.9519178350053936,18.499784178115945,12.545415811155429,-1.8404297726578029,12.190213455120507,-2.2995061799580245,19.673384310891961,19.216875362566356,7.5540687889267684,10.877362286371692,10.897027461134041,8.0372981370176664,15.841662580424266,-2.2590587715673145,13.606935487579324,15.982469976704536,12.310607803544215,8.8320886040444027,-2.9758552380829482,15.292850163915357,6.1195342354478406,9.0261166073608337,8.0985627432282001,10.667674773789269,3.9811630792349124,18.398439440567927,1.3749706192547837,16.927021088906393,13.336021838756155,21.567295063226709,19.918741763468795,16.386813634846082,11.202218546538182,4.885730507636576,26.668197730761143,6.7991589297359347,4.5052118455404582,17.365916451083091,15.773034133589707,5.9952626475079542,11.081789748797316,13.194418410000109,6.3706901341583464,-2.297530383925686,21.286588170846297,8.374647228021006,6.0309191612468833,9.4287152042626108,23.069974968579718,17.241355013361602,16.07161911920479,16.205919982779932,12.711243879281014,11.451142501222277,-3.1441391408238761,0.36854884538758093,11.16206408186842,5.4160871813746727,24.671441819041966,6.2183728151130033,-4.7988648923277708,8.6347040388807024,19.560744637623387,-2.7065253054261174,12.315530952420502,17.256743849089769,21.316771454880147,8.4699968853825087,12.963254446378732,11.460209309675502,13.675343592708014,21.980904350872116,12.255378855773722,27.863301820969554,8.7708407089500806,22.1274407589319,3.5904845898889031,10.734066132487191,8.1455140887418462,5.1468778640079496,14.857205112184001,15.664783391482866,12.368826716218056,21.121518414348913,1.8626278421105589,4.8104043889031818,0.023176320419461049,2.6295950489983895,24.317062481959155,9.5338256839101572,-5.0727843109246056,13.41961990940124,5.7047926966676821,11.616530321187815,7.3364018091865315,8.6737993657095505,4.5752656596664707,1.7853566884049439,-2.7366122205822343,14.814421042250785,1.2655301012984879,14.02681181396953,23.058203188562896,6.8110053606729011,10.506156129309741,16.897792843247927,12.741639417527525,8.2203110657910248,21.413279874346742,11.772712821735846,-3.0506165858283882,4.6852235119848853,8.7529497507778675,0.65513922107529154,7.1210421773322672,19.342585887333687,8.7821751191681763,8.2824587622702008,16.995579386072105,8.3563210954630875,16.587740888032997,10.059662299792556,10.317429376629399,18.244192288436317,5.0891342493148475,16.258344286195992,11.264940844701405,1.464060870031842,5.7554977750153054,6.0206833011577725,-6.956252584321021,0.86530767436978273,27.065737543706263,6.3846186917521903,13.539175693327813,20.201575605072399,8.7417017146225007,19.123285118861066,1.3342033184737492,9.0918903855154554,3.287832795023804,17.168183268856197,-0.27901853142519784,-0.35968200599604216,11.482466831447226,17.098533192179353,-3.0659266295845722,15.333722302344697,13.446132000269476,5.3197770762323424,10.298498470961192,19.611078280744699,13.951568677886064,11.378339811207569,17.605884682193572,6.9956175745927256,6.6813925429241472,11.10764474082788,8.1550319055656946,-1.4011365279974974,13.181204336915982,27.086453128896398,17.283450387918279,17.569984752504197,17.942719711456409,16.268741086727644],"y":[24.071246673760143,16.002915583674632,11.753244235580407,25.545117699046699,12.87218600767515,3.2513846339382653,5.8562881620196929,4.8737740781679584,18.060156576659928,13.285341950861341,17.948128035295394,16.891477437753974,28.890660711867078,33.342617907331565,14.874884133525592,20.156585790266764,14.127585273994008,6.2697989870816855,24.402974317688013,14.065050461579141,15.25529997072023,28.024291872597132,20.552448428773822,17.629248131741804,13.158110442176927,-9.6889932668615018,39.787052775635374,16.388248591343618,12.812864751533471,17.725961605623276,8.6726322454278701,14.49735507143075,2.9645879774205994,12.64635876581335,16.695563899435481,28.11501817285621,39.156835933332438,27.167981839956489,23.452031147225792,21.905235784941073,27.666992191936053,19.496851500701997,22.359076552224039,21.840614259198944,30.538706998223098,27.612732277404255,25.704614267125216,11.485638530879839,21.087575187858633,23.316531202534236,15.461082239693159,21.083325865690586,23.555951369608909,27.916318267811764,7.4037776687554082,13.645051390344875,19.236860420892004,25.925380857144923,12.864062961516602,39.745140258685666,5.1715295980791502,29.110111657827989,23.526605497377538,24.056527314545541,25.057908157575255,25.036615914290895,27.358709646980792,22.482647163929695,23.972398678471379,10.293004135183574,10.682449184492931,35.132070533589555,7.9395618703359894,18.769668733515466,12.914624100307606,20.580945016006751,10.31714859622106,9.0748001441284014,25.483917968913264,26.327277530212541,11.599359503269012,18.115597234860612,24.823037012413145,22.891641401959546,40.203985819602295,23.277358575682058,14.901476997192074,31.291919943188461,15.326943070758526,31.97235977015983,20.361699142627977,15.587338945479585,27.500964690029594,28.309406549579563,3.8912971774668179,23.20446828371216,43.49592797461527,11.033696579660463,14.032250600949691,14.19396758721207,31.467222921386604,28.890873240764734,32.318490072845385,9.3956550822787293,26.411524691689614,23.759541797125241,25.844995479111354,36.140682048932788,23.895765826672108,20.108118182294515,10.648692159668933,27.328360667025386,20.370415738800247,29.620811169490715,16.390785260341815,24.164360433949291,15.888397339979901,9.1211799610222393,21.09350256531285,17.526844577309092,22.709558929019636,17.122485705240315,39.38750411706846,26.157973101736381,9.0467418991238358,21.911624068136447,19.48595889292806,37.907140119901214,24.032857241199153,20.395918891287533,15.969929091136567,-3.4609359836979117,11.466963687068649,21.053742977925559,10.546524467257273,29.031969899305359,30.015371050056178,8.007974098025489,23.60894628487382,27.528204498938319,20.348801220995526,13.446453330512838,24.051392467590812,21.86549591957418,6.9070086452561483,21.222184715422838,19.398382122013242,18.767494602064705,23.750004601660002,36.398978378870652,8.219537666175853,17.015475804176887,18.926574604890448,18.496128753264006,16.319054154914511,17.564021540312527,21.50668744148885,26.086805374637024,8.9175631532694251,28.887038806265465,12.665301789076889,10.992820040719256,25.398351416899466,22.231499599644387,18.629714303614477,16.11475454758223,29.265477161844501,20.446747132831895,13.064985568173542,25.271889937364627,12.203983478912393,26.234676011674271,8.6136884682263197,5.7562258283050305,9.5742466567722921,25.589284930648581,14.823942152421505,15.652009399908627,18.3007632610964,30.688664675322304,14.929506954548261,16.831605598479328,19.376287910624274,14.456323279351992,22.552525536919699,26.781030443985482,28.384845138158774,31.620416987310605,14.168512200819723,17.739089440028565,22.456209979847728,26.642462388800521,16.448957228396971,6.1900632362831249,24.69897996090668,27.308984880764797,25.531211884486183,33.069596986761759,10.609199770667136,25.326569928923092],"z":[35.065983935187532,39.365483217988427,25.51860478316188,29.869296237866774,19.441666170433326,15.563482574436479,23.782938544551598,22.660292201257629,38.536427099432949,40.485296509921234,20.864407893198624,29.027537810526212,43.611251153692528,53.950559615570441,31.311840394016105,29.845341081328026,27.279356307714654,28.689943113728685,38.251221352398801,18.559396189984859,28.898344276693759,37.79191846212187,23.475718055254298,32.723113700730288,39.840955144913998,4.6114406542545296,45.493567512927171,27.210912417346581,21.919765012950791,24.962506118250605,35.03712022631327,25.965959134281498,11.836364814731844,24.401574266132855,40.082619325999048,35.164960718541195,40.749107146274802,47.609618548303914,28.788311481114008,45.536664410206342,28.49151280123743,17.588793322266312,37.110547271328002,31.648528966447817,38.114904684981809,34.283040413936028,41.577503135988557,20.76600607232772,27.110427356751799,27.73429424502941,24.544255312802324,37.971568092147855,35.636453940785685,35.721542750204613,17.959344393415527,20.412347791035728,24.314948324536999,39.883203322021146,18.246056143426152,44.870940137683725,24.880393586457298,28.752312862651277,39.358848918381867,27.06181584710135,29.027820622874341,31.373819789744296,36.89005974210589,39.921267600959439,23.427133530329748,19.673450107398079,21.238807782754499,43.281206385901726,21.190011698276727,19.799992761611755,19.362204917697152,18.281390439658857,20.729985590921338,31.619565718390721,40.404993573059059,29.0908942831343,25.592682153746438,35.181987723892846,27.2714394775107,25.684337604191619,53.760077932665837,28.356495820949789,27.460571192290587,48.338099570824141,31.369296106587218,41.37210811165609,25.975102485737075,23.61105920394003,32.513363933414233,48.297621153780625,25.144334954973623,38.935328077025282,53.802919052299742,18.400300932310628,17.597457327582259,20.851871646152006,35.163018565628413,41.119464594863871,39.927181512426017,21.095908613384175,44.876727553653105,22.77970388139687,41.33166990240305,36.777414628789387,27.332702068133404,21.864299896001022,19.93648764327785,45.270422419573961,36.732681851917356,49.014067841022893,24.23001781413204,30.513716976308363,15.537631126858518,13.248829940418677,42.939703924946642,30.06409450020772,38.362614144050596,42.244639281055875,45.648763693818758,32.294372315142617,24.222644148818581,31.198007266599983,39.085300735022287,48.34206811983853,36.693037913074235,30.886500293096482,23.521972249358221,7.9382704844995615,23.690701948352086,27.311756733496654,21.91067529810627,33.89714525220225,23.731482320773786,26.889581622999543,27.225029760914197,36.233439450327538,31.625709222252027,17.76436190278093,26.167319800471166,23.817747021847971,21.379822876799317,36.144357974750747,37.01187492866628,34.564404852542118,32.469792971495274,34.640347033224657,30.799400812864913,26.603149590722001,21.577226507606952,32.836004538647359,21.425307618074754,24.66390430591111,26.09426327781263,42.650310158361194,30.557829150284139,36.775799852535975,19.197672177579722,29.38721488165244,34.145298914918541,42.557923671657704,41.909393361989878,33.787072556766368,31.079230964674537,36.857454831322727,22.368185656370358,26.401401171655142,26.992720050430837,34.513606785687337,15.184822575285056,12.37575965422721,18.095838647839209,31.545747295406965,17.076881256922931,34.801258754812515,32.139318016511581,39.924187708386405,39.487346003468389,19.923444849751569,35.314456158828506,25.08173058277983,35.195015241317222,28.733730600561067,36.349748457973007,44.913392598445249,18.288044144494606,28.649239346991401,40.29733097887754,31.030313955697949,24.775140987867111,12.399025353859709,38.147799235297811,31.713165972947294,33.125401286613723,35.262110657169927,15.477354299254461,27.177673437114905],"marker":{"color":"#ff0000","line":{"color":"#444","width":1},"opacity":0.5,"size":5},"type":"scatter3d","mode":"markers","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3d-graph-mvn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.7: An interactive 3D plot showing the replationship among 3 normally distributed variables
+Figure&nbsp;10.7: An interactive 3D plot showing the replationship among 3 normally distributed variables
 </figcaption></figure>
 </div>
 </div>
-</section><section id="sec-faux" class="level3" data-number="9.2.3"><h3 data-number="9.2.3" class="anchored" data-anchor-id="sec-faux">
-<span class="header-section-number">9.2.3</span> Faux</h3>
+</section><section id="sec-faux" class="level3" data-number="10.2.3"><h3 data-number="10.2.3" class="anchored" data-anchor-id="sec-faux">
+<span class="header-section-number">10.2.3</span> Faux</h3>
 <p>Alternatively, you can use the package <a href="https://debruine.github.io/faux/">faux</a> to generate any number of correlated variables. It also has a function for checking the parameters of your new simulated data (<code>check_sim_stats()</code>).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>bvn3 <span class="ot">&lt;-</span> <span class="fu">rnorm_multi</span>(</span>
@@ -1063,7 +1069,7 @@ Figure&nbsp;9.7: An interactive 3D plot showing the replationship among 3 normal
 <img src="images/figures/fig-faux-sim-design-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A point-line plot with 'pet' on the x-axis and labels 'Cat Owners' and 'Dog Owners', and 'value' on the y-axis (5-25). The colour legend is titled 'time' with labels 'morning' (green), 'noon' (orange), and 'night' (purple). The 6 points show increasing value from morning to night, with Dog Owners having a larger increase (10, 15, 20) than Cat Owners (10, 12, 14). The lines show the standard deviation of 3 for Cat Ownders and 5 for Dog Owners.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-faux-sim-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.8: The design plot auto-generated by <code>sim_design()</code>
+Figure&nbsp;10.8: The design plot auto-generated by <code>sim_design()</code>
 </figcaption></figure>
 </div>
 </div>
@@ -1151,23 +1157,23 @@ Figure&nbsp;9.8: The design plot auto-generated by <code>sim_design()</code>
 </div>
 </div>
 <p>See the <a href="https://debruine.github.io/faux/">faux website</a> for more detailed tutorials.</p>
-</section></section><section id="stat-terms" class="level2" data-number="9.3"><h2 data-number="9.3" class="anchored" data-anchor-id="stat-terms">
-<span class="header-section-number">9.3</span> Statistical terms</h2>
+</section></section><section id="stat-terms" class="level2" data-number="10.3"><h2 data-number="10.3" class="anchored" data-anchor-id="stat-terms">
+<span class="header-section-number">10.3</span> Statistical terms</h2>
 <p>Let’s review some important statistical terms before we review tests of distributions.</p>
-<section id="effect" class="level3" data-number="9.3.1"><h3 data-number="9.3.1" class="anchored" data-anchor-id="effect">
-<span class="header-section-number">9.3.1</span> Effect</h3>
+<section id="effect" class="level3" data-number="10.3.1"><h3 data-number="10.3.1" class="anchored" data-anchor-id="effect">
+<span class="header-section-number">10.3.1</span> Effect</h3>
 <p>The <a href="https://psyteachr.github.io/glossary/e#effect" target="_blank" class="glossary" title="Some measure of your data, such as the mean value, or the number of standard deviations the mean differs from a chance value.">effect</a> is some measure of your data. This will depend on the type of data you have and the type of statistical test you are using. For example, if you flipped a coin 100 times and it landed heads 66 times, the effect would be 66/100. You can then use the exact binomial test to compare this effect to the <a href="https://psyteachr.github.io/glossary/n#null-effect" target="_blank" class="glossary" title="An outcome that does not show an otherwise expected effect.">null effect</a> you would expect from a fair coin (50/100) or to any other effect you choose. The <a href="https://psyteachr.github.io/glossary/e#effect-size" target="_blank" class="glossary" title="The difference between the effect in your data and the null effect (usually a chance value)">effect size</a> refers to the difference between the effect in your data and the null effect (usually a chance value).</p>
 <div class="right meme">
 <img src="images/memes/p-value.jpg" alt="Top text: Don't know what a p-value is, Bottom text: at this point I'm too afraid to ask">
 </div>
-</section><section id="p-value" class="level3" data-number="9.3.2"><h3 data-number="9.3.2" class="anchored" data-anchor-id="p-value">
-<span class="header-section-number">9.3.2</span> P-value</h3>
+</section><section id="p-value" class="level3" data-number="10.3.2"><h3 data-number="10.3.2" class="anchored" data-anchor-id="p-value">
+<span class="header-section-number">10.3.2</span> P-value</h3>
 <p>The <a href="https://psyteachr.github.io/glossary/p#p-value" target="_blank" class="glossary" title="The probability of seeing an effect at least as extreme as what you have, if the real effect was the value you are testing against (e.g., a null effect)">p-value</a> of a test is the probability of seeing an effect at least as extreme as what you have, if the real effect was the value you are testing against (e.g., a null effect). So if you used a binomial test to test against a chance probability of 1/6 (e.g., the probability of rolling 1 with a 6-sided die), then a p-value of 0.17 means that you could expect to see effects at least as extreme as your data 17% of the time just by chance alone.</p>
-</section><section id="alpha" class="level3" data-number="9.3.3"><h3 data-number="9.3.3" class="anchored" data-anchor-id="alpha">
-<span class="header-section-number">9.3.3</span> Alpha</h3>
+</section><section id="alpha" class="level3" data-number="10.3.3"><h3 data-number="10.3.3" class="anchored" data-anchor-id="alpha">
+<span class="header-section-number">10.3.3</span> Alpha</h3>
 <p>If you are using null hypothesis significance testing (<a href="https://psyteachr.github.io/glossary/n#nhst" target="_blank" class="glossary" title="Null Hypothesis Signficance Testing">NHST</a>), then you need to decide on a cutoff value (<a href="https://psyteachr.github.io/glossary/a#alpha" target="_blank" class="glossary" title="(stats) The cutoff value for making a decision to reject the null hypothesis; (graphics) A value between 0 and 1 used to control the levels of transparency in a plot">alpha</a>) for making a decision to reject the null hypothesis. We call p-values below the alpha cutoff <a href="https://psyteachr.github.io/glossary/s#significant" target="_blank" class="glossary" title="The conclusion when the p-value is less than the critical alpha.">significant</a>. In psychology, alpha is traditionally set at 0.05, but there are good arguments for <a href="http://daniellakens.blogspot.com/2019/05/justifying-your-alpha-by-minimizing-or.html">setting a different criterion in some circumstances</a>.</p>
-</section><section id="false-pos" class="level3" data-number="9.3.4"><h3 data-number="9.3.4" class="anchored" data-anchor-id="false-pos">
-<span class="header-section-number">9.3.4</span> False Positive/Negative</h3>
+</section><section id="false-pos" class="level3" data-number="10.3.4"><h3 data-number="10.3.4" class="anchored" data-anchor-id="false-pos">
+<span class="header-section-number">10.3.4</span> False Positive/Negative</h3>
 <p>The probability that a test concludes there is an effect when there is really no effect (e.g., concludes a fair coin is biased) is called the <a href="https://psyteachr.github.io/glossary/f#false-positive" target="_blank" class="glossary" title="When a test concludes there is an effect when there really is no effect">false positive</a> rate (or <a href="https://psyteachr.github.io/glossary/t#type-i-error" target="_blank" class="glossary" title="A false positive; When a test concludes there is an effect when there really is no effect">Type I Error</a> Rate). The <a href="https://psyteachr.github.io/glossary/a#alpha" target="_blank" class="glossary" title="(stats) The cutoff value for making a decision to reject the null hypothesis; (graphics) A value between 0 and 1 used to control the levels of transparency in a plot">alpha</a> is the false positive rate we accept for a test. The probability that a test concludes there is no effect when there really is one (e.g., concludes a biased coin is fair) is called the <a href="https://psyteachr.github.io/glossary/f#false-negative" target="_blank" class="glossary" title="When a test concludes there is no effect when there really is an effect">false negative</a> rate (or <a href="https://psyteachr.github.io/glossary/t#type-ii-error" target="_blank" class="glossary" title="A false negative; When a test concludes there is no effect when there really is an effect">Type II Error</a> Rate). The <a href="https://psyteachr.github.io/glossary/b#beta" target="_blank" class="glossary" title="The false negative rate we accept for a statistical test.">beta</a> is the false negative rate we accept for a test.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1182,8 +1188,8 @@ Note
 <p>The false positive rate is not the overall probability of getting a false positive, but the probability of a false positive <em>under the null hypothesis</em>. Similarly, the false negative rate is the probability of a false negative <em>under the alternative hypothesis</em>. Unless we know the probability that we are testing a null effect, we can’t say anything about the overall probability of false positives or negatives. If 100% of the hypotheses we test are false, then all significant effects are false positives, but if all of the hypotheses we test are true, then all of the positives are true positives and the overall false positive rate is 0.</p>
 </div>
 </div>
-</section><section id="power" class="level3" data-number="9.3.5"><h3 data-number="9.3.5" class="anchored" data-anchor-id="power">
-<span class="header-section-number">9.3.5</span> Power and SESOI</h3>
+</section><section id="power" class="level3" data-number="10.3.5"><h3 data-number="10.3.5" class="anchored" data-anchor-id="power">
+<span class="header-section-number">10.3.5</span> Power and SESOI</h3>
 <p><a href="https://psyteachr.github.io/glossary/p#power" target="_blank" class="glossary" title="The probability of rejecting the null hypothesis when it is false.">Power</a> is equal to 1 minus beta (i.e., the <a href="https://psyteachr.github.io/glossary/t#true-positive" target="_blank" class="glossary" title="When a test concludes there is an effect when there is really is an effect">true positive</a> rate), and depends on the effect size, how many samples we take (n), and what we set alpha to. For any test, if you specify all but one of these values, you can calculate the last. The effect size you use in power calculations should be the smallest effect size of interest (<a href="https://psyteachr.github.io/glossary/s#sesoi" target="_blank" class="glossary" title="Smallest Effect Size of Interest: the smallest effect that is theoretically or practically meaningful">SESOI</a>). See <a href="https://doi.org/10.1177/2515245918770963"><span class="citation" data-cites="TOSTtutorial">Lakens et al. (<span>2018</span>)</span></a> for a tutorial on methods for choosing an SESOI.</p>
 <div class="try">
 <p>Let’s say you want to be able to detect at least a 15% difference from chance (50%) in a coin’s fairness, and you want your test to have a 5% chance of false positives and a 10% chance of false negatives. What are the following values?</p>
@@ -1202,8 +1208,8 @@ Note
 </li>
 </ul>
 </div>
-</section><section id="conf-int" class="level3" data-number="9.3.6"><h3 data-number="9.3.6" class="anchored" data-anchor-id="conf-int">
-<span class="header-section-number">9.3.6</span> Confidence Intervals</h3>
+</section><section id="conf-int" class="level3" data-number="10.3.6"><h3 data-number="10.3.6" class="anchored" data-anchor-id="conf-int">
+<span class="header-section-number">10.3.6</span> Confidence Intervals</h3>
 <p>The <a href="https://psyteachr.github.io/glossary/c#confidence-interval" target="_blank" class="glossary" title="A type of interval estimate used to summarise a given statistic or measurement where a proportion of intervals calculated from the sample(s) will contain the true value of the statistic.">confidence interval</a> is a range around some value (such as a mean) that has some probability of containing the parameter, if you repeated the process many times. Traditionally in psychology, we use 95% confidence intervals, but you can calculate CIs for any percentage.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1218,10 +1224,10 @@ Note
 <p>A 95% CI does <em>not</em> mean that there is a 95% probability that the true mean lies within this range, but that, if you repeated the study many times and calculated the CI this same way every time, you’d expect the true mean to be inside the CI in 95% of the studies. This seems like a subtle distinction, but can lead to some misunderstandings. See <a href="https://link.springer.com/article/10.3758/s13423-015-0947-8"><span class="citation" data-cites="Morey2016">Morey et al. (<span>2016</span>)</span></a> for more detailed discussion.</p>
 </div>
 </div>
-</section></section><section id="tests" class="level2" data-number="9.4"><h2 data-number="9.4" class="anchored" data-anchor-id="tests">
-<span class="header-section-number">9.4</span> Tests</h2>
-<section id="exact-binom" class="level3" data-number="9.4.1"><h3 data-number="9.4.1" class="anchored" data-anchor-id="exact-binom">
-<span class="header-section-number">9.4.1</span> Exact binomial test</h3>
+</section></section><section id="tests" class="level2" data-number="10.4"><h2 data-number="10.4" class="anchored" data-anchor-id="tests">
+<span class="header-section-number">10.4</span> Tests</h2>
+<section id="exact-binom" class="level3" data-number="10.4.1"><h3 data-number="10.4.1" class="anchored" data-anchor-id="exact-binom">
+<span class="header-section-number">10.4.1</span> Exact binomial test</h3>
 <p><code>binom.test(x, n, p)</code></p>
 <p>You can test a binomial distribution against a specific probability using the exact binomial test.</p>
 <ul>
@@ -1286,8 +1292,8 @@ Note
 </ul>
 </div>
 </div>
-<section id="sampling-binom" class="level4" data-number="9.4.1.1"><h4 data-number="9.4.1.1" class="anchored" data-anchor-id="sampling-binom">
-<span class="header-section-number">9.4.1.1</span> Sampling function</h4>
+<section id="sampling-binom" class="level4" data-number="10.4.1.1"><h4 data-number="10.4.1.1" class="anchored" data-anchor-id="sampling-binom">
+<span class="header-section-number">10.4.1.1</span> Sampling function</h4>
 <p>To estimate these rates, we need to repeat the sampling above many times. A <a href="https://psyteachr.github.io/glossary/f#function" target="_blank" class="glossary" title="A named section of code that can be reused.">function</a> is ideal for repeating the exact same procedure over and over. Set the arguments of the function to variables that you might want to change. Here, we will want to estimate power for:</p>
 <ul>
 <li>different sample sizes (<code>n</code>)</li>
@@ -1311,8 +1317,8 @@ Note
 <pre><code>[1] 0.3682016</code></pre>
 </div>
 </div>
-</section><section id="calc-power-binom" class="level4" data-number="9.4.1.2"><h4 data-number="9.4.1.2" class="anchored" data-anchor-id="calc-power-binom">
-<span class="header-section-number">9.4.1.2</span> Calculate power</h4>
+</section><section id="calc-power-binom" class="level4" data-number="10.4.1.2"><h4 data-number="10.4.1.2" class="anchored" data-anchor-id="calc-power-binom">
+<span class="header-section-number">10.4.1.2</span> Calculate power</h4>
 <p>Then you can use the <code><a href="https://rdrr.io/r/base/lapply.html">replicate()</a></code> function to run it many times and save all the output values. You can calculate the <a href="https://psyteachr.github.io/glossary/p#power" target="_blank" class="glossary" title="The probability of rejecting the null hypothesis when it is false.">power</a> of your analysis by checking the proportion of your simulated analyses that have a p-value less than your <a href="https://psyteachr.github.io/glossary/a#alpha" target="_blank" class="glossary" title="(stats) The cutoff value for making a decision to reject the null hypothesis; (graphics) A value between 0 and 1 used to control the levels of transparency in a plot">alpha</a> (the probability of rejecting the null hypothesis when the null hypothesis is true).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>my_reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="fl">1e4</span>, <span class="fu">sim_binom_test</span>(<span class="dv">100</span>, <span class="fl">0.6</span>))</span>
@@ -1353,13 +1359,13 @@ Note
 <img src="images/figures/fig-plot-reps-binom-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A histogram with 'my_reps' (0-1) on the x-axis and 'count' (0-4500) on the y-axis. Bars are 0.05 in width and most data are in the first two bars.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot-reps-binom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.9: The distribution of p-values.
+Figure&nbsp;10.9: The distribution of p-values.
 </figcaption></figure>
 </div>
 </div>
 </div>
-</section></section><section id="sec-t-test" class="level3" data-number="9.4.2"><h3 data-number="9.4.2" class="anchored" data-anchor-id="sec-t-test">
-<span class="header-section-number">9.4.2</span> T-test</h3>
+</section></section><section id="sec-t-test" class="level3" data-number="10.4.2"><h3 data-number="10.4.2" class="anchored" data-anchor-id="sec-t-test">
+<span class="header-section-number">10.4.2</span> T-test</h3>
 <p><code>t.test(x, y, alternative, mu, paired)</code></p>
 <p>Use a t-test to compare the mean of one distribution to a null hypothesis (one-sample t-test), compare the means of two samples (independent-samples t-test), or compare pairs of values (paired-samples t-test).</p>
 <p>You can run a one-sample t-test comparing the mean of your data to <code>mu</code>. Here is a simulated distribution with a mean of 0.5 and an SD of 1, creating an effect size of 0.5 SD when tested against a <code>mu</code> of 0. Run the simulation a few times to see how often the t-test returns a significant p-value (or run it in the <a href="http://shiny.psy.gla.ac.uk/debruine/normsim/">shiny app</a>).</p>
@@ -1413,8 +1419,8 @@ Warning
 <p>The <code>paired</code> argument defaults to <code>FALSE</code>, but it’s good practice to always explicitly set it so you are never confused about what type of test you are performing.</p>
 </div>
 </div>
-<section id="sampling-t" class="level4" data-number="9.4.2.1"><h4 data-number="9.4.2.1" class="anchored" data-anchor-id="sampling-t">
-<span class="header-section-number">9.4.2.1</span> Sampling function</h4>
+<section id="sampling-t" class="level4" data-number="10.4.2.1"><h4 data-number="10.4.2.1" class="anchored" data-anchor-id="sampling-t">
+<span class="header-section-number">10.4.2.1</span> Sampling function</h4>
 <p>We can use the <code><a href="https://rdrr.io/r/base/names.html">names()</a></code> function to find out the names of all the t.test parameters and use this to just get one type of data, like the test statistic (e.g., t-value).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">names</span>(t_ind)</span>
@@ -1449,8 +1455,8 @@ Warning
 <pre><code>[1] 0.4781169</code></pre>
 </div>
 </div>
-</section><section id="calc-power-t" class="level4" data-number="9.4.2.2"><h4 data-number="9.4.2.2" class="anchored" data-anchor-id="calc-power-t">
-<span class="header-section-number">9.4.2.2</span> Calculate power</h4>
+</section><section id="calc-power-t" class="level4" data-number="10.4.2.2"><h4 data-number="10.4.2.2" class="anchored" data-anchor-id="calc-power-t">
+<span class="header-section-number">10.4.2.2</span> Calculate power</h4>
 <p>Now replicate the simulation 1000 times.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>my_reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="fl">1e4</span>, <span class="fu">sim_t_ind</span>(<span class="dv">100</span>, <span class="fl">0.7</span>, <span class="dv">1</span>, <span class="fl">0.5</span>, <span class="dv">1</span>))</span>
@@ -1502,7 +1508,7 @@ NOTE: n is number in *each* group</code></pre>
 <img src="images/figures/fig-plot-reps-t-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A histogram with 'my_reps' (0-1) on the x-axis and 'count' (0-3000) on the y-axis. Bars are 0.05 in width -- the first bar is near 3000, then next about 1200 and they smoothly decrease to about 200 after that.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot-reps-t-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.10: The distribution of p-values.
+Figure&nbsp;10.10: The distribution of p-values.
 </figcaption></figure>
 </div>
 </div>
@@ -1523,8 +1529,8 @@ Warning
 <p>Make sure the <code>boundary</code> argument is set to <code>0</code> for p-value histograms. See what happens with a null effect if <code>boundary</code> is not set.</p>
 </div>
 </div>
-</section></section><section id="correlation" class="level3" data-number="9.4.3"><h3 data-number="9.4.3" class="anchored" data-anchor-id="correlation">
-<span class="header-section-number">9.4.3</span> Correlation</h3>
+</section></section><section id="correlation" class="level3" data-number="10.4.3"><h3 data-number="10.4.3" class="anchored" data-anchor-id="correlation">
+<span class="header-section-number">10.4.3</span> Correlation</h3>
 <p>You can test if continuous variables are related to each other using the <code><a href="https://rdrr.io/r/stats/cor.html">cor()</a></code> function. Let’s use <code>rnorm_multi()</code> to make a quick table of correlated values.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">rnorm_multi</span>(</span>
@@ -1549,8 +1555,8 @@ Warning
 <pre><code>[1] -0.400072</code></pre>
 </div>
 </div>
-<section id="sampling-cor" class="level4" data-number="9.4.3.1"><h4 data-number="9.4.3.1" class="anchored" data-anchor-id="sampling-cor">
-<span class="header-section-number">9.4.3.1</span> Sampling function</h4>
+<section id="sampling-cor" class="level4" data-number="10.4.3.1"><h4 data-number="10.4.3.1" class="anchored" data-anchor-id="sampling-cor">
+<span class="header-section-number">10.4.3.1</span> Sampling function</h4>
 <p>Create a function that creates two variables with <code>n</code> observations and <code>r</code> correlation. Use the function <code><a href="https://rdrr.io/r/stats/cor.test.html">cor.test()</a></code> to give you p-values for the correlation.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>sim_cor_test <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">r =</span> <span class="dv">0</span>) {</span>
@@ -1572,8 +1578,8 @@ Warning
 <pre><code>[1] 1.653965e-09</code></pre>
 </div>
 </div>
-</section><section id="calc-power-cor" class="level4" data-number="9.4.3.2"><h4 data-number="9.4.3.2" class="anchored" data-anchor-id="calc-power-cor">
-<span class="header-section-number">9.4.3.2</span> Calculate power</h4>
+</section><section id="calc-power-cor" class="level4" data-number="10.4.3.2"><h4 data-number="10.4.3.2" class="anchored" data-anchor-id="calc-power-cor">
+<span class="header-section-number">10.4.3.2</span> Calculate power</h4>
 <p>Now replicate the simulation 1000 times.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>my_reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="fl">1e4</span>, <span class="fu">sim_cor_test</span>(<span class="dv">50</span>, <span class="fl">0.5</span>))</span>
@@ -1599,122 +1605,147 @@ Warning
     alternative = two.sided</code></pre>
 </div>
 </div>
-</section></section></section><section id="example" class="level2" data-number="9.5"><h2 data-number="9.5" class="anchored" data-anchor-id="example">
-<span class="header-section-number">9.5</span> Example</h2>
+</section></section></section><section id="example" class="level2" data-number="10.5"><h2 data-number="10.5" class="anchored" data-anchor-id="example">
+<span class="header-section-number">10.5</span> Example</h2>
 <p>This example uses the <a href="https://www.cdc.gov/growthcharts/data/zscore/zstatage.csv">Growth Chart Data Tables</a> from the <a href="https://www.cdc.gov/growthcharts/zscore.htm">US CDC</a>. The data consist of height in centimeters for the z-scores of –2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, and 2 by sex (1=male; 2=female) and half-month of age (from 24.0 to 240.5 months).</p>
-<section id="load-wrangle" class="level3" data-number="9.5.1"><h3 data-number="9.5.1" class="anchored" data-anchor-id="load-wrangle">
-<span class="header-section-number">9.5.1</span> Load &amp; wrangle</h3>
+<section id="load-wrangle" class="level3" data-number="10.5.1"><h3 data-number="10.5.1" class="anchored" data-anchor-id="load-wrangle">
+<span class="header-section-number">10.5.1</span> Load &amp; wrangle</h3>
 <p>We have to do a little data wrangling first. Have a look at the data after you import it and relabel <code>Sex</code> to <code>male</code> and <code>female</code> instead of <code>1</code> and <code>2</code>. Also convert <code>Agemos</code> (age in months) to years. Relabel the column <code>0</code> as <code>mean</code> and calculate a new column named <code>sd</code> as the difference between columns <code>1</code> and <code>0</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>orig_height_age <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://www.cdc.gov/growthcharts/data/zscore/zstatage.csv"</span>) </span>
-<span id="cb60-2"><a href="#cb60-2"></a></span>
-<span id="cb60-3"><a href="#cb60-3"></a>height_age <span class="ot">&lt;-</span> orig_height_age <span class="sc">|&gt;</span></span>
-<span id="cb60-4"><a href="#cb60-4"></a>  <span class="fu">filter</span>(Sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb60-5"><a href="#cb60-5"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb60-6"><a href="#cb60-6"></a>    <span class="at">sex =</span> <span class="fu">recode</span>(Sex, <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"male"</span>, <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"female"</span>),</span>
-<span id="cb60-7"><a href="#cb60-7"></a>    <span class="at">age =</span> <span class="fu">as.numeric</span>(Agemos)<span class="sc">/</span><span class="dv">12</span>,</span>
-<span id="cb60-8"><a href="#cb60-8"></a>    <span class="at">sd =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">-</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span></span>
-<span id="cb60-9"><a href="#cb60-9"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb60-10"><a href="#cb60-10"></a>  <span class="fu">select</span>(sex, age, <span class="at">mean =</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>, sd)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>orig_height_age <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://www.cdc.gov/growthcharts/data/zscore/zstatage.csv"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Failed to open
+'https://www.cdc.gov/growthcharts/data/zscore/zstatage.csv': The requested URL
+returned error: 403</code></pre>
 </div>
-</section><section id="plot" class="level3" data-number="9.5.2"><h3 data-number="9.5.2" class="anchored" data-anchor-id="plot">
-<span class="header-section-number">9.5.2</span> Plot</h3>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! cannot open the connection</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>height_age <span class="ot">&lt;-</span> orig_height_age <span class="sc">|&gt;</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>  <span class="fu">filter</span>(Sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb63-3"><a href="#cb63-3"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb63-4"><a href="#cb63-4"></a>    <span class="at">sex =</span> <span class="fu">recode</span>(Sex, <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"male"</span>, <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"female"</span>),</span>
+<span id="cb63-5"><a href="#cb63-5"></a>    <span class="at">age =</span> <span class="fu">as.numeric</span>(Agemos)<span class="sc">/</span><span class="dv">12</span>,</span>
+<span id="cb63-6"><a href="#cb63-6"></a>    <span class="at">sd =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">-</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span></span>
+<span id="cb63-7"><a href="#cb63-7"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb63-8"><a href="#cb63-8"></a>  <span class="fu">select</span>(sex, age, <span class="at">mean =</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>, sd)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'orig_height_age' not found</code></pre>
+</div>
+</div>
+</section><section id="plot" class="level3" data-number="10.5.2"><h3 data-number="10.5.2" class="anchored" data-anchor-id="plot">
+<span class="header-section-number">10.5.2</span> Plot</h3>
 <p>Plot your new data frame to see how mean height changes with age for boys and girls.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">ggplot</span>(height_age, <span class="fu">aes</span>(age, mean, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
-<span id="cb61-2"><a href="#cb61-2"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd, </span>
-<span id="cb61-3"><a href="#cb61-3"></a>                  <span class="at">ymax =</span> mean <span class="sc">+</span> sd),</span>
-<span id="cb61-4"><a href="#cb61-4"></a>              <span class="at">stat=</span><span class="st">"identity"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="fig-plot-height-means" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A line plot with 'age' (3-20) on the x-axis and 'mean' (75-190) on the y-axis. The legend is titled 'sex' with female being represented by a red line and male by a blue line. The mean increases with age similarly for female and male from age 3 to about 13, when female levels off around 165 and male increases until about age 17 to just over 175.">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-plot-height-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/figures/fig-plot-height-means-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A line plot with 'age' (3-20) on the x-axis and 'mean' (75-190) on the y-axis. The legend is titled 'sex' with female being represented by a red line and male by a blue line. The mean increases with age similarly for female and male from age 3 to about 13, when female levels off around 165 and male increases until about age 17 to just over 175.">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot-height-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.11: Mean heaight by age for boys and girls
-</figcaption></figure>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="fu">ggplot</span>(height_age, <span class="fu">aes</span>(age, mean, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
+<span id="cb65-2"><a href="#cb65-2"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd, </span>
+<span id="cb65-3"><a href="#cb65-3"></a>                  <span class="at">ymax =</span> mean <span class="sc">+</span> sd),</span>
+<span id="cb65-4"><a href="#cb65-4"></a>              <span class="at">stat=</span><span class="st">"identity"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'height_age' not found</code></pre>
 </div>
 </div>
-</div>
-</section><section id="simulate-a-population" class="level3" data-number="9.5.3"><h3 data-number="9.5.3" class="anchored" data-anchor-id="simulate-a-population">
-<span class="header-section-number">9.5.3</span> Simulate a population</h3>
+</section><section id="simulate-a-population" class="level3" data-number="10.5.3"><h3 data-number="10.5.3" class="anchored" data-anchor-id="simulate-a-population">
+<span class="header-section-number">10.5.3</span> Simulate a population</h3>
 <p>Simulate 50 random male heights and 50 random female heights for 20-year-olds using the <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function and the means and SDs from the <code>height_age</code> table. Plot the data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>age_filter <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb62-2"><a href="#cb62-2"></a>m <span class="ot">&lt;-</span> <span class="fu">filter</span>(height_age, age <span class="sc">==</span> age_filter, sex <span class="sc">==</span> <span class="st">"male"</span>)</span>
-<span id="cb62-3"><a href="#cb62-3"></a>f <span class="ot">&lt;-</span> <span class="fu">filter</span>(height_age, age <span class="sc">==</span> age_filter, sex <span class="sc">==</span> <span class="st">"female"</span>)</span>
-<span id="cb62-4"><a href="#cb62-4"></a></span>
-<span id="cb62-5"><a href="#cb62-5"></a>sim_height <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb62-6"><a href="#cb62-6"></a>  <span class="at">male =</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, m<span class="sc">$</span>mean, m<span class="sc">$</span>sd),</span>
-<span id="cb62-7"><a href="#cb62-7"></a>  <span class="at">female =</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, f<span class="sc">$</span>mean, f<span class="sc">$</span>sd)</span>
-<span id="cb62-8"><a href="#cb62-8"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb62-9"><a href="#cb62-9"></a>  <span class="fu">gather</span>(<span class="st">"sex"</span>, <span class="st">"height"</span>, male<span class="sc">:</span>female)</span>
-<span id="cb62-10"><a href="#cb62-10"></a></span>
-<span id="cb62-11"><a href="#cb62-11"></a><span class="fu">ggplot</span>(sim_height) <span class="sc">+</span></span>
-<span id="cb62-12"><a href="#cb62-12"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(height, <span class="at">fill =</span> sex), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb62-13"><a href="#cb62-13"></a>  <span class="fu">xlim</span>(<span class="dv">125</span>, <span class="dv">225</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="fig-sim-height-20" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A density plot with height on the x-axis (125-225) and density of the y-axis (0 to 0.06). The legend is titled 'sex' and the categories are female (red) and male (blue). Both density plots have an approximately normal distribution, with female having a mean of 165 and male with a peak about 178.">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-sim-height-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/figures/fig-sim-height-20-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A density plot with height on the x-axis (125-225) and density of the y-axis (0 to 0.06). The legend is titled 'sex' and the categories are female (red) and male (blue). Both density plots have an approximately normal distribution, with female having a mean of 165 and male with a peak about 178.">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>age_filter <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb67-2"><a href="#cb67-2"></a>m <span class="ot">&lt;-</span> <span class="fu">filter</span>(height_age, age <span class="sc">==</span> age_filter, sex <span class="sc">==</span> <span class="st">"male"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'height_age' not found</code></pre>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sim-height-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.12: The distribution of male and female height for 20-year-olds.
-</figcaption></figure>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>f <span class="ot">&lt;-</span> <span class="fu">filter</span>(height_age, age <span class="sc">==</span> age_filter, sex <span class="sc">==</span> <span class="st">"female"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'height_age' not found</code></pre>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>sim_height <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb71-2"><a href="#cb71-2"></a>  <span class="at">male =</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, m<span class="sc">$</span>mean, m<span class="sc">$</span>sd),</span>
+<span id="cb71-3"><a href="#cb71-3"></a>  <span class="at">female =</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, f<span class="sc">$</span>mean, f<span class="sc">$</span>sd)</span>
+<span id="cb71-4"><a href="#cb71-4"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb71-5"><a href="#cb71-5"></a>  <span class="fu">gather</span>(<span class="st">"sex"</span>, <span class="st">"height"</span>, male<span class="sc">:</span>female)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'm' not found</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="fu">ggplot</span>(sim_height) <span class="sc">+</span></span>
+<span id="cb73-2"><a href="#cb73-2"></a>  <span class="fu">geom_density</span>(<span class="fu">aes</span>(height, <span class="at">fill =</span> sex), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb73-3"><a href="#cb73-3"></a>  <span class="fu">xlim</span>(<span class="dv">125</span>, <span class="dv">225</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'sim_height' not found</code></pre>
 </div>
 </div>
 <div class="try">
 <p>Run the simulation above several times, noting how the density plot changes. Try changing the age you’re simulating.</p>
 </div>
-</section><section id="analyse-simulated-data" class="level3" data-number="9.5.4"><h3 data-number="9.5.4" class="anchored" data-anchor-id="analyse-simulated-data">
-<span class="header-section-number">9.5.4</span> Analyse simulated data</h3>
+</section><section id="analyse-simulated-data" class="level3" data-number="10.5.4"><h3 data-number="10.5.4" class="anchored" data-anchor-id="analyse-simulated-data">
+<span class="header-section-number">10.5.4</span> Analyse simulated data</h3>
 <p>Use the <code>sim_t_ind(n, m1, sd1, m2, sd2)</code> function we created above to generate one simulation with a sample size of 50 in each group using the means and SDs of male and female 14-year-olds.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>age_filter <span class="ot">&lt;-</span> <span class="dv">14</span></span>
-<span id="cb63-2"><a href="#cb63-2"></a>m <span class="ot">&lt;-</span> <span class="fu">filter</span>(height_age, age <span class="sc">==</span> age_filter, sex <span class="sc">==</span> <span class="st">"male"</span>)</span>
-<span id="cb63-3"><a href="#cb63-3"></a>f <span class="ot">&lt;-</span> <span class="fu">filter</span>(height_age, age <span class="sc">==</span> age_filter, sex <span class="sc">==</span> <span class="st">"female"</span>)</span>
-<span id="cb63-4"><a href="#cb63-4"></a></span>
-<span id="cb63-5"><a href="#cb63-5"></a><span class="fu">sim_t_ind</span>(<span class="dv">50</span>, m<span class="sc">$</span>mean, m<span class="sc">$</span>sd, f<span class="sc">$</span>mean, f<span class="sc">$</span>sd)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.01183413</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>age_filter <span class="ot">&lt;-</span> <span class="dv">14</span></span>
+<span id="cb75-2"><a href="#cb75-2"></a>m <span class="ot">&lt;-</span> <span class="fu">filter</span>(height_age, age <span class="sc">==</span> age_filter, sex <span class="sc">==</span> <span class="st">"male"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'height_age' not found</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>f <span class="ot">&lt;-</span> <span class="fu">filter</span>(height_age, age <span class="sc">==</span> age_filter, sex <span class="sc">==</span> <span class="st">"female"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'height_age' not found</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="fu">sim_t_ind</span>(<span class="dv">50</span>, m<span class="sc">$</span>mean, m<span class="sc">$</span>sd, f<span class="sc">$</span>mean, f<span class="sc">$</span>sd)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'm' not found</code></pre>
 </div>
 </div>
-</section><section id="replicate-simulation" class="level3" data-number="9.5.5"><h3 data-number="9.5.5" class="anchored" data-anchor-id="replicate-simulation">
-<span class="header-section-number">9.5.5</span> Replicate simulation</h3>
+</section><section id="replicate-simulation" class="level3" data-number="10.5.5"><h3 data-number="10.5.5" class="anchored" data-anchor-id="replicate-simulation">
+<span class="header-section-number">10.5.5</span> Replicate simulation</h3>
 <p>Now replicate this 1e4 times using the <code><a href="https://rdrr.io/r/base/lapply.html">replicate()</a></code> function. This function will save the returned p-values in a list (<code>my_reps</code>). We can then check what proportion of those p-values are less than our alpha value. This is the power of our test.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>my_reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="fl">1e4</span>, <span class="fu">sim_t_ind</span>(<span class="dv">50</span>, m<span class="sc">$</span>mean, m<span class="sc">$</span>sd, f<span class="sc">$</span>mean, f<span class="sc">$</span>sd))</span>
-<span id="cb65-2"><a href="#cb65-2"></a></span>
-<span id="cb65-3"><a href="#cb65-3"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb65-4"><a href="#cb65-4"></a>power <span class="ot">&lt;-</span> <span class="fu">mean</span>(my_reps <span class="sc">&lt;</span> alpha)</span>
-<span id="cb65-5"><a href="#cb65-5"></a>power</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a>my_reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="fl">1e4</span>, <span class="fu">sim_t_ind</span>(<span class="dv">50</span>, m<span class="sc">$</span>mean, m<span class="sc">$</span>sd, f<span class="sc">$</span>mean, f<span class="sc">$</span>sd))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `FUN()`:
+! object 'm' not found</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb83-2"><a href="#cb83-2"></a>power <span class="ot">&lt;-</span> <span class="fu">mean</span>(my_reps <span class="sc">&lt;</span> alpha)</span>
+<span id="cb83-3"><a href="#cb83-3"></a>power</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6447</code></pre>
+<pre><code>[1] 0.966</code></pre>
 </div>
 </div>
-</section><section id="one-tailed-prediction" class="level3" data-number="9.5.6"><h3 data-number="9.5.6" class="anchored" data-anchor-id="one-tailed-prediction">
-<span class="header-section-number">9.5.6</span> One-tailed prediction</h3>
+</section><section id="one-tailed-prediction" class="level3" data-number="10.5.6"><h3 data-number="10.5.6" class="anchored" data-anchor-id="one-tailed-prediction">
+<span class="header-section-number">10.5.6</span> One-tailed prediction</h3>
 <p>This design has about 65% power to detect the sex difference in height (with a 2-tailed test). Modify the <code>sim_t_ind</code> function for a 1-tailed prediction.</p>
 <p>You could just set <code>alternative</code> equal to “greater” in the function, but it might be better to add the <code>alt</code> argument to your function (giving it the same default value as <code>t.test</code>) and change the value of <code>alternative</code> in the function to <code>alt</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>sim_t_ind <span class="ot">&lt;-</span> <span class="cf">function</span>(n, m1, sd1, m2, sd2, <span class="at">alt =</span> <span class="st">"two.sided"</span>) {</span>
-<span id="cb67-2"><a href="#cb67-2"></a>  v1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, m1, sd1)</span>
-<span id="cb67-3"><a href="#cb67-3"></a>  v2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, m2, sd2)</span>
-<span id="cb67-4"><a href="#cb67-4"></a>  t_ind <span class="ot">&lt;-</span> <span class="fu">t.test</span>(v1, v2, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> alt)</span>
-<span id="cb67-5"><a href="#cb67-5"></a>  </span>
-<span id="cb67-6"><a href="#cb67-6"></a>  <span class="fu">return</span>(t_ind<span class="sc">$</span>p.value)</span>
-<span id="cb67-7"><a href="#cb67-7"></a>}</span>
-<span id="cb67-8"><a href="#cb67-8"></a></span>
-<span id="cb67-9"><a href="#cb67-9"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb67-10"><a href="#cb67-10"></a>my_reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="fl">1e4</span>, <span class="fu">sim_t_ind</span>(<span class="dv">50</span>, m<span class="sc">$</span>mean, m<span class="sc">$</span>sd, f<span class="sc">$</span>mean, f<span class="sc">$</span>sd, <span class="st">"greater"</span>))</span>
-<span id="cb67-11"><a href="#cb67-11"></a><span class="fu">mean</span>(my_reps <span class="sc">&lt;</span> alpha)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a>sim_t_ind <span class="ot">&lt;-</span> <span class="cf">function</span>(n, m1, sd1, m2, sd2, <span class="at">alt =</span> <span class="st">"two.sided"</span>) {</span>
+<span id="cb85-2"><a href="#cb85-2"></a>  v1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, m1, sd1)</span>
+<span id="cb85-3"><a href="#cb85-3"></a>  v2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, m2, sd2)</span>
+<span id="cb85-4"><a href="#cb85-4"></a>  t_ind <span class="ot">&lt;-</span> <span class="fu">t.test</span>(v1, v2, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">alternative =</span> alt)</span>
+<span id="cb85-5"><a href="#cb85-5"></a>  </span>
+<span id="cb85-6"><a href="#cb85-6"></a>  <span class="fu">return</span>(t_ind<span class="sc">$</span>p.value)</span>
+<span id="cb85-7"><a href="#cb85-7"></a>}</span>
+<span id="cb85-8"><a href="#cb85-8"></a></span>
+<span id="cb85-9"><a href="#cb85-9"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb85-10"><a href="#cb85-10"></a>my_reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="fl">1e4</span>, <span class="fu">sim_t_ind</span>(<span class="dv">50</span>, m<span class="sc">$</span>mean, m<span class="sc">$</span>sd, f<span class="sc">$</span>mean, f<span class="sc">$</span>sd, <span class="st">"greater"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `FUN()`:
+! object 'm' not found</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">mean</span>(my_reps <span class="sc">&lt;</span> alpha)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7613</code></pre>
+<pre><code>[1] 0.966</code></pre>
 </div>
 </div>
-</section><section id="range-of-sample-sizes" class="level3" data-number="9.5.7"><h3 data-number="9.5.7" class="anchored" data-anchor-id="range-of-sample-sizes">
-<span class="header-section-number">9.5.7</span> Range of sample sizes</h3>
+</section><section id="range-of-sample-sizes" class="level3" data-number="10.5.7"><h3 data-number="10.5.7" class="anchored" data-anchor-id="range-of-sample-sizes">
+<span class="header-section-number">10.5.7</span> Range of sample sizes</h3>
 <p>What if we want to find out what sample size will give us 80% power? We can try trial and error. We know the number should be slightly larger than 50. But you can search more systematically by repeating your power calculation for a range of sample sizes.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1731,56 +1762,58 @@ Note
 </div>
 <p>Start with a relatively low number of replications and/or more spread-out samples to estimate where you should be looking more specifically. Then you can repeat with a narrower/denser range of sample sizes and more iterations.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="co"># make another custom function to return power</span></span>
-<span id="cb69-2"><a href="#cb69-2"></a>pwr_func <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">reps =</span> <span class="dv">100</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>) {</span>
-<span id="cb69-3"><a href="#cb69-3"></a>  ps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(reps, <span class="fu">sim_t_ind</span>(n, m<span class="sc">$</span>mean, m<span class="sc">$</span>sd, f<span class="sc">$</span>mean, f<span class="sc">$</span>sd, <span class="st">"greater"</span>))</span>
-<span id="cb69-4"><a href="#cb69-4"></a>  <span class="fu">mean</span>(ps <span class="sc">&lt;</span> alpha)</span>
-<span id="cb69-5"><a href="#cb69-5"></a>}</span>
-<span id="cb69-6"><a href="#cb69-6"></a></span>
-<span id="cb69-7"><a href="#cb69-7"></a><span class="co"># make a table of the n values you want to check</span></span>
-<span id="cb69-8"><a href="#cb69-8"></a>power_table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb69-9"><a href="#cb69-9"></a>  <span class="at">n =</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>)</span>
-<span id="cb69-10"><a href="#cb69-10"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb69-11"><a href="#cb69-11"></a>  <span class="co"># run the power function for each n</span></span>
-<span id="cb69-12"><a href="#cb69-12"></a>  <span class="fu">mutate</span>(<span class="at">power =</span> <span class="fu">map_dbl</span>(n, pwr_func))</span>
-<span id="cb69-13"><a href="#cb69-13"></a></span>
-<span id="cb69-14"><a href="#cb69-14"></a><span class="co"># plot the results</span></span>
-<span id="cb69-15"><a href="#cb69-15"></a><span class="fu">ggplot</span>(power_table, <span class="fu">aes</span>(n, power)) <span class="sc">+</span></span>
-<span id="cb69-16"><a href="#cb69-16"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
-<span id="cb69-17"><a href="#cb69-17"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb69-18"><a href="#cb69-18"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="fig-range-sample-sizes" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A point plot, with n (20-100) on the x-axis and power (0.4-1) on the y-axis. There is a horizontal line marking power = 0.8. Points plot each level of n in increments of 5, with n = 20 having power about 0.5 up to n = 100 having power about 0.95.">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-range-sample-sizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/figures/fig-range-sample-sizes-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A point plot, with n (20-100) on the x-axis and power (0.4-1) on the y-axis. There is a horizontal line marking power = 0.8. Points plot each level of n in increments of 5, with n = 20 having power about 0.5 up to n = 100 having power about 0.95.">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="co"># make another custom function to return power</span></span>
+<span id="cb89-2"><a href="#cb89-2"></a>pwr_func <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">reps =</span> <span class="dv">100</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>) {</span>
+<span id="cb89-3"><a href="#cb89-3"></a>  ps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(reps, <span class="fu">sim_t_ind</span>(n, m<span class="sc">$</span>mean, m<span class="sc">$</span>sd, f<span class="sc">$</span>mean, f<span class="sc">$</span>sd, <span class="st">"greater"</span>))</span>
+<span id="cb89-4"><a href="#cb89-4"></a>  <span class="fu">mean</span>(ps <span class="sc">&lt;</span> alpha)</span>
+<span id="cb89-5"><a href="#cb89-5"></a>}</span>
+<span id="cb89-6"><a href="#cb89-6"></a></span>
+<span id="cb89-7"><a href="#cb89-7"></a><span class="co"># make a table of the n values you want to check</span></span>
+<span id="cb89-8"><a href="#cb89-8"></a>power_table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb89-9"><a href="#cb89-9"></a>  <span class="at">n =</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>)</span>
+<span id="cb89-10"><a href="#cb89-10"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb89-11"><a href="#cb89-11"></a>  <span class="co"># run the power function for each n</span></span>
+<span id="cb89-12"><a href="#cb89-12"></a>  <span class="fu">mutate</span>(<span class="at">power =</span> <span class="fu">map_dbl</span>(n, pwr_func))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `mutate()`:
+ℹ In argument: `power = map_dbl(n, pwr_func)`.
+Caused by error in `map_dbl()`:
+ℹ In index: 1.
+Caused by error in `FUN()`:
+! object 'm' not found</code></pre>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-range-sample-sizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.13: Power increases with sample size
-</figcaption></figure>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="co"># plot the results</span></span>
+<span id="cb91-2"><a href="#cb91-2"></a><span class="fu">ggplot</span>(power_table, <span class="fu">aes</span>(n, power)) <span class="sc">+</span></span>
+<span id="cb91-3"><a href="#cb91-3"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb91-4"><a href="#cb91-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb91-5"><a href="#cb91-5"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'power_table' not found</code></pre>
 </div>
 </div>
 <p>Now we can narrow down our search to values around 55 (plus or minus 5) and increase the number of replications from 1e3 to 1e4.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>power_table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb70-2"><a href="#cb70-2"></a>  <span class="at">n =</span> <span class="fu">seq</span>(<span class="dv">50</span>, <span class="dv">60</span>)</span>
-<span id="cb70-3"><a href="#cb70-3"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb70-4"><a href="#cb70-4"></a>  <span class="fu">mutate</span>(<span class="at">power =</span> <span class="fu">map_dbl</span>(n, pwr_func, <span class="at">reps =</span> <span class="fl">1e4</span>))</span>
-<span id="cb70-5"><a href="#cb70-5"></a></span>
-<span id="cb70-6"><a href="#cb70-6"></a><span class="fu">ggplot</span>(power_table, <span class="fu">aes</span>(n, power)) <span class="sc">+</span></span>
-<span id="cb70-7"><a href="#cb70-7"></a> <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
-<span id="cb70-8"><a href="#cb70-8"></a> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb70-9"><a href="#cb70-9"></a> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb70-10"><a href="#cb70-10"></a> <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">50</span><span class="sc">:</span><span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="fig-narrow-range-sample-sizes" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A point plot, with n (50-60) on the x-axis and power (0.75-0.85) on the y-axis. There is a horizontal line marking power = 0.8. Points plot each level of n in increments of 1, with n = 50 having power about 0.76 up to n = 60 having power about 0.83. A smoothing line connects the points and crosses the 0.8 line at n = 55.">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-narrow-range-sample-sizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/figures/fig-narrow-range-sample-sizes-1.png" class="img-fluid figure-img" style="width:100.0%" alt="A point plot, with n (50-60) on the x-axis and power (0.75-0.85) on the y-axis. There is a horizontal line marking power = 0.8. Points plot each level of n in increments of 1, with n = 50 having power about 0.76 up to n = 60 having power about 0.83. A smoothing line connects the points and crosses the 0.8 line at n = 55.">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a>power_table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb93-2"><a href="#cb93-2"></a>  <span class="at">n =</span> <span class="fu">seq</span>(<span class="dv">50</span>, <span class="dv">60</span>)</span>
+<span id="cb93-3"><a href="#cb93-3"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb93-4"><a href="#cb93-4"></a>  <span class="fu">mutate</span>(<span class="at">power =</span> <span class="fu">map_dbl</span>(n, pwr_func, <span class="at">reps =</span> <span class="fl">1e4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `mutate()`:
+ℹ In argument: `power = map_dbl(n, pwr_func, reps = 10000)`.
+Caused by error in `map_dbl()`:
+ℹ In index: 1.
+Caused by error in `FUN()`:
+! object 'm' not found</code></pre>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-narrow-range-sample-sizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.14: Plot a smaller range to see what sample size is closest to desired power.
-</figcaption></figure>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a><span class="fu">ggplot</span>(power_table, <span class="fu">aes</span>(n, power)) <span class="sc">+</span></span>
+<span id="cb95-2"><a href="#cb95-2"></a> <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb95-3"><a href="#cb95-3"></a> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb95-4"><a href="#cb95-4"></a> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb95-5"><a href="#cb95-5"></a> <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">50</span><span class="sc">:</span><span class="dv">60</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! object 'power_table' not found</code></pre>
 </div>
 </div>
 </section></section><section id="sec-glossary-sim" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="sec-glossary-sim">Glossary</h2>
@@ -2482,13 +2515,13 @@ $( document ).ready(function() {
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./08-func.html" class="pagination-link" aria-label="Iteration &amp; Functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration &amp; Functions</span></span>
+      <a href="./09-func.html" class="pagination-link" aria-label="Functions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Functions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./10-next.html" class="pagination-link" aria-label="Next Steps">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Next Steps</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./11-next.html" class="pagination-link" aria-label="Next Steps">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Next Steps</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -2499,7 +2532,7 @@ $( document ).ready(function() {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/09-sim.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/09-sim.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/10-sim.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/10-sim.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
 <li class="nav-item compact">

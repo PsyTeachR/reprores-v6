@@ -62,9 +62,10 @@ book:
   - 05-join.qmd
   - 06-tidy.qmd
   - 07-wrangle.qmd
-  - 08-func.qmd
-  - 09-sim.qmd
-  - 10-next.qmd
+  - 08-iteration.qmd
+  - 09-func.qmd
+  - 10-sim.qmd
+  - 11-next.qmd
   - part: "Assessments"
     chapters:
     - formative-1.qmd

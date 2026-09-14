@@ -1,4 +1,4 @@
-# Iteration & Functions {#sec-func}
+# Functions {#sec-func}
 
 <!-- checked for alt-text -->
 
@@ -6,14 +6,12 @@
 
 ## Intended Learning Outcomes {#sec-ilo-func - .ilo}
 
-- [ ] Work with basic iteration functions: `rep`, `seq`, `replicate`
-- [ ] Use `purrr::map()` and `apply()` functions
-- [ ] Write your own custom functions with `function()` 
+- [ ] Write your own custom functions with `function()` - [ ] Be able to test your custom functions
 
 ## Setup  {#sec-setup-func -}
 
 1. Open your `reprores` project 
-1. Create a new quarto file called `03-dataviz.qmd`
+1. Create a new quarto file called `09-func.qmd`
 1. Update the YAML header 
 1. Replace the setup chunk with the one below: 
 
@@ -36,172 +34,6 @@ library(broom)      # converts test output to tidy tables
 
 set.seed(8675309) # makes sure random numbers are reproducible
 ```
-
-Download the [Apply functions with purrr cheat sheet](https://rstudio.github.io/cheatsheets/html/purrr.html).
-
-## Iteration functions {#sec-iteration-functions}
-
-In the next two lectures, we are going to learn more about `r glossary("iteration")` (doing the same commands over and over) and custom `r glossary("function", "functions")` through a data simulation exercise, which will also prepare us more traditional statistical topics. We first learned about the two basic iteration functions, `rep()` and `seq()` in the [Working with Data](#rep_seq) chapter.
-
-### rep()
-
-The function `rep()` lets you repeat the first argument a number of times.
-
-Use `rep()` to create a vector of alternating `"A"` and `"B"` values of length 24.
-
-```{r rep1}
-rep(c("A", "B"), 12)
-```
-
-If you don't specify what the second argument is, it defaults to `times`, repeating the vector in the first argument that many times. Make the same vector as above, setting the second argument explicitly.
-
-```{r rep1-times}
-rep(c("A", "B"), times = 12)
-```
-
-If the second argument is a vector that is the same length as the first argument, each element in the first vector is repeated than many times. Use `rep()` to create a vector of 11 `"A"` values followed by 3 `"B"` values.
-
-```{r rep-vector}
-rep(c("A", "B"), c(11, 3))
-```
-
-You can repeat each element of the vector a sepcified number of times using the `each` argument, Use `rep()` to create a vector of 12 `"A"` values followed by 12 `"B"` values.
-
-```{r rep-each}
-rep(c("A", "B"), each = 12)
-```
-
-What do you think will happen if you set both `times` to 3 and `each` to 2?
-
-```{r rep-times-each}
-rep(c("A", "B"), times = 3, each = 2)
-```
-
-
-### seq()
-
-The function `seq()` is useful for generating a sequence of numbers with some pattern.
-
-Use `seq()` to create a vector of the integers 0 to 10.
-
-```{r seq1-10}
-seq(0, 10)
-```
-
-You can set the `by` argument to count by numbers other than 1 (the default). Use `seq()` to create a vector of the numbers 0 to 100 by 10s.
-
-```{r seq-by}
-seq(0, 100, by = 10)
-```
-
-The argument `length.out` is useful if you know how many steps you want to divide something into. Use `seq()` to create a vector that starts with 0, ends with 100, and has 12 equally spaced steps (hint: how many numbers would be in a vector with 2 *steps*?).
-
-```{r seq-length-out}
-seq(0, 100, length.out = 13)
-```
-
-### replicate() 
-
-You can use the `replicate()` function to run a function `n` times.
-
-For example, you can get 3 sets of 5 numbers from a random normal distribution by setting `n` to `3` and `expr` to `rnorm(5)`.
-
-```{r replicate1}
-replicate(n = 3, expr = rnorm(5))
-```
-
-By default, `replicate()` simplifies your result into a `r glossary("matrix")` that is easy to convert into a table if your function returns vectors that are the same length. If you'd rather have a list of vectors, set `simplify = FALSE`.
-
-```{r repliacte2}
-replicate(n = 3, expr = rnorm(5), simplify = FALSE)
-```
-
-
-### map() and apply() functions {#map-apply}
-
-`purrr::map()` and `lapply()` return a list of the same length as a vector or list, each element of which is the result of applying a function to the corresponding element. They function much the same, but purrr functions have some optimisations for working with the tidyverse. We'll be working mostly with purrr functions in this course, but apply functions are very common in code that you might see in examples on the web.
-
-Imagine you want to calculate the power for a two-sample t-test with a mean difference of 0.2 and SD of 1, for all the sample sizes 100 to 1000 (by 100s). You could run the `power.t.test()` function 20 times and extract the values for "power" from the resulting list and put it in a table.
-
-```{r}
-p100 <- power.t.test(n = 100, delta = 0.2, sd = 1, type="two.sample")
-# 18 more lines
-p1000 <- power.t.test(n = 500, delta = 0.2, sd = 1, type="two.sample")
-
-tibble(
-  n = c(100, "...", 1000),
-  power = c(p100$power, "...", p1000$power)
-)
-```
-
-However, the `apply()` and `map()` functions allow you to perform a function on each item in a vector or list. First make an object `n` that is the vector of the sample sizes you want to test, then use `lapply()` or `map()` to run the function `power.t.test()` on each item. You can set other arguments to `power.t.test()` after the function argument.
-
-```{r}
-n <- seq(100, 1000, 100)
-pcalc <- lapply(n, power.t.test, 
-                delta = 0.2, sd = 1, type="two.sample")
-# or
-pcalc <- purrr::map(n, power.t.test, 
-                delta = 0.2, sd = 1, type="two.sample")
-
-```
-
-These functions return a list where each item is the result of `power.t.test()`, which returns a list of results that includes the named item "power". This is a special list that has a summary format if you just print it directly:
-
-```{r}
-pcalc[[1]]
-```
-
-But you can see the individual items using the `str()` function.
-
-```{r}
-pcalc[[1]] |> str()
-```
-
-
-`sapply()` is a version of `lapply()` that returns a vector or array instead of a list, where appropriate. The corresponding purrr functions are `map_dbl()`, `map_chr()`, `map_int()` and `map_lgl()`, which return vectors with the corresponding `r glossary("data type")`.
-
-You can extract a value from a list with the function `[[`. You usually see this written as `pcalc[[1]]`, but if you put it inside backticks, you can use it in apply and map functions.
-
-```{r sapply1}
-sapply(pcalc, `[[`, "power")
-```
-
-We use `map_dbl()` here because the value for "power" is a `r glossary("double")`.
-
-```{r map-dbl}
-purrr::map_dbl(pcalc, `[[`, "power")
-```
-
-We can use the `map()` functions inside a `mutate()` function to run the `power.t.test()` function on the value of `n` from each row of a table, then extract the value for "power", and delete the column with the power calculations.
-
-```{r purrr-mypower}
-
-mypower <- tibble(
-  n = seq(100, 1000, 100)) |>
-  mutate(pcalc = purrr::map(n, power.t.test, 
-                            delta = 0.2, 
-                            sd = 1, 
-                            type="two.sample"),
-         power = purrr::map_dbl(pcalc, `[[`, "power")) |>
-  select(-pcalc)
-```
-
-
-```{r}
-#| label: fig-purrr-plot
-#| echo: false
-#| fig-cap: "Power for a two-sample t-test with d = 0.2"
-#| fig-alt: "A plot with 'n' (0-1000) on the x-axis and 'power' (0 to 1.0) on the y-axis. There is a horizontal red reference line at power = 0.8 and points plotted every 100 along the x-axis with a blue curve through them. Power starts around 0.3 for n = 100 and increases to about 0.8 for n = 400 and 1.0 for n = 1000."
-
-ggplot(mypower, aes(n, power)) +
-  geom_hline(yintercept = 0.8, color = "red") + 
-  geom_smooth(method = "loess", formula = y~x, se = FALSE) +
-  geom_point() +
-  ylim(0, 1) + xlim(0, 1000)
-
-```
-
 
 ## Custom functions {#sec-custom-functions}
 
@@ -339,6 +171,12 @@ report_p("a")
 report_p(-2)
 report_p(2)
 ```
+
+## Unit Tests {#sec-unit-tests}
+
+** Content to be added soon **
+
+See [this chapter](https://psyteachr.github.io/intro-r-pkgs/05-unit-tests.html) in Intro to R Packages.
 
 ## Iterating your own functions
 
@@ -522,68 +360,13 @@ Calculate power via simulation and `power.t.test` for the following tests:
 
 ## Exercises
 
-Explain why [this meme](https://www.reddit.com/r/rstatsmemes/comments/wjt9l2/i_made_an_alignment_system_of_loops_in_r_subject/) is funny.
+1. Create a custom function that takes a string of text as input and returns that text in title case (with the first letter of each word uppercase)
 
-![By arthurwelle on r/rstatsmemes](images/memes/loops-alignment.png){fig-alt="See the text below for an accessible version"}
+2. Does this function work if you give it a vector or 3 strings? How about if you give it a list of 3 strings? What happens if you give it a non-character data type, like numbers?
 
-* Lawful good
-    ``` r
-    library(purrr)
-    walk(rep("R!", 5), print)
-    ```
-* Neutral good
-    ``` r
-    for (i in 1:5) print("R!")
-    ```
-* Chaotic good
-    ``` r
-    for (i in 1:5)
-      print("R!")
-    ```
-* Lawful neutral
-    ``` r
-    print("R!")
-    print("R!")
-    print("R!")
-    print("R!")
-    print("R!")
-    ```
-* True neutral
-    ``` r
-    for (i in 1:5) { 
-      print("R!")
-    }
-    ```
-* Chaotic neutral
-    ``` r
-    mapply(\(x) print(x), rep("R!", 5)) |> 
-      invisible()
-    ```
-* Lawful evil
-    ``` r
-    i <<- 1
-    while (i < 6) { 
-      print("R!")
-      i + 1 ->> i
-    }
-    ```
-* Neutral evil
-    ``` r
-    f <- function(...) {
-      do.call(print, list("R!"))
-    }
-    lapply(LETTERS[1:5], f) |> 
-      invisible()
-    ```
-* Chaotic evil
-    ``` r
-    apply(data.frame(rep("R!", 5)),
-      1,
-      \(x){cat(x);
-        cat("\n")}) |>
-    invisible()
-    ```
+3. Add error checking and appropriate messages for when the user gives this function inappropriate input.
 
+4. Create some tests for this function to make sure the output is as expected. What kinds of difficult edge cases can you think of? 
 
 ## Glossary {#sec-glossary-func -}
 
@@ -593,5 +376,4 @@ glossary_table()
 
 ## Further Resources {#sec-resources-func -}
 
-* Chapters 19 and 21 of [R for Data Science](http://r4ds.had.co.nz)
-* [Apply functions with purrr cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf)
+* Chapters 19 of [R for Data Science](https://r4ds.had.co.nz/functions.html)

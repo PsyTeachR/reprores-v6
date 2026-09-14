@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book provides an overview of skills needed for reproducible and open research using the statistical programming language R and tidyverse packages. It covers reproducible workflows, data visualisation, data tidying and wrangling, archiving, iteration and functions, probability and data simulations.">
-<title>13&nbsp; Assessment 2 – Data Skills for Reproducible Research</title>
+<title>14&nbsp; Assessment 2 – Data Skills for Reproducible Research</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -286,7 +286,7 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./formative-1.html">Assessments</a></li><li class="breadcrumb-item"><a href="./assessment-2.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 2</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./formative-1.html">Assessments</a></li><li class="breadcrumb-item"><a href="./assessment-2.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 2</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -361,20 +361,26 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-func.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration &amp; Functions</span></span></a>
+  <a href="./08-iteration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Iteration</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-sim.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span></a>
+  <a href="./09-func.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-next.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Next Steps</span></span></a>
+  <a href="./10-sim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability &amp; Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-next.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Next Steps</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -389,19 +395,19 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./formative-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Formative 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Formative 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assessment-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./assessment-2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 2</span></span></a>
   </div>
 </li>
       </ul>
@@ -517,27 +523,27 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#general-instructions" id="toc-general-instructions" class="nav-link active" data-scroll-target="#general-instructions"><span class="header-section-number">13.1</span> General Instructions</a></li>
+<li><a href="#general-instructions" id="toc-general-instructions" class="nav-link active" data-scroll-target="#general-instructions"><span class="header-section-number">14.1</span> General Instructions</a></li>
   <li>
-<a href="#specific-instructions" id="toc-specific-instructions" class="nav-link" data-scroll-target="#specific-instructions"><span class="header-section-number">13.2</span> Specific Instructions</a>
+<a href="#specific-instructions" id="toc-specific-instructions" class="nav-link" data-scroll-target="#specific-instructions"><span class="header-section-number">14.2</span> Specific Instructions</a>
   <ul class="collapse">
-<li><a href="#data-and-topic" id="toc-data-and-topic" class="nav-link" data-scroll-target="#data-and-topic"><span class="header-section-number">13.2.1</span> Data and Topic</a></li>
-  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis"><span class="header-section-number">13.2.2</span> Analysis</a></li>
-  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">13.2.3</span> Simulation</a></li>
-  <li><a href="#iteration-and-power" id="toc-iteration-and-power" class="nav-link" data-scroll-target="#iteration-and-power"><span class="header-section-number">13.2.4</span> Iteration and Power</a></li>
-  <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection"><span class="header-section-number">13.2.5</span> Reflection</a></li>
+<li><a href="#data-and-topic" id="toc-data-and-topic" class="nav-link" data-scroll-target="#data-and-topic"><span class="header-section-number">14.2.1</span> Data and Topic</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis"><span class="header-section-number">14.2.2</span> Analysis</a></li>
+  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">14.2.3</span> Simulation</a></li>
+  <li><a href="#iteration-and-power" id="toc-iteration-and-power" class="nav-link" data-scroll-target="#iteration-and-power"><span class="header-section-number">14.2.4</span> Iteration and Power</a></li>
+  <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection"><span class="header-section-number">14.2.5</span> Reflection</a></li>
   </ul>
 </li>
-  <li><a href="#ai-declaration" id="toc-ai-declaration" class="nav-link" data-scroll-target="#ai-declaration"><span class="header-section-number">13.3</span> AI Declaration</a></li>
-  <li><a href="#hints-and-tips" id="toc-hints-and-tips" class="nav-link" data-scroll-target="#hints-and-tips"><span class="header-section-number">13.4</span> Hints and Tips</a></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission"><span class="header-section-number">13.5</span> Submission</a></li>
-  <li><a href="#marking-rubric" id="toc-marking-rubric" class="nav-link" data-scroll-target="#marking-rubric"><span class="header-section-number">13.6</span> Marking Rubric</a></li>
+  <li><a href="#ai-declaration" id="toc-ai-declaration" class="nav-link" data-scroll-target="#ai-declaration"><span class="header-section-number">14.3</span> AI Declaration</a></li>
+  <li><a href="#hints-and-tips" id="toc-hints-and-tips" class="nav-link" data-scroll-target="#hints-and-tips"><span class="header-section-number">14.4</span> Hints and Tips</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission"><span class="header-section-number">14.5</span> Submission</a></li>
+  <li><a href="#marking-rubric" id="toc-marking-rubric" class="nav-link" data-scroll-target="#marking-rubric"><span class="header-section-number">14.6</span> Marking Rubric</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/psyteachr/reprores-v6/edit/master/assessment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/psyteachr/reprores-v6/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/psyteachr/reprores-v6/blob/master/assessment-2.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./formative-1.html">Assessments</a></li><li class="breadcrumb-item"><a href="./assessment-2.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 2</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./formative-1.html">Assessments</a></li><li class="breadcrumb-item"><a href="./assessment-2.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 2</span></a></li></ol></nav><div class="quarto-title">
 <h1 class="title">
-<span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 2</span>
+<span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Assessment 2</span>
 </h1>
 </div>
 
@@ -553,8 +559,8 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 
 
 </header><p>A project showing all ILOs, with an emphasis on power simulation</p>
-<section id="general-instructions" class="level2" data-number="13.1"><h2 data-number="13.1" class="anchored" data-anchor-id="general-instructions">
-<span class="header-section-number">13.1</span> General Instructions</h2>
+<section id="general-instructions" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="general-instructions">
+<span class="header-section-number">14.1</span> General Instructions</h2>
 <p>Your task is to generate a short report demonstrating all ILOs from the course, with a focus on custom function creation, iteration, analysis, and power simulation.</p>
 <p>The submission must contain the following:</p>
 <ul class="task-list">
@@ -584,25 +590,25 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <li><label><input type="checkbox">Simulate a new dataset based on the descriptive statistics from another dataset</label></li>
 <li><label><input type="checkbox">Implement and report the results of a simple statistical test (e.g., t-test, correlation) in a reproducible manner</label></li>
 <li><label><input type="checkbox">Reflect on areas where you used techniques that increase reproducibility</label></li>
-</ul></section><section id="specific-instructions" class="level2" data-number="13.2"><h2 data-number="13.2" class="anchored" data-anchor-id="specific-instructions">
-<span class="header-section-number">13.2</span> Specific Instructions</h2>
-<section id="data-and-topic" class="level3" data-number="13.2.1"><h3 data-number="13.2.1" class="anchored" data-anchor-id="data-and-topic">
-<span class="header-section-number">13.2.1</span> Data and Topic</h3>
+</ul></section><section id="specific-instructions" class="level2" data-number="14.2"><h2 data-number="14.2" class="anchored" data-anchor-id="specific-instructions">
+<span class="header-section-number">14.2</span> Specific Instructions</h2>
+<section id="data-and-topic" class="level3" data-number="14.2.1"><h3 data-number="14.2.1" class="anchored" data-anchor-id="data-and-topic">
+<span class="header-section-number">14.2.1</span> Data and Topic</h3>
 <p>Choose a topic that interests you and find a dataset. You can use shared research data in your field, or from data sources such as the <a href="https://unstats.un.org/sdgs/dataportal">Sustainable Development Goals Data Portal</a>. You must document the source of your data in the report. Choose a simple question that you can answer from this dataset, but remember that you must demonstrate joining two or more files.</p>
-</section><section id="analysis" class="level3" data-number="13.2.2"><h3 data-number="13.2.2" class="anchored" data-anchor-id="analysis">
-<span class="header-section-number">13.2.2</span> Analysis</h3>
+</section><section id="analysis" class="level3" data-number="14.2.2"><h3 data-number="14.2.2" class="anchored" data-anchor-id="analysis">
+<span class="header-section-number">14.2.2</span> Analysis</h3>
 <p>Answer your question with a simple frequentist analysis, such as a t-test to compare two groups, a correlation to explore the relationship between two variables, or a regression to explore a trend over time. You will not be judged on statistical sophistication, so do not use complex stats or include lots of covariates or controls. Report the outcome of the test using inline code.</p>
-</section><section id="simulation" class="level3" data-number="13.2.3"><h3 data-number="13.2.3" class="anchored" data-anchor-id="simulation">
-<span class="header-section-number">13.2.3</span> Simulation</h3>
+</section><section id="simulation" class="level3" data-number="14.2.3"><h3 data-number="14.2.3" class="anchored" data-anchor-id="simulation">
+<span class="header-section-number">14.2.3</span> Simulation</h3>
 <p>Create a custom function that simulates the data used in your test. It should have arguments that let you change essential parameters, such as N., mean, SD, or correlation. What constitutes essential parameters will depend on your data and test.</p>
-</section><section id="iteration-and-power" class="level3" data-number="13.2.4"><h3 data-number="13.2.4" class="anchored" data-anchor-id="iteration-and-power">
-<span class="header-section-number">13.2.4</span> Iteration and Power</h3>
+</section><section id="iteration-and-power" class="level3" data-number="14.2.4"><h3 data-number="14.2.4" class="anchored" data-anchor-id="iteration-and-power">
+<span class="header-section-number">14.2.4</span> Iteration and Power</h3>
 <p>Use custom functions and iteration to explore power and sensitivity. For example, you can use the observed effect size and calculate power for a range of sample sizes, or use a fixed sample size to calculate power for a range of effect sizes. Use a plot to communicate this.</p>
-</section><section id="reflection" class="level3" data-number="13.2.5"><h3 data-number="13.2.5" class="anchored" data-anchor-id="reflection">
-<span class="header-section-number">13.2.5</span> Reflection</h3>
+</section><section id="reflection" class="level3" data-number="14.2.5"><h3 data-number="14.2.5" class="anchored" data-anchor-id="reflection">
+<span class="header-section-number">14.2.5</span> Reflection</h3>
 <p>Reflect on the areas of this report where you used techniques that improve reproducibility and reusability. Include a list of <strong>3</strong> things you did to ensure reproducibility and explain what aspect of reproducibility the feature improves. Do not simply list good coding practices such as consistent indentation. Each explanation should be about 100-200 words.</p>
-</section></section><section id="ai-declaration" class="level2" data-number="13.3"><h2 data-number="13.3" class="anchored" data-anchor-id="ai-declaration">
-<span class="header-section-number">13.3</span> AI Declaration</h2>
+</section></section><section id="ai-declaration" class="level2" data-number="14.3"><h2 data-number="14.3" class="anchored" data-anchor-id="ai-declaration">
+<span class="header-section-number">14.3</span> AI Declaration</h2>
 <p>It is School policy to include this specific AI declaration in any work that allows the use of generative AI. You can copy the code below and include it at the end of your assessment.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">### Generative AI Declaration</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
@@ -626,8 +632,8 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <span id="cb1-20"><a href="#cb1-20"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Visuals or media support, for example figures, diagrams, slide layout or transcription of my own * recordings</span>
 <span id="cb1-21"><a href="#cb1-21"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Something else (explain under **Sources of Learning**)</span>
 <span id="cb1-22"><a href="#cb1-22"></a><span class="ss">* </span><span class="co">[</span><span class="ot">YES/NO</span><span class="co">]</span> Avoided use of AI tools in any way to assist with this assignment or my learning of the topic</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section><section id="hints-and-tips" class="level2" data-number="13.4"><h2 data-number="13.4" class="anchored" data-anchor-id="hints-and-tips">
-<span class="header-section-number">13.4</span> Hints and Tips</h2>
+</section><section id="hints-and-tips" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="hints-and-tips">
+<span class="header-section-number">14.4</span> Hints and Tips</h2>
 <ul>
 <li>The html theme used by the demo report is flatly</li>
 <li>Use a ggplot theme for consistency.</li>
@@ -635,8 +641,8 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <li>If you find yourself doing the same thing to many columns, you could probably do it more efficiently by reshaping the data longer first</li>
 <li>Use pipes to avoid creating many single-use tables.</li>
 <li>Set argument defaults in custom functions if there is a sensible default value, and leave them without defaults if a user will always have to set that value to use to function.</li>
-</ul></section><section id="submission" class="level2" data-number="13.5"><h2 data-number="13.5" class="anchored" data-anchor-id="submission">
-<span class="header-section-number">13.5</span> Submission</h2>
+</ul></section><section id="submission" class="level2" data-number="14.5"><h2 data-number="14.5" class="anchored" data-anchor-id="submission">
+<span class="header-section-number">14.5</span> Submission</h2>
 <ul>
 <li>Covers: chapters 1-10, emphasising 8-9</li>
 <li>Worth: 50%</li>
@@ -650,8 +656,8 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <li>the rendered html report, named <code>report2_studentID.html</code>.</li>
 </ol>
 </li>
-</ul></section><section id="marking-rubric" class="level2" data-number="13.6"><h2 data-number="13.6" class="anchored" data-anchor-id="marking-rubric">
-<span class="header-section-number">13.6</span> Marking Rubric</h2>
+</ul></section><section id="marking-rubric" class="level2" data-number="14.6"><h2 data-number="14.6" class="anchored" data-anchor-id="marking-rubric">
+<span class="header-section-number">14.6</span> Marking Rubric</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="lmjnpgyxub" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -1731,7 +1737,7 @@ $( document ).ready(function() {
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./assessment-1.html" class="pagination-link" aria-label="Assessment 1">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Assessment 1</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Assessment 1</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

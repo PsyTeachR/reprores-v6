@@ -15,7 +15,7 @@
 ## Setup {#sec-setup-sim -}
 
 1. Open your `reprores` project 
-1. Create a new quarto file called `09-sim.qmd`
+1. Create a new quarto file called `10-sim.qmd`
 1. Update the YAML header 
 1. Replace the setup chunk with the one below: 
 
