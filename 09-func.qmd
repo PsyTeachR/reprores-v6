@@ -6,7 +6,8 @@
 
 ## Intended Learning Outcomes {#sec-ilo-func - .ilo}
 
-- [ ] Write your own custom functions with `function()` - [ ] Be able to test your custom functions
+- [ ] Write your own custom functions with `function()` 
+- [ ] Be able to test your custom functions
 
 ## Setup  {#sec-setup-func -}
 
@@ -20,6 +21,7 @@
 #| label: setup
 #| include: false
 library(tidyverse)  # loads purrr for iteration
+library(testthat)   # unit testing
 library(broom)      # converts test output to tidy tables
 
 set.seed(8675309) # makes sure random numbers are reproducible
@@ -30,6 +32,7 @@ set.seed(8675309) # makes sure random numbers are reproducible
 #| label: setup-func
 #| include: false
 library(tidyverse)  # loads purrr for iteration
+library(testthat)   # unit testing
 library(broom)      # converts test output to tidy tables
 
 set.seed(8675309) # makes sure random numbers are reproducible
@@ -174,9 +177,159 @@ report_p(2)
 
 ## Unit Tests {#sec-unit-tests}
 
-** Content to be added soon **
+Unit testing is the practice of checking that your functions provide expected output given specific input.  You can do unit testing informally, by running your function in the console and deciding if the output makes sense, or more formally, by recording code that compared the actual and expected output.
 
-See [this chapter](https://psyteachr.github.io/intro-r-pkgs/05-unit-tests.html) in Intro to R Packages.
+Let's take the example of out `report_p` function. Let's check that it gives the expected output of "p = 0.05" when you set p to .05. We'll use the term `object` to refer to the output of the function and `expected` to refer to what the function *should* produce, as this will map onto the terminology used in more formal unit testing. Here, we can use `==` to check that they are equivalent. 
+
+```{r}
+object <- report_p(.05)
+expected <- "p = 0.05"
+object == expected
+```
+
+Now let's check that you get the expected output for a number that needs to be rounded.
+
+```{r}
+object <- report_p(.123456789)
+expected <- "p = 0.123"
+object == expected
+```
+
+We should check that the `digits` argument works as expected, too.
+
+```{r}
+object <- report_p(.123456789, digits = 2)
+expected <- "p = 0.12"
+object == expected
+```
+
+
+You should also check that your function handles incorrect input in the way you want it to. We set the function to give a warning when p is greater than 1 or less than 0, but still return a formatted string.
+
+```{r}
+object <- report_p(1.5)
+expected <- "p = 1.5"
+object == expected
+```
+
+### Testthat
+
+We can see the warning, but how do we test that it's what we expect? You can set this up with base R, but at this point it's easier to move to more formal unit testing with the [testthat](https://testthat.r-lib.org/) package. This package provides a lot of function that you can use to test your functions both informally and in package development.
+
+The function `expect_equal()` is one of the more commonly used functions. The arguments are `object` and `expected` (you can probably fuigure out what to put here).
+
+```{r}
+object <- report_p(.05)
+expected <- "p = 0.05"
+
+expect_equal(object, expected)
+```
+
+This function does nothing overt when the test passes, but throws an error if the test doesn't pass, including some explanation of the differences. When you run this in a development environment for creating an R package, it can also provide a summary of the success of all your tests.
+
+```{r}
+object <- report_p(.05)
+expected <- "p = 0.5"
+
+expect_equal(object, expected)
+```
+
+If you want to check for a specific warning or error, wrap the code in `expect_warning()` or `expect_error()`.
+
+```{r}
+expect_warning(object <- report_p(1.5))
+```
+
+If your code *does* produce a warning, now you won't see anything. If the code doesn't produce an expected warning, you will get an error report.
+
+```{r}
+expect_warning(object <- report_p(.05))
+```
+
+You can check that the warning is what you expect by setting the second argument to the text. This value is expected to be a regular expression, so if it's just the literal exact text, set `fixed = TRUE`. 
+
+```{r}
+expect_warning(object <- report_p(1.5),
+               "p-values are normally less than 1", 
+               fixed = TRUE)
+```
+
+
+
+
+### Test Driven Development
+
+How should your function handle different kinds of input? What if p is a vector of numbers?
+
+```{r}
+p <- c(0.05, 1/3, .5)
+object <- report_p(p)
+```
+
+This gives an error, so we need to fix the function. Test driven development is a coding philosophy where all development of a function is preceeded by writing a failing unit test. Here, we want the `report_p()` function to return a vector of formatted strings. So we should write a test that would pass if we achieved this goal.
+
+
+```{r}
+p <- c(0.05, 1/3, .5)
+object <- report_p(p)
+expected <- c("p = 0.05", "p = 0.333", "p = 0.5")
+expect_equal(object, expected)
+```
+
+Now, we have a very clear goal and way to know when we've achieved it. (And if, like me, you tend to go down rabbit holes and get distracted when you code, the failing test will remind you to come back to this.)
+
+Let's *vectorise* this function to let it handle input with a length greater than 1. This uses some iteration.
+
+```{r}
+report_p <- function(p, digits = 3) {
+  if (length(p) > 1) {
+    reported_vec <- map_chr(p, report_p)
+    return(reported_vec)
+  }
+  
+  if (!is.numeric(p)) stop("p must be a number")
+  if (p <= 0) warning("p-values are normally greater than 0")
+  if (p >= 1) warning("p-values are normally less than 1")
+  
+  if (p < .001) {
+    reported = "p < .001"
+  } else {
+    roundp <- round(p, digits)
+    reported = paste("p =", roundp)
+  }
+  
+  reported
+}
+```
+
+Now, let's rerun the test code that failed before.
+
+```{r}
+p <- c(0.05, 1/3, .5)
+object <- report_p(p)
+expected <- c("p = 0.05", "p = 0.333", "p = 0.5")
+expect_equal(object, expected)
+```
+
+### Deciding what to test
+
+How do you decide what to test? Do you need to test that you get the correct output for p = 0.05 and p = 0.1 and p = 0.15 and p = 0.20 and p = 0.25, ad infinitum? Of course not! But it's difficult to give you a specific rule; this requires judgement, experience, and knowledge about what you want the function to do.
+
+In general, I try to cover the following categories in my tests:
+
+* Typical, simple input
+* Input that should raise a warning
+* Input that should raise an error
+* `NULL`, `NA` or vector of length 0 input is handled as expected
+* More complicated input
+* Change argument defaults (do each argument separately)
+* Combinations of arguments (if they might interact)
+
+
+::: {.try}
+Make some more unit tests for `report_p()`. What happens if p is NULL, NA or c()? 
+:::
+
 
 ## Iterating your own functions
 
@@ -377,3 +530,4 @@ glossary_table()
 ## Further Resources {#sec-resources-func -}
 
 * Chapters 19 of [R for Data Science](https://r4ds.had.co.nz/functions.html)
+* [Unit tests](https://psyteachr.github.io/intro-r-pkgs/05-unit-tests.html) in Intro to R Packages.

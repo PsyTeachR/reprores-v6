@@ -535,7 +535,14 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
   <li><a href="#warnings-errors" id="toc-warnings-errors" class="nav-link" data-scroll-target="#warnings-errors"><span class="header-section-number">9.1.5</span> Warnings and errors</a></li>
   </ul>
 </li>
-  <li><a href="#sec-unit-tests" id="toc-sec-unit-tests" class="nav-link" data-scroll-target="#sec-unit-tests"><span class="header-section-number">9.2</span> Unit Tests</a></li>
+  <li>
+<a href="#sec-unit-tests" id="toc-sec-unit-tests" class="nav-link" data-scroll-target="#sec-unit-tests"><span class="header-section-number">9.2</span> Unit Tests</a>
+  <ul class="collapse">
+<li><a href="#testthat" id="toc-testthat" class="nav-link" data-scroll-target="#testthat"><span class="header-section-number">9.2.1</span> Testthat</a></li>
+  <li><a href="#test-driven-development" id="toc-test-driven-development" class="nav-link" data-scroll-target="#test-driven-development"><span class="header-section-number">9.2.2</span> Test Driven Development</a></li>
+  <li><a href="#deciding-what-to-test" id="toc-deciding-what-to-test" class="nav-link" data-scroll-target="#deciding-what-to-test"><span class="header-section-number">9.2.3</span> Deciding what to test</a></li>
+  </ul>
+</li>
   <li>
 <a href="#iterating-your-own-functions" id="toc-iterating-your-own-functions" class="nav-link" data-scroll-target="#iterating-your-own-functions"><span class="header-section-number">9.3</span> Iterating your own functions</a>
   <ul class="collapse">
@@ -570,7 +577,8 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 </div>
 <section id="sec-ilo-func" class="level2 unnumbered ilo"><h2 class="unnumbered ilo anchored" data-anchor-id="sec-ilo-func">Intended Learning Outcomes</h2>
 <ul class="task-list">
-<li><label><input type="checkbox">Write your own custom functions with <code>function()</code> - [ ] Be able to test your custom functions</label></li>
+<li><label><input type="checkbox">Write your own custom functions with <code>function()</code></label></li>
+<li><label><input type="checkbox">Be able to test your custom functions</label></li>
 </ul></section><section id="sec-setup-func" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="sec-setup-func">Setup</h2>
 <ol type="1">
 <li>Open your <code>reprores</code> project</li>
@@ -583,10 +591,11 @@ gtag('config', 'G-6NP3MF25W3', { 'anonymize_ip': true});
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">#| label: setup</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co">#| include: false</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(tidyverse)  <span class="co"># loads purrr for iteration</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(broom)      <span class="co"># converts test output to tidy tables</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">set.seed</span>(<span class="dv">8675309</span>) <span class="co"># makes sure random numbers are reproducible</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(testthat)   <span class="co"># unit testing</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(broom)      <span class="co"># converts test output to tidy tables</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">set.seed</span>(<span class="dv">8675309</span>) <span class="co"># makes sure random numbers are reproducible</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section><section id="sec-custom-functions" class="level2" data-number="9.1"><h2 data-number="9.1" class="anchored" data-anchor-id="sec-custom-functions">
 <span class="header-section-number">9.1</span> Custom functions</h2>
 <p>In addition to the built-in functions and functions you can access from packages, you can also write your own functions (and eventually even packages!).</p>
@@ -730,9 +739,165 @@ What happens when you omit the argument for <code>p</code>? Or if you set <code>
 </div>
 </section></section><section id="sec-unit-tests" class="level2" data-number="9.2"><h2 data-number="9.2" class="anchored" data-anchor-id="sec-unit-tests">
 <span class="header-section-number">9.2</span> Unit Tests</h2>
-<p>** Content to be added soon **</p>
-<p>See <a href="https://psyteachr.github.io/intro-r-pkgs/05-unit-tests.html">this chapter</a> in Intro to R Packages.</p>
-</section><section id="iterating-your-own-functions" class="level2" data-number="9.3"><h2 data-number="9.3" class="anchored" data-anchor-id="iterating-your-own-functions">
+<p>Unit testing is the practice of checking that your functions provide expected output given specific input. You can do unit testing informally, by running your function in the console and deciding if the output makes sense, or more formally, by recording code that compared the actual and expected output.</p>
+<p>Let’s take the example of out <code>report_p</code> function. Let’s check that it gives the expected output of “p = 0.05” when you set p to .05. We’ll use the term <code>object</code> to refer to the output of the function and <code>expected</code> to refer to what the function <em>should</em> produce, as this will map onto the terminology used in more formal unit testing. Here, we can use <code>==</code> to check that they are equivalent.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>object <span class="ot">&lt;-</span> <span class="fu">report_p</span>(.<span class="dv">05</span>)</span>
+<span id="cb24-2"><a href="#cb24-2"></a>expected <span class="ot">&lt;-</span> <span class="st">"p = 0.05"</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>object <span class="sc">==</span> expected</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Now let’s check that you get the expected output for a number that needs to be rounded.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>object <span class="ot">&lt;-</span> <span class="fu">report_p</span>(.<span class="dv">123456789</span>)</span>
+<span id="cb26-2"><a href="#cb26-2"></a>expected <span class="ot">&lt;-</span> <span class="st">"p = 0.123"</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>object <span class="sc">==</span> expected</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>We should check that the <code>digits</code> argument works as expected, too.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>object <span class="ot">&lt;-</span> <span class="fu">report_p</span>(.<span class="dv">123456789</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb28-2"><a href="#cb28-2"></a>expected <span class="ot">&lt;-</span> <span class="st">"p = 0.12"</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>object <span class="sc">==</span> expected</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>You should also check that your function handles incorrect input in the way you want it to. We set the function to give a warning when p is greater than 1 or less than 0, but still return a formatted string.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>object <span class="ot">&lt;-</span> <span class="fu">report_p</span>(<span class="fl">1.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in report_p(1.5): p-values are normally less than 1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>expected <span class="ot">&lt;-</span> <span class="st">"p = 1.5"</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>object <span class="sc">==</span> expected</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<section id="testthat" class="level3" data-number="9.2.1"><h3 data-number="9.2.1" class="anchored" data-anchor-id="testthat">
+<span class="header-section-number">9.2.1</span> Testthat</h3>
+<p>We can see the warning, but how do we test that it’s what we expect? You can set this up with base R, but at this point it’s easier to move to more formal unit testing with the <a href="https://testthat.r-lib.org/">testthat</a> package. This package provides a lot of function that you can use to test your functions both informally and in package development.</p>
+<p>The function <code>expect_equal()</code> is one of the more commonly used functions. The arguments are <code>object</code> and <code>expected</code> (you can probably fuigure out what to put here).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>object <span class="ot">&lt;-</span> <span class="fu">report_p</span>(.<span class="dv">05</span>)</span>
+<span id="cb34-2"><a href="#cb34-2"></a>expected <span class="ot">&lt;-</span> <span class="st">"p = 0.05"</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a></span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="fu">expect_equal</span>(object, expected)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This function does nothing overt when the test passes, but throws an error if the test doesn’t pass, including some explanation of the differences. When you run this in a development environment for creating an R package, it can also provide a summary of the success of all your tests.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>object <span class="ot">&lt;-</span> <span class="fu">report_p</span>(.<span class="dv">05</span>)</span>
+<span id="cb35-2"><a href="#cb35-2"></a>expected <span class="ot">&lt;-</span> <span class="st">"p = 0.5"</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="fu">expect_equal</span>(object, expected)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! Expected `object` to equal `expected`.
+Differences:
+1/1 mismatches
+x[1]: "p = 0.05"
+y[1]: "p = 0.5"</code></pre>
+</div>
+</div>
+<p>If you want to check for a specific warning or error, wrap the code in <code>expect_warning()</code> or <code>expect_error()</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">expect_warning</span>(object <span class="ot">&lt;-</span> <span class="fu">report_p</span>(<span class="fl">1.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If your code <em>does</em> produce a warning, now you won’t see anything. If the code doesn’t produce an expected warning, you will get an error report.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">expect_warning</span>(object <span class="ot">&lt;-</span> <span class="fu">report_p</span>(.<span class="dv">05</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! Expected `object &lt;- report_p(0.05)` to produce warnings.</code></pre>
+</div>
+</div>
+<p>You can check that the warning is what you expect by setting the second argument to the text. This value is expected to be a regular expression, so if it’s just the literal exact text, set <code>fixed = TRUE</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">expect_warning</span>(object <span class="ot">&lt;-</span> <span class="fu">report_p</span>(<span class="fl">1.5</span>),</span>
+<span id="cb40-2"><a href="#cb40-2"></a>               <span class="st">"p-values are normally less than 1"</span>, </span>
+<span id="cb40-3"><a href="#cb40-3"></a>               <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="test-driven-development" class="level3" data-number="9.2.2"><h3 data-number="9.2.2" class="anchored" data-anchor-id="test-driven-development">
+<span class="header-section-number">9.2.2</span> Test Driven Development</h3>
+<p>How should your function handle different kinds of input? What if p is a vector of numbers?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, .<span class="dv">5</span>)</span>
+<span id="cb41-2"><a href="#cb41-2"></a>object <span class="ot">&lt;-</span> <span class="fu">report_p</span>(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `if (p &lt;= 0) ...`:
+! the condition has length &gt; 1</code></pre>
+</div>
+</div>
+<p>This gives an error, so we need to fix the function. Test driven development is a coding philosophy where all development of a function is preceeded by writing a failing unit test. Here, we want the <code>report_p()</code> function to return a vector of formatted strings. So we should write a test that would pass if we achieved this goal.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, .<span class="dv">5</span>)</span>
+<span id="cb43-2"><a href="#cb43-2"></a>object <span class="ot">&lt;-</span> <span class="fu">report_p</span>(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `if (p &lt;= 0) ...`:
+! the condition has length &gt; 1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>expected <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"p = 0.05"</span>, <span class="st">"p = 0.333"</span>, <span class="st">"p = 0.5"</span>)</span>
+<span id="cb45-2"><a href="#cb45-2"></a><span class="fu">expect_equal</span>(object, expected)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! Expected `object` to equal `expected`.
+Differences:
+Lengths differ: 1 is not 3</code></pre>
+</div>
+</div>
+<p>Now, we have a very clear goal and way to know when we’ve achieved it. (And if, like me, you tend to go down rabbit holes and get distracted when you code, the failing test will remind you to come back to this.)</p>
+<p>Let’s <em>vectorise</em> this function to let it handle input with a length greater than 1. This uses some iteration.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>report_p <span class="ot">&lt;-</span> <span class="cf">function</span>(p, <span class="at">digits =</span> <span class="dv">3</span>) {</span>
+<span id="cb47-2"><a href="#cb47-2"></a>  <span class="cf">if</span> (<span class="fu">length</span>(p) <span class="sc">&gt;</span> <span class="dv">1</span>) {</span>
+<span id="cb47-3"><a href="#cb47-3"></a>    reported_vec <span class="ot">&lt;-</span> <span class="fu">map_chr</span>(p, report_p)</span>
+<span id="cb47-4"><a href="#cb47-4"></a>    <span class="fu">return</span>(reported_vec)</span>
+<span id="cb47-5"><a href="#cb47-5"></a>  }</span>
+<span id="cb47-6"><a href="#cb47-6"></a>  </span>
+<span id="cb47-7"><a href="#cb47-7"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(p)) <span class="fu">stop</span>(<span class="st">"p must be a number"</span>)</span>
+<span id="cb47-8"><a href="#cb47-8"></a>  <span class="cf">if</span> (p <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="fu">warning</span>(<span class="st">"p-values are normally greater than 0"</span>)</span>
+<span id="cb47-9"><a href="#cb47-9"></a>  <span class="cf">if</span> (p <span class="sc">&gt;=</span> <span class="dv">1</span>) <span class="fu">warning</span>(<span class="st">"p-values are normally less than 1"</span>)</span>
+<span id="cb47-10"><a href="#cb47-10"></a>  </span>
+<span id="cb47-11"><a href="#cb47-11"></a>  <span class="cf">if</span> (p <span class="sc">&lt;</span> .<span class="dv">001</span>) {</span>
+<span id="cb47-12"><a href="#cb47-12"></a>    reported <span class="ot">=</span> <span class="st">"p &lt; .001"</span></span>
+<span id="cb47-13"><a href="#cb47-13"></a>  } <span class="cf">else</span> {</span>
+<span id="cb47-14"><a href="#cb47-14"></a>    roundp <span class="ot">&lt;-</span> <span class="fu">round</span>(p, digits)</span>
+<span id="cb47-15"><a href="#cb47-15"></a>    reported <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"p ="</span>, roundp)</span>
+<span id="cb47-16"><a href="#cb47-16"></a>  }</span>
+<span id="cb47-17"><a href="#cb47-17"></a>  </span>
+<span id="cb47-18"><a href="#cb47-18"></a>  reported</span>
+<span id="cb47-19"><a href="#cb47-19"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Now, let’s rerun the test code that failed before.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, .<span class="dv">5</span>)</span>
+<span id="cb48-2"><a href="#cb48-2"></a>object <span class="ot">&lt;-</span> <span class="fu">report_p</span>(p)</span>
+<span id="cb48-3"><a href="#cb48-3"></a>expected <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"p = 0.05"</span>, <span class="st">"p = 0.333"</span>, <span class="st">"p = 0.5"</span>)</span>
+<span id="cb48-4"><a href="#cb48-4"></a><span class="fu">expect_equal</span>(object, expected)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="deciding-what-to-test" class="level3" data-number="9.2.3"><h3 data-number="9.2.3" class="anchored" data-anchor-id="deciding-what-to-test">
+<span class="header-section-number">9.2.3</span> Deciding what to test</h3>
+<p>How do you decide what to test? Do you need to test that you get the correct output for p = 0.05 and p = 0.1 and p = 0.15 and p = 0.20 and p = 0.25, ad infinitum? Of course not! But it’s difficult to give you a specific rule; this requires judgement, experience, and knowledge about what you want the function to do.</p>
+<p>In general, I try to cover the following categories in my tests:</p>
+<ul>
+<li>Typical, simple input</li>
+<li>Input that should raise a warning</li>
+<li>Input that should raise an error</li>
+<li>
+<code>NULL</code>, <code>NA</code> or vector of length 0 input is handled as expected</li>
+<li>More complicated input</li>
+<li>Change argument defaults (do each argument separately)</li>
+<li>Combinations of arguments (if they might interact)</li>
+</ul>
+<div class="try">
+<p>Make some more unit tests for <code>report_p()</code>. What happens if p is NULL, NA or c()?</p>
+</div>
+</section></section><section id="iterating-your-own-functions" class="level2" data-number="9.3"><h2 data-number="9.3" class="anchored" data-anchor-id="iterating-your-own-functions">
 <span class="header-section-number">9.3</span> Iterating your own functions</h2>
 <section id="build-code" class="level3" data-number="9.3.1"><h3 data-number="9.3.1" class="anchored" data-anchor-id="build-code">
 <span class="header-section-number">9.3.1</span> Build code</h3>
@@ -741,21 +906,21 @@ What happens when you omit the argument for <code>p</code>? Or if you set <code>
 <span class="header-section-number">9.3.1.1</span> Simulate and structure data</h4>
 <p>Create a vector of 20 random numbers drawn from a normal distribution with a mean of 5 and standard deviation of 1 using the <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function and store them in the variable <code>A</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A <code>tibble</code> is a type of table or <code>data.frame</code>. The function <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble::tibble()</a></code> creates a tibble with a column for each argument. Each argument takes the form <code>column_name = data_vector</code>.</p>
 <p>Create a table called <code>dat</code> including two vectors: <code>A</code> that is a vector of 20 random normally distributed numbers with a mean of 5 and SD of 1, and <code>B</code> that is a vector of 20 random normally distributed numbers with a mean of 5.5 and SD of 1.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
-<span id="cb25-3"><a href="#cb25-3"></a>  <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
-<span id="cb25-4"><a href="#cb25-4"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb50-2"><a href="#cb50-2"></a>  <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb50-3"><a href="#cb50-3"></a>  <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
+<span id="cb50-4"><a href="#cb50-4"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="statistical-test" class="level4" data-number="9.3.1.2"><h4 data-number="9.3.1.2" class="anchored" data-anchor-id="statistical-test">
 <span class="header-section-number">9.3.1.2</span> Statistical test</h4>
 <p>You can run a Welch two-sample t-test by including the two samples you made as the first two arguments to the function <code>t.test</code>. You can reference one column of a table by its names using the format <code>table_name$column_name</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">t.test</span>(dat<span class="sc">$</span>A, dat<span class="sc">$</span>B)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">t.test</span>(dat<span class="sc">$</span>A, dat<span class="sc">$</span>B)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -772,9 +937,9 @@ mean of x mean of y
 </div>
 <p>You can also convert the table to long format using the <code>gather</code> function and specify the t-test using the format <code>dv_column~grouping_column</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>longdat <span class="ot">&lt;-</span> <span class="fu">gather</span>(dat, group, score, A<span class="sc">:</span>B)</span>
-<span id="cb28-2"><a href="#cb28-2"></a></span>
-<span id="cb28-3"><a href="#cb28-3"></a><span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> longdat) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>longdat <span class="ot">&lt;-</span> <span class="fu">gather</span>(dat, group, score, A<span class="sc">:</span>B)</span>
+<span id="cb53-2"><a href="#cb53-2"></a></span>
+<span id="cb53-3"><a href="#cb53-3"></a><span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> longdat) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -793,13 +958,13 @@ mean in group A mean in group B
 <span class="header-section-number">9.3.1.3</span> Tidy output</h4>
 <p>You can use the function <code><a href="https://generics.r-lib.org/reference/tidy.html">broom::tidy()</a></code> to extract the data from a statistical test in a table format. The example below pipes everything together.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb30-2"><a href="#cb30-2"></a>  <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
-<span id="cb30-3"><a href="#cb30-3"></a>  <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
-<span id="cb30-4"><a href="#cb30-4"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb30-5"><a href="#cb30-5"></a>  <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
-<span id="cb30-6"><a href="#cb30-6"></a>  <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
-<span id="cb30-7"><a href="#cb30-7"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb55-2"><a href="#cb55-2"></a>  <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb55-3"><a href="#cb55-3"></a>  <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
+<span id="cb55-4"><a href="#cb55-4"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb55-5"><a href="#cb55-5"></a>  <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
+<span id="cb55-6"><a href="#cb55-6"></a>  <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
+<span id="cb55-7"><a href="#cb55-7"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -860,14 +1025,14 @@ Note
 <span class="header-section-number">9.3.1.4</span> Extract important values</h4>
 <p>Finally, we can extract a single value from this results table using <code>pull()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb31-2"><a href="#cb31-2"></a>  <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
-<span id="cb31-3"><a href="#cb31-3"></a>  <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
-<span id="cb31-4"><a href="#cb31-4"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb31-5"><a href="#cb31-5"></a>  <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
-<span id="cb31-6"><a href="#cb31-6"></a>  <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
-<span id="cb31-7"><a href="#cb31-7"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb31-8"><a href="#cb31-8"></a>  <span class="fu">pull</span>(p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb56-2"><a href="#cb56-2"></a>  <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb56-3"><a href="#cb56-3"></a>  <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
+<span id="cb56-4"><a href="#cb56-4"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb56-5"><a href="#cb56-5"></a>  <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
+<span id="cb56-6"><a href="#cb56-6"></a>  <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
+<span id="cb56-7"><a href="#cb56-7"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb56-8"><a href="#cb56-8"></a>  <span class="fu">pull</span>(p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.07260504</code></pre>
 </div>
@@ -877,20 +1042,20 @@ Note
 <p>Next, we can group the code above inside a function.</p>
 <p>First, name your function <code>t_sim</code> and wrap the code above in a function with no arguments.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>t_sim <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb33-2"><a href="#cb33-2"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb33-3"><a href="#cb33-3"></a>    <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
-<span id="cb33-4"><a href="#cb33-4"></a>    <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
-<span id="cb33-5"><a href="#cb33-5"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb33-6"><a href="#cb33-6"></a>    <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
-<span id="cb33-7"><a href="#cb33-7"></a>    <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
-<span id="cb33-8"><a href="#cb33-8"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb33-9"><a href="#cb33-9"></a>    <span class="fu">pull</span>(p.value) </span>
-<span id="cb33-10"><a href="#cb33-10"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>t_sim <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb58-2"><a href="#cb58-2"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb58-3"><a href="#cb58-3"></a>    <span class="at">A =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb58-4"><a href="#cb58-4"></a>    <span class="at">B =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="fl">5.5</span>, <span class="dv">1</span>)</span>
+<span id="cb58-5"><a href="#cb58-5"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb58-6"><a href="#cb58-6"></a>    <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
+<span id="cb58-7"><a href="#cb58-7"></a>    <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
+<span id="cb58-8"><a href="#cb58-8"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb58-9"><a href="#cb58-9"></a>    <span class="fu">pull</span>(p.value) </span>
+<span id="cb58-10"><a href="#cb58-10"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run it a few times to see what happens.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">t_sim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">t_sim</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.004556227</code></pre>
 </div>
@@ -899,10 +1064,10 @@ Note
 <span class="header-section-number">9.3.2.1</span> Iterate</h4>
 <p>Let’s run the <code>t_sim</code> function 1000 times, assign the resulting p-values to a vector called <code>reps</code>, and check what proportion of p-values are lower than alpha (e.g., .05). This number is the power for this analysis.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">t_sim</span>())</span>
-<span id="cb36-2"><a href="#cb36-2"></a>alpha <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
-<span id="cb36-3"><a href="#cb36-3"></a>power <span class="ot">&lt;-</span> <span class="fu">mean</span>(reps <span class="sc">&lt;</span> alpha)</span>
-<span id="cb36-4"><a href="#cb36-4"></a>power</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">t_sim</span>())</span>
+<span id="cb61-2"><a href="#cb61-2"></a>alpha <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
+<span id="cb61-3"><a href="#cb61-3"></a>power <span class="ot">&lt;-</span> <span class="fu">mean</span>(reps <span class="sc">&lt;</span> alpha)</span>
+<span id="cb61-4"><a href="#cb61-4"></a>power</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.346</code></pre>
 </div>
@@ -911,7 +1076,7 @@ Note
 <span class="header-section-number">9.3.2.2</span> Set seed</h4>
 <p>You can use the <code>set.seed</code> function before you run a function that uses random numbers to make sure that you get the same random data back each time. You can use any integer you like as the seed.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">set.seed</span>(<span class="dv">90201</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="fu">set.seed</span>(<span class="dv">90201</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -942,23 +1107,23 @@ Figure&nbsp;9.1: Meme from @KellyBodwin: if you can explain why this is funny, y
 <span class="header-section-number">9.3.2.3</span> Add arguments</h4>
 <p>You can just edit your function each time you want to calculate power for a different sample n, but it is more efficient to build this into your function as an arguments. Redefine <code>t_sim</code>, setting arguments for the mean and SD of group A, the mean and SD of group B, and the number of subjects per group. Give them all default values.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>t_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">m1=</span><span class="dv">0</span>, <span class="at">sd1=</span><span class="dv">1</span>, <span class="at">m2=</span><span class="dv">0</span>, <span class="at">sd2=</span><span class="dv">1</span>) {</span>
-<span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb39-3"><a href="#cb39-3"></a>    <span class="at">A =</span> <span class="fu">rnorm</span>(n, m1, sd1),</span>
-<span id="cb39-4"><a href="#cb39-4"></a>    <span class="at">B =</span> <span class="fu">rnorm</span>(n, m2, sd2)</span>
-<span id="cb39-5"><a href="#cb39-5"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb39-6"><a href="#cb39-6"></a>    <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
-<span id="cb39-7"><a href="#cb39-7"></a>    <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
-<span id="cb39-8"><a href="#cb39-8"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb39-9"><a href="#cb39-9"></a>    <span class="fu">pull</span>(p.value) </span>
-<span id="cb39-10"><a href="#cb39-10"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>t_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">m1=</span><span class="dv">0</span>, <span class="at">sd1=</span><span class="dv">1</span>, <span class="at">m2=</span><span class="dv">0</span>, <span class="at">sd2=</span><span class="dv">1</span>) {</span>
+<span id="cb64-2"><a href="#cb64-2"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb64-3"><a href="#cb64-3"></a>    <span class="at">A =</span> <span class="fu">rnorm</span>(n, m1, sd1),</span>
+<span id="cb64-4"><a href="#cb64-4"></a>    <span class="at">B =</span> <span class="fu">rnorm</span>(n, m2, sd2)</span>
+<span id="cb64-5"><a href="#cb64-5"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb64-6"><a href="#cb64-6"></a>    <span class="fu">gather</span>(group, score, A<span class="sc">:</span>B) <span class="sc">|&gt;</span></span>
+<span id="cb64-7"><a href="#cb64-7"></a>    <span class="fu">t.test</span>(score<span class="sc">~</span>group, <span class="at">data =</span> _) <span class="sc">|&gt;</span></span>
+<span id="cb64-8"><a href="#cb64-8"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb64-9"><a href="#cb64-9"></a>    <span class="fu">pull</span>(p.value) </span>
+<span id="cb64-10"><a href="#cb64-10"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section><section id="test-your-function" class="level3" data-number="9.3.3"><h3 data-number="9.3.3" class="anchored" data-anchor-id="test-your-function">
 <span class="header-section-number">9.3.3</span> Test your function</h3>
 <p>Test your function with some different values to see if the results make sense.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">t_sim</span>(<span class="dv">100</span>)</span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">t_sim</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.5</span>, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="fu">t_sim</span>(<span class="dv">100</span>)</span>
+<span id="cb65-2"><a href="#cb65-2"></a><span class="fu">t_sim</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.5</span>, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8460064
 [1] 0.0002446404</code></pre>
@@ -966,16 +1131,16 @@ Figure&nbsp;9.1: Meme from @KellyBodwin: if you can explain why this is funny, y
 </div>
 <p>Use <code>replicate</code> to calculate power for 100 subjects/group with an effect size of 0.2 (e.g., A: m = 0, SD = 1; B: m = 0.2, SD = 1). Use 1000 replications.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">t_sim</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.2</span>, <span class="dv">1</span>))</span>
-<span id="cb42-2"><a href="#cb42-2"></a>power <span class="ot">&lt;-</span> <span class="fu">mean</span>(reps <span class="sc">&lt;</span> .<span class="dv">05</span>)</span>
-<span id="cb42-3"><a href="#cb42-3"></a>power</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">t_sim</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.2</span>, <span class="dv">1</span>))</span>
+<span id="cb67-2"><a href="#cb67-2"></a>power <span class="ot">&lt;-</span> <span class="fu">mean</span>(reps <span class="sc">&lt;</span> .<span class="dv">05</span>)</span>
+<span id="cb67-3"><a href="#cb67-3"></a>power</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.284</code></pre>
 </div>
 </div>
 <p>Compare this to power calculated from the <code>power.t.test</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">power.t.test</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">delta =</span> <span class="fl">0.2</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="st">"two.sample"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">power.t.test</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">delta =</span> <span class="fl">0.2</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">type=</span><span class="st">"two.sample"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Two-sample t test power calculation 
@@ -1024,6 +1189,8 @@ NOTE: n is number in *each* group</code></pre>
 <ul>
 <li>Chapters 19 of <a href="https://r4ds.had.co.nz/functions.html">R for Data Science</a>
 </li>
+<li>
+<a href="https://psyteachr.github.io/intro-r-pkgs/05-unit-tests.html">Unit tests</a> in Intro to R Packages.</li>
 </ul>
 
 
